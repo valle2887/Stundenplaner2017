@@ -17,7 +17,7 @@ public class LoginGUI extends JFrame implements ActionListener {
     private static final long serialVersionUID = 4962550853434863882L;
     
     /**
-     * Label und Textfeld für den Usernamen.
+     * Label und Textfeld f&uuml;r den Usernamen.
      */
     private JLabel lblUsername 
         = new JLabel("Username: ", SwingConstants.CENTER);
