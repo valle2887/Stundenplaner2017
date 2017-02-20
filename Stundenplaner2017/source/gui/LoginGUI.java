@@ -9,6 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+/**
+ * Klasse des Loginfensters, erbt von JFrame
+ * @author Christian Lindenberg
+ */
 public class LoginGUI extends JFrame implements ActionListener {
 
     /**
