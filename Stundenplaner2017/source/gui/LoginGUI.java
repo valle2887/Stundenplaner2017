@@ -22,7 +22,7 @@ public class LoginGUI extends JFrame implements ActionListener {
     private JLabel lblUsername 
         = new JLabel("Username: ", SwingConstants.CENTER);
     
-    private JTextField txtUsername = new JTextField(20);
+//    private JLabel txtUsername = new JTextField(20);
     
     /**
      * Label und Passwortfeld für das Passwort des Users.
@@ -50,11 +50,7 @@ public class LoginGUI extends JFrame implements ActionListener {
         
         this.setLayout(new GridLayout(3, 2));
         this.add(lblUsername);
-        this.add(txtUsername);
-        this.add(lblPasswort);
-        this.add(pwPasswort);
-        this.add(btnLogin);
-        this.add(btnRegister);
+//        this.add(txtUsername);
     
         btnLogin.addActionListener(this);
         btnRegister.addActionListener(this);
