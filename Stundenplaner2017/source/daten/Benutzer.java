@@ -116,6 +116,7 @@ public class Benutzer {
         this.terminListe = terminliste;
     }
     
+    
     public List<Veranstaltung> getVeranstaltungen() {
         List<Veranstaltung> veranstaltungen = new ArrayList<Veranstaltung>();
         for (Termin termin : terminListe) {
