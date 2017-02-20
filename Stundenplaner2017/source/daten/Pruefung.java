@@ -1,9 +1,18 @@
+/** 
+ */
 package daten;
 
+/**
+ * Klasse Pruefung.
+ * 
+ */
 public class Pruefung {
 
+    /**
+     * @return ncihts.
+     */
     public Object getzVeranstaltung() {
-        // TODO Auto-generated method stub
+
         return null;
     }
 
