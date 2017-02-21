@@ -1,5 +1,10 @@
 package daten;
-
+/**
+ * Die Klasse Termin, von welcher die Klassen Aufgabe, Pruefung und
+ * Veranstaltung erben. Zeigt die Bezeichnung, einen Kommentar, die Dauer,
+ * die Art und die Wiederholbarkeit eines Termins an.
+ *@author Christian Lindenberg
+ */
 public class Termin {
     
     private String bezeichnung;

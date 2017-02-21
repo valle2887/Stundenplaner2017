@@ -1,5 +1,9 @@
 package daten;
 
+/**
+ * Klasse um eine Veranstaltung zu erstellen, welche von Termin erbt.
+ * @author Christian Lindenberg
+ */
 public class Veranstaltung extends Termin {
 
     private String raumnummer;

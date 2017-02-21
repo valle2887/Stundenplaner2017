@@ -5,81 +5,81 @@ import java.util.List;
 
 /**
  * Klasse, welche den Benutzer zeigt, seinen Name, sein Passwort, Semester,
- * ECTs, Studiengang, und die personalierte Terminliste
+ * ECTs, Studiengang, und die personalierte Terminliste.
  */
 public class Benutzer {
     /**
-     * Name des users
+     * Name des users.
      */
     private String username;
     /** 
-     * Passwort des users
+     * Passwort des users.
      */
     private String passwort;
     /**
-     * Semesteranzahl des users
+     * Semesteranzahl des users.
      */
     private int semester;
     /**
-     * Credits des users
+     * Credits des users.
      */
     private int ects;
     /**
-     * Studiengang des users
+     * Studiengang des users.
      */
     private String studiengang;
     /**
-     * ArrayList um die Termine des users festzuhalten
+     * ArrayList um die Termine des users festzuhalten.
      */
     private ArrayList<Termin> terminListe = new ArrayList<Termin>();
     
     /**
-     * Klassenkonstruktor
+     * Klassenkonstruktor.
      */
     public Benutzer() {
         
     }
-    /** 
-     * Getter für den Usernamen
+    /**
+     * Getter fuer den Usernamen.
      * @return username 
-     * Ist der einzugebende Name für den Login.
+     * Ist der einzugebende Name fuer den Login.
     */
     public String getUsername() {
         return username;
     }
-    /** Setter für den Usernamen
+    /** Setter fuer den Usernamen.
      * 
-     * @param benutzername 
-     * Für den Login benötigt.
+     * @param username 
+     * Fuer den Login benötigt.
      */
     public void setUsername(String username) {
         this.username = username;
     }
-    /** Getter für das Passwort
-     * 
+    /** 
+     * Getter für das Passwort.
      * @return passwort 
      * Ist das Passwort, welches vom User festgelegt wurde.
      */
     public String getPasswort() {
         return passwort;
     }
-    /** 
-     * Setter für das Passwort
+    /**
+     * Setter fuer das Passwort.
      * @param passwort 
-     * Für den Login benötigt.
+     * Fuer den Login benötigt.
      */
     public void setPasswort(String passwort) {
         this.passwort = passwort;
     }
     /**
-     * Getter für die Semesteranzahl des Users
+     * Getter fuer die Semesteranzahl des Users.
      * @return semester
      * 
      */
     public int getSemester() {
         return semester;
     }
-    /** Setter für Semesteranzahl
+    /** Setter fuer Semesteranzahl.
      * 
      * @param semester
      * Semesteranzahl des Users.
@@ -87,36 +87,63 @@ public class Benutzer {
     public void setSemester(int semester) {
         this.semester = semester;
     }
-    /** Getter für ECTS
-     * 
+    /** 
+     * Getter für ECTS.
      * @return ects
      * Die Credits des Users.
      */
     public int getEcts() {
         return ects;
     }
+    
+    /**
+     * Setter fuer die ECTs.
+     * @param ects
+     * Die Credits des Users.
+     */
     public void setEcts(int ects) {
         this.ects = ects;
     }
+    /**
+     * Getter fuer den Studiengang.
+     * @return studiengang
+     */
     public String getStudiengang() {
         return studiengang;
     }
+    /**
+     * Setter fuer den Studiengang.
+     * @param studiengang
+     * Der Studiengang des Users
+     */
     public void setStudiengang(String studiengang) {
         this.studiengang = studiengang;
     }
+    /**
+     * getter für die Terminliste.
+     * @return terminListe
+     * Die Terminliste fuer den Benutzer.
+     */
     public ArrayList<Termin> getTerminliste() {
         return terminListe;
     }
     /**
-     * Setter für die Terminliste
+     * Setter für die Terminliste.
      * @param terminliste
-     * Liste mit den Terminen.
+     * Liste mit den Terminen des Benutzers.
      */
     public void setTerminliste(ArrayList<Termin> terminliste) {
         this.terminListe = terminliste;
     }
     
     
+    /**
+     * Getter fuer die Liste der Veranstaltungen.
+     * @return veranstaltungen
+     * Geht zunaechst mit der For-Schleife saemtliche Termine in der Terminliste
+     * durch, um dann einem Termin, der eine Veranstaltung ist, auch so 
+     * deklarieren zu koennen.
+     */
     public List<Veranstaltung> getVeranstaltungen() {
         List<Veranstaltung> veranstaltungen = new ArrayList<Veranstaltung>();
         for (Termin termin : terminListe) {
@@ -126,7 +153,15 @@ public class Benutzer {
         }
         return veranstaltungen;
     }
-    
+    /**
+     * Durchsucht die Terminliste nach Pruefungen, die Veranstaltungen 
+     * zugeordnet sind.
+     * @param veranst wird uebergeben.
+     * @return eine Pruefung die gefunden wurde oder null
+     * Ueberprueft zunaechst saemtliche Termine in der Terminliste durch die
+     * For-Schleife, ob der Termin eine Pruefung ist. Wenn dem so ist, wird
+     * nach der zugehoerigen Veranstaltung gesucht.
+     */
     public Pruefung getPruefungFuerVeranstaltung(Veranstaltung veranst) {
         Pruefung pruefungFuerVer = new Pruefung(); 
         for (Termin termin : terminListe) {
