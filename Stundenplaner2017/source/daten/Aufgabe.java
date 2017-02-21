@@ -3,5 +3,5 @@ package daten;
  *@author 
  */
 public class Aufgabe {
-//Deadline einfuegen.......
+//Deadline einfuegen.
 }
