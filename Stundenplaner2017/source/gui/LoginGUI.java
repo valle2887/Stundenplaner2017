@@ -11,48 +11,62 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
- * Klasse des Loginfensters, erbt von JFrame
+ * Klasse des Loginfensters, erbt von JFrame.
+ * 
  * @author Christian Lindenberg
  */
 public class LoginGUI extends JFrame implements ActionListener {
 
     /**
-     * Automatisch generierte SerialVersionUID
+     * Automatisch generierte SerialVersionUID.
      */
     private static final long serialVersionUID = 4962550853434863882L;
-    
+
     /**
-     * Label und Textfeld für den Usernamen.
+     * Label und Textfeld f&uuml;r den Usernamen.
      */
-    private JLabel lblUsername 
-        = new JLabel("Username: ", SwingConstants.CENTER);
-    
+    private JLabel lblUsername = new JLabel("Username: ", +
+        SwingConstants.CENTER);
+
+    /**
+     * JTextField.
+     */
+
     private JTextField txtUsername = new JTextField(20);
-    
+
     /**
      * Label und Passwortfeld für das Passwort des Users.
      */
-    private JLabel lblPasswort
-        = new JLabel("Passwort: ", SwingConstants.CENTER);
-    
-    private JPasswordField pwPasswort = new JPasswordField(20);
-    
+    private JLabel lblPasswort = new JLabel("Passwort: ", +
+        SwingConstants.CENTER);
+
     /**
-     * Buttons für den Login des Users und für die 
-     * Registrierung eines neuen Users
+     * JPasswordField.
+     */
+
+    private JPasswordField pwPasswort = new JPasswordField(20);
+
+    /**
+     * Buttons fuer den Login des Users und für die Registrierung eines neuen
+     * Users.
      */
     private JButton btnLogin = new JButton("Login");
-    
-    private JButton btnRegister = new JButton("Registrieren");
-    
+
     /**
-     * Konstruktorklasse des Loginfensters
-    */
+     * JButton.
+     */
+
+    private JButton btnRegister = new JButton("Registrieren");
+
+    /**
+     * Konstruktorklasse des Loginfensters.
+     */
+
     public LoginGUI() {
         setLocationRelativeTo(null);
         setTitle("Login");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+
         this.setLayout(new GridLayout(3, 2));
         this.add(lblUsername);
         this.add(txtUsername);
@@ -60,17 +74,17 @@ public class LoginGUI extends JFrame implements ActionListener {
         this.add(pwPasswort);
         this.add(btnLogin);
         this.add(btnRegister);
-    
+
         btnLogin.addActionListener(this);
         btnRegister.addActionListener(this);
-        
+
         pack();
         setVisible(true);
     }
+
     @Override
     public void actionPerformed(ActionEvent arg0) {
         // TODO Auto-generated method stub
-        
+
     }
 }
- 
