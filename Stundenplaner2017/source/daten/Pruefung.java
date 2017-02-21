@@ -1,10 +1,32 @@
 package daten;
 
-public class Pruefung {
+public class Pruefung extends Termin {
 
-    public Object getzVeranstaltung() {
-        // TODO Auto-generated method stub
-        return null;
+    private int pruefungsdauer;
+    
+    private Veranstaltung zugehoerendeVeranstaltung;
+    
+    
+    public int getPruefungsdauer() {
+        return pruefungsdauer;
     }
+
+
+    public void setPruefungsdauer(int pruefungsdauer) {
+        this.pruefungsdauer = pruefungsdauer;
+    }
+
+
+    public Veranstaltung getZugehoerendeVeranstaltung() {
+        return zugehoerendeVeranstaltung;
+    }
+
+
+    public void setZugehoerendeVeranstaltung(
+        Veranstaltung zugehoerendeVeranstaltung) {
+        this.zugehoerendeVeranstaltung = zugehoerendeVeranstaltung;
+    }
+
+
 
 }

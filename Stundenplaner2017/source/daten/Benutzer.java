@@ -128,17 +128,19 @@ public class Benutzer {
     }
     
     public Pruefung getPruefungFuerVeranstaltung(Veranstaltung veranst) {
-        Pruefung gefPruefung = new Pruefung(); 
+        Pruefung pruefungFuerVer = new Pruefung(); 
         for (Termin termin : terminListe) {
             if (termin instanceof Pruefung
-                && ((Pruefung) termin).getzVeranstaltung() != null
-                && ((Pruefung) termin).getzVeranstaltung().equals(veranst)) {
-                gefPruefung = (Pruefung) termin;
+                && ((Pruefung) termin).getZugehoerendeVeranstaltung() 
+                != null
+                && ((Pruefung) termin).getZugehoerendeVeranstaltung().
+                equals(veranst)) {
+                pruefungFuerVer = (Pruefung) termin;
             } else {
-                gefPruefung = null;
+                pruefungFuerVer = null;
             }
         }
-        return gefPruefung;
+        return pruefungFuerVer;
     }
     
     
