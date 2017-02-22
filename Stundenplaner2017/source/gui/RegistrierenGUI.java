@@ -7,7 +7,6 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -24,35 +23,35 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      */
     private static final long serialVersionUID = -7161567464410238478L;
     /**
-     * Label name. 
+     * Label benutzername. 
      */
-    private JLabel name = new JLabel("                Name                ");
+    private JLabel benutzername = new JLabel("          Benutzername:");
     /** 
-     * JTextField textName. 
+     * JTextField textBenutzername. 
      */
-    private static JTextField textName = new JTextField(15);    
+    private static JTextField textBenutzername = new JTextField(15);    
     /**
      * Label studiengang. 
      */
-    private JLabel studiengang = new JLabel("Studiengang:             ");
+    private JLabel studiengang = new JLabel("          Studiengang:");
     /**
      * JTextField textStudiengang. 
      */
     private JTextField textStudiengang = new JTextField(20);
     /**
-     * Label neuePasswort.
+     * Label passwort.
      */
-    private JLabel neuePasswort = new JLabel("neues Passwort:         ");
+    private JLabel passwort = new JLabel("          Passwort:");
 
     /**
-     * JPasswordField textNeuePasswrt. 
+     * JPasswordField textPasswort. 
      */
-    private JPasswordField textNeuePasswrt = new JPasswordField(20);
+    private JPasswordField textPasswort = new JPasswordField(20);
 
     /**
      * Label wiPasswort. 
      */
-    private JLabel wiPasswort = new JLabel("Passwort wiederholen:");
+    private JLabel wiPasswort = new JLabel("          Passwort wiederholen:");
     /**
      * JTextField textWiPasswort. 
      */
@@ -60,7 +59,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     /**
      * Label ects. 
      */
-    private JLabel ects = new JLabel("ECTS");
+    private JLabel ects = new JLabel("          ECTS");
 
     /**
      * JTextField textEcts. 
@@ -74,25 +73,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     /**
      * JButton abbrechen.
      */
-    private JButton abbrechen = new JButton("Abbrechen"); 
-    /**
-     * JPanel panelName.
-     */
-    private JPanel panelName = new JPanel();
-    /**
-     * JPanel panelStudiengang.
-     */
-    private JPanel panelStudiengang = new JPanel();
-    /**
-     * JPanel panelNeuePasswort.
-     */
-    private JPanel panelNeuePasswort = new JPanel();
-
-    /**
-     * JPanel panelWiPasswort.
-     */
-    private JPanel panelWiPasswort = new JPanel();
-   
+    private JButton abbrechen = new JButton("Abbrechen");
     /**
      * Konstruktor der Klasse RegistrierenGUI .
      */
@@ -102,28 +83,18 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
         setLayout(new GridLayout(6, 2));
-        setLocationRelativeTo(null);
-        // Hier werden die Elemente den Containern hinzugefügt.        
-        panelName.add(name);
-        panelName.add(textName);
-        
-        panelStudiengang.add(studiengang);
-        panelStudiengang.add(textStudiengang);
-        
-        panelName.add(ects);
-        panelName.add(textEcts);
-        
-        panelNeuePasswort.add(neuePasswort);
-        panelNeuePasswort.add(textNeuePasswrt);
-        
-        panelWiPasswort.add(wiPasswort);
-        panelWiPasswort.add(textWiPasswort);
-        
+        setLocationRelativeTo(null);        
         // Hier werden die Container im Fenster angeordnet
-        add(panelName);
-        add(panelStudiengang);
-        add(panelNeuePasswort);
-        add(panelWiPasswort);
+        add(benutzername);
+        add(textBenutzername);
+        add(passwort);
+        add(textPasswort);
+        add(wiPasswort);
+        add(textWiPasswort);
+        add(ects);
+        add(textEcts);
+        add(studiengang);
+        add(textStudiengang);
         add(speichern);
         add(abbrechen);
         pack();
@@ -134,7 +105,8 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
                 // TODO Auto-generated method stub
                 RegistrierenGUI.this.setVisible(false);
                 RegistrierenGUI.this.dispose();
-              //mit Bz. new Test(); wird ein neue window geoeffnet.  
+                //mit new LoginGUI(); oeffnet fenster Login.
+                new LoginGUI();
             } 
         });
     }
