@@ -82,9 +82,22 @@ public class LoginGUI extends JFrame implements ActionListener {
         setVisible(true);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent arg0) {
+    /**
+     * ActionListener fuer die Buttons Login und Registrieren.
+     * @param event wird uebergeben
+     */
+    public void actionPerformed(ActionEvent event) {
+      /*  if (event.getSource() == btnLogin) {
+            dispose();
+            new Hauptfenster();
+        } else {
+        */    
+        
+        if (event.getSource() == btnRegister) {
+            dispose();
+            new RegistrierenGUI();
+        }
         // TODO Auto-generated method stub
-
     }
 }
+

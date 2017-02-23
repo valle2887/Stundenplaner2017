@@ -71,7 +71,7 @@ public class Termin {
     /**
      * Aufzaehlung der Typen von Terminen, sprich ob der Termin zum Studium 
      * gehoert oder ein privater ist.
-     * @ Studium, Privat
+     * @param Studium, Privat
      */
     public enum Typ {
         Studium, Privat;
