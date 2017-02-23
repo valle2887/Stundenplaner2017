@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  * Die Klasse RegistrierenGUI enthält alle GUI-Elemente die zum Registrieren 
@@ -25,55 +26,59 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     /**
      * Label benutzername. 
      */
-    private JLabel benutzername = new JLabel("          Benutzername:");
+    private JLabel lblUsername = 
+        new JLabel("Benutzername: ", SwingConstants.CENTER);
     /** 
      * JTextField textBenutzername. 
      */
-    private static JTextField textBenutzername = new JTextField(15);    
+    private static JTextField txtUsername = new JTextField(20);    
     /**
      * Label studiengang. 
      */
-    private JLabel studiengang = new JLabel("          Studiengang:");
+    private JLabel lblStudiengang = 
+        new JLabel("Studiengang: ", SwingConstants.CENTER);
     /**
      * JTextField textStudiengang. 
      */
-    private JTextField textStudiengang = new JTextField(20);
+    private JTextField txtStudiengang = new JTextField(20);
     /**
      * Label passwort.
      */
-    private JLabel passwort = new JLabel("          Passwort:");
+    private JLabel lblPasswort = 
+        new JLabel("Passwort: ", SwingConstants.CENTER);
 
     /**
      * JPasswordField textPasswort. 
      */
-    private JPasswordField textPasswort = new JPasswordField(20);
+    private JPasswordField pwPasswort = new JPasswordField(20);
 
     /**
      * Label wiPasswort. 
      */
-    private JLabel wiPasswort = new JLabel("          Passwort wiederholen:");
+    private JLabel lblPasswortNochmal = new 
+        JLabel("Passwort wiederholen:", SwingConstants.CENTER);
     /**
      * JTextField textWiPasswort. 
      */
-    private JPasswordField textWiPasswort = new JPasswordField(20);
+    private JPasswordField pwPasswortNochmal = new JPasswordField(20);
     /**
      * Label ects. 
      */
-    private JLabel ects = new JLabel("          ECTS");
+    private JLabel lblECTS = new JLabel("ECTS:", SwingConstants.CENTER);
 
     /**
-     * JTextField textEcts. 
+     * JTextField txtEcts. 
      */
-    private JTextField textEcts = new JTextField(3);
+    private JTextField txtECTS = new JTextField(3);
     /**
      * JButton speichern.
      */
-    private JButton speichern = new JButton("Speichern");
+    private JButton btnSpeichern = new JButton("Speichern");
     
     /**
      * JButton abbrechen.
      */
-    private JButton abbrechen = new JButton("Abbrechen");
+    private JButton btnAbbrechen = new JButton("Abbrechen");
     /**
      * Konstruktor der Klasse RegistrierenGUI .
      */
@@ -85,42 +90,44 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         setLayout(new GridLayout(6, 2));
         setLocationRelativeTo(null);        
         // Hier werden die Container im Fenster angeordnet
-        add(benutzername);
-        add(textBenutzername);
-        add(passwort);
-        add(textPasswort);
-        add(wiPasswort);
-        add(textWiPasswort);
-        add(ects);
-        add(textEcts);
-        add(studiengang);
-        add(textStudiengang);
-        add(speichern);
-        add(abbrechen);
+        add(lblUsername);
+        add(txtUsername);
+        add(lblPasswort);
+        add(pwPasswort);
+        add(lblPasswortNochmal);
+        add(pwPasswortNochmal);
+        add(lblECTS);
+        add(txtECTS);
+        add(lblStudiengang);
+        add(txtStudiengang);
+        add(btnSpeichern);
+        add(btnAbbrechen);
         pack();
         setVisible(true);
         //  wenn auf JButton Abbrechen gedrueckt wird rufe fenster Login auf.
-        abbrechen.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // TODO Auto-generated method stub
-                RegistrierenGUI.this.setVisible(false);
-                RegistrierenGUI.this.dispose();
-                //mit new LoginGUI(); oeffnet fenster Login.
+        
+    }
+    /**
+     * Methode um durch einen Klick auf den Button Speichern die Userdaten
+     * zu speichern (noch nicht implementiert) oder durch Abbrechen die Aktion
+     * abzubrechen.
+     * @param event wird uebergeben
+     */
+    public void actionPerformed(ActionEvent event) {
+        
+        if (event.getSource() == btnSpeichern) {
+            dispose();
+            new LoginGUI();
+        } else {
+            
+            
+            if (event.getSource() == btnAbbrechen) {
+                dispose();
                 new LoginGUI();
             } 
-        });
-    }
-    /**
-     * @param args .
-     */
-    public static void main(String[] args) {
-        new RegistrierenGUI();
-    }
-    /**
-     * @param e .
-     */
-    public void actionPerformed(ActionEvent e) {
-        
+            
+        }
         
     }
+    
 }
