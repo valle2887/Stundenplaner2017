@@ -5,7 +5,7 @@ package daten;
  * die Art und die Wiederholbarkeit eines Termins an.
  *@author Christian Lindenberg
  */
-public class Termin {
+public abstract class Termin {
     /** 
      * Die Bezeichnung fuer den Termin.
      */
@@ -69,12 +69,71 @@ public class Termin {
         this.dauer = dauer;
     }
     /**
+     * Getter fuer die Wiederholbarkeit eines Termins.
+     * @return wiederholbarkeitTermin
+     * Liefert die Wiederholbarkeit eines Termins zurueck.
+     */
+    public Wiederholbarkeit getWiederholbarkeitTermin() {
+        return wiederholbarkeitTermin;
+    }
+
+    /**
+     * Setter fuer die Wiederholbarkeit eines Termins.
+     * @param wiederholbarkeitTermin
+     * Setzt die Wiederholbarkeit eines Termins.
+     */
+    public void setWiederholbarkeitTermin(Wiederholbarkeit
+        wiederholbarkeitTermin) {
+        this.wiederholbarkeitTermin = wiederholbarkeitTermin;
+    }
+    /**
+     * Getter fuer den Typ eines Termins.
+     * @return terminTyp
+     * Gibt den Typen eines Termines aus.
+     */
+    public Typ getTerminTyp() {
+        return terminTyp;
+    }
+
+    /**
+     * Setter fuer den Typ eines Termins.
+     * @param terminTyp
+     * Setzt den Typ eines Termins.
+     */
+    public void setTerminTyp(Typ terminTyp) {
+        this.terminTyp = terminTyp;
+    }
+    /**
      * Aufzaehlung der Typen von Terminen, sprich ob der Termin zum Studium 
      * gehoert oder ein privater ist.
-     * @param Studium, Privat werden uebergeben
      */
     public enum Typ {
-        Studium, Privat;
+        
+        /**
+         * Auswahlmoeglichkeiten des Types.
+         */
+        Universitaet("Universitaet"), Privat("Privat");
+        
+        /**
+         * Der Name des Termines.
+         */
+        
+        private final String name;
+        
+        /**
+         * Methode um den Typ eines Termines festzulegen.
+         * @param name des Termines wird uebergeben.
+         */
+        private Typ(String name) {
+            this.name = name;
+        }
+        /**
+         * Getter um den Namen eines Termines zurueckzuliefern.
+         * @return name
+         */
+        public String getName() {
+            return name;
+        }
     }
     
     /**
@@ -83,6 +142,36 @@ public class Termin {
      */
     
     public enum Wiederholbarkeit {
-        Einmalig, Woechentlich;
+        /**
+         * Wiederholbarkeit, ob der Termin einmalig oder Woechentlich
+         * stattfindet.
+         */
+        Einmalig("Einmalig"), Woechentlich("Woechentlich");
+        /**
+         * Name des Termines.
+         */
+        private final String name;
+        /**
+         * Methode, um die Wiederholbarkeit eines Termines festzulegen.
+         * @param name des Termins wird uebergeben
+         */
+        private Wiederholbarkeit(String name) {
+            this.name = name;
+        }
+        /**
+         * Getter um den Namen eines Termines zurueckzuliefern.
+         * @return name
+         */
+        public String getName() {
+            return name;
+        }
     }
+    /**
+     * Die Wiederholbarkeit eines Termins.
+     */
+    private Wiederholbarkeit wiederholbarkeitTermin;
+    /**
+     * Der Typ eines Termins.
+     */
+    private Typ terminTyp;
 }
