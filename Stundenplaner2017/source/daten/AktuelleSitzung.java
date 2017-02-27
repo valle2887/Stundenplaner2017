@@ -3,7 +3,12 @@ package daten;
 import java.util.ArrayList;
 
 /**
- * 
+ * Die Klasse AktuelleSitzung managed alle Termine des eingeloggten Benutzers,
+ * d.h. die Termine vom Kalender. Es werden  fuer die Variablen-Typen Aufgabe,
+ * Pruefung und Veranstaltung Listen erstellt.
+ * Es werden die Variablen-Typen Benutzer, Aufgabe, Pruefung, Veranstaltung 
+ * und KalenderGUI.
+ * @author Rakan Al-Swayyed.
  */
 public class AktuelleSitzung {
     /**
