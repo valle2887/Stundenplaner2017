@@ -79,10 +79,26 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
     /**
      * Button um das aktualisieren er Daten abzubrechen.
      */
-    private JButton btnAbbruch = new JButton("Abbrechen");
-    
+    private JButton btnAbbrechen = new JButton("Abbrechen");
+    /**
+     * Methode fuer die Buttonklicks, wenn auf Speichern gedrueckt wird,
+     * werden die geaenderten Daten gespeichert, und wenn auf abbrechen
+     * gedrueckt wird, kommt der User wieder ins Hauptfenster zurueck.
+     * @param event 
+     */
     public void actionPerformed(ActionEvent event) {
-        // TODO Auto-generated method stub
+        if (event.getSource() == btnSpeichern) {
+            dispose();
+            new LoginGUI();
+        } else {
+            
+            
+            if (event.getSource() == btnAbbrechen) {
+                dispose();
+                //new HauptfensterGUI();
+            } 
+            
+        }
     }
     
     /**
@@ -109,7 +125,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         this.add(pwNeuPasswordNochmal);
         
         this.add(btnSpeichern);
-        this.add(btnAbbruch);
+        this.add(btnAbbrechen);
         
         pack();
         setVisible(true);
