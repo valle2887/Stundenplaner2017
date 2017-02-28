@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -15,7 +16,7 @@ import javax.swing.SwingConstants;
  * Die Klasse RegistrierenGUI enthält alle GUI-Elemente die zum Registrieren 
  * eines Benutzers benötigt werden.
  * 
- * @author Rakan Al-Swayyed
+ * @author Christian Lindenberg
  */
 public class RegistrierenGUI extends JFrame implements ActionListener {
 
@@ -89,7 +90,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         setResizable(true);
         setLayout(new GridLayout(6, 2));
         setLocationRelativeTo(null);        
-        // Hier werden die Container im Fenster angeordnet
+        
         add(lblUsername);
         add(txtUsername);
         add(lblPasswort);
@@ -104,7 +105,6 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         add(btnAbbrechen);
         pack();
         setVisible(true);
-        //  wenn auf JButton Abbrechen gedrueckt wird rufe fenster Login auf.
         
     }
     /**
@@ -128,6 +128,58 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             
         }
         
+    }
+   /**
+    * Methode, um die Eingaben auf Korrektheit zu ueberpruefen, bzw. ob Felder
+    * leergelassen wurden.
+    * @return eingabeKorrekt
+    */ 
+    public boolean eingabenUeberpruefen() {
+        boolean eingabeKorrekt = true;
+        if (txtUsername.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Username wurde nicht "
+                + "eingegeben.");
+            eingabeKorrekt = false;
+        }
+        if (txtStudiengang.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Studiengang wurde nicht "
+                + "eingegeben.");
+            eingabeKorrekt = false;
+        }
+        if (pwPasswort.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "Passwort wurde nicht "
+                + "eingegeben.");
+            eingabeKorrekt = false;
+        }
+        if (pwPasswortNochmal.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "Das wiederholte Passwort "
+                + "wurde nicht eingegeben.");
+            eingabeKorrekt = false;
+        }
+        if (!pwPasswort.equals(pwPasswortNochmal)) {
+            JOptionPane.showMessageDialog(null, "Passworter stimmen nicht "
+                + "ueberein.");
+            eingabeKorrekt = false;
+        }
+        if (txtECTS.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Credits wurden nicht "
+                + "eingegeben.");
+            eingabeKorrekt = false;
+        }
+        try {
+            int i = Integer.parseInt(txtECTS.getText());
+            if (i < 0) {
+                JOptionPane.showMessageDialog(null, "Credits duerfen nicht "
+                    + "negativ sein.");
+                eingabeKorrekt = false;
+            }
+        } catch (NumberFormatException exc) {
+            JOptionPane.showMessageDialog(null, "Credits duerfen nicht "
+                   + "negativ sein.");
+            eingabeKorrekt = false;
+        }
+        
+        return eingabeKorrekt;
     }
     
 }

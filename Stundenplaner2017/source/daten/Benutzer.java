@@ -6,6 +6,7 @@ import java.util.List;
 /**
  * Klasse, welche den Benutzer zeigt, seinen Name, sein Passwort, Semester,
  * ECTs, Studiengang, und die personalierte Terminliste.
+ * @author Christian Lindenberg
  */
 public class Benutzer {
     /**
@@ -176,6 +177,24 @@ public class Benutzer {
             }
         }
         return pruefungFuerVer;
+    }
+    /**
+     * Gleiche Prozedur wie bei der Veranstaltung, es wird zunaechst eine
+     * neue Liste fuer die Aufgaben erstellt und dann bei jedem Termin 
+     * ueberprueft, ob der besagte Termin eine Aufgabe ist. Wenn dem so ist,
+     * wird in die Liste der Aufgaben eine neue Aufgabe (der besagte Termin) 
+     * hinzugefuegt.
+     * @return aufgaben
+     * werden zurueckgegeben.
+     */
+    public List<Aufgabe> getAufgaben() {
+        List<Aufgabe> aufgaben = new ArrayList<Aufgabe>();
+        for (Termin termin : terminListe) {
+            if (termin instanceof Aufgabe) {
+                aufgaben.add((Aufgabe) termin);
+            }
+        }
+        return aufgaben;
     }
     
     

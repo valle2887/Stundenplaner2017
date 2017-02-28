@@ -17,7 +17,7 @@ public abstract class Termin {
      * Kommentar fuer den Termin.
      */
     private String kommentar;
-
+    
     /**
      * Die Dauer des Termins.
      */
