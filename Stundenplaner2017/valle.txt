@@ -1,0 +1,5 @@
+Username: 		valle
+Passwort: 		1234
+Studiengang: 		winf
+ECTS: 		60
+
