@@ -26,8 +26,8 @@ public class DatenVerwaltung {
     /**
      * Speichern von Benutzerdaten.
      */
-    public void speichernVonBenutzerdaten(String name, String passwort,
-        String studiengang, int punkte) throws IOException {
+    public static void speichernVonBenutzerdaten(String name, String passwort,
+        String studiengang, String punkte) throws IOException {
 
         FileWriter schreiben = new FileWriter(name + ".txt", true);
 

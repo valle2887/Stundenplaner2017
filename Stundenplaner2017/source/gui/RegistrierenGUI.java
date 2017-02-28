@@ -13,6 +13,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.DatenVerwaltung;
+
 /**
  * Die Klasse RegistrierenGUI enthält alle GUI-Elemente die zum Registrieren 
  * eines Benutzers benötigt werden.
@@ -104,6 +106,18 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         add(txtStudiengang);
         add(btnSpeichern);
         add(btnAbbrechen);
+        
+        btnSpeichern.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent event) {
+                
+                registerUser();
+                
+            }
+            
+        });
+        
+        btnAbbrechen.addActionListener(this);
         pack();
         setVisible(true);
         
@@ -136,11 +150,12 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
                 + "wurde nicht eingegeben.");
             eingabeKorrekt = false;
         }
-        if (!pwPasswort.equals(pwPasswortNochmal)) {
-            JOptionPane.showMessageDialog(null, "Passworter stimmen nicht "
+        /*if (!pwPasswort.equals(pwPasswortNochmal)) {
+            JOptionPane.showMessageDialog(null, "Passwoerter stimmen nicht "
                 + "ueberein.");
             eingabeKorrekt = false;
         }
+        */
         if (txtECTS.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Credits wurden nicht "
                 + "eingegeben.");
@@ -163,6 +178,32 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     }
     
     /**
+     * Methode um einen User zu registrieren.
+     */
+    public void registerUser() {
+        String name = txtUsername.getText();
+        String passwort = pwPasswort.getText();
+        String passwort2 = pwPasswortNochmal.getText();
+        String studiengang = txtStudiengang.getText();
+        String punkte = txtECTS.getText();
+        
+        if (eingabenUeberpruefen()) {
+            File schreiben = new File(name + ".txt");
+            if (!schreiben.exists()) {
+                try {
+                    DatenVerwaltung.speichernVonBenutzerdaten(name, 
+                        passwort, studiengang, punkte);
+
+                    dispose();
+                    new LoginGUI();            
+                    
+                } catch (Exception exc) {
+                    JOptionPane.showMessageDialog(null, "ERROR");
+                }
+            }
+        }
+    }
+    /**
      * Methode um durch einen Klick auf den Button Speichern die Userdaten
      * zu speichern (noch nicht implementiert) oder durch Abbrechen die Aktion
      * abzubrechen.
@@ -170,17 +211,13 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent event) {
         
+        
         if (event.getSource() == btnSpeichern) {
-            
-            if (eingabenUeberpruefen()) {
-                File file = new File(txtUsername + ".txt");
-
-                //TODO HIER WEITERMACHEN
-            }
-       
-            
+            registerUser();
             dispose();
             new LoginGUI();
+       
+            
         } else {
             
             
