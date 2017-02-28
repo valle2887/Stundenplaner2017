@@ -31,13 +31,13 @@ public class DatenVerwaltung {
 
         FileWriter schreiben = new FileWriter(name + ".txt", true);
 
-        schreiben.write("Username: \t" + name);
+        schreiben.write("Username: \t\t" + name);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Passwort: \t" + passwort);
+        schreiben.write("Passwort: \t\t" + passwort);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Studiengang: \t" + studiengang);
+        schreiben.write("Studiengang: \t\t" + studiengang);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("ECTS: \t" + punkte);
+        schreiben.write("ECTS: \t\t" + punkte);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
@@ -53,20 +53,20 @@ public class DatenVerwaltung {
 
         schreiben.write("Aufgabe");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Bezeichnung: \t" + termineArray[0]);
+        schreiben.write("Bezeichnung: \t\t" + termineArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Datum: \t" + termineArray[1]);
+        schreiben.write("Datum: \t\t" + termineArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Uhrzeit: \t" + termineArray[2]);
+        schreiben.write("Uhrzeit: \t\t" + termineArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Dauer: \t" + termineArray[3]);
+        schreiben.write("Dauer: \t\t" + termineArray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Notiz: \t" + termineArray[4]);
+        schreiben.write("Notiz: \t\t" + termineArray[4]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write(termineArray[5]);
         // Bei Wiederholungen
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Typ: \t" + termineArray[6]);
+        schreiben.write("Typ: \t\t" + termineArray[6]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
@@ -83,28 +83,28 @@ public class DatenVerwaltung {
 
         schreiben.write("Veranstaltung");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Bezeichnung \t" + termineArray[0]);
+        schreiben.write("Bezeichnung \t\t" + termineArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Datum: \t" + termineArray[1]);
+        schreiben.write("Datum: \t\t" + termineArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Uhrzeit: \t" + termineArray[2]);
+        schreiben.write("Uhrzeit: \t\t" + termineArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Dauer: \t" + termineArray[3]);
+        schreiben.write("Dauer: \t\t" + termineArray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Notiz: \t" + termineArray[4]);
+        schreiben.write("Notiz: \t\t" + termineArray[4]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write(termineArray[5]);
         // Bei Wiederholungen
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Typ: \t" + termineArray[6]);
+        schreiben.write("Typ: \t\t" + termineArray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Raumnummer: \t" + veranstaltungsArray[0]);
+        schreiben.write("Raumnummer: \t\t" + veranstaltungsArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Gebaude: \t" + veranstaltungsArray[1]);
+        schreiben.write("Gebaude: \t\t" + veranstaltungsArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Dozent: \t" + veranstaltungsArray[2]);
+        schreiben.write("Dozent: \t\t" + veranstaltungsArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("ECTS: \t" + veranstaltungsArray[3]);
+        schreiben.write("ECTS: \t\t" + veranstaltungsArray[3]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
