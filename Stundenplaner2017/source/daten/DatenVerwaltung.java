@@ -1,5 +1,9 @@
 package daten;
 
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * Klasse Datenverwaltung. Diese ist dafür da um die Eingaben in eine Datei
  * zuschreiben
@@ -11,10 +15,27 @@ public class DatenVerwaltung {
     /**
      * Passwort vergleichen.
      */
+    
+    public boolean vergleichPasswort(String name, String passwort,
+        ) throws FileNotFoundException
 
     /**
      * Speichern von Benutzerdaten
      */
+    public void speichernVonBenutzerdaten(String name, String passwort,
+        String studiengang, int punkte) throws IOException {
+        FileWriter schreiben = new FileWriter(name + ".txt", true);
+
+        schreiben.write(name);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write(passwort);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write(studiengang);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write(punkte);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.close();
+    }
 
     /**
      * Speichern von Terminen in Datei
