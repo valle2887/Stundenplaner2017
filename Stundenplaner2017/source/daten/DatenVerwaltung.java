@@ -17,6 +17,18 @@ public class DatenVerwaltung {
      */
 
     /**
+     * Speichern von Terminen in Datei
+     */
+
+    /**
+     * Speichern von Veranstaltung in Datei
+     */
+
+    /**
+     * Speichern von Prüfung in Datei
+     */
+
+    /**
      * Löschen der gesamten Daten des Benutzers
      */
 
