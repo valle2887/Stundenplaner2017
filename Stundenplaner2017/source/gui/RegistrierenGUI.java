@@ -3,6 +3,7 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -107,28 +108,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         setVisible(true);
         
     }
-    /**
-     * Methode um durch einen Klick auf den Button Speichern die Userdaten
-     * zu speichern (noch nicht implementiert) oder durch Abbrechen die Aktion
-     * abzubrechen.
-     * @param event wird uebergeben
-     */
-    public void actionPerformed(ActionEvent event) {
-        
-        if (event.getSource() == btnSpeichern) {
-            dispose();
-            new LoginGUI();
-        } else {
-            
-            
-            if (event.getSource() == btnAbbrechen) {
-                dispose();
-                new LoginGUI();
-            } 
-            
-        }
-        
-    }
+
    /**
     * Methode, um die Eingaben auf Korrektheit zu ueberpruefen, bzw. ob Felder
     * leergelassen wurden.
@@ -181,5 +161,36 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
         
         return eingabeKorrekt;
     }
+    
+    /**
+     * Methode um durch einen Klick auf den Button Speichern die Userdaten
+     * zu speichern (noch nicht implementiert) oder durch Abbrechen die Aktion
+     * abzubrechen.
+     * @param event wird uebergeben
+     */
+    public void actionPerformed(ActionEvent event) {
+        
+        if (event.getSource() == btnSpeichern) {
+            
+            if (eingabenUeberpruefen()) {
+                File file = new File(txtUsername + ".txt");
+
+                //TODO HIER WEITERMACHEN
+            }
+       
+            
+            dispose();
+            new LoginGUI();
+        } else {
+            
+            
+            if (event.getSource() == btnAbbrechen) {
+                dispose();
+                new LoginGUI();
+            } 
+            
+        }
+        
+    }    
     
 }
