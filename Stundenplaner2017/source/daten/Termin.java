@@ -22,6 +22,15 @@ public abstract class Termin {
      * Die Dauer des Termins.
      */
     private int dauer;
+    
+    /**
+     * Das Datum, an dem der Termin stattfindet.
+     */
+    private long datum;
+    /**
+     * Die Uhrzeit, an der der Termin stattfindet.
+     */
+    private String uhrzeit;
 
     /**
      * Getter fuer die Bezeichnung.
@@ -119,6 +128,22 @@ public abstract class Termin {
      */
     public void setTerminTyp(Typ terminTyp) {
         this.terminTyp = terminTyp;
+    }
+
+    public long getDatum() {
+        return datum;
+    }
+
+    public void setDatum(long datum) {
+        this.datum = datum;
+    }
+
+    public String getUhrzeit() {
+        return uhrzeit;
+    }
+
+    public void setUhrzeit(String uhrzeit) {
+        this.uhrzeit = uhrzeit;
     }
 
     /**
