@@ -6,9 +6,13 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+
+import daten.Benutzer;
+import daten.DatenVerwaltung;
 
 /**
  * Klasse des Loginfensters, erbt von JFrame.
@@ -81,18 +85,42 @@ public class LoginGUI extends JFrame implements ActionListener {
         pack();
         setVisible(true);
     }
+    /** 
+     * Ueberprueft die Logindaten des Users.
+     * @param username Der name des Users
+     * @param passwort Das Passwort des Users
+     *      werden uebergeben
+     * @return loginErfolgreich
+     */
+    private boolean checkLogin(String username, String passwort) {
+        boolean loginErfolgreich = false;
+        for (Benutzer benutzer : DatenVerwaltung.
+            getInstance().getBenutzerliste()) {
+            if (username.equals(benutzer.getUsername()) 
+                && passwort.equals(benutzer.getPasswort())) {
+                KalenderGui.setAktuellerBenutzer(benutzer);
+                DatenVerwaltung.getInstance().reloadTermine(benutzer);
+                loginErfolgreich = true;
+            }
+        }
+    }
 
     /**
      * ActionListener fuer die Buttons Login und Registrieren.
      * @param event wird uebergeben
      */
     public void actionPerformed(ActionEvent event) {
-      /*  if (event.getSource() == btnLogin) {
-            dispose();
-            new Hauptfenster();
-        } else {
-        */    
-        
+        if (event.getSource() == btnLogin) {
+            if (checkLogin(txtUsername.getText(),
+                new String(pwPasswort.getPassword()))) {
+                dispose();
+                new KalenderGui(); 
+            }
+            
+        } else {   
+            JOptionPane.showMessageDialog(null,
+                "Username oder Passwort falsch");
+        }
         if (event.getSource() == btnRegister) {
             dispose();
             new RegistrierenGUI();
