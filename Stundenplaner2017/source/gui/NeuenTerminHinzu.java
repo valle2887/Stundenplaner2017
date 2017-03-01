@@ -9,6 +9,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
@@ -22,6 +23,10 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * generated serial Version ID.
      */
     private static final long serialVersionUID = 5043569320233706529L;
+    /**
+     * Label lTerminTyp.
+     */
+    private JLabel lTerminTyp = new JLabel("Termin Typ wählen:");
     /**
      * JButtongroupe bgTerminTyp.
      */
@@ -51,10 +56,10 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JLabel lKategorie = new JLabel("Kategorie:");
     /**
-     * Array arrayKategorie mit zwei unterschiedlichen kategorien Universität 
+     * Array arrayKategorie mit zwei unterschiedlichen kategorien Universität
      * und private.
      */
-    private String[] arrayKategorie = {"Universität", "private"};
+    private String[] arrayKategorie = {"", "Universität", "private" };
     /**
      * JComboBox cbKategorie.
      */
@@ -67,27 +72,35 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayTag mit 31 tage.
      */
-    private String[] arrayTag = {"1", "2", "3", "4", "5", "6", "7", "8", "9",
-        "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21",
-        "22", "23", "24", "25", "26", "27", "28", "29", "30", "31"};
+    private String[] arrayTag = {"", "1", "2", "3", "4", "5", "6", "7", "8",
+        "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
+        "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
     /**
      * JComboBox cbTag.
      */
     private JComboBox<Object> cbTag = new JComboBox<Object>(arrayTag);
     /**
+     * Label lPkt1.
+     */
+    private JLabel lPkt1 = new JLabel(".");
+    /**
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
     /**
      * JComboBox cbMonat.
      */
     private JComboBox<Object> cbMonat = new JComboBox<Object>(arrayMonat);
     /**
+     * Label lPkt2.
+     */
+    private JLabel lPkt2 = new JLabel(".");
+    /**
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        {"2017", "2018", "2019", "2020", "2021", "2022"};
+        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
     /**
      * JComboBox cbJahr.
      */
@@ -97,11 +110,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JLabel lUhrzeit = new JLabel("Uhrzeit:");
     /**
+     * Label lDpkt.
+     */
+    private JLabel lDpkt = new JLabel(":");
+    /**
      * Array arrayStd mit 24 Stunden.
      */
-    private String[] arrayStd =
-        {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
-            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23"};
+    private String[] arrayStd = {"", "0", "1", "2", "3", "4", "5", "6", "7",
+        "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
+        "20", "21", "22", "23" };
     /**
      * JComboBox cbStunden.
      */
@@ -109,7 +126,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = {"0", "15", "30", "45"};
+    private String[] arrayMinuten = {"", "0", "15", "30", "45"};
     /**
      * JComboBox cbMinuten.
      */
@@ -142,7 +159,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayWieOft.
      */
     private String[] arrayWieOft =
-        {"Einmalig", "Taglich", "Wöchenlich", "Monatlich"};
+        {"", "Einmalig", "Taglich", "Wöchenlich", "Monatlich"};
     /**
      * JComboBox cbWieOft ob einmalig, wochenlich, monatlich.
      */
@@ -155,7 +172,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMarker.
      */
     private String[] arrayMarker =
-        {"noch nicht", "noch nicht", "noch nicht", "noch nicht"};
+        {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
     /**
      * JComboBox cbMarker fuer marken.
      */
@@ -163,12 +180,11 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"30", "60", "90", "120", "240"};
+    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
     /**
      * JComboBox cbDauer.
      */
-    private JComboBox<Object> cbDauer = new JComboBox
-        <Object>(arrayDauer);
+    private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
     /**
      * Label lMin.
      */
@@ -239,13 +255,19 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         setResizable(true);
         setLocationRelativeTo(null);
         // RadioButtons werden zu p1 zugewiesen.
+        p1.add(lTerminTyp);
         p1.add(rbAufg);
         p1.add(rbVeran);
         p1.add(rbPruef);
         bgTerminTyp.add(rbVeran);
         bgTerminTyp.add(rbAufg);
         bgTerminTyp.add(rbPruef);
-        
+        rbAufg.addActionListener(this);
+        rbVeran.addActionListener(this);
+        rbPruef.addActionListener(this);
+        // methode fehlerDialog.
+        fehlerDialog();
+
         p2.add(lBezeichnung);
         p2.add(tBezeichnung);
         p2.add(lEcts);
@@ -254,10 +276,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p2.add(cbKategorie);
         p2.add(lDatum);
         p2.add(cbTag);
+        p2.add(lPkt1);
         p2.add(cbMonat);
+        p2.add(lPkt2);
         p2.add(cbJahr);
         p2.add(lUhrzeit);
         p2.add(cbStunden);
+        p2.add(lDpkt);
         p2.add(cbMinuten);
         p2.add(lDauer);
         p2.add(cbDauer);
@@ -285,90 +310,251 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         add(p3);
         add(p4);
         add(speichern);
-        machSichtbar();
         pack();
         setVisible(true);
-
     }
-    
     /**
-     * methode machSichtbar() fuer Aufgabe, Veranstaltung und Pruefung.
+     * @param action
+     *            .
      */
-    public void machSichtbar() {
-        /**
-         * wenn rbAufg dann machSichtbar nix besonders. 
-         */
-        rbAufg.addActionListener(new ActionListener() {
-            /**
-             * @param e .
-             */
-            public void actionPerformed(ActionEvent e) {
-                lDauer.setVisible(false);
-                cbDauer.setVisible(false);
-                lMin.setVisible(false);
-                lCampus.setVisible(false);
-                tCampus.setVisible(false);
-                lRaum.setVisible(false);
-                tRaum.setVisible(false);
-                lDozent.setVisible(false);
-                tDozent.setVisible(false);
-                lEcts.setVisible(false);
-                tEcts.setVisible(false);
-                repaint();
-            }
-        });
-        /**
-         * wenn rbVeran dann machSichtbar Campus, Raum, Dozent und Ects.
-         */
-        rbVeran.addActionListener(new ActionListener() {
-            /**
-             * @param e .
-             */
-            public void actionPerformed(ActionEvent e) {
-                lDauer.setVisible(false);
-                cbDauer.setVisible(false);
-                lCampus.setVisible(true);
-                tCampus.setVisible(true);
-                lRaum.setVisible(true);
-                tRaum.setVisible(true);
-                lDozent.setVisible(true);
-                tDozent.setVisible(true);
-                lEcts.setVisible(true);
-                tEcts.setVisible(true);
-                repaint();
-            }
-        });
-        /**
-         * wenn rbVeran dann machSichtbar Dauer ,Campus und Raum.
-         */
-        rbPruef.addActionListener(new ActionListener() {
-            /**
-             * @param e.
-             */
-            public void actionPerformed(ActionEvent e) {
-                lDauer.setVisible(true);
-                cbDauer.setVisible(true);
-                lCampus.setVisible(true);
-                tCampus.setVisible(true);
-                lRaum.setVisible(true);
-                tRaum.setVisible(true);
-                lDozent.setVisible(false);
-                tDozent.setVisible(false);
-                lEcts.setVisible(false);
-                tEcts.setVisible(false);
-                repaint();
-            }
-        });
+    public void actionPerformed(ActionEvent action) {
+        if (action.getSource() == rbAufg) {
+            lDauer.setVisible(false);
+            cbDauer.setVisible(false);
+            lMin.setVisible(false);
+            lCampus.setVisible(false);
+            tCampus.setVisible(false);
+            lRaum.setVisible(false);
+            tRaum.setVisible(false);
+            lDozent.setVisible(false);
+            tDozent.setVisible(false);
+            lEcts.setVisible(false);
+            tEcts.setVisible(false);
+            repaint();
+        } else if (action.getSource() == rbVeran) {
+            lDauer.setVisible(false);
+            cbDauer.setVisible(false);
+            lCampus.setVisible(true);
+            tCampus.setVisible(true);
+            lRaum.setVisible(true);
+            tRaum.setVisible(true);
+            lDozent.setVisible(true);
+            tDozent.setVisible(true);
+            lEcts.setVisible(true);
+            tEcts.setVisible(true);
+            repaint();
+        } else if (action.getSource() == rbPruef) {
+            lDauer.setVisible(true);
+            cbDauer.setVisible(true);
+            lCampus.setVisible(true);
+            tCampus.setVisible(true);
+            lRaum.setVisible(true);
+            tRaum.setVisible(true);
+            lDozent.setVisible(false);
+            tDozent.setVisible(false);
+            lEcts.setVisible(false);
+            tEcts.setVisible(false);
+            repaint();
+        }
     }
     /**
-     * @param e .
+     * methoden aufgabeGewaehlt, pruefGewaehlt, veranGewaehlt ausgelagert da 
+     * sonst checkstyle fehler methode > 70 zeilen.
      */
-    public void actionPerformed(ActionEvent e) {  
+    private void fehlerDialog() {
+        speichern.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Termin Typ
+                if (!rbAufg.isSelected() && !rbVeran.isSelected()
+                    && !rbPruef.isSelected()) {
+                    JOptionPane.showMessageDialog(null,
+                        "Termin Typ: muss gewaehlt werden", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                } else if (rbAufg.isSelected()) {
+                    aufgabeGewaehlt();
+                } else if (rbPruef.isSelected()) {
+                    pruefGewaehlt();
+                } else {
+                    veranGewaehlt();
+                }
+            }
+        });
     }
     /**
-     * @param args .
+     * JRadioButton rbAufg wenn gewaehlt dann soll er ueberpruefen ob die 
+     * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
+     */
+    public void aufgabeGewaehlt() {
+        // Bezeichnung
+        if (tBezeichnung.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Bezeichnung: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Katehorie
+        } else if (cbKategorie.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Kategorie: muss gewählt sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Datum
+        } else if (cbTag.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahr.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // uhrzeit
+        } else if ((cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() != 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden muss gewählt werden!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() != 0
+            && cbMinuten.getSelectedIndex() == 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Minuten muss gewählt werden!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden und "
+                    + "Minuten müssen gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+            // zum speichern! noch nicht fertig
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Jetzt kann gespeichert werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            NeuenTerminHinzu.this.setVisible(false);
+            NeuenTerminHinzu.this.dispose();
+        }
+    }
+    /**
+     * JRadioButton rbPruef wenn gewaehlt dann soll er ueberpruefen ob die 
+     * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
+     */
+    public void pruefGewaehlt() {
+        // Bezeichnung
+        if (tBezeichnung.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Bezeichnung: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Katehorie
+        } else if (cbKategorie.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Kategorie: muss gewählt sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Datum
+        } else if (cbTag.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahr.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Uhrzeit
+        } else if ((cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() != 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden muss gewählt werden!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() != 0
+            && cbMinuten.getSelectedIndex() == 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Minuten muss gewählt werden!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden und "
+                    + "Minuten müssen gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+            // Dauer
+        } else if (cbDauer.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Dauer: muss gewählt sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        // zum speichern! noch nicht fertig
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Jetzt kann gespeichert werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            NeuenTerminHinzu.this.setVisible(false);
+            NeuenTerminHinzu.this.dispose();
+        }
+    }
+    /**
+     * JRadioButton rbVeran wenn gewaehlt dann soll er ueberpruefen ob die
+     * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
+     */
+    public void veranGewaehlt() {
+        // Bezeichnung
+        if (tBezeichnung.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Bezeichnung: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Ects
+        } else if (tEcts.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Ects: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // Katehorie
+        } else if (cbKategorie.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+            // Datum
+        } else if (cbTag.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahr.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            // uhrzeit
+        } else if ((cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() != 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() != 0
+            && cbMinuten.getSelectedIndex() == 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Minuten muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+            // zum speichern! noch nicht fertig
+        } else {
+            JOptionPane.showMessageDialog(null,
+                "Jetzt kann gespeichert werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+            NeuenTerminHinzu.this.setVisible(false);
+            NeuenTerminHinzu.this.dispose();  
+        }
+    }
+    /**
+     * @param args
+     *            .
      */
     public static void main(String[] args) {
         new NeuenTerminHinzu();
     }
-}    
+}
