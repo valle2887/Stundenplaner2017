@@ -130,18 +130,36 @@ public abstract class Termin {
         this.terminTyp = terminTyp;
     }
 
+    /**
+     * Getter fuer das Datum.
+     * @return datum
+     */
     public String getDatum() {
         return datum;
     }
 
+    /**
+     * Setter fuer das Datum.
+     * @param datum 
+     * Setzt das Datum fuer den Termin.
+     */
     public void setDatum(String datum) {
         this.datum = datum;
     }
 
+    /**
+     * Getter fuer die Uhrzeit.
+     * @return uhrzeit
+     */
     public String getUhrzeit() {
         return uhrzeit;
     }
 
+    /**
+     * Setter fuer die Uhrzeit.
+     * @param uhrzeit
+     * Setzt die Uhrzeit fuer den Termin.
+     */
     public void setUhrzeit(String uhrzeit) {
         this.uhrzeit = uhrzeit;
     }
