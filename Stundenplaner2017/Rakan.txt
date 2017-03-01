@@ -1,0 +1,5 @@
+Username: 		Rakan
+Passwort: 		000
+Studiengang: 		winf
+ECTS: 		34
+

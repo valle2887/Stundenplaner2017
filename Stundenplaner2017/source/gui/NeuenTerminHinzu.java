@@ -550,11 +550,4 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             NeuenTerminHinzu.this.dispose();  
         }
     }
-    /**
-     * @param args
-     *            .
-     */
-    public static void main(String[] args) {
-        new NeuenTerminHinzu();
-    }
 }
