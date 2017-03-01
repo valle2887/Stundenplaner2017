@@ -26,7 +26,7 @@ public abstract class Termin {
     /**
      * Das Datum, an dem der Termin stattfindet.
      */
-    private long datum;
+    private String datum;
     /**
      * Die Uhrzeit, an der der Termin stattfindet.
      */
@@ -130,11 +130,11 @@ public abstract class Termin {
         this.terminTyp = terminTyp;
     }
 
-    public long getDatum() {
+    public String getDatum() {
         return datum;
     }
 
-    public void setDatum(long datum) {
+    public void setDatum(String datum) {
         this.datum = datum;
     }
 
