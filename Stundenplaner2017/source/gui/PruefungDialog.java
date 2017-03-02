@@ -15,6 +15,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import daten.Pruefung;
+import daten.Termin;
+import daten.Termin.Typ;
+import daten.Termin.Wiederholbarkeit;
 
 /**
  * @author Rakan Al-Swayyed
@@ -60,12 +63,13 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * Array arrayKategorie mit zwei unterschiedlichen kategorien Universität
      * und private.
      */
-    private String[] arrayKategorie = {"", "Universität", "private" };
+    //arrayKategorie brauchen wir nicht mehr.
+    //private String[] arrayKategorie = {"", "Universität", "private" };
     /**
-     * JComboBox cbKategorie.
+     * JComboBox cbKategorie hat was von enum Typ.
      */
-    private JComboBox<Object> cbKategorie =
-        new JComboBox<Object>(arrayKategorie);
+    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+        Typ.values());
     /**
      * Label lDatum.
      */
@@ -157,14 +161,17 @@ public class PruefungDialog extends JDialog implements ActionListener {
      */
     private JRadioButton rbNein = new JRadioButton("ja");
     /**
-     * Array arrayWieOft.
+     * arrayWieOft brauchen wir nicht mehr..
      */
-    private String[] arrayWieOft =
-        {"", "Einmalig", "Taglich", "Wöchenlich", "Monatlich"};
+    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
+    //"Monatlich"};
+    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
-     * JComboBox cbWieOft ob einmalig, wochenlich, monatlich.
+     * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
+     * wochenlich.
      */
-    private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
+        .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
     /**
      * Label lMarker.
      */

@@ -1,6 +1,9 @@
 package daten;
 
 import java.util.ArrayList;
+import java.util.Date;
+
+import gui.KalenderGui;
 
 /**
  * Die Klasse AktuelleSitzung managed alle Termine des eingeloggten Benutzers,
@@ -50,6 +53,7 @@ public class AktuelleSitzung {
      * klasse kalender muss noch erstellt werden.
      */
     // private Kalender GUI kalendergui;
+    private KalenderGui kalenderGui;
     /**
     * die aktuelleSitzung vom Variablentyp AktuelleSitzung 
     * wird hier auf static gesetzt (dient als Allgemeingueltigkeit 
@@ -244,6 +248,18 @@ public class AktuelleSitzung {
     public void loadPruefungen() {
 
     }
+    /**
+     * @param anfang .
+     *@return wochenAufgaben. 
+     */
+    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
+        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
+        
+        
+        
+        return wochenAufgaben;
+    }
+    
 
     /**
      * Der Setter von AktuelleSitzung aktuelleSitzung.
