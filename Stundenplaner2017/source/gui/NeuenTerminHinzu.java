@@ -132,6 +132,10 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JComboBox<Object> cbMinuten = new JComboBox<Object>(arrayMinuten);
     /**
+     * JLabel lDeadline.
+     */
+    private JLabel lDeadline = new JLabel("Deadline:");
+    /**
      * Label lNotiz.
      */
     private JLabel lNotiz = new JLabel("Notiz:");
@@ -319,8 +323,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent action) {
         if (action.getSource() == rbAufg) {
-            lDauer.setVisible(false);
-            cbDauer.setVisible(false);
+            lDauer.setVisible(true);
+            cbDauer.setVisible(true);
             lMin.setVisible(false);
             lCampus.setVisible(false);
             tCampus.setVisible(false);
@@ -332,8 +336,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             tEcts.setVisible(false);
             repaint();
         } else if (action.getSource() == rbVeran) {
-            lDauer.setVisible(false);
-            cbDauer.setVisible(false);
+            lDauer.setVisible(true);
+            cbDauer.setVisible(true);
             lCampus.setVisible(true);
             tCampus.setVisible(true);
             lRaum.setVisible(true);
@@ -425,6 +429,11 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Uhrzeit: Stunden und "
                     + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
+            //Dauer
+        } else if (cbDauer.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Dauer: muss gewählt sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
             JOptionPane.showMessageDialog(null,
@@ -541,6 +550,11 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
+            //Dauer
+        } else if (cbDauer.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Dauer: muss gewählt sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
             JOptionPane.showMessageDialog(null,
@@ -549,5 +563,12 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();  
         }
+    }
+    /**
+     * @param args
+     *            .
+     */
+    public static void main(String[] args) {
+        new NeuenTerminHinzu();
     }
 }
