@@ -126,5 +126,34 @@ public class Datum {
         int kalenderJahr = kalender.get(Calendar.YEAR);
         return kalenderJahr + "";
     }
-    
+    /**
+     * Gibt die aktuelle Stunde wieder.
+     * @return kalenderStd
+     */
+    public static int aktuelleStunde() {
+        Calendar kalender = Calendar.getInstance();
+        int kalenderStd = kalender.get(Calendar.HOUR);
+        return kalenderStd;
+    }
+    /**
+     * Gibt die aktuelle Minute wieder.
+     * @return kalenderMin
+     */
+    public static int aktuelleMinute() {
+        Calendar kalender = Calendar.getInstance();
+        int kalenderMin = kalender.get(Calendar.MINUTE);
+        return kalenderMin;
+    }
+    /**
+     * Gibt die aktuelle Uhrzeit wieder, welche sich aus std und min 
+     * zusammensetzt.
+     * @return uhrzeit
+     */
+    public static String aktuelleUhrzeit() {
+        int std = aktuelleStunde();
+        int min = aktuelleMinute();
+        
+        String uhrzeit = std + ":" + min;
+        return uhrzeit;
+    }
 }
