@@ -11,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
 
@@ -94,16 +95,17 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
     private boolean checkLogin(String username, String passwort) {
         boolean loginErfolgreich = false;
-        for (Benutzer benutzer : DatenVerwaltung.
-            getInstance().getBenutzerliste()) {
-            if (username.equals(benutzer.getUsername()) 
-                && passwort.equals(benutzer.getPasswort())) {
-                KalenderGui.setAktuellerBenutzer(benutzer);
-                DatenVerwaltung.getInstance().reloadTermine(benutzer);
-                loginErfolgreich = true;
-            }
+         
+        if (username.equals(Benutzer.getUsername()) 
+            && passwort.equals(Benutzer.getPasswort())) {
+            AktuelleSitzung.setBenutzer(benutzer);
+            DatenVerwaltung.loadAufgaben(Benutzer);
+            DatenVerwaltung.loadPruefungen(Benutzer);
+            DatenVerwaltung.loadVeranstaltungen(Benutzer);
+            loginErfolgreich = true;
         }
     }
+    
 
     /**
      * ActionListener fuer die Buttons Login und Registrieren.

@@ -12,11 +12,11 @@ public class Benutzer {
     /**
      * Name des users.
      */
-    private String username;
+    private static String username;
     /** 
      * Passwort des users.
      */
-    private String passwort;
+    private static String passwort;
     /**
      * Semesteranzahl des users.
      */
@@ -45,7 +45,7 @@ public class Benutzer {
      * @return username 
      * Ist der einzugebende Name fuer den Login.
     */
-    public String getUsername() {
+    public static String getUsername() {
         return username;
     }
     /** Setter fuer den Usernamen.
@@ -61,7 +61,7 @@ public class Benutzer {
      * @return passwort 
      * Ist das Passwort, welches vom User festgelegt wurde.
      */
-    public String getPasswort() {
+    public static String getPasswort() {
         return passwort;
     }
     /**
