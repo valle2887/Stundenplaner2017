@@ -182,8 +182,8 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      */
     public void registerUser() {
         String name = txtUsername.getText();
-        String passwort = pwPasswort.getText();
-        String passwort2 = pwPasswortNochmal.getText();
+        char[] passwort = pwPasswort.getPassword();
+        char[] passwort2 = (char[]) pwPasswortNochmal.getPassword();
         String studiengang = txtStudiengang.getText();
         String punkte = txtECTS.getText();
         

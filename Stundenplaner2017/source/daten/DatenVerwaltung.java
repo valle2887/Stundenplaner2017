@@ -38,8 +38,10 @@ public class DatenVerwaltung {
      * @param punkte.
      * @throws IOException .
      */
+    
+    // String Passwort zu Char[] passwort geändert
     public static void speichernVonBenutzerdaten(String benutzerName, 
-        String passwort, String studiengang, String punkte) throws IOException {
+        char[] passwort, String studiengang, String punkte) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 

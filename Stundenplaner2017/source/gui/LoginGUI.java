@@ -8,12 +8,10 @@ import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
 
@@ -96,6 +94,9 @@ public class LoginGUI extends JFrame implements ActionListener {
      * @return loginErfolgreich
      */
     private boolean checkLogin(Benutzer benutzerName, Benutzer passwort) {
+        String benutzername = txtUsername.getText();
+        char[] passwortChar = pwPasswort.getPassword();
+        String pw = new String(passwortChar);
         boolean loginErfolgreich = false;
         if (benutzerName.equals(Benutzer.getUsername()) 
             && passwort.equals(Benutzer.getPasswort())) {
@@ -136,16 +137,11 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnLogin) {
-            if (checkLogin(txtUsername.getText(), pwPasswort.getPassword())) {
                 
-                dispose();
-                new KalenderGui(); 
-            }
-            
-        } else {   
-            JOptionPane.showMessageDialog(null,
-                "Username oder Passwort falsch");
+            dispose();
+            new KalenderGui(); 
         }
+            
         if (event.getSource() == btnRegister) {
             dispose();
             new RegistrierenGUI();
