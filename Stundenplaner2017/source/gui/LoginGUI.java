@@ -88,18 +88,15 @@ public class LoginGUI extends JFrame implements ActionListener {
     }
     /** 
      * Ueberprueft die Logindaten des Users.
-     * @param benutzerName Der name des Users.
-     * @param passwort Das Passwort des Users
-     *      werden uebergeben
      * @return loginErfolgreich
      */
-    private boolean checkLogin(Benutzer benutzerName, Benutzer passwort) {
-        String benutzername = txtUsername.getText();
+    private boolean checkLogin() {
+        String benutzerName = txtUsername.getText();
         char[] passwortChar = pwPasswort.getPassword();
         String pw = new String(passwortChar);
         boolean loginErfolgreich = false;
         if (benutzerName.equals(Benutzer.getUsername()) 
-            && passwort.equals(Benutzer.getPasswort())) {
+            && pw.equals(Benutzer.getPasswort())) {
            
             try {
                 DatenVerwaltung.loadBenutzer(benutzerName);
@@ -137,7 +134,7 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnLogin) {
-                
+            checkLogin();
             dispose();
             new KalenderGui(); 
         }
