@@ -179,20 +179,15 @@ public class DatenVerwaltung {
      */
 
     /**
-     * Auslesen der Gesamten Datei
-     */
-
-    /**
-     * Lese die Benutzerdaten.
-     * @param benutzerName .
-     * @return  .
-     * @throws IOException .
+     * Lese die Benutzerdaten aus die Datei (txt) aus.
+     * @param benutzerName vom benutzer der eingelogt ist .
+     * @return  gibt ArrayList mit den informationen vom benutzer .
+     * @throws IOException  wenn kein zugriff auf die datei .
      */
     public static Benutzer loadBenutzer(String benutzerName) 
         throws IOException {
+        //Erstelle benutzerdaten ArrayList 
         ArrayList<String> benutzerdaten = new ArrayList<String>();
-        
-
         
         File dieDatei = new File(benutzerName + ".txt");
         BufferedReader read = new BufferedReader(new FileReader(dieDatei));
@@ -204,12 +199,19 @@ public class DatenVerwaltung {
             inhalt = read.readLine();
             benutzerdaten.add(inhalt);
         }
-        Benutzer benutzer = new Benutzer(name, passwort, studiengang, gesamtPunkteECTS);
+        //benutzerdaten werden in die ArrayListe eingefuegt. 
+        String username = benutzerdaten.get(0);
+        String passwort = benutzerdaten.get(1);
+        String semester = benutzerdaten.get(2);
+        String ects = benutzerdaten.get(3);
+        String studiengang = benutzerdaten.get(4);
         
+        Benutzer benutzer = new Benutzer(username, passwort, semester, ects
+            , studiengang);
+        // schliesse den reader sonst gibt es ein leak.
         read.close();
-        
-        return benutzer;
-        
+        // gebe benutzer informationen zurueck.
+        return benutzer; 
     }
     /**
      * lese die Daten von Aufgabe

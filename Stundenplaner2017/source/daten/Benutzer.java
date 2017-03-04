@@ -20,11 +20,11 @@ public class Benutzer {
     /**
      * Semesteranzahl des users.
      */
-    private int semester;
+    private String semester;
     /**
      * Credits des users.
      */
-    private int ects;
+    private String ects;
     /**
      * Studiengang des users.
      */
@@ -43,7 +43,7 @@ public class Benutzer {
      * @param usStud der Studiengang des Users
      * werden uebergeben.
      */
-    public Benutzer(String usName, String usPW, int usSem, int usECTS,
+    public Benutzer(String usName, String usPW, String usSem, String usECTS,
         String usStud) {
         username = usName;
         passwort = usPW;
@@ -90,7 +90,7 @@ public class Benutzer {
      * @return semester
      * 
      */
-    public int getSemester() {
+    public String getSemester() {
         return semester;
     }
     /** Setter fuer Semesteranzahl.
@@ -98,7 +98,7 @@ public class Benutzer {
      * @param semester
      * Semesteranzahl des Users.
      */
-    public void setSemester(int semester) {
+    public void setSemester(String semester) {
         this.semester = semester;
     }
     /** 
@@ -106,7 +106,7 @@ public class Benutzer {
      * @return ects
      * Die Credits des Users.
      */
-    public int getEcts() {
+    public String getEcts() {
         return ects;
     }
     
@@ -115,7 +115,7 @@ public class Benutzer {
      * @param ects
      * Die Credits des Users.
      */
-    public void setEcts(int ects) {
+    public void setEcts(String ects) {
         this.ects = ects;
     }
     /**
