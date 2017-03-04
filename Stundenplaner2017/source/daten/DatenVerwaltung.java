@@ -183,7 +183,7 @@ public class DatenVerwaltung {
      * @return  gibt ArrayList mit den informationen vom benutzer .
      * @throws IOException  wenn kein zugriff auf die datei .
      */
-    public static Benutzer loadBenutzer(String benutzerName) 
+    public static Benutzer loadBenutzer(Benutzer benutzerName) 
         throws IOException {
         //Erstelle benutzerdaten ArrayList 
         ArrayList<String> benutzerdaten = new ArrayList<String>();
@@ -219,7 +219,8 @@ public class DatenVerwaltung {
      * @return aufgabenDaten .
      * @throws IOException .
      */
-    public static ArrayList<String> leseAufgabe(String benutzerName) throws 
+  //Von String benutzerName zu Benutzer benutzerName geaendert
+    public static ArrayList<String> leseAufgabe(Benutzer benutzerName) throws 
     IOException {
         ArrayList<String> aufgabenDaten = new ArrayList<String>();
         // inhalt vom datei txt
@@ -250,7 +251,8 @@ public class DatenVerwaltung {
      * @return pruefungenDaten .
      * @throws IOException .
      */
-    public static ArrayList<String> lesePruefung(String benutzerName) throws 
+  //Von String benutzerName zu Benutzer benutzerName geaendert
+    public static ArrayList<String> lesePruefung(Benutzer benutzerName) throws 
     IOException {
         ArrayList<String> pruefungenDaten = new ArrayList<String>();
         // inhalt vom datei txt
@@ -281,7 +283,8 @@ public class DatenVerwaltung {
      * @return veranstaltungenDaten .
      * @throws IOException .
      */
-    public static ArrayList<String> leseVeranstaltung(String benutzerName) 
+    //Von String benutzerName zu Benutzer benutzerName geaendert
+    public static ArrayList<String> leseVeranstaltung(Benutzer benutzerName) 
         throws IOException {
         ArrayList<String> veranstaltungenDaten = new ArrayList<String>();
         // inhalt vom datei txt
