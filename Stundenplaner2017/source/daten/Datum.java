@@ -68,10 +68,12 @@ public class Datum {
     }
     /**
      * Methode, welche die Monate benennt.
+     * @param zaehler wird uebergeben
      * @return monatName.
      */
-    private static String aktuellerMonat() {
+    private static String aktuellerMonat(int zaehler) {
         Calendar kalender = Calendar.getInstance();
+        kalender.setWeekDate(Calendar.YEAR, Calendar.WEEK_OF_YEAR + zaehler, 2);
         int kalenderMonat = kalender.get(Calendar.MONTH);
         String monatName = null;
         

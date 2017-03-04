@@ -67,7 +67,7 @@ public class Benutzer {
      * Fuer den Login benötigt.
      */
     public void setUsername(String username) {
-        this.username = username;
+        Benutzer.username = username;
     }
     /** 
      * Getter für das Passwort.
@@ -83,7 +83,7 @@ public class Benutzer {
      * Fuer den Login benötigt.
      */
     public void setPasswort(String passwort) {
-        this.passwort = passwort;
+        Benutzer.passwort = passwort;
     }
     /**
      * Getter fuer die Semesteranzahl des Users.
