@@ -15,10 +15,6 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import daten.Termin;
-import daten.Termin.Typ;
-import daten.Termin.Wiederholbarkeit;
-
 /**
  * @author Rakan Al-Swayyed
  */
@@ -64,12 +60,14 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * und private.
      */
     //arrayKategorie brauchen wir nicht mehr.
-    //private String[] arrayKategorie = {"", "Universität", "private" };
+    private String[] arrayKategorie = {"", "Universität", "private" };
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
-    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
-        Typ.values());
+    private JComboBox<Object> cbKategorie =
+        new JComboBox<Object>(arrayKategorie);
+    //private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+      //  Typ.values());
     /**
      * Label lDatum.
      */
@@ -167,15 +165,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
-    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
-    //"Monatlich"};
-    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+    private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
+        "Monatlich"};
     /**
      * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
      * wochenlich.
      */
-    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
-        .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    //private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
+      //  .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
      * Label lMarker.
      */
@@ -266,6 +264,20 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         setLayout(new GridLayout(7, 1));
         setResizable(true);
         setLocationRelativeTo(null);
+
+        // methode fehlerDialog zeigt MessageDialog falls was nicht ausgefüllt 
+        // wurde und wenn alles vollständig ist dann soll er Termin speichern.
+        fehlerDialog();
+       //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
+        fuegePanelZuKonstruktor();
+
+        pack();
+        setVisible(true);
+    }
+    /** 
+     *            .
+     */
+    public void fuegePanelZuKonstruktor() {
         // RadioButtons werden zu p1 zugewiesen.
         p1.add(lTerminTyp);
         p1.add(rbAufg);
@@ -277,9 +289,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         rbAufg.addActionListener(this);
         rbVeran.addActionListener(this);
         rbPruef.addActionListener(this);
-        // methode fehlerDialog.
-        fehlerDialog();
-
+        
         p2.add(lBezeichnung);
         p2.add(tBezeichnung);
         p2.add(lEcts);
@@ -322,52 +332,137 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         add(p3);
         add(p4);
         add(speichern);
-        pack();
-        setVisible(true);
     }
+
     /**
-     * @param action
-     *            .
+     * prueft welche von den drei radiobutton ausgewaehlt wurde.
+     * @param action .
      */
     public void actionPerformed(ActionEvent action) {
         if (action.getSource() == rbAufg) {
-            lDauer.setVisible(true);
-            cbDauer.setVisible(true);
-            lMin.setVisible(false);
-            lCampus.setVisible(false);
-            tCampus.setVisible(false);
-            lRaum.setVisible(false);
-            tRaum.setVisible(false);
-            lDozent.setVisible(false);
-            tDozent.setVisible(false);
-            lEcts.setVisible(false);
-            tEcts.setVisible(false);
+            sichtbarkeitAufgabe();
             repaint();
         } else if (action.getSource() == rbVeran) {
-            lDauer.setVisible(true);
-            cbDauer.setVisible(true);
-            lCampus.setVisible(true);
-            tCampus.setVisible(true);
-            lRaum.setVisible(true);
-            tRaum.setVisible(true);
-            lDozent.setVisible(true);
-            tDozent.setVisible(true);
-            lEcts.setVisible(true);
-            tEcts.setVisible(true);
+            sichtbarkeitVeranstaltung();
             repaint();
         } else if (action.getSource() == rbPruef) {
-            lDauer.setVisible(true);
-            cbDauer.setVisible(true);
-            lCampus.setVisible(true);
-            tCampus.setVisible(true);
-            lRaum.setVisible(true);
-            tRaum.setVisible(true);
-            lDozent.setVisible(false);
-            tDozent.setVisible(false);
-            lEcts.setVisible(false);
-            tEcts.setVisible(false);
+            sichtbarkeitPruefung();
             repaint();
         }
+    }
+    /**
+     * macht felder sichtbar fuer termin Typ Aufgabe.
+     */
+    public void sichtbarkeitAufgabe() {
+        lDauer.setVisible(true);
+        cbDauer.setVisible(true);
+        lMin.setVisible(true);
+        lCampus.setVisible(false);
+        tCampus.setVisible(false);
+        lRaum.setVisible(false);
+        tRaum.setVisible(false);
+        lDozent.setVisible(false);
+        tDozent.setVisible(false);
+        lEcts.setVisible(false);
+        tEcts.setVisible(false);
+        lBezeichnung.setVisible(true);
+        tBezeichnung.setVisible(true);
+        lKategorie.setVisible(true);
+        cbKategorie.setVisible(true);
+        lDatum.setVisible(true);
+        cbTag.setVisible(true);
+        lPkt1.setVisible(true);
+        cbMonat.setVisible(true);
+        lPkt2.setVisible(true);
+        cbJahr.setVisible(true);
+        lUhrzeit.setVisible(true);
+        cbStunden.setVisible(true);
+        lDpkt.setVisible(true);
+        cbMinuten.setVisible(true);
+        lWiederh.setVisible(true);
+        rbNein.setVisible(true);
+        rbJa.setVisible(true);
+        cbWieOft.setVisible(true);
+        lMarker.setVisible(true);
+        cbMarker.setVisible(true);
+        lNotiz.setVisible(true);
+        tNotiz.setVisible(true);
+    }
+    /**
+     * macht felder sichtbar fuer termin Typ Veranstaltung.
+     */
+    public void sichtbarkeitVeranstaltung() {
+        lDauer.setVisible(true);
+        cbDauer.setVisible(true);
+        lMin.setVisible(true);
+        lCampus.setVisible(true);
+        tCampus.setVisible(true);
+        lRaum.setVisible(true);
+        tRaum.setVisible(true);
+        lDozent.setVisible(true);
+        tDozent.setVisible(true);
+        lEcts.setVisible(true);
+        tEcts.setVisible(true);
+        lBezeichnung.setVisible(true);
+        tBezeichnung.setVisible(true);
+        lKategorie.setVisible(true);
+        cbKategorie.setVisible(true);
+        lDatum.setVisible(true);
+        cbTag.setVisible(true);
+        lPkt1.setVisible(true);
+        cbMonat.setVisible(true);
+        lPkt2.setVisible(true);
+        cbJahr.setVisible(true);
+        lUhrzeit.setVisible(true);
+        cbStunden.setVisible(true);
+        lDpkt.setVisible(true);
+        cbMinuten.setVisible(true);
+        lWiederh.setVisible(true);
+        rbNein.setVisible(true);
+        rbJa.setVisible(true);
+        cbWieOft.setVisible(true);
+        lMarker.setVisible(true);
+        cbMarker.setVisible(true);
+        lNotiz.setVisible(true);
+        tNotiz.setVisible(true);
+    }
+    /**
+     * macht felder sichtbar fuer termin Typ Pruefung.
+     */
+    public void sichtbarkeitPruefung() {
+        lDauer.setVisible(true);
+        cbDauer.setVisible(true);
+        lMin.setVisible(true);
+        lCampus.setVisible(true);
+        tCampus.setVisible(true);
+        lRaum.setVisible(true);
+        tRaum.setVisible(true);
+        lDozent.setVisible(false);
+        tDozent.setVisible(false);
+        lEcts.setVisible(false);
+        tEcts.setVisible(false);
+        lBezeichnung.setVisible(true);
+        tBezeichnung.setVisible(true);
+        lKategorie.setVisible(true);
+        cbKategorie.setVisible(true);
+        lDatum.setVisible(true);
+        cbTag.setVisible(true);
+        lPkt1.setVisible(true);
+        cbMonat.setVisible(true);
+        lPkt2.setVisible(true);
+        cbJahr.setVisible(true);
+        lUhrzeit.setVisible(true);
+        cbStunden.setVisible(true);
+        lDpkt.setVisible(true);
+        cbMinuten.setVisible(true);
+        lWiederh.setVisible(true);
+        rbNein.setVisible(true);
+        rbJa.setVisible(true);
+        cbWieOft.setVisible(true);
+        lMarker.setVisible(true);
+        cbMarker.setVisible(true);
+        lNotiz.setVisible(true);
+        tNotiz.setVisible(true);
     }
     /**
      * methoden aufgabeGewaehlt, pruefGewaehlt, veranGewaehlt ausgelagert da 
@@ -384,13 +479,46 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                         JOptionPane.ERROR_MESSAGE);
                 } else if (rbAufg.isSelected()) {
                     aufgabeGewaehlt();
+                    aufgabeSpeichern();
                 } else if (rbPruef.isSelected()) {
                     pruefGewaehlt();
+                    pruefungSpeichern();
                 } else {
                     veranGewaehlt();
+                    veranstaltungSpeichern(); 
                 }
             }
         });
+    }
+
+    /**
+     * 
+     */
+    public void aufgabeSpeichern() {
+        String bezeichnung = tBezeichnung.getText();
+        Object kategorie = cbKategorie.getSelectedItem();
+        Object dauer = cbDauer.getSelectedItem();
+        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+            + "." + cbJahr.getSelectedItem();
+
+        String zeit =
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+        Object wiederholen = cbWieOft.getSelectedItem();
+        Object marker = cbMarker.getSelectedObjects();
+        Object notiz = tNotiz.getText();
+
+    }
+    /**
+     * 
+     */
+    public void veranstaltungSpeichern() {
+        
+    }
+    /**
+     * 
+     */
+    public void pruefungSpeichern() {
+        
     }
     /**
      * JRadioButton rbAufg wenn gewaehlt dann soll er ueberpruefen ob die 
@@ -512,7 +640,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     }
     /**
      * JRadioButton rbVeran wenn gewaehlt dann soll er ueberpruefen ob die
-     * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
+     * felder ausgefüllt wurden wenn nein dann wird ein ERROR_MESSAGE gezeigt 
+     * und wenn ja dann weiter zum naechsten feld.
      */
     public void veranGewaehlt() {
         // Bezeichnung
@@ -572,9 +701,9 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             NeuenTerminHinzu.this.dispose();  
         }
     }
+
     /**
-     * @param args
-     *            .
+     * @param args .
      */
     public static void main(String[] args) {
         new NeuenTerminHinzu();
