@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
 
@@ -94,10 +95,11 @@ public class LoginGUI extends JFrame implements ActionListener {
      *      werden uebergeben
      * @return loginErfolgreich
      */
-    private boolean checkLogin(String benutzerName, String passwort) {
+    private boolean checkLogin(Benutzer benutzerName, String passwort) {
         boolean loginErfolgreich = false;
         if (benutzerName.equals(Benutzer.getUsername()) 
             && passwort.equals(Benutzer.getPasswort())) {
+            AktuelleSitzung.setBenutzer(benutzerName);
             try {
                 DatenVerwaltung.loadBenutzer(benutzerName);
             } catch (IOException exc1) {
@@ -136,6 +138,7 @@ public class LoginGUI extends JFrame implements ActionListener {
         if (event.getSource() == btnLogin) {
             if (checkLogin(txtUsername.getText(),
                 new String(pwPasswort.getPassword()))) {
+
                 dispose();
                 new KalenderGui(); 
             }
