@@ -37,7 +37,6 @@ public class DatenVerwaltung {
      * @param punkte .
      * @param punkte.
      * @throws IOException .
-     * 
      */
     public static void speichernVonBenutzerdaten(String benutzerName, 
         String passwort, String studiengang, String punkte) throws IOException {
@@ -165,7 +164,7 @@ public class DatenVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Raumnummer: \t\t" + pruefungArray[8]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Marker: \t\t" + pruefungArray[11]);
+        schreiben.write("Marker: \t\t" + pruefungArray[9]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
@@ -213,19 +212,99 @@ public class DatenVerwaltung {
         // gebe benutzer informationen zurueck.
         return benutzer; 
     }
+    // Anfang  lesen von Aufgabe Daten ++++++++++++++++  
     /**
-     * lese die Daten von Aufgabe
+     * lese die Daten von Aufgabe.
+     * @param benutzerName .
+     * @return aufgabenDaten .
+     * @throws IOException .
      */
-    
-
+    public static ArrayList<String> leseAufgabe(String benutzerName) throws 
+    IOException {
+        ArrayList<String> aufgabenDaten = new ArrayList<String>();
+        // inhalt vom datei txt
+        String inhalt;
+        
+        File dieDatei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        
+        while ((inhalt = read.readLine()) != null) {
+            // wonach er suchen soll. 
+            String stichwort = "Aufgabe";
+            // bedingung falls stichwort gleich inhalt.
+            if (inhalt.equals(stichwort)) {
+                //speichernAufgabenArray hat ein Array der groesse 8    
+                for (int daten = 0; daten < 8; daten++) {
+                    inhalt = read.readLine();
+                    aufgabenDaten.add(inhalt);
+                } 
+            }
+        }
+        read.close();
+        return aufgabenDaten;
+    }
+    // Anfang  lesen von Pruefung Daten ++++++++++++++++  
     /**
-     * lese due Daten von Prüfung
+     * lese die Daten von Pruefung.
+     * @param benutzerName .
+     * @return pruefungenDaten .
+     * @throws IOException .
      */
-
+    public static ArrayList<String> lesePruefung(String benutzerName) throws 
+    IOException {
+        ArrayList<String> pruefungenDaten = new ArrayList<String>();
+        // inhalt vom datei txt
+        String inhalt;
+        
+        File dieDatei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        
+        while ((inhalt = read.readLine()) != null) {
+            // wonach er suchen soll. 
+            String stichwort = "Prüfung";
+            // bedingung falls stichwort gleich inhalt.
+            if (inhalt.equals(stichwort)) {
+                //speichernPruefungenArray hat ein Array der groesse 10   
+                for (int daten = 0; daten < 10; daten++) {
+                    inhalt = read.readLine();
+                    pruefungenDaten.add(inhalt);
+                }  
+            }
+        }
+        read.close();
+        return pruefungenDaten;
+    }
+    // Anfang  lesen von Veranstaltung Daten ++++++++++++++++  
     /**
-     * lese die Daten von Veranstaltung
+     * lese die Daten von Veranstaltung.
+     * @param benutzerName .
+     * @return veranstaltungenDaten .
+     * @throws IOException .
      */
-
+    public static ArrayList<String> leseVeranstaltung(String benutzerName) 
+        throws IOException {
+        ArrayList<String> veranstaltungenDaten = new ArrayList<String>();
+        // inhalt vom datei txt
+        String inhalt;
+        
+        File dieDatei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        
+        while ((inhalt = read.readLine()) != null) {
+            // wonach er suchen soll. 
+            String stichwort = "Veranstaltung";
+            // bedingung falls stichwort gleich inhalt.
+            if (inhalt.equals(stichwort)) {
+                //speichernVeranstaltungenArray hat ein Array der groesse 12   
+                for (int daten = 0; daten < 12; daten++) {
+                    inhalt = read.readLine();
+                    veranstaltungenDaten.add(inhalt);
+                }  
+            }
+        }
+        read.close();
+        return veranstaltungenDaten;
+    }
     /**
      * Termin löschen
      */
