@@ -1,5 +1,8 @@
 package daten;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Die Klasse Termin, von welcher die Klassen Aufgabe, Pruefung und
  * Veranstaltung erben. Zeigt die Bezeichnung, einen Kommentar, die Dauer, die
@@ -31,6 +34,27 @@ public abstract class Termin {
      * Die Uhrzeit, an der der Termin stattfindet.
      */
     private String uhrzeit;
+    /**
+     * Eine Liste, welche die Markierungen fuer einen Termin enthaelt.
+     */
+    private List<Markierung> markierung = new ArrayList<Markierung>();
+
+    /**
+     * Getter fuer die Markierung des Termins.
+     * @return markierung
+     */
+    public List<Markierung> getMarkierung() {
+        return markierung;
+    }
+
+    /**
+     * Setter fuer die Markierung des Termins.
+     * @param markierung
+     * Die Markierung des Termins wird gesetzt.
+     */
+    public void setMarkierung(List<Markierung> markierung) {
+        this.markierung = markierung;
+    }
 
     /**
      * Getter fuer die Bezeichnung.
@@ -163,6 +187,35 @@ public abstract class Termin {
     public void setUhrzeit(String uhrzeit) {
         this.uhrzeit = uhrzeit;
     }
+    
+    /**
+     * Eine Aufzaehlung von den Markierungen, welche die Termine haben
+     * koennen.
+     */
+    public enum Markierung {
+        /**
+         * Markierung fuer einen erledigten Termin.
+         */
+        TERMIN_ERLEDIGT,
+        /**
+         * Markierung fuer einen erfolgreich erledigten Termin.
+         */
+        TERMIN_ERFOLGREICH,
+        /**
+         * Markierung fuer einen Termin mit hoher Prioritaet.
+         */
+        HOHE_PRIORITAET,
+        /**
+         * Markierung fuer nette Tutoren.
+         */
+        NETTE_TUTOREN,
+        /**
+         * Markierung fuer eine schwere Veranstaltung.
+         */
+        SCHWIERIG
+        
+        
+    };
 
     /**
      * Aufzaehlung der Typen von Terminen, sprich ob der Termin zum Studium
