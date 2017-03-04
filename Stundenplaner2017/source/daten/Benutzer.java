@@ -36,8 +36,21 @@ public class Benutzer {
     
     /**
      * Klassenkonstruktor.
+     * @param usName der Name des Users
+     * @param usPW das Passwort des Users
+     * @param usSem das Semester der Users
+     * @param usECTS die Credits des Users
+     * @param usStud der Studiengang des Users
+     * werden uebergeben.
      */
-    public Benutzer() {
+    public Benutzer(String usName, String usPW, int usSem, int usECTS,
+        String usStud) {
+        username = usName;
+        passwort = usPW;
+        semester = usSem;
+        ects = usECTS;
+        studiengang = usStud;
+        
         
     }
     /**
