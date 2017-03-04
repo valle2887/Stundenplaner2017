@@ -95,16 +95,11 @@ public class LoginGUI extends JFrame implements ActionListener {
      *      werden uebergeben
      * @return loginErfolgreich
      */
-    private boolean checkLogin(Benutzer benutzerName, String passwort) {
+    private boolean checkLogin(Benutzer benutzerName, Benutzer passwort) {
         boolean loginErfolgreich = false;
         if (benutzerName.equals(Benutzer.getUsername()) 
             && passwort.equals(Benutzer.getPasswort())) {
-            try {
-                DatenVerwaltung.loadBenutzer(benutzerName);
-            } catch (IOException exc2) {
-                // TODO Auto-generated catch block
-                exc2.printStackTrace();
-            }
+           
             try {
                 DatenVerwaltung.loadBenutzer(benutzerName);
             } catch (IOException exc1) {
@@ -124,7 +119,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 exc.printStackTrace();
             }
             try {
-                DatenVerwaltung.leseVeranstaltung(string);
+                DatenVerwaltung.leseVeranstaltung(benutzerName);
             } catch (IOException exc) {
                 // TODO Auto-generated catch block
                 exc.printStackTrace();
@@ -141,9 +136,8 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnLogin) {
-            if (checkLogin(txtUsername.getText(),
-                new String(pwPasswort.getPassword()))) {
-
+            if (checkLogin(txtUsername.getText(), pwPasswort.getPassword())) {
+                
                 dispose();
                 new KalenderGui(); 
             }
