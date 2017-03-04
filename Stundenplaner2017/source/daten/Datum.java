@@ -156,4 +156,43 @@ public class Datum {
         String uhrzeit = std + ":" + min;
         return uhrzeit;
     }
+    /**
+     * Methode, welche ueberprueft, ob sich 2 Termine ueberschneiden.
+     * @param datumTermin1 ist das Datum, an dem der als erstes zu 
+     * ueberpruefende Termin stattfindet.
+     * @param datumTermin2 ist das Datum, an dem der als zweites
+     * zu ueberpruefende Termin stattfindet.
+     * @param dauerTermin1 ist die Dauer, welche der als erstes zu
+     * überpruefende Termin hat.
+     * @param dauerTermin2 ist die Dauer, welche der als zweites zu
+     * ueberpruefende Termin hat.
+     * @return ueberschneidung
+     */
+    public static boolean terminUeberschneidung(Date datumTermin1,
+        Date datumTermin2, int dauerTermin1, int dauerTermin2) {
+        Calendar kalenderTermin1 = Calendar.getInstance();
+        kalenderTermin1.setTime(datumTermin1);
+        kalenderTermin1.add(Calendar.MINUTE, dauerTermin1);
+        Date endeTermin1 = kalenderTermin1.getTime();
+        
+        Calendar kalenderTermin2 = Calendar.getInstance();
+        kalenderTermin2.setTime(datumTermin2);
+        kalenderTermin2.add(Calendar.MINUTE, dauerTermin2);
+        Date endeTermin2 = kalenderTermin2.getTime();
+        
+        boolean ueberschneidung = false;
+        
+        if (datumTermin1.before(datumTermin2)
+            && endeTermin2.before(endeTermin1)) {
+            ueberschneidung = true;
+        }
+        if (datumTermin2.before(datumTermin1)
+            && endeTermin1.before(endeTermin2)) {
+            ueberschneidung = true;
+        }
+        
+        return ueberschneidung;
+        
+        
+    }
 }
