@@ -3,6 +3,8 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,7 +13,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
 
@@ -88,22 +89,42 @@ public class LoginGUI extends JFrame implements ActionListener {
     }
     /** 
      * Ueberprueft die Logindaten des Users.
-     * @param username Der name des Users
+     * @param benutzerName Der name des Users.
      * @param passwort Das Passwort des Users
      *      werden uebergeben
      * @return loginErfolgreich
      */
-    private boolean checkLogin(String username, String passwort) {
+    private boolean checkLogin(String benutzerName, String passwort) {
         boolean loginErfolgreich = false;
-         
-        if (username.equals(Benutzer.getUsername()) 
+        if (benutzerName.equals(Benutzer.getUsername()) 
             && passwort.equals(Benutzer.getPasswort())) {
-            AktuelleSitzung.setBenutzer(benutzer);
-            DatenVerwaltung.loadAufgaben(Benutzer);
-            DatenVerwaltung.loadPruefungen(Benutzer);
-            DatenVerwaltung.loadVeranstaltungen(Benutzer);
+            try {
+                DatenVerwaltung.loadBenutzer(benutzerName);
+            } catch (IOException exc1) {
+                // TODO Auto-generated catch block
+                exc1.printStackTrace();
+            }
+            try {
+                DatenVerwaltung.leseAufgabe(benutzerName);
+            } catch (IOException exc) {
+                // TODO Auto-generated catch block
+                exc.printStackTrace();
+            }
+            try {
+                DatenVerwaltung.lesePruefung(benutzerName);
+            } catch (IOException exc) {
+                // TODO Auto-generated catch block
+                exc.printStackTrace();
+            }
+            try {
+                DatenVerwaltung.leseVeranstaltung(benutzerName);
+            } catch (IOException exc) {
+                // TODO Auto-generated catch block
+                exc.printStackTrace();
+            }
             loginErfolgreich = true;
         }
+        return loginErfolgreich;
     }
     
 
