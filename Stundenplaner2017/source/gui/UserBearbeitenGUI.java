@@ -3,15 +3,14 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import daten.AktuelleSitzung;
-import daten.Benutzer;
 
 /** Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von
  * JFrame und implementiert ActionListener.
@@ -93,6 +92,21 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      * gedrueckt wird, kommt der User wieder ins Hauptfenster zurueck.
      * @param event 
      */
+    /**
+     * Methode, um einen bestehenden Nutzer zu loeschen.
+     * @param userName wird uebergeben
+     * @return userGeloescht
+     */
+    public boolean userLoeschen(String userName) {
+        File file = new File(userName + ".txt");
+        boolean userGeloescht = file.delete();
+        return userGeloescht;
+    }
+    
+    /**
+     * Methode, die den Buttonklick ausfuehrt.
+     * @param event wird uebergeben
+     */
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnSpeichern) {
             dispose();
@@ -105,10 +119,9 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                 new KalenderGui();
             } 
             
-        } else {
             
-            if(event.getSource() == btnLoeschen) {
-                DatenVerwaltung.loeschenBenutzer(Benutzer.username);
+            if (event.getSource() == btnLoeschen) {
+                userLoeschen(getName());
             }
         }
     }
