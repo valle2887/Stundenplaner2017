@@ -10,6 +10,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
+import daten.Benutzer;
+
 /** Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von
  * JFrame und implementiert ActionListener.
  * @author Christian Lindenberg
@@ -81,6 +84,10 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      */
     private JButton btnAbbrechen = new JButton("Abbrechen");
     /**
+     * Button um einen Benutzer zu loeschen.
+     */
+    private JButton btnLoeschen = new JButton("Loeschen");
+    /**
      * Methode fuer die Buttonklicks, wenn auf Speichern gedrueckt wird,
      * werden die geaenderten Daten gespeichert, und wenn auf abbrechen
      * gedrueckt wird, kommt der User wieder ins Hauptfenster zurueck.
@@ -95,9 +102,14 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
             
             if (event.getSource() == btnAbbrechen) {
                 dispose();
-                //new HauptfensterGUI();
+                new KalenderGui();
             } 
             
+        } else {
+            
+            if(event.getSource() == btnLoeschen) {
+                DatenVerwaltung.loeschenBenutzer(Benutzer.username);
+            }
         }
     }
     
@@ -126,9 +138,11 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         
         this.add(btnSpeichern);
         this.add(btnAbbrechen);
+        this.add(btnLoeschen);
         
         pack();
         setVisible(true);
+        
     }
 }
  
