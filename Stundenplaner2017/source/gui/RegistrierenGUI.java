@@ -66,6 +66,15 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      */
     private JPasswordField pwPasswortNochmal = new JPasswordField(20);
     /**
+     * String, der das eingegebene Passwort als Text casted.
+     */
+    private String pwString = new String(pwPasswort.getPassword());
+    /**
+     * String, der das nochmals eingegebene Passwort als String casted.
+     */
+    private String pwNochmalString 
+        = new String(pwPasswortNochmal.getPassword());
+    /**
      * Label ects. 
      */
     private JLabel lblECTS = new JLabel("ECTS:", SwingConstants.CENTER);
@@ -134,29 +143,23 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Username wurde nicht "
                 + "eingegeben.");
             eingabeKorrekt = false;
-        }
-        if (txtStudiengang.getText().isEmpty()) {
+        } else if (txtStudiengang.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Studiengang wurde nicht "
                 + "eingegeben.");
             eingabeKorrekt = false;
-        }
-        if (pwPasswort.getPassword().equals("")) {
+        } else if (pwPasswort.getPassword().equals("")) {
             JOptionPane.showMessageDialog(null, "Passwort wurde nicht "
                 + "eingegeben.");
             eingabeKorrekt = false;
-        }
-        if (pwPasswortNochmal.getPassword().equals("")) {
+        } else if (pwPasswortNochmal.getPassword().equals("")) {
             JOptionPane.showMessageDialog(null, "Das wiederholte Passwort "
                 + "wurde nicht eingegeben.");
             eingabeKorrekt = false;
-        }
-     /*   if (!pwPasswort.equals(pwPasswortNochmal)) {
+        } else if (pwString != pwNochmalString) {
             JOptionPane.showMessageDialog(null, "Passwoerter stimmen nicht "
                 + "ueberein.");
             eingabeKorrekt = false;
-        }
-       */ 
-        if (txtECTS.getText().isEmpty()) {
+        } else if (txtECTS.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Credits wurden nicht "
                 + "eingegeben.");
             eingabeKorrekt = false;
@@ -183,7 +186,6 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     public void registerUser() {
         String name = txtUsername.getText();
         char[] passwort = pwPasswort.getPassword();
-        char[] passwort2 = (char[]) pwPasswortNochmal.getPassword();
         String studiengang = txtStudiengang.getText();
         String punkte = txtECTS.getText();
         
