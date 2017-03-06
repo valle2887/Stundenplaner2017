@@ -17,10 +17,7 @@ public class Benutzer {
      * Passwort des users.
      */
     private static String passwort;
-    /**
-     * Semesteranzahl des users.
-     */
-    private String semester;
+
     /**
      * Credits des users.
      */
@@ -38,16 +35,14 @@ public class Benutzer {
      * Klassenkonstruktor.
      * @param usName der Name des Users
      * @param usPW das Passwort des Users
-     * @param usSem das Semester der Users
      * @param usECTS die Credits des Users
      * @param usStud der Studiengang des Users
      * werden uebergeben.
      */
-    public Benutzer(String usName, String usPW, String usSem, String usECTS,
+    public Benutzer(String usName, String usPW, String usECTS,
         String usStud) {
         username = usName;
         passwort = usPW;
-        semester = usSem;
         ects = usECTS;
         studiengang = usStud;
         
@@ -85,22 +80,7 @@ public class Benutzer {
     public void setPasswort(String passwort) {
         Benutzer.passwort = passwort;
     }
-    /**
-     * Getter fuer die Semesteranzahl des Users.
-     * @return semester
-     * 
-     */
-    public String getSemester() {
-        return semester;
-    }
-    /** Setter fuer Semesteranzahl.
-     * 
-     * @param semester
-     * Semesteranzahl des Users.
-     */
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
+
     /** 
      * Getter für ECTS.
      * @return ects
