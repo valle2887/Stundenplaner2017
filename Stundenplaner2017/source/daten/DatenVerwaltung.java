@@ -20,24 +20,24 @@ public class DatenVerwaltung {
     // Anfang fuer speichernVonBenutzerdaten++++++++++++++++++++++++++++    
     /**
      * Passwort vergleichen.
-     * @param benutzerName .
+     * @param name .
      * @param passwort .
-     * @param scan .
+     * @param dateiScanner .
      * @return name, passwort .
      * @throws FileNotFoundException .
      */
-    public static boolean vergleichPasswort(Scanner scan,
-        String benutzerName, String passwort)
+    public static boolean vergleichPasswort(Scanner dateiScanner,
+        String name, String passwort)
         throws FileNotFoundException {
 
-        String loginName = benutzerName;
+        String loginName = name;
         String loginPW = passwort;
-        String userName = scan.next();
-        String userPW = scan.next();
+        String nutzerName = dateiScanner.next();
+        String nutzerPW = dateiScanner.next();
         
-        if (userName.equals(loginName)) {
-            scan.close();
-            return userPW.equals(loginPW);
+        if (nutzerName.equals(loginName)) {
+            dateiScanner.close();
+            return nutzerPW.equals(loginPW);
         } else {
             return false;
         }

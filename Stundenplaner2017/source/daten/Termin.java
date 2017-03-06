@@ -127,7 +127,7 @@ public abstract class Termin {
     /**
      * Setter fuer die Wiederholbarkeit eines Termins.
      * 
-     * @param wiederholbarkeitTermin
+     * @param wiederholen
      *            Setzt die Wiederholbarkeit eines Termins.
      */
     public void setWiederholbarkeitTermin(

@@ -11,10 +11,13 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
+import daten.Benutzer;
 import daten.DatenVerwaltung;
 
 /**
@@ -82,7 +85,8 @@ public class LoginGUI extends JFrame implements ActionListener {
         this.add(btnLogin);
         this.add(btnRegister);
 
-        btnLogin.addActionListener(this);
+        btnLogin.addActionListener(this);        
+        
         btnRegister.addActionListener(this);
 
         pack();
@@ -96,48 +100,54 @@ public class LoginGUI extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnLogin) {
            
-            String benutzerName = txtUsername.getText();
+            String name = txtUsername.getText();
             char[] passwortChar = pwPasswort.getPassword();
-            String pw = new String(passwortChar);
-            String dateiName = null;
-            Scanner scan = null;
+            String passwort = new String(passwortChar);
+            String dateiName;
+            Scanner dateiScanner = null;
                
-            File datei = new File(benutzerName + ".txt");
-            if (datei.exists()) {
-                dateiName = benutzerName;
+            File file = new File(name + ".txt");
+            if (file.exists()) {
+                dateiName = name;
                 
                 try {
-                    scan = new Scanner(new File(dateiName + ".txt"));
+                    dateiScanner = new Scanner(new File(dateiName + ".txt"));
                 } catch (FileNotFoundException exc) {
-                    // TODO Auto-generated catch block
+                    JOptionPane.showMessageDialog(null, "ERROR!", 
+                        "ERROR!", JOptionPane.ERROR_MESSAGE);
                     exc.printStackTrace();
                 }
             }
             try {
-                if (DatenVerwaltung.vergleichPasswort(scan, benutzerName,
-                        pw)) {
-                    DatenVerwaltung.loadBenutzer(benutzerName);
-                        
-                    DatenVerwaltung.leseAufgabe(benutzerName);
-             
-                    DatenVerwaltung.lesePruefung(benutzerName);
-              
-                    DatenVerwaltung.leseVeranstaltung(benutzerName);
-          
+                if (DatenVerwaltung.vergleichPasswort(dateiScanner, name,
+                        passwort)) {
+                    Benutzer benutzer =
+                        DatenVerwaltung.loadBenutzer(name);
+                    DatenVerwaltung.leseAufgabe(name);
+                    DatenVerwaltung.lesePruefung(name);
+                    DatenVerwaltung.leseVeranstaltung(name);
+                    AktuelleSitzung aktuelleSitzung =
+                        AktuelleSitzung.getAktuelleSitzung();
+                    aktuelleSitzung.setBenutzer(benutzer);
+                    new KalenderGui();           
                
                     dispose();
-                    new KalenderGui(); 
+
               
                 }
                 
                       
             } catch (IOException e) {
-                e.printStackTrace();
-                
-                    
-            }
+                JOptionPane.showMessageDialog(null, "ERROR!", 
+                    "ERROR!", JOptionPane.ERROR_MESSAGE);
+                e.printStackTrace();   
+            } 
         
+        } else {
+            JOptionPane.showMessageDialog(null, "ERROR!", 
+                "ERROR!", JOptionPane.ERROR_MESSAGE);
         }
+        
         if (event.getSource() == btnRegister) {
             dispose();
             new RegistrierenGUI();
