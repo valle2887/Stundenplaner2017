@@ -124,6 +124,20 @@ public class LoginGUI extends JFrame implements ActionListener {
                 try {
                     if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
                         username, passwort)) {
+                        //Benutzer benutzer =
+                          //  DatenVerwaltung.loadBenutzer(username);
+                        //DatenVerwaltung.leseAufgabe(username);
+                        //DatenVerwaltung.lesePruefung(username);
+                        //DatenVerwaltung.leseVeranstaltung(username);
+                        //AktuelleSitzung aktuelleSitzung =
+                        //    AktuelleSitzung.getAktuelleSitzung();
+                        //aktuelleSitzung.setBenutzer(benutzer);
+                        
+                        
+                        new KalenderGui();           
+                        dispose();
+                  
+                    } else { 
                         Benutzer benutzer =
                             DatenVerwaltung.loadBenutzer(username);
                         DatenVerwaltung.leseAufgabe(username);
@@ -132,13 +146,8 @@ public class LoginGUI extends JFrame implements ActionListener {
                         AktuelleSitzung aktuelleSitzung =
                             AktuelleSitzung.getAktuelleSitzung();
                         aktuelleSitzung.setBenutzer(benutzer);
-                        
-                        
-                        new KalenderGui();           
-                        dispose();
-                  
-                    } else { 
-                        JOptionPane.showMessageDialog(null, "ERROR123!");
+                        //JOptionPane.showMessageDialog(null, "ERROR123!");
+                        new KalenderGui();
                     }
                     
                           
