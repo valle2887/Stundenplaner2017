@@ -11,12 +11,10 @@ import java.util.Scanner;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import daten.Benutzer;
 import daten.DatenVerwaltung;
 
 /**
@@ -110,53 +108,45 @@ public class LoginGUI extends JFrame implements ActionListener {
                 
                 try {
                     scan = new Scanner(new File(dateiName + ".txt"));
-                    
                 } catch (FileNotFoundException exc) {
-                    JOptionPane.ERROR_MESSAGE(null, "ERROR");
-                }
-                try {
-                    DatenVerwaltung.loadBenutzer(benutzerName);
-                } catch (IOException exc) {
-     
-                    JOptionPane.showMessageDialog(null, "ERROR!");
+                    // TODO Auto-generated catch block
                     exc.printStackTrace();
+                }
+            }
+            try {
+                if (DatenVerwaltung.vergleichPasswort(scan, benutzerName,
+                        pw)) {
+                    DatenVerwaltung.loadBenutzer(benutzerName);
+                        
+                    DatenVerwaltung.leseAufgabe(benutzerName);
+             
+                    DatenVerwaltung.lesePruefung(benutzerName);
+              
+                    DatenVerwaltung.leseVeranstaltung(benutzerName);
+          
+               
+                    dispose();
+                    new KalenderGui(); 
+              
                 }
                 
-                try {
-                    DatenVerwaltung.leseAufgabe(benutzerName);
-                } catch (IOException exc) {
-                    JOptionPane.showMessageDialog(null, "ERROR!");
-
-                    exc.printStackTrace();
-                }
-      
-                try {
-                    DatenVerwaltung.lesePruefung(benutzerName);
-                } catch (IOException exc) {
-                    JOptionPane.showMessageDialog(null, "ERROR!");
-
-                    exc.printStackTrace();
-                }
-           
-                try {
-                    DatenVerwaltung.leseVeranstaltung(benutzerName);
-                } catch (IOException exc) {
-                    JOptionPane.showMessageDialog(null, "ERROR!");
-
-                    exc.printStackTrace();
-                }
-           
-                dispose();
-                new KalenderGui(); 
+                      
+            } catch (IOException e) {
+                e.printStackTrace();
+                
+                    
             }
-            
-            if (event.getSource() == btnRegister) {
-                dispose();
-                new RegistrierenGUI();
-            }
-        // TODO Auto-generated method stub
+        
         }
+        if (event.getSource() == btnRegister) {
+            dispose();
+            new RegistrierenGUI();
+        }
+        // TODO Auto-generated method stub
+                
+                
     }
 }
+
 
 

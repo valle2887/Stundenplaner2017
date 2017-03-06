@@ -26,7 +26,7 @@ public class DatenVerwaltung {
      * @return name, passwort .
      * @throws FileNotFoundException .
      */
-    public boolean vergleichPasswort(Scanner scan,
+    public static boolean vergleichPasswort(Scanner scan,
         String benutzerName, String passwort)
         throws FileNotFoundException {
 
