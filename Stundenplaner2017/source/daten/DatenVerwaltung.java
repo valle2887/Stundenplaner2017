@@ -58,13 +58,13 @@ public class DatenVerwaltung {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 
-        schreiben.write("Username: \t\t" + benutzerName);
+        schreiben.write(benutzerName);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Passwort: \t\t" + passwort);
+        schreiben.write(passwort);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Studiengang: \t\t" + studiengang);
+        schreiben.write(studiengang);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("ECTS: \t\t" + punkte);
+        schreiben.write(punkte);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
