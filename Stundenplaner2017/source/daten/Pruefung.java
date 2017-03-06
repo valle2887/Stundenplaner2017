@@ -9,6 +9,15 @@ public class Pruefung extends Termin {
  * Pruefungsdauer in Minuten.
  */
     private int pruefungsdauer;
+    
+/**
+ * Der Raum, in der die Pruefung stattfindet.
+ */
+    private String raumnummer;
+/**
+ * Das Gebaeude, in dem die Pruefung stattfindet. 
+ */
+    private String gebaeude;
 /**
  * Die Veranstaltung, die zu einer Pruefung gehoert.
  */ 
@@ -50,6 +59,34 @@ public class Pruefung extends Termin {
     public void setZugehoerendeVeranstaltung(
         Veranstaltung zugehoerendeVeranstaltung) {
         this.zugehoerendeVeranstaltung = zugehoerendeVeranstaltung;
+    }
+/**
+ * Getter fuer raumnummer.
+ * @return raumnummer.
+ */
+    public String getRaumnummer() {
+        return raumnummer;
+    }
+/**
+ * Setter fuer raumnummer.
+ * @param raumnummer .
+ */
+    public void setRaumnummer(String raumnummer) {
+        this.raumnummer = raumnummer;
+    }
+/**
+ * Getter fuer gebauede.
+ * @return gebauede
+ */
+    public String getGebaeude() {
+        return gebaeude;
+    }
+/**
+ * Setter fuer gebaeude.
+ * @param gebaeude .
+ */
+    public void setGebaeude(String gebaeude) {
+        this.gebaeude = gebaeude;
     }
 
 
