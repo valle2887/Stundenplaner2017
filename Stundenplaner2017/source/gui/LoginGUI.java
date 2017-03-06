@@ -84,79 +84,76 @@ public class LoginGUI extends JFrame implements ActionListener {
         this.add(pwPasswort);
         this.add(btnLogin);
         this.add(btnRegister);
-
-        btnLogin.addActionListener(this);        
-        
-        btnRegister.addActionListener(this);
-
         pack();
-        setVisible(true);
-    }
-    
-    /**
-     * ActionListener fuer die Buttons Login und Registrieren.
-     * @param event wird uebergeben
-     */
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == btnLogin) {
-           
-            String name = txtUsername.getText();
-            char[] passwortChar = pwPasswort.getPassword();
-            String passwort = new String(passwortChar);
-            String dateiName;
-            Scanner dateiScanner = null;
-               
-            File file = new File(name + ".txt");
-            if (file.exists()) {
-                dateiName = name;
-                
+        setVisible(true);    
+        btnRegister.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new RegistrierenGUI();
+            }
+        });
+
+        btnLogin.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e1) {
+                String name = txtUsername.getText();
+                char[] passwortChar = pwPasswort.getPassword();
+                String passwort = new String(passwortChar);
+                String dateiName;
+                Scanner dateiScanner = null;               
+                File file = new File(name + ".txt");
+                if (file.exists()) {
+                    dateiName = name;
+                    
+                    try {
+                        dateiScanner = 
+                            new Scanner(new File(dateiName + ".txt"));
+                    } catch (FileNotFoundException exc) {
+                        JOptionPane.showMessageDialog(null, "ERROR!", 
+                            "ERROR!", JOptionPane.ERROR_MESSAGE);
+                        exc.printStackTrace();
+                    }
+                }
                 try {
-                    dateiScanner = new Scanner(new File(dateiName + ".txt"));
-                } catch (FileNotFoundException exc) {
+                    if (DatenVerwaltung.vergleichPasswort(dateiScanner, name,
+                            passwort)) {
+                        Benutzer benutzer =
+                            DatenVerwaltung.loadBenutzer(name);
+                        DatenVerwaltung.leseAufgabe(name);
+                        DatenVerwaltung.lesePruefung(name);
+                        DatenVerwaltung.leseVeranstaltung(name);
+                        AktuelleSitzung aktuelleSitzung =
+                            AktuelleSitzung.getAktuelleSitzung();
+                        aktuelleSitzung.setBenutzer(benutzer);
+                        new KalenderGui();           
+                   
+                        dispose();
+                  
+                    }
+                    
+                          
+                } catch (IOException e2) {
                     JOptionPane.showMessageDialog(null, "ERROR!", 
                         "ERROR!", JOptionPane.ERROR_MESSAGE);
-                    exc.printStackTrace();
-                }
+                    e2.printStackTrace();   
+                }  
             }
-            try {
-                if (DatenVerwaltung.vergleichPasswort(dateiScanner, name,
-                        passwort)) {
-                    Benutzer benutzer =
-                        DatenVerwaltung.loadBenutzer(name);
-                    DatenVerwaltung.leseAufgabe(name);
-                    DatenVerwaltung.lesePruefung(name);
-                    DatenVerwaltung.leseVeranstaltung(name);
-                    AktuelleSitzung aktuelleSitzung =
-                        AktuelleSitzung.getAktuelleSitzung();
-                    aktuelleSitzung.setBenutzer(benutzer);
-                    new KalenderGui();           
-               
-                    dispose();
-
-              
-                }
-                
-                      
-            } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "ERROR!", 
-                    "ERROR!", JOptionPane.ERROR_MESSAGE);
-                e.printStackTrace();   
-            } 
+        });
+            
         
-        } else {
-            JOptionPane.showMessageDialog(null, "ERROR!", 
-                "ERROR!", JOptionPane.ERROR_MESSAGE);
-        }
-        
-        if (event.getSource() == btnRegister) {
-            dispose();
-            new RegistrierenGUI();
-        }
-        // TODO Auto-generated method stub
-                
-                
     }
+
+    /**
+     * Autogenerierte Methode.
+     * @param e .
+     */
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
+            
 
 
 
