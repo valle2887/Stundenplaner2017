@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 
 /**
- * Klasse Datenverwaltung. Diese ist dafür da um die Eingaben in eine Datei
+ * Klasse Datenverwaltung. Diese ist daf¸r da um die Eingaben in eine Datei
  * zuschreiben
  * 
  * @author Rakan Al-Swayyed
@@ -52,7 +52,7 @@ public class DatenVerwaltung {
      * @throws IOException .
      */
     
-    // String Passwort zu Char[] passwort geändert
+    // String Passwort zu Char[] passwort ge‰ndert
     public static void speichernVonBenutzerdaten(String benutzerName, 
         char[] passwort, String studiengang, String punkte) throws IOException {
 
@@ -149,7 +149,7 @@ public class DatenVerwaltung {
     // Ende fuer speichernVeranstungsArray++++++++++++++++++++++++++++    
 
     /**
-     * Speichern von Prüfung in Datei.
+     * Speichern von Pr¸fung in Datei.
      * @param pruefungArray .
      * @param benutzerName .
      * @throws IOException .
@@ -185,7 +185,7 @@ public class DatenVerwaltung {
     }
 
     /**
-     * Löschen der gesamten Daten des Benutzers
+     * Lˆschen der gesamten Daten des Benutzers
      */
 
     /**
@@ -216,11 +216,10 @@ public class DatenVerwaltung {
         //benutzerdaten werden in die ArrayListe eingefuegt. 
         String username = benutzerdaten.get(0);
         String passwort = benutzerdaten.get(1);
-        String semester = benutzerdaten.get(2);
-        String ects = benutzerdaten.get(3);
-        String studiengang = benutzerdaten.get(4);
+        String ects = benutzerdaten.get(2);
+        String studiengang = benutzerdaten.get(3);
         
-        Benutzer benutzer = new Benutzer(username, passwort, semester, ects
+        Benutzer benutzer = new Benutzer(username, passwort, ects
             , studiengang);
         // schliesse den reader sonst gibt es ein leak.
         read.close();
@@ -277,7 +276,7 @@ public class DatenVerwaltung {
         
         while ((inhalt = read.readLine()) != null) {
             // wonach er suchen soll. 
-            String stichwort = "Prüfung";
+            String stichwort = "Pr¸fung";
             // bedingung falls stichwort gleich inhalt.
             if (inhalt.equals(stichwort)) {
                 //speichernPruefungenArray hat ein Array der groesse 10   
@@ -323,13 +322,13 @@ public class DatenVerwaltung {
         return veranstaltungenDaten;
     }
     /**
-     * Termin löschen
+     * Termin lˆschen
      */
     // Der Vorschlag von Dome
     /**
      * @return true.
      * @param termin
-     *            es wird ein termin übergeben.
+     *            es wird ein termin ¸bergeben.
      */
     // public boolean terminLoeschen(Termin termin) {
     // boolean geloescht = false;
@@ -352,7 +351,7 @@ public class DatenVerwaltung {
      */
 
     /**
-     * Speichern von Prüfung in XLS
+     * Speichern von Pr¸fung in XLS
      */
 
     /**
