@@ -124,16 +124,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 try {
                     if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
                         username, passwort)) {
-                        //Benutzer benutzer =
-                          //  DatenVerwaltung.loadBenutzer(username);
-                        //DatenVerwaltung.leseAufgabe(username);
-                        //DatenVerwaltung.lesePruefung(username);
-                        //DatenVerwaltung.leseVeranstaltung(username);
-                        //AktuelleSitzung aktuelleSitzung =
-                        //    AktuelleSitzung.getAktuelleSitzung();
-                        //aktuelleSitzung.setBenutzer(benutzer);
-                        
-                        
+
                         new KalenderGui();           
                         dispose();
                   

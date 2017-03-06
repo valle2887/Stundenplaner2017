@@ -216,11 +216,10 @@ public class DatenVerwaltung {
         //benutzerdaten werden in die ArrayListe eingefuegt. 
         String username = benutzerdaten.get(0);
         String passwort = benutzerdaten.get(1);
-        String semester = benutzerdaten.get(2);
-        String ects = benutzerdaten.get(3);
-        String studiengang = benutzerdaten.get(4);
+        String ects = benutzerdaten.get(2);
+        String studiengang = benutzerdaten.get(3);
         
-        Benutzer benutzer = new Benutzer(username, passwort, semester, ects
+        Benutzer benutzer = new Benutzer(username, passwort, ects
             , studiengang);
         // schliesse den reader sonst gibt es ein leak.
         read.close();
