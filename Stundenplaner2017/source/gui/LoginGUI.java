@@ -3,11 +3,15 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -86,64 +90,73 @@ public class LoginGUI extends JFrame implements ActionListener {
         pack();
         setVisible(true);
     }
-    /** 
-     * Ueberprueft die Logindaten des Users.
-     * @return loginErfolgreich
-     */
-    private boolean checkLogin() {
-        String benutzerName = txtUsername.getText();
-        char[] passwortChar = pwPasswort.getPassword();
-        String pw = new String(passwortChar);
-        boolean loginErfolgreich = false;
-        if (benutzerName.equals(Benutzer.getUsername()) 
-            && pw.equals(Benutzer.getPasswort())) {
-           
-            try {
-                DatenVerwaltung.loadBenutzer(benutzerName);
-            } catch (IOException exc1) {
-                // TODO Auto-generated catch block
-                exc1.printStackTrace();
-            }
-            try {
-                DatenVerwaltung.leseAufgabe(benutzerName);
-            } catch (IOException exc) {
-                // TODO Auto-generated catch block
-                exc.printStackTrace();
-            }
-            try {
-                DatenVerwaltung.lesePruefung(benutzerName);
-            } catch (IOException exc) {
-                // TODO Auto-generated catch block
-                exc.printStackTrace();
-            }
-            try {
-                DatenVerwaltung.leseVeranstaltung(benutzerName);
-            } catch (IOException exc) {
-                // TODO Auto-generated catch block
-                exc.printStackTrace();
-            }
-            loginErfolgreich = true;
-        }
-        return loginErfolgreich;
-    }
     
-
     /**
      * ActionListener fuer die Buttons Login und Registrieren.
      * @param event wird uebergeben
      */
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnLogin) {
-            checkLogin();
-            dispose();
-            new KalenderGui(); 
-        }
+           
+            String benutzerName = txtUsername.getText();
+            char[] passwortChar = pwPasswort.getPassword();
+            String pw = new String(passwortChar);
+            String dateiName = null;
+            Scanner scan = null;
+               
+            File datei = new File(benutzerName + ".txt");
+            if (datei.exists()) {
+                dateiName = benutzerName;
+                
+                try {
+                    scan = new Scanner(new File(dateiName + ".txt"));
+                    
+                } catch (FileNotFoundException exc) {
+                    JOptionPane.ERROR_MESSAGE(null, "ERROR");
+                }
+                try {
+                    DatenVerwaltung.loadBenutzer(benutzerName);
+                } catch (IOException exc) {
+     
+                    JOptionPane.showMessageDialog(null, "ERROR!");
+                    exc.printStackTrace();
+                }
+                
+                try {
+                    DatenVerwaltung.leseAufgabe(benutzerName);
+                } catch (IOException exc) {
+                    JOptionPane.showMessageDialog(null, "ERROR!");
+
+                    exc.printStackTrace();
+                }
+      
+                try {
+                    DatenVerwaltung.lesePruefung(benutzerName);
+                } catch (IOException exc) {
+                    JOptionPane.showMessageDialog(null, "ERROR!");
+
+                    exc.printStackTrace();
+                }
+           
+                try {
+                    DatenVerwaltung.leseVeranstaltung(benutzerName);
+                } catch (IOException exc) {
+                    JOptionPane.showMessageDialog(null, "ERROR!");
+
+                    exc.printStackTrace();
+                }
+           
+                dispose();
+                new KalenderGui(); 
+            }
             
-        if (event.getSource() == btnRegister) {
-            dispose();
-            new RegistrierenGUI();
-        }
+            if (event.getSource() == btnRegister) {
+                dispose();
+                new RegistrierenGUI();
+            }
         // TODO Auto-generated method stub
+        }
     }
 }
+
 

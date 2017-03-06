@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 /**
@@ -21,13 +22,25 @@ public class DatenVerwaltung {
      * Passwort vergleichen.
      * @param benutzerName .
      * @param passwort .
+     * @param scan .
      * @return name, passwort .
      * @throws FileNotFoundException .
      */
-    public boolean vergleichPasswort(String benutzerName, String passwort)
+    public boolean vergleichPasswort(Scanner scan,
+        String benutzerName, String passwort)
         throws FileNotFoundException {
 
-        return false;
+        String loginName = benutzerName;
+        String loginPW = passwort;
+        String userName = scan.next();
+        String userPW = scan.next();
+        
+        if (userName.equals(loginName)) {
+            scan.close();
+            return userPW.equals(loginPW);
+        } else {
+            return false;
+        }
     }
     /**
      * Speichern von Benutzerdaten.
