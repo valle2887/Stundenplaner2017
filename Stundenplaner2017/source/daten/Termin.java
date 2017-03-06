@@ -131,8 +131,8 @@ public abstract class Termin {
      *            Setzt die Wiederholbarkeit eines Termins.
      */
     public void setWiederholbarkeitTermin(
-        Wiederholbarkeit wiederholbarkeitTermin) {
-        this.wiederholbarkeitTermin = wiederholbarkeitTermin;
+        Wiederholbarkeit wiederholen) {
+        this.wiederholbarkeitTermin = wiederholen;
     }
 
     /**
