@@ -42,7 +42,7 @@ public class LoginGUI extends JFrame implements ActionListener {
      * JTextField.
      */
 
-    private JTextField txtUsername = new JTextField(20);
+    private static JTextField txtUsername = new JTextField(20);
 
     /**
      * Label und Passwortfeld für das Passwort des Users.
@@ -55,6 +55,15 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
 
     private JPasswordField pwPasswort = new JPasswordField(20);
+    
+    /**
+     * Methode zum einlesen des benutzernamens.
+     * @return benutzerName
+     */
+    public static String nameLogin() {
+        String benutzerName = txtUsername.getText();
+        return benutzerName;
+    }
 
     /**
      * Buttons fuer den Login des Users und für die Registrierung eines neuen
@@ -87,24 +96,22 @@ public class LoginGUI extends JFrame implements ActionListener {
         pack();
         setVisible(true);    
         btnRegister.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent event) {
                 dispose();
                 new RegistrierenGUI();
             }
         });
-
         btnLogin.addActionListener(new ActionListener() {
             
-            public void actionPerformed(ActionEvent e1) {
-                String name = txtUsername.getText();
+            public void actionPerformed(ActionEvent event) {
+                String username = txtUsername.getText();
                 char[] passwortChar = pwPasswort.getPassword();
                 String passwort = new String(passwortChar);
                 String dateiName;
                 Scanner dateiScanner = null;               
-                File file = new File(name + ".txt");
+                File file = new File(username + ".txt");
                 if (file.exists()) {
-                    dateiName = name;
-                    
+                    dateiName = username;         
                     try {
                         dateiScanner = 
                             new Scanner(new File(dateiName + ".txt"));
@@ -115,26 +122,28 @@ public class LoginGUI extends JFrame implements ActionListener {
                     }
                 }
                 try {
-                    if (DatenVerwaltung.vergleichPasswort(dateiScanner, name,
-                            passwort)) {
+                    if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
+                        username, passwort)) {
                         Benutzer benutzer =
-                            DatenVerwaltung.loadBenutzer(name);
-                        DatenVerwaltung.leseAufgabe(name);
-                        DatenVerwaltung.lesePruefung(name);
-                        DatenVerwaltung.leseVeranstaltung(name);
+                            DatenVerwaltung.loadBenutzer(username);
+                        DatenVerwaltung.leseAufgabe(username);
+                        DatenVerwaltung.lesePruefung(username);
+                        DatenVerwaltung.leseVeranstaltung(username);
                         AktuelleSitzung aktuelleSitzung =
                             AktuelleSitzung.getAktuelleSitzung();
                         aktuelleSitzung.setBenutzer(benutzer);
+                        
+                        
                         new KalenderGui();           
-                   
                         dispose();
                   
+                    } else { 
+                        JOptionPane.showMessageDialog(null, "ERROR123!");
                     }
                     
                           
                 } catch (IOException e2) {
-                    JOptionPane.showMessageDialog(null, "ERROR!", 
-                        "ERROR!", JOptionPane.ERROR_MESSAGE);
+
                     e2.printStackTrace();   
                 }  
             }
