@@ -1,0 +1,5 @@
+Username: 		admin
+Passwort: 		123
+Studiengang: 		winf
+ECTS: 		100
+
