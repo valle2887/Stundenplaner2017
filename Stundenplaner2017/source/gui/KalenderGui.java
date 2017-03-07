@@ -183,10 +183,10 @@ public class KalenderGui extends JFrame implements ActionListener {
 
         benutzer.add(benutzerAnzeigen);
         benutzerAnzeigen.addActionListener(this);
-        benutzer.add(benutzerAusloggen);
-        benutzerAusloggen.addActionListener(this);
         benutzer.add(benutzerBarbeiten);
         benutzerBarbeiten.addActionListener(this);
+        benutzer.add(benutzerAusloggen);
+        benutzerAusloggen.addActionListener(this);
         termin.add(neuerTermin);
         neuerTermin.addActionListener(this);
         termin.add(terminBearbeiten);
