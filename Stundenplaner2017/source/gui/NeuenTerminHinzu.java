@@ -14,11 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import daten.DatenVerwaltung;
+//import daten.DatenVerwaltung;
 import daten.Aufgabe;
 import daten.Veranstaltung;
 import daten.Pruefung;
-import daten.Termin;
+//import daten.Termin;
 /**
  * @author Rakan Al-Swayyed
  */
@@ -141,7 +141,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * JLabel lDeadline.
      */
-    private JLabel lDeadline = new JLabel("Deadline:");
+   // private JLabel lDeadline = new JLabel("Deadline:");
     /**
      * Label lNotiz.
      */
@@ -523,17 +523,17 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
         aufgabe.setUhrzeit(zeit);
         
-        int dauer = cbDauer.getSelectedItem();
-        aufgabe.setDauer(dauer);
+       // int dauer = cbDauer.getSelectedItem();
+        //aufgabe.setDauer(dauer);
         
         String notiz = tNotiz.getText();
         aufgabe.setKommentar(notiz);
         
-        String wiederholen = cbWieOft.getSelectedItem();
-        aufgabe.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+       // aufgabe.setWiederholbarkeitTermin(wiederholen);
         
-        String kategorie = cbKategorie.getSelectedItem();
-        aufgabe.setTerminTyp(kategorie);
+       // String kategorie = cbKategorie.getSelectedItem();
+       // aufgabe.setTerminTyp(kategorie);
 
     }
     /**
@@ -560,11 +560,11 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         String notiz = tNotiz.getText();
         veranstaltung.setKommentar(notiz);
         
-        String wiederholen = cbWieOft.getSelectedItem();
-        veranstaltung.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+       // veranstaltung.setWiederholbarkeitTermin(wiederholen);
         
-        String kategorie = cbKategorie.getSelectedItem();
-        veranstaltung.setTerminTyp(kategorie);
+       // String kategorie = cbKategorie.getSelectedItem();
+       // veranstaltung.setTerminTyp(kategorie);
         
         String gebaeude = tCampus.getText();
         veranstaltung.setGebaeude(gebaeude);
@@ -575,8 +575,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         String dozent = tDozent.getText();
         veranstaltung.setDozent(dozent);
         
-        String ects = tEcts.getText();
-        veranstaltung.setEcts(ects);
+        //String ects = tEcts.getText();
+       // veranstaltung.setEcts(ects);
     }
     /**
      * speichern von pruefung .
@@ -596,23 +596,23 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
         pruefung.setUhrzeit(zeit);
         
-        String dauer = cbDauer.getSelectedItem();
-        pruefung.setDauer(dauer);
+        //String dauer = cbDauer.getSelectedItem();
+        //pruefung.setDauer(dauer);
         
-        Object notiz = tNotiz.getText();
-        pruefung.setKommentar(notiz);
+        //Object notiz = tNotiz.getText();
+        //pruefung.setKommentar(notiz);
         
-        Object wiederholen = cbWieOft.getSelectedItem();
-        pruefung.setWiederholbarkeitTermin(wiederholen);
+        //Object wiederholen = cbWieOft.getSelectedItem();
+        //pruefung.setWiederholbarkeitTermin(wiederholen);
         
-        Object kategorie = cbKategorie.getSelectedItem();
-        pruefung.setTerminTyp(kategorie);
+        //Object kategorie = cbKategorie.getSelectedItem();
+        //pruefung.setTerminTyp(kategorie);
         
-        Object campus = tCampus.getText();
-        pruefung.set
+        //Object campus = tCampus.getText();
+        //pruefung.set
         
-        Object raumnummer = tRaum.getText();
-        pruefung.set
+       // Object raumnummer = tRaum.getText();
+        //pruefung.set
 
     }
     /**
