@@ -269,7 +269,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public NeuenTerminHinzu() {
         setTitle("Termin Hinzufügen");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
         setResizable(true);
         setLocationRelativeTo(null);

@@ -1,52 +1,34 @@
 package gui;
 
 import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+//import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+//import daten.DatenVerwaltung;
 import daten.Aufgabe;
-import daten.Termin;
-import daten.Termin.Typ;
-import daten.Termin.Wiederholbarkeit;
-
+//import daten.Veranstaltung;
+//import daten.Pruefung;
+//import daten.Termin;
 /**
  * @author Rakan Al-Swayyed
  */
-public class AufgabeDialog extends JDialog implements ActionListener {
+public class AufgabeDialog extends JFrame implements ActionListener {
     /**
      * generated serial Version ID.
      */
-    private static final long serialVersionUID = 4299275630620623952L;
+    private static final long serialVersionUID = 5043569320233706529L;
     /**
      * Label lTerminTyp.
      */
     private JLabel lTerminTyp = new JLabel("Termin Typ wählen:");
-    /**
-     * JButtongroupe bgTerminTyp.
-     */
-    private ButtonGroup bgTerminTyp = new ButtonGroup();
-    /**
-     * JRadioButton rbVeran.
-     */
-    private JRadioButton rbVeran = new JRadioButton("Veranstaltung");
-    /**
-     * JRadioButton rbAufg.
-     */
-    private JRadioButton rbAufg = new JRadioButton("Aufgabe");
-    /**
-     * JRadioButton rbPruef.
-     */
-    private JRadioButton rbPruef = new JRadioButton("Pruefung");
     /**
      * Label lBezeichnung.
      */
@@ -64,12 +46,14 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * und private.
      */
     //arrayKategorie brauchen wir nicht mehr.
-    //private String[] arrayKategorie = {"", "Universität", "private" };
+    private String[] arrayKategorie = {"", "Universität", "private" };
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
-    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
-        Typ.values());
+    private JComboBox<Object> cbKategorie =
+        new JComboBox<Object>(arrayKategorie);
+    //private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+      //  Typ.values());
     /**
      * Label lDatum.
      */
@@ -139,7 +123,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * JLabel lDeadline.
      */
-    private JLabel lDeadline = new JLabel("Deadline:");
+   // private JLabel lDeadline = new JLabel("Deadline:");
     /**
      * Label lNotiz.
      */
@@ -151,31 +135,31 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Label lWiederh.
      */
-    private JLabel lWiederh = new JLabel("wiederholen:");
+    private JLabel lWiederh = new JLabel("wiederholung:");
     /**
      * JButtongroupe bgWieder.
      */
-    private ButtonGroup bgWieder = new ButtonGroup();
+   // private ButtonGroup bgWieder = new ButtonGroup();
     /**
      * JRadioButton rbJa.
      */
-    private JRadioButton rbJa = new JRadioButton("nein");
+   // private JRadioButton rbJa = new JRadioButton("nein");
     /**
      * JRadioButton rbNein.
      */
-    private JRadioButton rbNein = new JRadioButton("ja");
+   // private JRadioButton rbNein = new JRadioButton("ja");
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
-    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
-    //"Monatlich"};
-    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+    private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
+        "Monatlich"};
     /**
      * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
      * wochenlich.
      */
-    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
-        .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    //private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
+      //  .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
      * Label lMarker.
      */
@@ -206,9 +190,41 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      */
     private JLabel lDauer = new JLabel("Dauer:");
     /**
+     * Label lEcts.
+     */
+    private JLabel lEcts = new JLabel("      ECTS");
+    /**
+     * JTextField tEcts.
+     */
+    private JTextField tEcts = new JTextField(3);
+    /**
+     * Label lDozent.
+     */
+    private JLabel lDozent = new JLabel("      Dozent:");
+    /**
+     * JTextField tDozent.
+     */
+    private JTextField tDozent = new JTextField(20);
+    /**
+     * Label lGebaeude.
+     */
+    private JLabel lGebaeude = new JLabel("      Gebäude:");
+    /**
+     * JTextField tGebaeude.
+     */
+    private JTextField tGebaeude = new JTextField(20);
+    /**
+     * Label lRaum.
+     */
+    private JLabel lRaum = new JLabel("      Raum:    ");
+    /**
+     * JTextField tRaum.
+     */
+    private JTextField tRaum = new JTextField(20);
+    /**
      * JButton speichern.
      */
-    private JButton aendern = new JButton("Ändern");
+    private JButton speichern = new JButton("Speichern");
     /**
      * JButtongroupe p1.
      */
@@ -226,66 +242,36 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      */
     private JPanel p4 = new JPanel();
     /**
-     * Konstruktor der Klasse NeuenTerminHinzu .
-     * @param aufgabe .
+     * JPanel p5 .
      */
-    public AufgabeDialog(Aufgabe aufgabe) {
-        setTitle("Aufgabe Dialog");
+    private JPanel p5 = new JPanel();
+    /**
+     * Konstruktor der Klasse NeuenTerminHinzu .
+     */
+    public AufgabeDialog() {
+        setTitle("Termin Hinzufügen");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(7, 1));
+        setLayout(new GridLayout(5, 2));
         setResizable(true);
         setLocationRelativeTo(null);
-        // die zuvor Ausgefuellten felder der aufgabe angezeigt.
-        //Bezeichnung
-        tBezeichnung.setText(aufgabe.getBezeichnung());
-        //Kategorie
-        cbKategorie.setSelectedItem(aufgabe.getTerminTyp());
-        //Datum
-        String[] datum = aufgabe.getDatum().split(":");
-        cbTag.setSelectedItem(datum[0]);
-        cbMonat.setSelectedItem(datum[1]);
-        cbJahr.setSelectedItem(datum[2]);
-        //Uhrzeit
-        String[] uhrzeit = aufgabe.getUhrzeit().split(":");
-        cbStunden.setSelectedItem(uhrzeit[0]);
-        cbMinuten.setSelectedItem(uhrzeit[1]);
-        //Dauer
-        cbDauer.setSelectedItem(aufgabe.getDauer());
-        //Notiz
-        tNotiz.setText(aufgabe.getKommentar());
-        //wiederholbarkeit
-        cbWieOft.setSelectedItem(aufgabe.getWiederholbarkeitTermin());
-        //Deadline ?????
-        
-        //extra methode weil methode zu lang war.
-        panelUNDContainer();
+
+       //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
+        fuegePanelZuKonstruktor();
 
         pack();
         setVisible(true);
-
     }
-    /** extra methode fuer fuege zu panel  & fuege zu container weil die 
-     * methode zu lang war .
+    /** 
+     *            .
      */
-    public void panelUNDContainer() {
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(7, 1));
-        setResizable(true);
-        setLocationRelativeTo(null);
+    public void fuegePanelZuKonstruktor() {
         // RadioButtons werden zu p1 zugewiesen.
         p1.add(lTerminTyp);
-        p1.add(rbAufg);
-        p1.add(rbVeran);
-        p1.add(rbPruef);
-        bgTerminTyp.add(rbVeran);
-        bgTerminTyp.add(rbAufg);
-        bgTerminTyp.add(rbPruef);
-        rbAufg.addActionListener(this);
-        rbVeran.addActionListener(this);
-        rbPruef.addActionListener(this);
-
+        
         p2.add(lBezeichnung);
         p2.add(tBezeichnung);
+        p2.add(lEcts);
+        p2.add(tEcts);
         p2.add(lKategorie);
         p2.add(cbKategorie);
         p2.add(lDatum);
@@ -302,30 +288,100 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         p2.add(cbDauer);
         p2.add(lMin);
         p3.add(lWiederh);
-        p3.add(rbNein);
-        p3.add(rbJa);
+        //p3.add(rbNein);
+       // p3.add(rbJa);
         p3.add(cbWieOft);
         p3.add(lMarker);
         p3.add(cbMarker);
         p3.add(lNotiz);
         p3.add(tNotiz);
-        bgWieder.add(rbNein);
-        bgWieder.add(rbJa);
-        p4.add(lMarker);
-        p4.add(cbMarker);
+       // bgWieder.add(rbNein);
+       // bgWieder.add(rbJa);
+        p4.add(lDozent);
+        p4.add(tDozent);
+        p4.add(lGebaeude);
+        p4.add(tGebaeude);
+        p4.add(lRaum);
+        p4.add(tRaum);
+        p5.add(speichern);
         add(p1);
         add(p2);
         add(p3);
         add(p4);
-        add(aendern);
-        pack();
-        setVisible(true);
+        add(p5);
     }
     /**
-     * @param e .
+     * macht felder sichtbar fuer termin Typ Aufgabe.
      */
-    public void actionPerformed(ActionEvent e) {  
+    public void sichtbarkeitAufgabe() {
+        lDauer.setVisible(true);
+        cbDauer.setVisible(true);
+        lMin.setVisible(true);
+        lGebaeude.setVisible(false);
+        tGebaeude.setVisible(false);
+        lRaum.setVisible(false);
+        tRaum.setVisible(false);
+        lDozent.setVisible(false);
+        tDozent.setVisible(false);
+        lEcts.setVisible(false);
+        tEcts.setVisible(false);
+        lBezeichnung.setVisible(true);
+        tBezeichnung.setVisible(true);
+        lKategorie.setVisible(true);
+        cbKategorie.setVisible(true);
+        lDatum.setVisible(true);
+        cbTag.setVisible(true);
+        lPkt1.setVisible(true);
+        cbMonat.setVisible(true);
+        lPkt2.setVisible(true);
+        cbJahr.setVisible(true);
+        lUhrzeit.setVisible(true);
+        cbStunden.setVisible(true);
+        lDpkt.setVisible(true);
+        cbMinuten.setVisible(true);
+        lWiederh.setVisible(true);
+       // rbNein.setVisible(true);
+       // rbJa.setVisible(true);
+        cbWieOft.setVisible(true);
+        lMarker.setVisible(true);
+        cbMarker.setVisible(true);
+        lNotiz.setVisible(true);
+        tNotiz.setVisible(true);
     }
-
-
+    /**
+     * speichern von aufgabe.
+     */
+    public void aufgabeSpeichern() {
+        
+        Aufgabe aufgabe = new Aufgabe();
+        
+        String bezeichnung = tBezeichnung.getText();
+        aufgabe.setBezeichnung(bezeichnung);
+        
+        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+            + "." + cbJahr.getSelectedItem();
+        aufgabe.setDatum(datum);
+        
+        String zeit =
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+        aufgabe.setUhrzeit(zeit);
+        
+       // int dauer = cbDauer.getSelectedItem();
+        //aufgabe.setDauer(dauer);
+        
+        String notiz = tNotiz.getText();
+        aufgabe.setKommentar(notiz);
+        
+        //String wiederholen = cbWieOft.getSelectedItem();
+       // aufgabe.setWiederholbarkeitTermin(wiederholen);
+        
+       // String kategorie = cbKategorie.getSelectedItem();
+       // aufgabe.setTerminTyp(kategorie);
+    }
+    /**
+     * @param args .
+     */
+    public static void main(String[] args) {
+        new AufgabeDialog();
+    }
 }
