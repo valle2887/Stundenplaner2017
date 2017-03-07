@@ -14,11 +14,12 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import daten.DatenVerwaltung;
+
+//import daten.DatenVerwaltung;
 import daten.Aufgabe;
 import daten.Veranstaltung;
 import daten.Pruefung;
-import daten.Termin;
+//import daten.Termin;
 /**
  * @author Rakan Al-Swayyed
  */
@@ -141,7 +142,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * JLabel lDeadline.
      */
-    private JLabel lDeadline = new JLabel("Deadline:");
+   // private JLabel lDeadline = new JLabel("Deadline:");
     /**
      * Label lNotiz.
      */
@@ -153,19 +154,19 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Label lWiederh.
      */
-    private JLabel lWiederh = new JLabel("wiederholen:");
+    private JLabel lWiederh = new JLabel("wiederholung:");
     /**
      * JButtongroupe bgWieder.
      */
-    private ButtonGroup bgWieder = new ButtonGroup();
+   // private ButtonGroup bgWieder = new ButtonGroup();
     /**
      * JRadioButton rbJa.
      */
-    private JRadioButton rbJa = new JRadioButton("nein");
+   // private JRadioButton rbJa = new JRadioButton("nein");
     /**
      * JRadioButton rbNein.
      */
-    private JRadioButton rbNein = new JRadioButton("ja");
+   // private JRadioButton rbNein = new JRadioButton("ja");
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
@@ -224,13 +225,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JTextField tDozent = new JTextField(20);
     /**
-     * Label lCampus.
+     * Label lGebaeude.
      */
-    private JLabel lCampus = new JLabel("      Campus:");
+    private JLabel lGebaeude = new JLabel("      Gebäude:");
     /**
-     * JTextField tCampus.
+     * JTextField tGebaeude.
      */
-    private JTextField tCampus = new JTextField(20);
+    private JTextField tGebaeude = new JTextField(20);
     /**
      * Label lRaum.
      */
@@ -260,12 +261,16 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JPanel p4 = new JPanel();
     /**
+     * JPanel p5 .
+     */
+    private JPanel p5 = new JPanel();
+    /**
      * Konstruktor der Klasse NeuenTerminHinzu .
      */
     public NeuenTerminHinzu() {
         setTitle("Termin Hinzufügen");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setLayout(new GridLayout(7, 1));
+        setLayout(new GridLayout(5, 2));
         setResizable(true);
         setLocationRelativeTo(null);
 
@@ -314,30 +319,28 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p2.add(cbDauer);
         p2.add(lMin);
         p3.add(lWiederh);
-        p3.add(rbNein);
-        p3.add(rbJa);
+        //p3.add(rbNein);
+       // p3.add(rbJa);
         p3.add(cbWieOft);
         p3.add(lMarker);
         p3.add(cbMarker);
         p3.add(lNotiz);
         p3.add(tNotiz);
-        bgWieder.add(rbNein);
-        bgWieder.add(rbJa);
+       // bgWieder.add(rbNein);
+       // bgWieder.add(rbJa);
         p4.add(lDozent);
         p4.add(tDozent);
-        p4.add(lCampus);
-        p4.add(tCampus);
+        p4.add(lGebaeude);
+        p4.add(tGebaeude);
         p4.add(lRaum);
         p4.add(tRaum);
-        p4.add(lMarker);
-        p4.add(cbMarker);
+        p5.add(speichern);
         add(p1);
         add(p2);
         add(p3);
         add(p4);
-        add(speichern);
+        add(p5);
     }
-
     /**
      * prueft welche von den drei radiobutton ausgewaehlt wurde.
      * @param action .
@@ -361,8 +364,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDauer.setVisible(true);
         cbDauer.setVisible(true);
         lMin.setVisible(true);
-        lCampus.setVisible(false);
-        tCampus.setVisible(false);
+        lGebaeude.setVisible(false);
+        tGebaeude.setVisible(false);
         lRaum.setVisible(false);
         tRaum.setVisible(false);
         lDozent.setVisible(false);
@@ -384,8 +387,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDpkt.setVisible(true);
         cbMinuten.setVisible(true);
         lWiederh.setVisible(true);
-        rbNein.setVisible(true);
-        rbJa.setVisible(true);
+       // rbNein.setVisible(true);
+       // rbJa.setVisible(true);
         cbWieOft.setVisible(true);
         lMarker.setVisible(true);
         cbMarker.setVisible(true);
@@ -399,8 +402,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDauer.setVisible(true);
         cbDauer.setVisible(true);
         lMin.setVisible(true);
-        lCampus.setVisible(true);
-        tCampus.setVisible(true);
+        lGebaeude.setVisible(true);
+        tGebaeude.setVisible(true);
         lRaum.setVisible(true);
         tRaum.setVisible(true);
         lDozent.setVisible(true);
@@ -422,8 +425,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDpkt.setVisible(true);
         cbMinuten.setVisible(true);
         lWiederh.setVisible(true);
-        rbNein.setVisible(true);
-        rbJa.setVisible(true);
+       // rbNein.setVisible(true);
+       // rbJa.setVisible(true);
         cbWieOft.setVisible(true);
         lMarker.setVisible(true);
         cbMarker.setVisible(true);
@@ -437,8 +440,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDauer.setVisible(true);
         cbDauer.setVisible(true);
         lMin.setVisible(true);
-        lCampus.setVisible(true);
-        tCampus.setVisible(true);
+        lGebaeude.setVisible(true);
+        tGebaeude.setVisible(true);
         lRaum.setVisible(true);
         tRaum.setVisible(true);
         lDozent.setVisible(false);
@@ -460,15 +463,14 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lDpkt.setVisible(true);
         cbMinuten.setVisible(true);
         lWiederh.setVisible(true);
-        rbNein.setVisible(true);
-        rbJa.setVisible(true);
+      //  rbNein.setVisible(true);
+      //  rbJa.setVisible(true);
         cbWieOft.setVisible(true);
         lMarker.setVisible(true);
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
     }
-
     /**
      * methoden aufgabeGewaehlt, pruefGewaehlt, veranGewaehlt ausgelagert da
      * sonst checkstyle fehler methode > 70 zeilen.
@@ -504,7 +506,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             }
         });
     }
-
     /**
      * speichern von aufgabe.
      */
@@ -523,18 +524,17 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
         aufgabe.setUhrzeit(zeit);
         
-        int dauer = cbDauer.getSelectedItem();
-        aufgabe.setDauer(dauer);
+       // int dauer = cbDauer.getSelectedItem();
+        //aufgabe.setDauer(dauer);
         
         String notiz = tNotiz.getText();
         aufgabe.setKommentar(notiz);
         
-        String wiederholen = cbWieOft.getSelectedItem();
-        aufgabe.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+       // aufgabe.setWiederholbarkeitTermin(wiederholen);
         
-        String kategorie = cbKategorie.getSelectedItem();
-        aufgabe.setTerminTyp(kategorie);
-
+       // String kategorie = cbKategorie.getSelectedItem();
+       // aufgabe.setTerminTyp(kategorie);
     }
     /**
      * speichern von veranstaltung .
@@ -560,13 +560,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         String notiz = tNotiz.getText();
         veranstaltung.setKommentar(notiz);
         
-        String wiederholen = cbWieOft.getSelectedItem();
-        veranstaltung.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+       // veranstaltung.setWiederholbarkeitTermin(wiederholen);
         
-        String kategorie = cbKategorie.getSelectedItem();
-        veranstaltung.setTerminTyp(kategorie);
+       // String kategorie = cbKategorie.getSelectedItem();
+       // veranstaltung.setTerminTyp(kategorie);
         
-        String gebaeude = tCampus.getText();
+        String gebaeude = tGebaeude.getText();
         veranstaltung.setGebaeude(gebaeude);
         
         String raumnummer = tRaum.getText();
@@ -575,8 +575,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         String dozent = tDozent.getText();
         veranstaltung.setDozent(dozent);
         
-        String ects = tEcts.getText();
-        veranstaltung.setEcts(ects);
+        //String ects = tEcts.getText();
+       // veranstaltung.setEcts(ects);
     }
     /**
      * speichern von pruefung .
@@ -596,23 +596,23 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
         pruefung.setUhrzeit(zeit);
         
-        String dauer = cbDauer.getSelectedItem();
-        pruefung.setDauer(dauer);
+        //String dauer = cbDauer.getSelectedItem();
+        //pruefung.setDauer(dauer);
         
-        Object notiz = tNotiz.getText();
-        pruefung.setKommentar(notiz);
+        //Object notiz = tNotiz.getText();
+        //pruefung.setKommentar(notiz);
         
-        Object wiederholen = cbWieOft.getSelectedItem();
-        pruefung.setWiederholbarkeitTermin(wiederholen);
+        //Object wiederholen = cbWieOft.getSelectedItem();
+        //pruefung.setWiederholbarkeitTermin(wiederholen);
         
-        Object kategorie = cbKategorie.getSelectedItem();
-        pruefung.setTerminTyp(kategorie);
+        //Object kategorie = cbKategorie.getSelectedItem();
+        //pruefung.setTerminTyp(kategorie);
         
-        Object campus = tCampus.getText();
-        pruefung.set
+        //Object Gebaeude = tGebaeude.getText();
+        //pruefung.set
         
-        Object raumnummer = tRaum.getText();
-        pruefung.set
+       // Object raumnummer = tRaum.getText();
+        //pruefung.set
 
     }
     /**
@@ -796,7 +796,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             NeuenTerminHinzu.this.dispose();  
         }
     }
-
     /**
      * @param args .
      */
