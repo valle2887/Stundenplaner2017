@@ -51,7 +51,6 @@ public class DatenVerwaltung {
      * @param punkte.
      * @throws IOException .
      */
-    
     // String Passwort zu Char[] passwort ge‰ndert
     public static void speichernVonBenutzerdaten(String benutzerName, 
         char[] passwort, String studiengang, String punkte) throws IOException {
@@ -199,8 +198,8 @@ public class DatenVerwaltung {
 
         ArrayList<String> benutzerDaten = new ArrayList<String>();
 
-        String inhalt;
-        int zahl;
+        String inhaltVonDatei;
+        int arrayGroesse;
 
         String passwort = daten[0];
         String studiengang = daten[1];
@@ -210,27 +209,27 @@ public class DatenVerwaltung {
 
         BufferedReader read = new BufferedReader(new FileReader(datei));
 
-        while ((inhalt = read.readLine()) != null) {
-            benutzerDaten.add(inhalt);
+        while ((inhaltVonDatei = read.readLine()) != null) {
+            benutzerDaten.add(inhaltVonDatei);
         }
 
         benutzerDaten.set(1, passwort);
         benutzerDaten.set(2, studiengang);
         benutzerDaten.set(3, ects);
 
-        zahl = benutzerDaten.size();
+        arrayGroesse = benutzerDaten.size();
 
         // true damit der Text angehängt wird, false(oder ohne)
         // wird die Datei komplett überschrieben
-        FileWriter schreiben = new FileWriter(benutzerName + ".txt", false);
+        FileWriter write = new FileWriter(benutzerName + ".txt", false);
 
-        for (int a = 0; a < zahl; a++) {
-            schreiben.write(benutzerDaten.get(a));
-            schreiben.append(System.getProperty("line.separator"));
+        for (int a = 0; a < arrayGroesse; a++) {
+            write.write(benutzerDaten.get(a));
+            write.append(System.getProperty("line.separator"));
         }
 
         read.close();
-        schreiben.close();
+        write.close();
     }
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
@@ -244,15 +243,15 @@ public class DatenVerwaltung {
         //Erstelle benutzerdaten ArrayList 
         ArrayList<String> benutzerdaten = new ArrayList<String>();
         
-        File dieDatei = new File(benutzerName + ".txt");
-        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
         
         // hier werden die daten gelesen und dann in eine ArrayList geschrieben
         // 4 steht fuer benutzername
-        String inhalt;
+        String inhaltVonDatei;
         for (int daten = 0; daten < 4; daten++) {
-            inhalt = read.readLine();
-            benutzerdaten.add(inhalt);
+            inhaltVonDatei = read.readLine();
+            benutzerdaten.add(inhaltVonDatei);
         }
         //benutzerdaten werden in die ArrayListe eingefuegt. 
         String username = benutzerdaten.get(0);
@@ -277,21 +276,21 @@ public class DatenVerwaltung {
     public static ArrayList<String> leseAufgabe(String benutzerName) throws 
     IOException {
         ArrayList<String> aufgabenDaten = new ArrayList<String>();
-        // inhalt vom datei txt
-        String inhalt;
+        // inhaltVonDatei vom datei txt
+        String inhaltVonDatei;
         
-        File dieDatei = new File(benutzerName + ".txt");
-        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
         
-        while ((inhalt = read.readLine()) != null) {
+        while ((inhaltVonDatei = read.readLine()) != null) {
             // wonach er suchen soll. 
             String stichwort = "Aufgabe";
-            // bedingung falls stichwort gleich inhalt.
-            if (inhalt.equals(stichwort)) {
+            // bedingung falls stichwort gleich inhaltVonDatei.
+            if (inhaltVonDatei.equals(stichwort)) {
                 //speichernAufgabenArray hat ein Array der groesse 8    
                 for (int daten = 0; daten < 8; daten++) {
-                    inhalt = read.readLine();
-                    aufgabenDaten.add(inhalt);
+                    inhaltVonDatei = read.readLine();
+                    aufgabenDaten.add(inhaltVonDatei);
                 } 
             }
         }
@@ -309,21 +308,21 @@ public class DatenVerwaltung {
     public static ArrayList<String> lesePruefung(String benutzerName) throws 
     IOException {
         ArrayList<String> pruefungenDaten = new ArrayList<String>();
-        // inhalt vom datei txt
-        String inhalt;
+        // inhaltVonDatei vom datei txt
+        String inhaltVonDatei;
         
-        File dieDatei = new File(benutzerName + ".txt");
-        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
         
-        while ((inhalt = read.readLine()) != null) {
+        while ((inhaltVonDatei = read.readLine()) != null) {
             // wonach er suchen soll. 
             String stichwort = "Pr¸fung";
-            // bedingung falls stichwort gleich inhalt.
-            if (inhalt.equals(stichwort)) {
+            // bedingung falls stichwort gleich inhaltVonDatei.
+            if (inhaltVonDatei.equals(stichwort)) {
                 //speichernPruefungenArray hat ein Array der groesse 10   
                 for (int daten = 0; daten < 10; daten++) {
-                    inhalt = read.readLine();
-                    pruefungenDaten.add(inhalt);
+                    inhaltVonDatei = read.readLine();
+                    pruefungenDaten.add(inhaltVonDatei);
                 }  
             }
         }
@@ -341,21 +340,21 @@ public class DatenVerwaltung {
     public static ArrayList<String> leseVeranstaltung(String benutzerName) 
         throws IOException {
         ArrayList<String> veranstaltungenDaten = new ArrayList<String>();
-        // inhalt vom datei txt
-        String inhalt;
+        // inhaltVonDatei vom datei txt
+        String inhaltVonDatei;
         
-        File dieDatei = new File(benutzerName + ".txt");
-        BufferedReader read = new BufferedReader(new FileReader(dieDatei));
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
         
-        while ((inhalt = read.readLine()) != null) {
+        while ((inhaltVonDatei = read.readLine()) != null) {
             // wonach er suchen soll. 
             String stichwort = "Veranstaltung";
-            // bedingung falls stichwort gleich inhalt.
-            if (inhalt.equals(stichwort)) {
+            // bedingung falls stichwort gleich inhaltVonDatei.
+            if (inhaltVonDatei.equals(stichwort)) {
                 //speichernVeranstaltungenArray hat ein Array der groesse 12   
                 for (int daten = 0; daten < 12; daten++) {
-                    inhalt = read.readLine();
-                    veranstaltungenDaten.add(inhalt);
+                    inhaltVonDatei = read.readLine();
+                    veranstaltungenDaten.add(inhaltVonDatei);
                 }  
             }
         }
@@ -363,8 +362,139 @@ public class DatenVerwaltung {
         return veranstaltungenDaten;
     }
     /**
-     * Termin lˆschen
+     * Termin loeschen ob Aufgabe, Pruefung, Veranstaltung.
+     * @param benutzerName.
+     * @throws IOException .
+     * @returns geloescht .
      */
+    public static boolean aufgabeLoeschen(String benutzerName)
+        throws IOException {
+
+        // Erstellt die ArrayList diese wird später mit den Daten gefüllt
+        ArrayList<String> benutzerDaten = new ArrayList<String>();
+
+        // Hier muss die Eingabe aus der GUI eingefügt werden
+        String typ = "Aufgabe";
+
+        String inhaltVonDatei;
+        int index = 0;
+        int arrayGroesse;
+
+        // Hier muss der Name des ausgewählten Termins aus der GUI hin
+        String name = "Test";
+
+        boolean geloescht = false;
+
+        // Zum Auslesen der Textdatei mit den Benutzerdaten
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
+
+        while ((inhaltVonDatei = read.readLine()) != null) {
+            benutzerDaten.add(inhaltVonDatei);
+        }
+        // Größe der ArrayList
+        arrayGroesse = benutzerDaten.size();
+
+        // Nummer des gesuchten Begriffs
+        index = benutzerDaten.indexOf(name);
+
+        // Wenn der Begriff in der Nummer steht dann wird switch ausgeführt
+        if (index > 0 && benutzerDaten.get(index).equals(name)) {
+
+            switch (typ) {
+
+            case "Aufgabe":
+
+                System.out.println("Aufgabe kann gelöscht werden");
+
+                FileWriter speichern =
+                    new FileWriter(benutzerName + ".txt", false);
+                // Damit auch das Wort Aufgabe + Leerzeile gelöscht wird
+                index = index - 2;
+                // Es werden 10 Stellen entfernt
+                arrayGroesse = arrayGroesse - 10;
+                // for-Schleife die die Daten löscht
+                for (int i = 0; i <= 8; i++) {
+                    benutzerDaten.remove(index);
+                }
+                // for-Schleife die die ArrayList speichert
+                for (int a = 0; a <= arrayGroesse; a++) {
+                    speichern.write(benutzerDaten.get(a));
+                    speichern.append(System.getProperty("line.separator"));
+                }
+                geloescht = true;
+                speichern.close();
+                read.close();
+                break;
+
+            case "Prüfung":
+
+                FileWriter speichern1 =
+                    new FileWriter(benutzerName + ".txt", false);
+                // Damit auch das Wort Prüfung + Leerzeile gelöscht wird
+                index = index - 2;
+                // Es werden 13 Stellen entfernt
+                arrayGroesse = arrayGroesse - 13;
+                // for-Schleife die Daten löscht
+                for (int i = 0; i <= 12; i++) {
+                    benutzerDaten.remove(index);
+                }
+                // for-Schleife die die ArrayList wieder abspeichert
+                for (int a = 0; a <= arrayGroesse; a++) {
+                    speichern1.write(benutzerDaten.get(a));
+                    speichern1.append(System.getProperty("line.separator"));
+                }
+                geloescht = true;
+                System.out.println("Prüfung gelöscht");
+                speichern1.close();
+                read.close();
+                break;
+            case "Veranstaltung":
+
+                FileWriter speichern2 =
+                    new FileWriter(benutzerName + ".txt", false);
+                // Damit das Wort Veranstaltung + Leerzeile gelöscht wird
+                index = index - 2;
+                // Es werden 14 Stellen entfernt
+                arrayGroesse = arrayGroesse - 14;
+                // for-Schleife die die Daten löscht
+                for (int i = 0; i <= 13; i++) {
+                    benutzerDaten.remove(index);
+                }
+                // for-Schleife die die ArrayList wieder abspeichert
+                for (int a = 0; a <= arrayGroesse; a++) {
+                    speichern2.write(benutzerDaten.get(a));
+                    speichern2.append(System.getProperty("line.separator"));
+                }
+                geloescht = true;
+                speichern2.close();
+                read.close();
+                break;
+            default:
+                geloescht = false;
+                break;
+            }
+        }
+        return geloescht;
+    }
+    /**
+     * 
+     */
+    public void aufgabeCase() {
+        
+    }
+    /**
+     * 
+     */
+    public void pruefungCase() {
+        
+    }
+    /**
+     * 
+     */
+    public void veranstaltungCase() {
+        
+    }
     // Der Vorschlag von Dome
     /**
      * @return true.
@@ -401,8 +531,8 @@ public class DatenVerwaltung {
         // ArrayList mit den Daten aus der Datei des Benutzers
         ArrayList<String> terminDaten = new ArrayList<String>();
 
-        // Inhalt der Zeile aus der Textdatei
-        String inhalt;
+        // inhaltVonDatei der Zeile aus der Textdatei
+        String inhaltVonDatei;
 
         //Name des Termins der bearbeitet werden soll
         String terName = eingabe[1];
@@ -417,8 +547,8 @@ public class DatenVerwaltung {
         BufferedReader read = new BufferedReader(new FileReader(datei));
 
         // Erstellt ArrayList mit den Daten aus der Textdatei
-        while ((inhalt = read.readLine()) != null) {
-            terminDaten.add(inhalt);
+        while ((inhaltVonDatei = read.readLine()) != null) {
+            terminDaten.add(inhaltVonDatei);
         }
 
         arrayGroesse = terminDaten.size();
