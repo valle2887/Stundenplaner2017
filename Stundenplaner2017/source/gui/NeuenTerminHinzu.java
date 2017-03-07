@@ -462,10 +462,10 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbStunden.setVisible(true);
         lDpkt.setVisible(true);
         cbMinuten.setVisible(true);
-        lWiederh.setVisible(true);
+        lWiederh.setVisible(false);
       //  rbNein.setVisible(true);
       //  rbJa.setVisible(true);
-        cbWieOft.setVisible(true);
+        cbWieOft.setVisible(false);
         lMarker.setVisible(true);
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
@@ -601,9 +601,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         
         //Object notiz = tNotiz.getText();
         //pruefung.setKommentar(notiz);
-        
-        //Object wiederholen = cbWieOft.getSelectedItem();
-        //pruefung.setWiederholbarkeitTermin(wiederholen);
         
         //Object kategorie = cbKategorie.getSelectedItem();
         //pruefung.setTerminTyp(kategorie);
