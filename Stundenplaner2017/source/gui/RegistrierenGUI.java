@@ -65,14 +65,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      * JTextField textWiPasswort. 
      */
     private JPasswordField pwPasswortNochmal = new JPasswordField(20);
-    /**
-     * String, der das eingegebene Passwort als Text casted.
-     */
-    char[] passwortChar = pwPasswort.getPassword();
-    String passwort = new String(passwortChar);
-    
-    char[] passwortNochmalChar = pwPasswortNochmal.getPassword();
-    String passwortNochmal = new String(passwortNochmalChar);
+
     /**
      * Label ects. 
      */
@@ -91,9 +84,11 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      * JButton abbrechen.
      */
     private JButton btnAbbrechen = new JButton("Abbrechen");
+    
     /**
      * Konstruktor der Klasse RegistrierenGUI .
      */
+     
     RegistrierenGUI() {
         
         setTitle("Registrierung");
@@ -137,6 +132,9 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     * @return eingabeKorrekt
     */ 
     public boolean eingabenUeberpruefen() {
+        String pass, wiederholen;
+        pass = new String(pwPasswort.getPassword());
+        wiederholen = new String(pwPasswortNochmal.getPassword());
         boolean eingabeKorrekt = true;
         if (txtUsername.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Username wurde nicht "
@@ -154,7 +152,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Das wiederholte Passwort "
                 + "wurde nicht eingegeben.");
             eingabeKorrekt = false;
-        } else if (!passwort.equals(passwortNochmal)) {
+        } else if (!pass.isEmpty() && !pass.equals(wiederholen)) {
             JOptionPane.showMessageDialog(null, "Passwoerter stimmen nicht "
                 + "ueberein.");
             eingabeKorrekt = false;
