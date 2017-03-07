@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
@@ -270,8 +271,6 @@ public class AufgabeDialog extends JFrame implements ActionListener {
         
         p2.add(lBezeichnung);
         p2.add(tBezeichnung);
-        p2.add(lEcts);
-        p2.add(tEcts);
         p2.add(lKategorie);
         p2.add(cbKategorie);
         p2.add(lDatum);
@@ -297,56 +296,12 @@ public class AufgabeDialog extends JFrame implements ActionListener {
         p3.add(tNotiz);
        // bgWieder.add(rbNein);
        // bgWieder.add(rbJa);
-        p4.add(lDozent);
-        p4.add(tDozent);
-        p4.add(lGebaeude);
-        p4.add(tGebaeude);
-        p4.add(lRaum);
-        p4.add(tRaum);
         p5.add(speichern);
         add(p1);
         add(p2);
         add(p3);
         add(p4);
         add(p5);
-    }
-    /**
-     * macht felder sichtbar fuer termin Typ Aufgabe.
-     */
-    public void sichtbarkeitAufgabe() {
-        lDauer.setVisible(true);
-        cbDauer.setVisible(true);
-        lMin.setVisible(true);
-        lGebaeude.setVisible(false);
-        tGebaeude.setVisible(false);
-        lRaum.setVisible(false);
-        tRaum.setVisible(false);
-        lDozent.setVisible(false);
-        tDozent.setVisible(false);
-        lEcts.setVisible(false);
-        tEcts.setVisible(false);
-        lBezeichnung.setVisible(true);
-        tBezeichnung.setVisible(true);
-        lKategorie.setVisible(true);
-        cbKategorie.setVisible(true);
-        lDatum.setVisible(true);
-        cbTag.setVisible(true);
-        lPkt1.setVisible(true);
-        cbMonat.setVisible(true);
-        lPkt2.setVisible(true);
-        cbJahr.setVisible(true);
-        lUhrzeit.setVisible(true);
-        cbStunden.setVisible(true);
-        lDpkt.setVisible(true);
-        cbMinuten.setVisible(true);
-        lWiederh.setVisible(true);
-       // rbNein.setVisible(true);
-       // rbJa.setVisible(true);
-        cbWieOft.setVisible(true);
-        lMarker.setVisible(true);
-        cbMarker.setVisible(true);
-        lNotiz.setVisible(true);
-        tNotiz.setVisible(true);
     }
     /**
      * speichern von aufgabe.
@@ -383,5 +338,12 @@ public class AufgabeDialog extends JFrame implements ActionListener {
      */
     public static void main(String[] args) {
         new AufgabeDialog();
+    }
+    /**
+     *@param e .
+     */
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 }
