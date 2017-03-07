@@ -19,30 +19,6 @@ import java.util.Scanner;
 public class DatenVerwaltung {
     // Anfang fuer speichernVonBenutzerdaten++++++++++++++++++++++++++++    
     /**
-     * Passwort vergleichen.
-     * @param benutzerName .
-     * @param passwort .
-     * @param scan .
-     * @return name, passwort .
-     * @throws FileNotFoundException .
-     */
-    public static boolean vergleichPasswort(Scanner scan,
-        String benutzerName, String passwort)
-        throws FileNotFoundException {
-
-        String loginName = benutzerName;
-        String loginPW = passwort;
-        String userName = scan.next();
-        String userPW = scan.next();
-        
-        if (userName.equals(loginName)) {
-            scan.close();
-            return userPW.equals(loginPW);
-        } else {
-            return false;
-        }
-    }
-    /**
      * Speichern von Benutzerdaten.
      * @param benutzerName .
      * @param passwort .

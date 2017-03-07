@@ -46,9 +46,15 @@ public class UserInfoGUI extends JFrame {
      */
     private JLabel lblUserECTS = new JLabel("");
 
+    
+    public void infoAnzeigen() {
+        
+    }
     /**
      * Konstruktorklasse fuer die UserInfoGUI.
      */
+    
+   
     public UserInfoGUI() {
         setTitle("User Information");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
