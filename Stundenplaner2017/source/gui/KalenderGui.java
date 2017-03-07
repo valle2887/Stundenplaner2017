@@ -89,6 +89,11 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * 
      */
+    private JMenuItem benutzerBarbeiten = new JMenuItem("Benutzer bearbeiten");
+
+    /**
+     * 
+     */
     private JMenu termin = new JMenu("Termine");
 
     /**
@@ -138,6 +143,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             {"11:00" }, {"12:00" }, {"13:00" }, {"14:00" }, {"15:00" },
             {"16:00" }, {"17:00" }, {"18:00" }, {"19:00" }, {"20:00" },
             {"21:00" }, {"22:00" }, {"23:00" }, {"00:00" }};
+
     /**
      * 
      */
@@ -156,7 +162,7 @@ public class KalenderGui extends JFrame implements ActionListener {
         datum2 += (cal.get(Calendar.MONTH) + 1) + ".";
         datum2 += cal.get(Calendar.YEAR);
         int datum3 = (cal.get(Calendar.WEEK_OF_YEAR));
-        
+
         setTitle("Kalender - KW " + datum + " von " + datum + " bis " + datum2);
 
         menueBar.add(benutzer);
@@ -179,6 +185,8 @@ public class KalenderGui extends JFrame implements ActionListener {
         benutzerAnzeigen.addActionListener(this);
         benutzer.add(benutzerAusloggen);
         benutzerAusloggen.addActionListener(this);
+        benutzer.add(benutzerBarbeiten);
+        benutzerBarbeiten.addActionListener(this);
         termin.add(neuerTermin);
         neuerTermin.addActionListener(this);
         termin.add(terminBearbeiten);
@@ -199,7 +207,7 @@ public class KalenderGui extends JFrame implements ActionListener {
         table.getTableHeader().setEnabled(false);
 
         table.setAutoResizeMode(4);
-        
+
         gedrueck();
 
         mainContainer.add(new JScrollPane(table));
@@ -220,15 +228,24 @@ public class KalenderGui extends JFrame implements ActionListener {
             public void actionPerformed(ActionEvent e) {
                 setResizable(false);
                 setLocationRelativeTo(null);
-                new UserInfoGUI();                               
+                new UserInfoGUI();
             }
         });
 
         benutzerAusloggen.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                dispose();                
+                dispose();
                 new LoginGUI();
+
+            }
+        });
+
+        benutzerBarbeiten.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                new UserBearbeitenGUI();
 
             }
         });
@@ -265,10 +282,9 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
         buttonLinks.addActionListener(new ActionListener() {
-            
+
             public void actionPerformed(ActionEvent e) {
-               
-                
+
             }
         });
 
