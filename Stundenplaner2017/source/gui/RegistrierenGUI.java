@@ -68,12 +68,11 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
     /**
      * String, der das eingegebene Passwort als Text casted.
      */
-    private String pwString = new String(pwPasswort.getPassword());
-    /**
-     * String, der das nochmals eingegebene Passwort als String casted.
-     */
-    private String pwNochmalString 
-        = new String(pwPasswortNochmal.getPassword());
+    char[] passwortChar = pwPasswort.getPassword();
+    String passwort = new String(passwortChar);
+    
+    char[] passwortNochmalChar = pwPasswortNochmal.getPassword();
+    String passwortNochmal = new String(passwortNochmalChar);
     /**
      * Label ects. 
      */
@@ -155,10 +154,11 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Das wiederholte Passwort "
                 + "wurde nicht eingegeben.");
             eingabeKorrekt = false;
-        } else if (pwString != pwNochmalString) {
+        } else if (!passwort.equals(passwortNochmal)) {
             JOptionPane.showMessageDialog(null, "Passwoerter stimmen nicht "
                 + "ueberein.");
             eingabeKorrekt = false;
+       
         } else if (txtECTS.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Credits wurden nicht "
                 + "eingegeben.");

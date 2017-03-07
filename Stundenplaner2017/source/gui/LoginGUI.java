@@ -80,7 +80,6 @@ public class LoginGUI extends JFrame implements ActionListener {
     /**
      * Konstruktorklasse des Loginfensters.
      */
-
     public LoginGUI() {
         setLocationRelativeTo(null);
         setTitle("Login");
@@ -107,7 +106,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 String username = txtUsername.getText();
                 char[] passwortChar = pwPasswort.getPassword();
                 String passwort = new String(passwortChar);
-                String dateiName;
+                String dateiName = null;
                 Scanner dateiScanner = null;               
                 File file = new File(username + ".txt");
                 if (file.exists()) {
@@ -123,12 +122,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 }
                 try {
                     if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
-                        username, passwort)) {
-
-                        new KalenderGui();           
-                        dispose();
-                  
-                    } else { 
+                        dateiName, passwort)) {
                         Benutzer benutzer =
                             DatenVerwaltung.loadBenutzer(username);
                         DatenVerwaltung.leseAufgabe(username);
@@ -139,6 +133,11 @@ public class LoginGUI extends JFrame implements ActionListener {
                         aktuelleSitzung.setBenutzer(benutzer);
                         //JOptionPane.showMessageDialog(null, "ERROR123!");
                         new KalenderGui();
+                        dispose();
+                  
+                    } else { 
+                        JOptionPane.showMessageDialog(null, "Anmeldedaten "
+                            + "stimmen nicht ueberein!");            
                     }
                     
                           
