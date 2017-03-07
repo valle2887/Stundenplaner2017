@@ -1,8 +1,6 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -19,12 +17,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-
-import daten.Aufgabe;
-import daten.Pruefung;
-import daten.Veranstaltung;
 
 /**
  * Klasse Gui.
@@ -144,14 +137,13 @@ public class KalenderGui extends JFrame implements ActionListener {
             {"06:00" }, {"07:00" }, {"08.00" }, {"09:00" }, {"10:00" },
             {"11:00" }, {"12:00" }, {"13:00" }, {"14:00" }, {"15:00" },
             {"16:00" }, {"17:00" }, {"18:00" }, {"19:00" }, {"20:00" },
-            {"21:00" }, {"22:00" }, {"23:00" }, {"00:00" } };
-
+            {"21:00" }, {"22:00" }, {"23:00" }, {"00:00" }};
     /**
      * 
      */
     public KalenderGui() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        // setSize(980, 700);
+
         setLocationRelativeTo(null);
 
         Calendar cal = GregorianCalendar.getInstance();
@@ -164,9 +156,8 @@ public class KalenderGui extends JFrame implements ActionListener {
         datum2 += (cal.get(Calendar.MONTH) + 1) + ".";
         datum2 += cal.get(Calendar.YEAR);
         int datum3 = (cal.get(Calendar.WEEK_OF_YEAR));
-
-        setTitle(
-            "Kalender - KW " + datum3 + " von " + datum + " bis " + datum2);
+        
+        setTitle("Kalender - KW " + datum + " von " + datum + " bis " + datum2);
 
         menueBar.add(benutzer);
         menueBar.add(termin);
@@ -207,6 +198,8 @@ public class KalenderGui extends JFrame implements ActionListener {
         table = new JTable(tabellenmodellGruppeA);
         table.getTableHeader().setEnabled(false);
 
+        table.setAutoResizeMode(4);
+        
         gedrueck();
 
         mainContainer.add(new JScrollPane(table));
@@ -225,15 +218,16 @@ public class KalenderGui extends JFrame implements ActionListener {
         benutzerAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new UserInfoGUI();
-
+                setResizable(false);
+                setLocationRelativeTo(null);
+                new UserInfoGUI();                               
             }
         });
 
         benutzerAusloggen.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                DISPOSE_ON_CLOSE();
+                dispose();                
                 new LoginGUI();
 
             }
@@ -243,7 +237,6 @@ public class KalenderGui extends JFrame implements ActionListener {
 
             public void actionPerformed(ActionEvent e) {
                 KalenderGui.this.setVisible(false);
-                KalenderGui.this.dispose();
                 new NeuenTerminHinzu();
             }
         });
@@ -271,13 +264,19 @@ public class KalenderGui extends JFrame implements ActionListener {
 
             }
         });
+        buttonLinks.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e) {
+               
+                
+            }
+        });
 
     }
 
-    protected void DISPOSE_ON_CLOSE() {
-        // TODO Auto-generated method stub
-
-    }
+    /**
+     * 
+     */
 
     /**
      * .
