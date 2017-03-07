@@ -76,11 +76,34 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
 
     private JButton btnRegister = new JButton("Registrieren");
+/**
+ * Methode um die loginDaten zu ueberpruefen.
+ * @throws FileNotFoundException wenn es keine Datei gibt.
+ * @return login
+ */
+   /* public boolean login() throws FileNotFoundException {
 
+        String username = txtUsername.getText();
+        char[] passwortChar = pwPasswort.getPassword();
+        String passwort = new String(passwortChar);
+        File daten = new File(username + ".txt");
+        Scanner read = new Scanner(daten);
+        boolean login = false;
+        while (read.nextLine() != null) {
+            String user = read.nextLine();
+            String pass = read.nextLine();
+            if (username.equals(user) && passwort.equals(pass)) {
+                login = true;
+                read.close();
+            }
+        }
+        return login;
+        
+    }
+*/
     /**
      * Konstruktorklasse des Loginfensters.
      */
-
     public LoginGUI() {
         setLocationRelativeTo(null);
         setTitle("Login");
@@ -107,7 +130,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 String username = txtUsername.getText();
                 char[] passwortChar = pwPasswort.getPassword();
                 String passwort = new String(passwortChar);
-                String dateiName;
+                String dateiName = null;
                 Scanner dateiScanner = null;               
                 File file = new File(username + ".txt");
                 if (file.exists()) {
@@ -123,12 +146,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                 }
                 try {
                     if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
-                        username, passwort)) {
-
-                        new KalenderGui();           
-                        dispose();
-                  
-                    } else { 
+                        dateiName, passwort)) {
                         Benutzer benutzer =
                             DatenVerwaltung.loadBenutzer(username);
                         DatenVerwaltung.leseAufgabe(username);
@@ -139,6 +157,11 @@ public class LoginGUI extends JFrame implements ActionListener {
                         aktuelleSitzung.setBenutzer(benutzer);
                         //JOptionPane.showMessageDialog(null, "ERROR123!");
                         new KalenderGui();
+                        dispose();
+                  
+                    } else { 
+                        JOptionPane.showMessageDialog(null, "Anmeldedaten "
+                            + "stimmen nicht ueberein!");            
                     }
                     
                           

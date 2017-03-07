@@ -155,10 +155,11 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Das wiederholte Passwort "
                 + "wurde nicht eingegeben.");
             eingabeKorrekt = false;
-        } else if (pwString != pwNochmalString) {
+     /*   } else if (pwString != pwNochmalString) {
             JOptionPane.showMessageDialog(null, "Passwoerter stimmen nicht "
                 + "ueberein.");
             eingabeKorrekt = false;
+       */
         } else if (txtECTS.getText().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Credits wurden nicht "
                 + "eingegeben.");
