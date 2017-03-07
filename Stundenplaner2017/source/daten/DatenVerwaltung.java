@@ -184,7 +184,7 @@ public class DatenVerwaltung {
     }
 
     /**
-     * Lˆschen der gesamten Daten des Benutzers
+     * Loeschen der gesamten Daten des Benutzers
      */
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
@@ -365,7 +365,7 @@ public class DatenVerwaltung {
      * Termin loeschen ob Aufgabe, Pruefung, Veranstaltung.
      * @param benutzerName.
      * @throws IOException .
-     * @returns geloescht .
+     * @return geloescht .
      */
     public static boolean aufgabeLoeschen(String benutzerName)
         throws IOException {
@@ -402,7 +402,6 @@ public class DatenVerwaltung {
         if (index > 0 && benutzerDaten.get(index).equals(name)) {
 
             switch (typ) {
-
             case "Aufgabe":
 
                 System.out.println("Aufgabe kann gelöscht werden");

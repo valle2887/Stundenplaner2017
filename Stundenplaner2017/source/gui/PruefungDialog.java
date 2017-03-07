@@ -186,6 +186,10 @@ public class PruefungDialog extends JDialog implements ActionListener {
      */
     private JButton speichern = new JButton("Speichern");
     /**
+     * JButton loeschen.
+     */
+    private JButton loeschen = new JButton("Loeschen");
+    /**
      * JPanel p1.
      */
     private JPanel p1 = new JPanel();
@@ -254,6 +258,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
         p4.add(lNotiz);
         p4.add(tNotiz);
         p5.add(speichern);
+        p5.add(loeschen);
         
         add(p1);
         add(p2);

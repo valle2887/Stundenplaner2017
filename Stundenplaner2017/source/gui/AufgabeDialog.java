@@ -8,13 +8,14 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-//import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //import daten.DatenVerwaltung;
 import daten.Aufgabe;
+import daten.Session;
 //import daten.Veranstaltung;
 //import daten.Pruefung;
 //import daten.Termin;
@@ -199,6 +200,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      */
     private JButton speichern = new JButton("Speichern");
     /**
+     * JButton loeschen.
+     */
+    private JButton loeschen = new JButton("Loeschen");
+    /**
      * JPanel p1.
      */
     private JPanel p1 = new JPanel();
@@ -219,6 +224,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      */
     private JPanel p5 = new JPanel();
     /**
+     * Aufgabe aufgabe muss geleich null.
+     */
+    private Aufgabe aufgabe = null;
+    /**
      * Konstruktor der Klasse NeuenTerminHinzu .
      */
     public AufgabeDialog() {
@@ -227,7 +236,9 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         setLayout(new GridLayout(5, 1));
         setResizable(true);
         setLocationRelativeTo(null);
-
+        this.aufgabe = aufgabe;
+        // methode buttonsSundLoe fuer speichern und loeschen.
+        buttonsSundLoe();
        //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
         fuegePanelZuKonstruktor();
 
@@ -238,6 +249,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * .
      */
     public void fuegePanelZuKonstruktor() {
+        speichern.addActionListener(this);
         // RadioButtons werden zu p1 zugewiesen.
         p1.add(lTerminTyp);
         p1.add(tTerminTyp);
@@ -269,6 +281,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // bgWieder.add(rbNein);
         // bgWieder.add(rbJa);
         p5.add(speichern);
+        p5.add(loeschen);
         
         add(p1);
         add(p2);
@@ -277,34 +290,70 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         add(p5);
     }
     /**
-     * speichern von aufgabe.
+     * buttons loeschen und speichern.
      */
-    public void aufgabeSpeichern() {
+    public void buttonsSundLoe() {
+        //speichen
+        speichern.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Aufgabe aufgabe = new Aufgabe();
+
+                String bezeichnung = tBezeichnung.getText();
+                aufgabe.setBezeichnung(bezeichnung);
+
+                String datum =
+                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+                        + "." + cbJahr.getSelectedItem();
+                aufgabe.setDatum(datum);
+
+                String zeit = cbStunden.getSelectedItem() + ":"
+                    + cbMinuten.getSelectedItem();
+                aufgabe.setUhrzeit(zeit);
+
+                // int dauer = cbDauer.getSelectedItem();
+                // aufgabe.setDauer(dauer);
+
+                String notiz = tNotiz.getText();
+                aufgabe.setKommentar(notiz);
+
+                // String wiederholen = cbWieOft.getSelectedItem();
+                // aufgabe.setWiederholbarkeitTermin(wiederholen);
+
+                // String kategorie = cbKategorie.getSelectedItem();
+                // aufgabe.setTerminTyp(kategorie);
+            }
+        });
+        //Loeschen
+        loeschen.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Aufgabe aufgabe = new Aufgabe();
+
+                String bezeichnung = tBezeichnung.getText();
+                aufgabe.setBezeichnung(bezeichnung);
+
+                String datum =
+                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+                        + "." + cbJahr.getSelectedItem();
+                aufgabe.setDatum(datum);
+
+                String zeit = cbStunden.getSelectedItem() + ":"
+                    + cbMinuten.getSelectedItem();
+                aufgabe.setUhrzeit(zeit);
+
+                // int dauer = cbDauer.getSelectedItem();
+                // aufgabe.setDauer(dauer);
+
+                String notiz = tNotiz.getText();
+                aufgabe.setKommentar(notiz);
+
+                // String wiederholen = cbWieOft.getSelectedItem();
+                // aufgabe.setWiederholbarkeitTermin(wiederholen);
+
+                // String kategorie = cbKategorie.getSelectedItem();
+                // aufgabe.setTerminTyp(kategorie);
+            }
+        });
         
-        Aufgabe aufgabe = new Aufgabe();
-        
-        String bezeichnung = tBezeichnung.getText();
-        aufgabe.setBezeichnung(bezeichnung);
-        
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        aufgabe.setDatum(datum);
-        
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        aufgabe.setUhrzeit(zeit);
-        
-       // int dauer = cbDauer.getSelectedItem();
-        //aufgabe.setDauer(dauer);
-        
-        String notiz = tNotiz.getText();
-        aufgabe.setKommentar(notiz);
-        
-        //String wiederholen = cbWieOft.getSelectedItem();
-       // aufgabe.setWiederholbarkeitTermin(wiederholen);
-        
-       // String kategorie = cbKategorie.getSelectedItem();
-       // aufgabe.setTerminTyp(kategorie);
     }
     /**
      * @param args .
@@ -312,11 +361,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     public static void main(String[] args) {
         new AufgabeDialog();
     }
-    /**
-     *@param e .
-     */
-    public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
-    }
+
+    
+
 }
