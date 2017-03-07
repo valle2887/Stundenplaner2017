@@ -76,31 +76,7 @@ public class LoginGUI extends JFrame implements ActionListener {
      */
 
     private JButton btnRegister = new JButton("Registrieren");
-/**
- * Methode um die loginDaten zu ueberpruefen.
- * @throws FileNotFoundException wenn es keine Datei gibt.
- * @return login
- */
-   /* public boolean login() throws FileNotFoundException {
 
-        String username = txtUsername.getText();
-        char[] passwortChar = pwPasswort.getPassword();
-        String passwort = new String(passwortChar);
-        File daten = new File(username + ".txt");
-        Scanner read = new Scanner(daten);
-        boolean login = false;
-        while (read.nextLine() != null) {
-            String user = read.nextLine();
-            String pass = read.nextLine();
-            if (username.equals(user) && passwort.equals(pass)) {
-                login = true;
-                read.close();
-            }
-        }
-        return login;
-        
-    }
-*/
     /**
      * Konstruktorklasse des Loginfensters.
      */
