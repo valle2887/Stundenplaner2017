@@ -197,7 +197,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * JButton speichern.
      */
-    private JButton speichern = new JButton("Bearbeiten");
+    private JButton speichern = new JButton("Speichern");
     /**
      * JPanel p1.
      */
@@ -234,7 +234,6 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         pack();
         setVisible(true);
     }
-
     /**
      * .
      */
@@ -270,6 +269,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // bgWieder.add(rbNein);
         // bgWieder.add(rbJa);
         p5.add(speichern);
+        
         add(p1);
         add(p2);
         add(p3);

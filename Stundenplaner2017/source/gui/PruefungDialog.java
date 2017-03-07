@@ -14,9 +14,8 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //import daten.DatenVerwaltung;
-import daten.Aufgabe;
+import daten.Pruefung;
 //import daten.Veranstaltung;
-//import daten.Pruefung;
 //import daten.Termin;
 /**
  * @author Rakan Al-Swayyed
@@ -185,7 +184,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * JButton speichern.
      */
-    private JButton speichern = new JButton("Bearbeiten");
+    private JButton speichern = new JButton("Speichern");
     /**
      * JPanel p1.
      */
@@ -254,9 +253,8 @@ public class PruefungDialog extends JDialog implements ActionListener {
         p3.add(cbMarker);
         p4.add(lNotiz);
         p4.add(tNotiz);
-
-
         p5.add(speichern);
+        
         add(p1);
         add(p2);
         add(p3);
@@ -266,26 +264,26 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * speichern von aufgabe.
      */
-    public void aufgabeSpeichern() {
+    public void pruefungSpeichern() {
         
-        Aufgabe aufgabe = new Aufgabe();
+        Pruefung pruefung = new Pruefung();
         
         String bezeichnung = tBezeichnung.getText();
-        aufgabe.setBezeichnung(bezeichnung);
+        pruefung.setBezeichnung(bezeichnung);
         
         String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
             + "." + cbJahr.getSelectedItem();
-        aufgabe.setDatum(datum);
+        pruefung.setDatum(datum);
         
         String zeit =
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        aufgabe.setUhrzeit(zeit);
+        pruefung.setUhrzeit(zeit);
         
        // int dauer = cbDauer.getSelectedItem();
         //aufgabe.setDauer(dauer);
         
         String notiz = tNotiz.getText();
-        aufgabe.setKommentar(notiz);
+        pruefung.setKommentar(notiz);
         
         //String wiederholen = cbWieOft.getSelectedItem();
        // aufgabe.setWiederholbarkeitTermin(wiederholen);

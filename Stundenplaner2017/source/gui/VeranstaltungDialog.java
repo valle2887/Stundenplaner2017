@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //import daten.DatenVerwaltung;
-import daten.Aufgabe;
+import daten.Veranstaltung;
 //import daten.Veranstaltung;
 //import daten.Pruefung;
 //import daten.Termin;
@@ -218,7 +218,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * JButton speichern.
      */
-    private JButton speichern = new JButton("Bearbeiten");
+    private JButton speichern = new JButton("Speichern");
     /**
      * JPanel p1.
      */
@@ -302,28 +302,28 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         add(p5);
     }
     /**
-     * speichern von aufgabe.
+     * speichern von veranstaltung.
      */
     public void veranstaltungSpeichern() {
         
-        Aufgabe aufgabe = new Aufgabe();
+        Veranstaltung veranstaltung = new Veranstaltung();
         
         String bezeichnung = tBezeichnung.getText();
-        aufgabe.setBezeichnung(bezeichnung);
+        veranstaltung.setBezeichnung(bezeichnung);
         
         String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
             + "." + cbJahr.getSelectedItem();
-        aufgabe.setDatum(datum);
+        veranstaltung.setDatum(datum);
         
         String zeit =
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        aufgabe.setUhrzeit(zeit);
+        veranstaltung.setUhrzeit(zeit);
         
        // int dauer = cbDauer.getSelectedItem();
         //aufgabe.setDauer(dauer);
         
         String notiz = tNotiz.getText();
-        aufgabe.setKommentar(notiz);
+        veranstaltung.setKommentar(notiz);
         
         //String wiederholen = cbWieOft.getSelectedItem();
        // aufgabe.setWiederholbarkeitTermin(wiederholen);
