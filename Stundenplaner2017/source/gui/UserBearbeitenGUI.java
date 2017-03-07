@@ -12,6 +12,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.Benutzer;
+
 /** Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von
  * JFrame und implementiert ActionListener.
  * @author Christian Lindenberg
@@ -98,6 +100,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      * @return userGeloescht
      */
     public boolean userLoeschen(String userName) {
+        userName = Benutzer.getUsername();
         File file = new File(userName + ".txt");
         boolean userGeloescht = file.delete();
         return userGeloescht;
@@ -133,7 +136,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setTitle("Benutzerdaten ändern");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.setLayout(new GridLayout(6, 2));
+        this.setLayout(new GridLayout(7, 2));
         
         this.add(lblNeuerName);
         this.add(txtNeuerName);
@@ -156,6 +159,13 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         pack();
         setVisible(true);
         
+
+
+            
+       
+    }
+    public static void main(String[] args) {
+        new UserBearbeitenGUI();
     }
 }
  

@@ -161,6 +161,10 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null, "Credits wurden nicht "
                 + "eingegeben.");
             eingabeKorrekt = false;
+        } else if (pass.isEmpty() || !pass.equals(wiederholen)) {
+            JOptionPane.showMessageDialog(null, "Bitte das erste Passwort "
+                + "eingeben.");
+            eingabeKorrekt = false;
         }
         try {
             int i = Integer.parseInt(txtECTS.getText());
