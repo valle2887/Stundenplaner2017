@@ -271,7 +271,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         setTitle("Termin Hinzufügen");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 2));
-        setResizable(true);
+        setResizable(false);
         setLocationRelativeTo(null);
 
         // methode fehlerDialog zeigt MessageDialog falls was nicht ausgefüllt 

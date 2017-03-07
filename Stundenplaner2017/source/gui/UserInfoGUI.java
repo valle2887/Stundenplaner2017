@@ -51,7 +51,7 @@ public class UserInfoGUI extends JFrame {
      */
     public UserInfoGUI() {
         setTitle("User Information");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(true);
         setLayout(new GridLayout(4, 2));
         setLocationRelativeTo(null); 
