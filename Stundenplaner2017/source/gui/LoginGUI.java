@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
+import daten.UserVerwaltung;
 
 /**
  * Klasse des Loginfensters, erbt von JFrame.
@@ -77,31 +78,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
     private JButton btnRegister = new JButton("Registrieren");
 
-/**
-     * Passwort vergleichen.
-     * @param benutzerName .
-     * @param passwort .
-     * @param scan .
-     * @return name, passwort .
-     * @throws FileNotFoundException .
-     */
 
-    public static boolean vergleichPasswort(Scanner scan,
-        String benutzerName, String passwort)
-        throws FileNotFoundException {
-
-        String loginName = benutzerName;
-        String loginPW = passwort;
-        String userName = scan.next();
-        String userPW = scan.next();
-        
-        if (userName.equals(loginName)) {
-            scan.close();
-            return userPW.equals(loginPW);
-        } else {
-            return false;
-        }
-    }
     /**
      * Konstruktorklasse des Loginfensters.
      */
@@ -146,10 +123,10 @@ public class LoginGUI extends JFrame implements ActionListener {
                     }
                 }
                 try {
-                    if (vergleichPasswort(dateiScanner, 
+                    if (UserVerwaltung.vergleichPasswort(dateiScanner, 
                         dateiName, passwort)) {
                         Benutzer benutzer =
-                            DatenVerwaltung.loadBenutzer(username);
+                            UserVerwaltung.loadBenutzer(username);
                         DatenVerwaltung.leseAufgabe(username);
                         DatenVerwaltung.lesePruefung(username);
                         DatenVerwaltung.leseVeranstaltung(username);
