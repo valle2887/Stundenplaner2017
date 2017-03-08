@@ -14,36 +14,6 @@ import java.util.ArrayList;
  * @author Rakan Al-Swayyed
  */
 public class DatenVerwaltung {
-
-    // Anfang fuer speichernVonBenutzerdaten++++++++++++++++++++++++++++    
-    /**
-     * Speichern von Benutzerdaten.
-     * @param benutzerName .
-     * @param passwort .
-     * @param studiengang .
-     * @param punkte .
-     * @param punkte.
-     * @throws IOException .
-     */
-    // String Passwort zu Char[] passwort geaendert
-    public static void speichernVonBenutzerdaten(String benutzerName, 
-        char[] passwort, String studiengang, String punkte) throws IOException {
-
-        FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
-        schreiben.write(benutzerName);
-        schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(passwort);
-        schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(studiengang);
-        schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(punkte);
-        schreiben.append(System.getProperty("line.separator"));
-        schreiben.append(System.getProperty("line.separator"));
-        schreiben.close();
-    }
-    // Ende fuer speichernVonBenutzerdaten++++++++++++++++++++++++++++
-    
     // Anfang fuer speichernAufagbeArray++++++++++++++++++++++++++++    
     /**
      * Speichern von Terminen in Datei des Eingelogten Benutzers.
