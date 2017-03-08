@@ -10,7 +10,7 @@ import java.util.List;
  * 
  * @author Christian Lindenberg
  */
-public abstract class Termin {
+public class Termin {
     /**
      * Die Bezeichnung fuer den Termin.
      */
@@ -301,6 +301,20 @@ public abstract class Termin {
      * Der Typ eines Termins.
      */
     private Typ terminTyp;
+    
+    public String[] terminArray() {
+        
+        String[] termArray = new String[5];
+        
+        termArray[0] = bezeichnung;
+        termArray[1] = kommentar;
+        termArray[2] = dauer + "";
+        termArray[3] = datum;
+        termArray[4] = uhrzeit + "";
+        termArray[5] = wiederholbarkeitTermin + "";
+        
+        return termArray;
+    }
 
     /**
      * Bitte erstmal nchit beachten das haben wir mit dome gemacht!
