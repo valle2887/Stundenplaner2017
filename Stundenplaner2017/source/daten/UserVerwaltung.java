@@ -2,10 +2,12 @@ package daten;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Klasse, die fuer die Daten der Nutzerverwaltung verantworklich ist.
@@ -13,6 +15,32 @@ import java.util.ArrayList;
  */
 
 public class UserVerwaltung {
+    
+    /**
+     * Passwort vergleichen.
+     * @param benutzerName .
+     * @param passwort .
+     * @param scan .
+     * @return name, passwort .
+     * @throws FileNotFoundException .
+     */
+
+    public static boolean vergleichPasswort(Scanner scan,
+        String benutzerName, String passwort)
+        throws FileNotFoundException {
+
+        String loginName = benutzerName;
+        String loginPW = passwort;
+        String userName = scan.next();
+        String userPW = scan.next();
+        
+        if (userName.equals(loginName)) {
+            scan.close();
+            return userPW.equals(loginPW);
+        } else {
+            return false;
+        }
+    }
     /**
      * Speichern von Benutzerdaten.
      * @param benutzerName .
