@@ -8,9 +8,9 @@ import java.util.List;
  * Veranstaltung erben. Zeigt die Bezeichnung, einen Kommentar, die Dauer, die
  * Art und die Wiederholbarkeit eines Termins an.
  * 
- * @author Christian Lindenberg
+ * @author Rakan Al-Swayyed
  */
-public abstract class Termin {
+public class Termin {
     /**
      * Die Bezeichnung fuer den Termin.
      */
@@ -226,7 +226,9 @@ public abstract class Termin {
         /**
          * Auswahlmoeglichkeiten des Types.
          */
-        Universitaet("Universitaet"), Privat("Privat");
+       Nicht_gewaehlt(""),
+       Universitaet("Universitaet"),
+       Privat("Privat");
 
         /**
          * Der Name des Termines.
@@ -299,6 +301,7 @@ public abstract class Termin {
      * Der Typ eines Termins.
      */
     private Typ terminTyp;
+    
 
     /**
      * Bitte erstmal nchit beachten das haben wir mit dome gemacht!

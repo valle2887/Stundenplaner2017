@@ -2,7 +2,7 @@ package daten;
 /**
  * Die Klasse für die Pruefung, erbt von der Klasse Termin und zeigt die
  * Pruefungsdauer und die zur Pruefung gehoerende Veranstaltung.
- * @author Christian Lindenberg
+ * @author Rakan Al-Swayyed
  */
 public class Pruefung extends Termin {
 /**

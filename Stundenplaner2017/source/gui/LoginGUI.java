@@ -19,6 +19,7 @@ import javax.swing.SwingConstants;
 import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
+import daten.UserVerwaltung;
 
 /**
  * Klasse des Loginfensters, erbt von JFrame.
@@ -77,6 +78,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
     private JButton btnRegister = new JButton("Registrieren");
 
+
     /**
      * Konstruktorklasse des Loginfensters.
      */
@@ -121,10 +123,10 @@ public class LoginGUI extends JFrame implements ActionListener {
                     }
                 }
                 try {
-                    if (DatenVerwaltung.vergleichPasswort(dateiScanner, 
+                    if (UserVerwaltung.vergleichPasswort(dateiScanner, 
                         dateiName, passwort)) {
                         Benutzer benutzer =
-                            DatenVerwaltung.loadBenutzer(username);
+                            UserVerwaltung.loadBenutzer(username);
                         DatenVerwaltung.leseAufgabe(username);
                         DatenVerwaltung.lesePruefung(username);
                         DatenVerwaltung.leseVeranstaltung(username);

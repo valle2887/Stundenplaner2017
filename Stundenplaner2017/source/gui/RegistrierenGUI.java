@@ -13,7 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-import daten.DatenVerwaltung;
+import daten.UserVerwaltung;
 
 /**
  * Die Klasse RegistrierenGUI enthält alle GUI-Elemente die zum Registrieren 
@@ -195,7 +195,7 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
             File schreiben = new File(name + ".txt");
             if (!schreiben.exists()) {
                 try {
-                    DatenVerwaltung.speichernVonBenutzerdaten(name, 
+                    UserVerwaltung.speichernVonBenutzerdaten(name, 
                         passwort, studiengang, punkte);
 
                     dispose();
