@@ -2,7 +2,7 @@ package daten;
 /**
  * Klasse Aufgabe, welche von Termin erbt und eine Deadline fuer die Aufgaben
  * enthaelt.
- *@author Christian Lindenberg
+ * @author Rakan Al-Swayyed
  */
 public class Aufgabe extends Termin {
 
