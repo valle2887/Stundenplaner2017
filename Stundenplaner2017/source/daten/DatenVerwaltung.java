@@ -2,14 +2,10 @@ package daten;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Scanner;
-
-
 /**
  * Klasse Datenverwaltung. Diese ist daf¸r da um die Eingaben in eine Datei
  * zuschreiben
@@ -27,7 +23,7 @@ public class DatenVerwaltung {
      * @param punkte.
      * @throws IOException .
      */
-    // String Passwort zu Char[] passwort ge‰ndert
+    // String Passwort zu Char[] passwort geaendert
     public static void speichernVonBenutzerdaten(String benutzerName, 
         char[] passwort, String studiengang, String punkte) throws IOException {
 
