@@ -226,7 +226,9 @@ public abstract class Termin {
         /**
          * Auswahlmoeglichkeiten des Types.
          */
-        Universitaet("Universitaet"), Privat("Privat");
+       Nicht_gewaehlt(""),
+       Universitaet("Universitaet"),
+       Privat("Privat");
 
         /**
          * Der Name des Termines.
