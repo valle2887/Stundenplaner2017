@@ -36,8 +36,8 @@ public class LoginGUI extends JFrame implements ActionListener {
     /**
      * Label und Textfeld f&uuml;r den Usernamen.
      */
-    private JLabel lblUsername = new JLabel("Username: ", +
-        SwingConstants.CENTER);
+    private JLabel lblUsername =
+        new JLabel("Username: ", +SwingConstants.CENTER);
 
     /**
      * JTextField.
@@ -48,17 +48,18 @@ public class LoginGUI extends JFrame implements ActionListener {
     /**
      * Label und Passwortfeld für das Passwort des Users.
      */
-    private JLabel lblPasswort = new JLabel("Passwort: ", +
-        SwingConstants.CENTER);
+    private JLabel lblPasswort =
+        new JLabel("Passwort: ", +SwingConstants.CENTER);
 
     /**
      * JPasswordField.
      */
 
     private JPasswordField pwPasswort = new JPasswordField(20);
-    
+
     /**
      * Methode zum einlesen des benutzernamens.
+     * 
      * @return benutzerName
      */
     public static String nameLogin() {
@@ -78,7 +79,6 @@ public class LoginGUI extends JFrame implements ActionListener {
 
     private JButton btnRegister = new JButton("Registrieren");
 
-
     /**
      * Konstruktorklasse des Loginfensters.
      */
@@ -95,75 +95,66 @@ public class LoginGUI extends JFrame implements ActionListener {
         this.add(btnLogin);
         this.add(btnRegister);
         pack();
-        setVisible(true);    
+        setVisible(true);
         btnRegister.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 dispose();
                 new RegistrierenGUI();
             }
         });
-        btnLogin.addActionListener(new ActionListener() {
-            
-            public void actionPerformed(ActionEvent event) {
-                String username = txtUsername.getText();
-                char[] passwortChar = pwPasswort.getPassword();
-                String passwort = new String(passwortChar);
-                String dateiName = null;
-                Scanner dateiScanner = null;               
-                File file = new File(username + ".txt");
-                if (file.exists()) {
-                    dateiName = username;         
-                    try {
-                        dateiScanner = 
-                            new Scanner(new File(dateiName + ".txt"));
-                    } catch (FileNotFoundException exc) {
-                        JOptionPane.showMessageDialog(null, "ERROR!", 
-                            "ERROR!", JOptionPane.ERROR_MESSAGE);
-                        exc.printStackTrace();
-                    }
-                }
-                try {
-                    if (UserVerwaltung.vergleichPasswort(dateiScanner, 
-                        dateiName, passwort)) {
-                        Benutzer benutzer =
-                            UserVerwaltung.loadBenutzer(username);
-                        DatenVerwaltung.leseAufgabe(username);
-                        DatenVerwaltung.lesePruefung(username);
-                        DatenVerwaltung.leseVeranstaltung(username);
-                        AktuelleSitzung aktuelleSitzung =
-                            AktuelleSitzung.getAktuelleSitzung();
-                        aktuelleSitzung.setBenutzer(benutzer);
-                        //JOptionPane.showMessageDialog(null, "ERROR123!");
-                        new KalenderGui();
-                        dispose();
-                  
-                    } else { 
-                        JOptionPane.showMessageDialog(null, "Anmeldedaten "
-                            + "stimmen nicht ueberein!");            
-                    }
-                    
-                          
-                } catch (IOException e2) {
 
-                    e2.printStackTrace();   
-                }  
-            }
-        });
-            
-        
+        btnLogin.addActionListener(this);
+        pwPasswort.addActionListener(this);
+
     }
 
     /**
      * Autogenerierte Methode.
-     * @param e .
+     * 
+     * @param e
+     *            .
      */
     public void actionPerformed(ActionEvent e) {
-        // TODO Auto-generated method stub
-        
+        String username = txtUsername.getText();
+        char[] passwortChar = pwPasswort.getPassword();
+        String passwort = new String(passwortChar);
+        String dateiName = null;
+        Scanner dateiScanner = null;
+        File file = new File(username + ".txt");
+        if (file.exists()) {
+            dateiName = username;
+            try {
+                dateiScanner = new Scanner(new File(dateiName + ".txt"));
+            } catch (FileNotFoundException exc) {
+                JOptionPane.showMessageDialog(null, "ERROR!", "ERROR!",
+                    JOptionPane.ERROR_MESSAGE);
+                exc.printStackTrace();
+            }
+        }
+        try {
+            if (UserVerwaltung.vergleichPasswort(dateiScanner, dateiName,
+                passwort)) {
+                Benutzer benutzer = UserVerwaltung.loadBenutzer(username);
+                DatenVerwaltung.leseAufgabe(username);
+                DatenVerwaltung.lesePruefung(username);
+                DatenVerwaltung.leseVeranstaltung(username);
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+                aktuelleSitzung.setBenutzer(benutzer);
+                // JOptionPane.showMessageDialog(null, "ERROR123!");
+                new KalenderGui();
+                dispose();
+
+            } else {
+                JOptionPane.showMessageDialog(null,
+                    "Anmeldedaten " + "stimmen nicht ueberein!");
+            }
+
+        } catch (IOException e2) {
+
+            e2.printStackTrace();
+        }
+
     }
 
 }
-            
-
-
-
