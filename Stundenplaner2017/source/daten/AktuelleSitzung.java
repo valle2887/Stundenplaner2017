@@ -348,48 +348,48 @@ public class AktuelleSitzung {
      *            .
      * @return wochenAufgaben.
      */
-    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
-        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
-        for (int i = 0; i < aufgaben.size(); i++) {
-            if (Datum.liegtImZeitintervall(start,
-                aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
-                aufgaben.get(i).getDauer())) {
-                wochenAufgaben.add(aufgaben.get(i));
-            }
-        }
-        return wochenAufgaben;
-    }
+//    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
+//        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
+//        for (int i = 0; i < aufgaben.size(); i++) {
+//            if (Datum.liegtImZeitintervall(start,
+//                aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
+//                aufgaben.get(i).getDauer())) {
+//                wochenAufgaben.add(aufgaben.get(i));
+//            }
+//        }
+//        return wochenAufgaben;
+//    }
 
     /**
      * @return wochenPruefung
      */
-    public ArrayList<Pruefung> wochenPruefung(Date start) {
-        ArrayList<Pruefung> wochenPruefung = new ArrayList<Pruefung>();
-        for (int i = 0; i < pruefungen.size(); i++) {
-            if (Datum.liegtImZeitintervall(start,
-                pruefungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                pruefungen.get(i).getDauer())) {
-                wochenPruefung.add(pruefungen.get(i));
-            }
-        }
-        return wochenPruefung;
-    }
-
-    /**
-     * @return wochenVeranstaltung
-     */
-    public ArrayList<Veranstaltung> wochenVeranstaltung(Date start) {
-
-        ArrayList<Veranstaltung> wochenVeranstaltung =
-            new ArrayList<Veranstaltung>();
-        for (int i = 0; i < veranstaltungen.size(); i++) {
-            if (Datum.liegtImZeitintervall(start,
-                veranstaltungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                veranstaltungen.get(i).getDauer())) {
-                wochenVeranstaltung.add(veranstaltungen.get(i));
-            }
-        }
-        return wochenVeranstaltung;
+//    public ArrayList<Pruefung> wochenPruefung(Date start) {
+//        ArrayList<Pruefung> wochenPruefung = new ArrayList<Pruefung>();
+//        for (int i = 0; i < pruefungen.size(); i++) {
+//            if (Datum.liegtImZeitintervall(start,
+//                pruefungen.get(i).stringZuDatum(), 60 * 24 * 7,
+//                pruefungen.get(i).getDauer())) {
+//                wochenPruefung.add(pruefungen.get(i));
+//            }
+//        }
+//        return wochenPruefung;
+//    }
+//
+//    /**
+//     * @return wochenVeranstaltung
+//     */
+//    public ArrayList<Veranstaltung> wochenVeranstaltung(Date start) {
+//
+//        ArrayList<Veranstaltung> wochenVeranstaltung =
+//            new ArrayList<Veranstaltung>();
+//        for (int i = 0; i < veranstaltungen.size(); i++) {
+//            if (Datum.liegtImZeitintervall(start,
+//                veranstaltungen.get(i).stringZuDatum(), 60 * 24 * 7,
+//                veranstaltungen.get(i).getDauer())) {
+//                wochenVeranstaltung.add(veranstaltungen.get(i));
+//            }
+//        }
+//        return wochenVeranstaltung;
 
     /**
      * Der Setter von AktuelleSitzung aktuelleSitzung.
