@@ -88,22 +88,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JComboBox<Object> cbTag = new JComboBox<Object>(arrayTag);
     /**
-     * Label lPkt1.
-     */
-    private JLabel lPkt1 = new JLabel(".");
-    /**
-     * Label lPkt2.
-     */
-    private JLabel lPkt2 = new JLabel(".");
-    /**
-     * Label lPkt3.
-     */
-    private JLabel lPkt3 = new JLabel(".");
-    /**
-     * Label lPkt4.
-     */
-    private JLabel lPkt4 = new JLabel(".");
-    /**
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
@@ -121,6 +105,22 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbJahr.
      */
     private JComboBox<Object> cbJahr = new JComboBox<Object>(arrayJahr);
+    /**
+     * Label lPkt1.
+     */
+    private JLabel lPkt1 = new JLabel(".");
+    /**
+     * Label lPkt2.
+     */
+    private JLabel lPkt2 = new JLabel(".");
+    /**
+     * Label lPkt3.
+     */
+    private JLabel lPkt3 = new JLabel(".");
+    /**
+     * Label lPkt4.
+     */
+    private JLabel lPkt4 = new JLabel(".");
     /**
      * Label lUhrzeit.
      */
@@ -147,7 +147,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbMinuten.
      */
     private JComboBox<Object> cbMinuten = new JComboBox<Object>(arrayMinuten);
-    //++++++++++++++++++++++++
     /**
      * JLabel lDeadline.
      */
@@ -185,7 +184,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JComboBox<Object> cbJahrDeadL =
         new JComboBox<Object>(arrayJahrDeadL);
-    //+++++++++++++++++++++++++
     /**
      * Label lNotiz.
      */
