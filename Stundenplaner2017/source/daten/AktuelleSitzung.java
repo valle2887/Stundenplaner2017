@@ -18,7 +18,7 @@ public class AktuelleSitzung {
     /**
      * der benutzer von Variablentyp Benutzer.
      */
-    private Benutzer benutzer;
+    private static Benutzer aktuellerBenutzer;
 
     /**
      * Die ArrayList, die die aufgaben enthaehlt.
@@ -78,7 +78,7 @@ public class AktuelleSitzung {
      * @return benutzer
      */
     public Benutzer getBenutzer() {
-        return benutzer;
+        return aktuellerBenutzer;
     }
 
     /**
@@ -156,7 +156,7 @@ public class AktuelleSitzung {
      *            Die Benutzer vom Typ Benutzer
      */
     public void setBenutzer(Benutzer benutzer) {
-        this.benutzer = benutzer;
+        this.aktuellerBenutzer = benutzer;
     }
 
     /**

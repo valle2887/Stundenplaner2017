@@ -34,6 +34,11 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * 
      */
+    private static final long serialVersionUID = 9188545393807038651L;
+
+    /**
+     * 
+     */
     private LocalDateTime date = LocalDateTime.now();
 
     /**
@@ -49,37 +54,32 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * 
      */
-    private JMenu info = new JMenu("Info");
+    private JMenu menuInf = new JMenu("Info");
 
     /**
      * 
      */
-    private JMenu kw = new JMenu("kw");
+    private JButton btnLinks = new JButton("<<");
 
     /**
      * 
      */
-    private JButton buttonLinks = new JButton("<<");
+    private JButton btnRechts = new JButton(">>");
 
     /**
      * 
      */
-    private JButton buttonRechts = new JButton(">>");
+    private JLabel lblWoche = new JLabel("Woche");
 
     /**
      * 
      */
-    private JLabel txtWoche = new JLabel("Woche");
+    private JTable tblTable = new JTable();
 
     /**
      * 
      */
-    private JTable table = new JTable();
-
-    /**
-     * 
-     */
-    private JScrollPane scrollPane = new JScrollPane(table);
+    private JScrollPane slpPane = new JScrollPane(tblTable);
 
     /**
      * 
@@ -89,47 +89,50 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * 
      */
-    private JMenu benutzer = new JMenu("Benutzer");
+    private JMenu menuBenutzer = new JMenu("Benutzer");
 
     /**
      * 
      */
-    private JMenuItem benutzerAnzeigen = new JMenuItem("Benutzer Info");
+    private JMenuItem miBenutzerAnzeigen = new JMenuItem("Benutzer Info");
 
     /**
      * 
      */
-    private JMenuItem benutzerAusloggen = new JMenuItem("Benutzer ausloggen");
+    private JMenuItem miBenutzerAusloggen = new JMenuItem("Benutzer ausloggen");
 
     /**
      * 
      */
-    private JMenuItem benutzerBarbeiten = new JMenuItem("Benutzer bearbeiten");
+    private JMenuItem miBenutzerBarbeiten =
+        new JMenuItem("Benutzer bearbeiten");
 
     /**
      * 
      */
-    private JMenu termin = new JMenu("Termine");
+    private JMenu menuTermin = new JMenu("Termine");
 
     /**
      * 
      */
-    private JMenuItem terminBearbeiten = new JMenuItem("Terminbearbeiten");
+    private JMenuItem miTerminBearbeiten = new JMenuItem("Terminbearbeiten");
 
     /**
      * 
      */
-    private JMenuItem neuerTermin = new JMenuItem("Neuer Termin");
+    private JMenuItem miNeuerTermin = new JMenuItem("Neuer Termin");
 
     /**
      * 
      */
-    private JMenuItem termineExportieren = new JMenuItem("Termine exportieren");
+    private JMenuItem miTermineExportieren =
+        new JMenuItem("Termine exportieren");
 
     /**
      * 
      */
-    private JMenuItem termineImportieren = new JMenuItem("Termine importieren");
+    private JMenuItem miTermineImportieren =
+        new JMenuItem("Termine importieren");
 
     /**
      * 
@@ -175,35 +178,35 @@ public class KalenderGui extends JFrame implements ActionListener {
         setTitle("Kalender - KW " + kalenderwoche + " von " + formatDate(montag)
             + " bis " + formatDate(sonntag));
 
-        menueBar.add(benutzer);
-        menueBar.add(termin);
-        menueBar.add(info);
-        menueBar.add(buttonLinks);
-        menueBar.add(buttonRechts);
+        menueBar.add(menuBenutzer);
+        menueBar.add(menuTermin);
+        menueBar.add(menuInf);
+        menueBar.add(btnLinks);
+        menueBar.add(btnRechts);
 
-        buttonLinks.addActionListener(this);
-        buttonRechts.addActionListener(this);
+        btnLinks.addActionListener(this);
+        btnRechts.addActionListener(this);
 
-        txtWoche = new JLabel();
-        txtWoche.setText("Woche");
-        menueBar.add(txtWoche);
-        txtWoche.setPreferredSize(new Dimension(30, 2));
+        lblWoche = new JLabel();
+        lblWoche.setText("Woche");
+        menueBar.add(lblWoche);
+        lblWoche.setPreferredSize(new Dimension(30, 2));
 
-        menueBar.add(buttonRechts);
+        menueBar.add(btnRechts);
 
-        benutzer.add(benutzerAnzeigen);
-        benutzerAnzeigen.addActionListener(this);
-        benutzer.add(benutzerBarbeiten);
-        benutzerBarbeiten.addActionListener(this);
-        benutzer.add(benutzerAusloggen);
-        benutzerAusloggen.addActionListener(this);
-        termin.add(neuerTermin);
-        neuerTermin.addActionListener(this);
-        termin.add(terminBearbeiten);
-        terminBearbeiten.addActionListener(this);
-        termin.add(termineExportieren);
-        termineExportieren.addActionListener(this);
-        termin.add(termineImportieren);
+        menuBenutzer.add(miBenutzerAnzeigen);
+        miBenutzerAnzeigen.addActionListener(this);
+        menuBenutzer.add(miBenutzerBarbeiten);
+        miBenutzerBarbeiten.addActionListener(this);
+        menuBenutzer.add(miBenutzerAusloggen);
+        miBenutzerAusloggen.addActionListener(this);
+        menuTermin.add(miNeuerTermin);
+        miNeuerTermin.addActionListener(this);
+        menuTermin.add(miTerminBearbeiten);
+        miTerminBearbeiten.addActionListener(this);
+        menuTermin.add(miTermineExportieren);
+        miTermineExportieren.addActionListener(this);
+        menuTermin.add(miTermineImportieren);
 
         this.setJMenuBar(menueBar);
 
@@ -213,15 +216,14 @@ public class KalenderGui extends JFrame implements ActionListener {
 
         tabellenmodellGruppeA = new DefaultTableModel(zeilen, spalten);
 
-        table = new JTable(tabellenmodellGruppeA);
-        table.getTableHeader().setEnabled(false);
+        tblTable = new JTable(tabellenmodellGruppeA);
+        tblTable.getTableHeader().setEnabled(false);
 
-        table.setAutoResizeMode(4);
+        tblTable.setAutoResizeMode(4);
 
-   
         gedrueck();
 
-        mainContainer.add(new JScrollPane(table));
+        mainContainer.add(new JScrollPane(tblTable));
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
@@ -234,14 +236,6 @@ public class KalenderGui extends JFrame implements ActionListener {
 
     public int getKalenderwoche() {
         Calendar cal = GregorianCalendar.getInstance();
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.MONDAY);
-        String datum = cal.get(Calendar.DAY_OF_MONTH) + ".";
-        datum += (cal.get(Calendar.MONTH) + 1) + ".";
-        datum += cal.get(Calendar.YEAR);
-        cal.set(Calendar.DAY_OF_WEEK, Calendar.SATURDAY);
-        String datum2 = (cal.get(Calendar.DAY_OF_MONTH) + 1) + ".";
-        datum2 += (cal.get(Calendar.MONTH) + 1) + ".";
-        datum2 += cal.get(Calendar.YEAR);
         int datum3 = (cal.get(Calendar.WEEK_OF_YEAR));
         return datum3;
     }
@@ -251,7 +245,7 @@ public class KalenderGui extends JFrame implements ActionListener {
      */
     public void gedrueck() {
 
-        benutzerAnzeigen.addActionListener(new ActionListener() {
+        miBenutzerAnzeigen.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setResizable(false);
@@ -260,7 +254,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        benutzerAusloggen.addActionListener(new ActionListener() {
+        miBenutzerAusloggen.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -269,7 +263,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        benutzerBarbeiten.addActionListener(new ActionListener() {
+        miBenutzerBarbeiten.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 dispose();
@@ -278,7 +272,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        neuerTermin.addActionListener(new ActionListener() {
+        miNeuerTermin.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 KalenderGui.this.setVisible(false);
@@ -286,7 +280,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        terminBearbeiten.addActionListener(new ActionListener() {
+        miTerminBearbeiten.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
@@ -294,7 +288,7 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        termineExportieren.addActionListener(new ActionListener() {
+        miTermineExportieren.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
@@ -302,14 +296,14 @@ public class KalenderGui extends JFrame implements ActionListener {
             }
         });
 
-        info.addActionListener(new ActionListener() {
+        menuInf.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 // TODO Auto-generated method stub
 
             }
         });
-        buttonLinks.addActionListener(new ActionListener() {
+        btnLinks.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
 
@@ -334,7 +328,7 @@ public class KalenderGui extends JFrame implements ActionListener {
      * @param e
      */
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(buttonLinks)) {
+        if (e.getSource().equals(btnLinks)) {
             date = date.minusDays(7);
 
             kalenderwoche--;
@@ -347,10 +341,10 @@ public class KalenderGui extends JFrame implements ActionListener {
             setTitle("Kalender - KW " + kalenderwoche + " von "
                 + formatDate(montag) + " bis " + formatDate(sonntag));
 
-            buttonRechts.setText(">>" + (kalenderwoche + 1));
-            buttonLinks.setText((kalenderwoche - 1) + "<<");
+            btnRechts.setText(">>" + (kalenderwoche + 1));
+            btnLinks.setText((kalenderwoche - 1) + "<<");
 
-        } else if (e.getSource().equals(buttonRechts)) {
+        } else if (e.getSource().equals(btnRechts)) {
             date = date.plusDays(7);
 
             kalenderwoche++;
@@ -363,28 +357,27 @@ public class KalenderGui extends JFrame implements ActionListener {
             setTitle("Kalender - KW " + kalenderwoche + " von "
                 + formatDate(montag) + " bis " + formatDate(sonntag));
 
-            buttonRechts.setText(">>" + (kalenderwoche + 1));
-            buttonLinks.setText((kalenderwoche - 1) + "<<");
+            btnRechts.setText(">>" + (kalenderwoche + 1));
+            btnLinks.setText((kalenderwoche - 1) + "<<");
 
         }
 
     }
-////    mausListener
-//    /**
-//     * @param e
-//     */
-//    public void mousePressed(KalenderGui kalenderGui) {
-//
-//        if (MouseEvent.BUTTON1 == 2) {
-//            new NeuenTerminHinzu();
-//        } else if (MouseEvent.BUTTON2 == 1) {
-//            JPopupMenu popmen = new JPopupMenu();
-//            popmen.add(terminBearbeiten);
-//            popmen.add(termineExportieren);
-//            popmen.add(termineImportieren);
-//
-//        }
-//
-    
+    //// mausListener
+    // /**
+    // * @param e
+    // */
+    // public void mousePressed(KalenderGui kalenderGui) {
+    //
+    // if (MouseEvent.BUTTON1 == 2) {
+    // new NeuenTerminHinzu();
+    // } else if (MouseEvent.BUTTON2 == 1) {
+    // JPopupMenu popmen = new JPopupMenu();
+    // popmen.add(miTerminBearbeiten);
+    // popmen.add(miTermineExportieren);
+    // popmen.add(miTermineImportieren);
+    //
+    // }
+    //
 
 }
