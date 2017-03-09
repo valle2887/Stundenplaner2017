@@ -77,7 +77,7 @@ public class AktuelleSitzung {
      * 
      * @return benutzer
      */
-    public Benutzer getBenutzer() {
+    public static Benutzer getBenutzer() {
         return aktuellerBenutzer;
     }
 
@@ -155,8 +155,8 @@ public class AktuelleSitzung {
      * @param benutzer
      *            Die Benutzer vom Typ Benutzer
      */
-    public void setBenutzer(Benutzer benutzer) {
-        this.aktuellerBenutzer = benutzer;
+    public static void setBenutzer(Benutzer benutzer) {
+        aktuellerBenutzer = benutzer;
     }
 
     /**

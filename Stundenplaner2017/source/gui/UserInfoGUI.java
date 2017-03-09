@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
+
 /**
  * Klasse, welche die Daten des Benutzers anzeigt.
  * @author Christian Lindenberg
@@ -48,7 +50,9 @@ public class UserInfoGUI extends JFrame {
 
     
     public void infoAnzeigen() {
-        
+        lblUsername.setText(AktuelleSitzung.getBenutzer().getUsername());
+        lblUserStudiengang.setText(
+            AktuelleSitzung.getBenutzer().getStudiengang());
     }
     /**
      * Konstruktorklasse fuer die UserInfoGUI.
@@ -73,6 +77,8 @@ public class UserInfoGUI extends JFrame {
        
         add(lblECTS);
         add(lblUserECTS);
+        
+        infoAnzeigen();
         
         //TODO Methode fuer befuellen der Felder
         
