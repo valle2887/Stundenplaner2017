@@ -92,6 +92,18 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JLabel lPkt1 = new JLabel(".");
     /**
+     * Label lPkt2.
+     */
+    private JLabel lPkt2 = new JLabel(".");
+    /**
+     * Label lPkt3.
+     */
+    private JLabel lPkt3 = new JLabel(".");
+    /**
+     * Label lPkt4.
+     */
+    private JLabel lPkt4 = new JLabel(".");
+    /**
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
@@ -100,10 +112,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbMonat.
      */
     private JComboBox<Object> cbMonat = new JComboBox<Object>(arrayMonat);
-    /**
-     * Label lPkt2.
-     */
-    private JLabel lPkt2 = new JLabel(".");
     /**
      * Array arrayJahr mit 6 Jahre.
      */
@@ -139,10 +147,45 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbMinuten.
      */
     private JComboBox<Object> cbMinuten = new JComboBox<Object>(arrayMinuten);
+    //++++++++++++++++++++++++
     /**
      * JLabel lDeadline.
      */
-   // private JLabel lDeadline = new JLabel("Deadline:");
+    private JLabel lDeadline = new JLabel("Deadline:");
+    /**
+     * Array arrayTagDeadL mit 31 tage.
+     */
+    private String[] arrayTagDeadL = {"", "1", "2", "3", "4", "5", "6", "7",
+        "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", 
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+        "31" };
+    /**
+     * JComboBox cbTagDeadL.
+     */
+    private JComboBox<Object> cbTagDeadL = new JComboBox<Object>(arrayTagDeadL);
+    /**
+     * Array arrayMonatDeadL mit 12 Monate.
+     */
+    private String[] arrayMonatDeadL =
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+
+    /**
+     * JComboBox cbMonatDeadL.
+     */
+    private JComboBox<Object> cbMonatDeadL =
+        new JComboBox<Object>(arrayMonatDeadL);
+    /**
+     * Array arrayJahrDeadL mit 6 Jahre.
+     */
+    private String[] arrayJahrDeadL =
+        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+
+    /**
+     * JComboBox cbJahrDeadL.
+     */
+    private JComboBox<Object> cbJahrDeadL =
+        new JComboBox<Object>(arrayJahrDeadL);
+    //+++++++++++++++++++++++++
     /**
      * Label lNotiz.
      */
@@ -154,7 +197,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Label lWiederh.
      */
-    private JLabel lWiederh = new JLabel("wiederholung:");
+    private JLabel lWiederh = new JLabel("      wiederholung:");
     /**
      * JButtongroupe bgWieder.
      */
@@ -188,6 +231,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private String[] arrayMarker =
         {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
+    // marken noch nicht fertig
     /**
      * JComboBox cbMarker fuer marken.
      */
@@ -211,7 +255,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Label lEcts.
      */
-    private JLabel lEcts = new JLabel("      ECTS");
+    private JLabel lEcts = new JLabel("      ECTS:");
     /**
      * JTextField tEcts.
      */
@@ -232,6 +276,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JTextField tGebaeude.
      */
     private JTextField tGebaeude = new JTextField(20);
+    /**
+     * Label lZugehoerigV .
+     */
+    private JLabel lZugehoerigV =
+        new JLabel("    Zugehörige Veranstaltung:");
+    /**
+     * JTextField tZugehoerigV.
+     */
+    private JTextField tZugehoerigV = new JTextField(20);
     /**
      * Label lRaum.
      */
@@ -265,12 +318,16 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JPanel p5 = new JPanel();
     /**
+     * JPanel p6 .
+     */
+    private JPanel p6 = new JPanel();
+    /**
      * Konstruktor der Klasse NeuenTerminHinzu .
      */
     public NeuenTerminHinzu() {
         setTitle("Termin Hinzufügen");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(5, 2));
+        setLayout(new GridLayout(7, 1));
         setResizable(false);
         setLocationRelativeTo(null);
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
@@ -308,27 +365,32 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p2.add(tEcts);
         p2.add(lKategorie);
         p2.add(cbKategorie);
+        //Datum
         p2.add(lDatum);
         p2.add(cbTag);
         p2.add(lPkt1);
         p2.add(cbMonat);
         p2.add(lPkt2);
         p2.add(cbJahr);
-        p2.add(lUhrzeit);
-        p2.add(cbStunden);
-        p2.add(lDpkt);
-        p2.add(cbMinuten);
-        p2.add(lDauer);
-        p2.add(cbDauer);
-        p2.add(lMin);
+        //Deadline
+        p3.add(lDeadline);
+        p3.add(cbTagDeadL);
+        p3.add(lPkt3);
+        p3.add(cbMonatDeadL);
+        p3.add(lPkt4);
+        p3.add(cbJahrDeadL);
+        //Uhrzeit
+        p3.add(lUhrzeit);
+        p3.add(cbStunden);
+        p3.add(lDpkt);
+        p3.add(cbMinuten);
+        p3.add(lDauer);
+        p3.add(cbDauer);
+        p3.add(lMin);
         p3.add(lWiederh);
+        p3.add(cbWieOft);
         //p3.add(rbNein);
        // p3.add(rbJa);
-        p3.add(cbWieOft);
-        p3.add(lMarker);
-        p3.add(cbMarker);
-        p3.add(lNotiz);
-        p3.add(tNotiz);
        // bgWieder.add(rbNein);
        // bgWieder.add(rbJa);
         p4.add(lDozent);
@@ -337,12 +399,19 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p4.add(tGebaeude);
         p4.add(lRaum);
         p4.add(tRaum);
-        p5.add(speichern);
+        p5.add(lMarker);
+        p5.add(cbMarker);
+        p5.add(lZugehoerigV);
+        p5.add(tZugehoerigV);
+        p5.add(lNotiz);
+        p5.add(tNotiz);
+        p6.add(speichern);
         add(p1);
         add(p2);
         add(p3);
         add(p4);
         add(p5);
+        add(p6);
     }
     /**
      * prueft welche von den drei radiobutton ausgewaehlt wurde.
@@ -379,12 +448,21 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         tBezeichnung.setVisible(true);
         lKategorie.setVisible(true);
         cbKategorie.setVisible(true);
+        //Datum
         lDatum.setVisible(true);
-        cbTag.setVisible(true);
         lPkt1.setVisible(true);
-        cbMonat.setVisible(true);
         lPkt2.setVisible(true);
+        cbTag.setVisible(true);
+        cbMonat.setVisible(true);
         cbJahr.setVisible(true);
+        //Deadline
+        lDeadline.setVisible(true);
+        lPkt3.setVisible(true);
+        lPkt4.setVisible(true);
+        cbTagDeadL.setVisible(true);
+        cbMonatDeadL.setVisible(true);
+        cbJahrDeadL.setVisible(true);
+        //Uhrzeit
         lUhrzeit.setVisible(true);
         cbStunden.setVisible(true);
         lDpkt.setVisible(true);
@@ -397,6 +475,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(false);
+        tZugehoerigV.setVisible(false);
     }
     /**
      * macht felder sichtbar fuer termin Typ Veranstaltung.
@@ -417,12 +497,21 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         tBezeichnung.setVisible(true);
         lKategorie.setVisible(true);
         cbKategorie.setVisible(true);
+        //Datum
         lDatum.setVisible(true);
         cbTag.setVisible(true);
         lPkt1.setVisible(true);
-        cbMonat.setVisible(true);
         lPkt2.setVisible(true);
+        cbMonat.setVisible(true);
         cbJahr.setVisible(true);
+        //Deadline
+        lDeadline.setVisible(false);
+        lPkt3.setVisible(false);
+        lPkt4.setVisible(false);
+        cbTagDeadL.setVisible(false);
+        cbMonatDeadL.setVisible(false);
+        cbJahrDeadL.setVisible(false);
+        //Uhrzeit
         lUhrzeit.setVisible(true);
         cbStunden.setVisible(true);
         lDpkt.setVisible(true);
@@ -435,6 +524,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(false);
+        tZugehoerigV.setVisible(false);
     }
     /**
      * macht felder sichtbar fuer termin Typ Pruefung.
@@ -455,12 +546,21 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         tBezeichnung.setVisible(true);
         lKategorie.setVisible(true);
         cbKategorie.setVisible(true);
+        //Datum
         lDatum.setVisible(true);
         cbTag.setVisible(true);
         lPkt1.setVisible(true);
-        cbMonat.setVisible(true);
         lPkt2.setVisible(true);
+        cbMonat.setVisible(true);
         cbJahr.setVisible(true);
+        //Deadline
+        lDeadline.setVisible(false);
+        lPkt3.setVisible(false);
+        lPkt4.setVisible(false);
+        cbTagDeadL.setVisible(false);
+        cbMonatDeadL.setVisible(false);
+        cbJahrDeadL.setVisible(false);
+        //Uhrzeit
         lUhrzeit.setVisible(true);
         cbStunden.setVisible(true);
         lDpkt.setVisible(true);
@@ -473,6 +573,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(true);
+        tZugehoerigV.setVisible(true);
     }
 
     /**
@@ -604,7 +706,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         Object kategorie = cbKategorie.getSelectedItem();
         // pruefung.setTerminTyp(kategorie);
 
-        Object Gebaeude = tGebaeude.getText();
+        Object gebaeude = tGebaeude.getText();
         // pruefung.set
 
         Object raumnummer = tRaum.getText();
@@ -639,6 +741,19 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Datum: Jahr muss gewählt werden!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
+            //DeadLine
+        } else if (cbTagDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonatDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahrDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);    
             // uhrzeit
         } else if ((cbStunden.getSelectedIndex() == 0
             && cbMinuten.getSelectedIndex() != 0)) {
@@ -723,7 +838,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Dauer: muss gewählt sein!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
         // zum speichern! noch nicht fertig
+            // Zugehoerige Veranstaltung
+        } else if (tZugehoerigV.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Zugehoerige Veranstaltung: muss angegeben sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
         } else {
+            //methode umzu speichern.
             pruefungSpeichern();
             
             JOptionPane.showMessageDialog(null,
