@@ -289,7 +289,6 @@ public class Termin {
          * Name des Termines.
          */
         private final String name;
-
         /**
          * Methode, um die Wiederholbarkeit eines Termines festzulegen.
          * 
@@ -309,7 +308,6 @@ public class Termin {
             return name;
         }
     }
-
     /**
      * Die Wiederholbarkeit eines Termins.
      */
@@ -319,19 +317,4 @@ public class Termin {
      * Der Typ eines Termins.
      */
     private Typ terminTyp;
-    
-
-    /**
-     * Bitte erstmal nchit beachten das haben wir mit dome gemacht!
-     * 
-     * @param obj
-     *            es wird ein objekt übergeben
-     * @return es wird true oder false übergeben
-     */
-
-    /**
-     * public boolean equals(Object obj) { if (obj == null) { return false; } if
-     * (!(obj instanceof Termin)) { return false; } return id == ((Termin)
-     * obj).id; }
-     */
 }
