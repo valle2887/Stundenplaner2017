@@ -20,20 +20,22 @@ public class Termin {
      * Kommentar fuer den Termin.
      */
     private String kommentar;
-    
+
     /**
      * Die Dauer des Termins.
      */
     private int dauer;
-    
+
     /**
      * Das Datum, an dem der Termin stattfindet.
      */
     private String datum;
+
     /**
      * Die Uhrzeit, an der der Termin stattfindet.
      */
     private String uhrzeit;
+
     /**
      * Eine Liste, welche die Markierungen fuer einen Termin enthaelt.
      */
@@ -41,6 +43,7 @@ public class Termin {
 
     /**
      * Getter fuer die Markierung des Termins.
+     * 
      * @return markierung
      */
     public List<Markierung> getMarkierung() {
@@ -49,8 +52,9 @@ public class Termin {
 
     /**
      * Setter fuer die Markierung des Termins.
+     * 
      * @param markierung
-     * Die Markierung des Termins wird gesetzt.
+     *            Die Markierung des Termins wird gesetzt.
      */
     public void setMarkierung(List<Markierung> markierung) {
         this.markierung = markierung;
@@ -130,8 +134,7 @@ public class Termin {
      * @param wiederholen
      *            Setzt die Wiederholbarkeit eines Termins.
      */
-    public void setWiederholbarkeitTermin(
-        Wiederholbarkeit wiederholen) {
+    public void setWiederholbarkeitTermin(Wiederholbarkeit wiederholen) {
         this.wiederholbarkeitTermin = wiederholen;
     }
 
@@ -156,6 +159,7 @@ public class Termin {
 
     /**
      * Getter fuer das Datum.
+     * 
      * @return datum
      */
     public String getDatum() {
@@ -164,8 +168,9 @@ public class Termin {
 
     /**
      * Setter fuer das Datum.
-     * @param datum 
-     * Setzt das Datum fuer den Termin.
+     * 
+     * @param datum
+     *            Setzt das Datum fuer den Termin.
      */
     public void setDatum(String datum) {
         this.datum = datum;
@@ -173,6 +178,7 @@ public class Termin {
 
     /**
      * Getter fuer die Uhrzeit.
+     * 
      * @return uhrzeit
      */
     public String getUhrzeit() {
@@ -181,16 +187,16 @@ public class Termin {
 
     /**
      * Setter fuer die Uhrzeit.
+     * 
      * @param uhrzeit
-     * Setzt die Uhrzeit fuer den Termin.
+     *            Setzt die Uhrzeit fuer den Termin.
      */
     public void setUhrzeit(String uhrzeit) {
         this.uhrzeit = uhrzeit;
     }
-    
+
     /**
-     * Eine Aufzaehlung von den Markierungen, welche die Termine haben
-     * koennen.
+     * Eine Aufzaehlung von den Markierungen, welche die Termine haben koennen.
      */
     public enum Markierung {
         /**
@@ -217,8 +223,6 @@ public class Termin {
          * Markierung fuer eine schwere Veranstaltung.
          */
         SCHWIERIG
-        
-        
     };
 
     /**
@@ -231,19 +235,18 @@ public class Termin {
          * Auswahlmoeglichkeiten des Types.
          */
         Not_Selected("Not Selected"),
-       /**
-        * Auswahlmoeglichkeiten Universitaet des Types.
-        */
-       Universitaet("Universitaet"),
-       /**
-        * Auswahlmoeglichkeiten Privat des Types.
-        */
-       Privat("Privat");
+        /**
+         * Auswahlmoeglichkeiten Universitaet des Types.
+         */
+        Universitaet("Universitaet"),
+        /**
+         * Auswahlmoeglichkeiten Privat des Types.
+         */
+        Privat("Privat");
 
         /**
          * Der Name des Termines.
          */
-
         private final String name;
 
         /**
@@ -270,25 +273,26 @@ public class Termin {
      * Aufzaehlung ueber die Wiederholbarkeit des Termins, sprich ob der Termin
      * einmalig ist, oder woechentlich auftritt.
      */
-
     public enum Wiederholbarkeit {
         /**
          * Wiederholbarkeit, ob der Termin einmalig oder Woechentlich
          * stattfindet.
          */
-        Not_Selected("Not Selected"), 
+        Not_Selected("Not Selected"),
         /**
          * 
          */
-        Einmalig("Einmalig"), 
+        Einmalig("Einmalig"),
         /**
          * 
          */
         Woechentlich("Woechentlich");
+
         /**
          * Name des Termines.
          */
         private final String name;
+
         /**
          * Methode, um die Wiederholbarkeit eines Termines festzulegen.
          * 
@@ -308,6 +312,7 @@ public class Termin {
             return name;
         }
     }
+
     /**
      * Die Wiederholbarkeit eines Termins.
      */
