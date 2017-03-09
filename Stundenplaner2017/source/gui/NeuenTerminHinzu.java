@@ -922,7 +922,4 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             new KalenderGui(); 
         }
     }
-    public static void main(String[] args) {
-        new NeuenTerminHinzu();
-    }
 }
