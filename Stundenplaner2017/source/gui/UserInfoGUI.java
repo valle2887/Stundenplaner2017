@@ -13,6 +13,11 @@ import daten.AktuelleSitzung;
  * @author Christian Lindenberg
  */
 public class UserInfoGUI extends JFrame {
+    
+    /**
+     * UID.
+     */
+    private static final long serialVersionUID = 1470199715109444935L;
     /**
      * Label Username.
      */
@@ -31,15 +36,6 @@ public class UserInfoGUI extends JFrame {
      */
     private JLabel lblUserStudiengang = new JLabel("");
     /**
-     * Label Semester.
-     */
-    private JLabel lblSemester =
-        new JLabel("Semester: ", SwingConstants.CENTER);
-    /**
-     * Label, welches das Semester des aktuellen Users anzeigt.
-     */
-    private JLabel lblUserSemester = new JLabel("");
-    /**
      * Label ECTS.
      */
     private JLabel lblECTS = new JLabel("ECTS: ", SwingConstants.CENTER);
@@ -48,11 +44,15 @@ public class UserInfoGUI extends JFrame {
      */
     private JLabel lblUserECTS = new JLabel("");
 
-    
+    /**
+     * Methode um die Daten des aktuellen Benutzers in den UserLabels 
+     * anzeigen zu lassen.
+     */
     public void infoAnzeigen() {
         lblUsername.setText(AktuelleSitzung.getBenutzer().getUsername());
         lblUserStudiengang.setText(
             AktuelleSitzung.getBenutzer().getStudiengang());
+        lblUserECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
     }
     /**
      * Konstruktorklasse fuer die UserInfoGUI.
@@ -63,7 +63,7 @@ public class UserInfoGUI extends JFrame {
         setTitle("User Information");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setResizable(true);
-        setLayout(new GridLayout(4, 2));
+        setLayout(new GridLayout(3, 2));
         setLocationRelativeTo(null); 
         
         add(lblName);
@@ -71,9 +71,6 @@ public class UserInfoGUI extends JFrame {
        
         add(lblStudiengang);
         add(lblUserStudiengang);
-       
-        add(lblSemester);
-        add(lblUserSemester);
        
         add(lblECTS);
         add(lblUserECTS);
