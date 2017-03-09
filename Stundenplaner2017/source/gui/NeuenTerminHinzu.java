@@ -15,11 +15,10 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-//import daten.DatenVerwaltung;
-//import daten.Aufgabe;
-//import daten.Veranstaltung;
-//import daten.Pruefung;
-//import daten.Termin;
+
+import daten.Aufgabe;
+import daten.Veranstaltung;
+import daten.Pruefung;
 /**
  * Die klasse ist dazu da um neue Termine Hinzufuegen.
  * @author Rakan Al-Swayyed
@@ -281,6 +280,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         // methode fehlerDialog zeigt MessageDialog falls was nicht ausgefüllt 
         // wurde und wenn alles vollständig ist dann soll er Termin speichern.
         fehlerDialog();
+        //methode um daten zu speichern.
+        //allesSpeichern();
 
         pack();
         setVisible(true);
@@ -488,52 +489,14 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                         "Termin Typ: muss gewaehlt werden", "Error!",
                         JOptionPane.ERROR_MESSAGE);
                 } else if (rbAufg.isSelected()) {
+                    //methode wenn aufgabeGewaehlt worde. 
                     aufgabeGewaehlt();
-                    //if (event.getSource() == speichern) {
-                      //  aufgabeSpeichern();
-                    //}
                 } else if (rbPruef.isSelected()) {
+                    //methode wenn pruefungGewaehlt worde. 
                     pruefGewaehlt();
-                    //if (event.getSource() == speichern) {
-                        //pruefungSpeichern();
-                    //}
                 } else {
+                    //methode wenn veranstaltungGewaehlt worde.
                     veranGewaehlt();
-                    //if (event.getSource() == speichern) {
-                      //  veranstaltungSpeichern();
-                    //}
-                }
-            }
-        });
-    }
-    //++++++++++++++++++++++++++++++++++++++++++ab hier 
-    /**
-     * 
-     */
-    private void allesSpeichern() {
-        speichern.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
-                // Termin Typ
-                if (!rbAufg.isSelected() && !rbVeran.isSelected()
-                    && !rbPruef.isSelected()) {
-                    JOptionPane.showMessageDialog(null,
-                        "Termin Typ: muss gewaehlt werden", "Error!",
-                        JOptionPane.ERROR_MESSAGE);
-                } else if (rbAufg.isSelected()) {
-                    aufgabeGewaehlt();
-                    //if (event.getSource() == speichern) {
-                      //  aufgabeSpeichern();
-                    //}
-                } else if (rbPruef.isSelected()) {
-                    pruefGewaehlt();
-                    //if (event.getSource() == speichern) {
-                        //pruefungSpeichern();
-                    //}
-                } else {
-                    veranGewaehlt();
-                    //if (event.getSource() == speichern) {
-                      //  veranstaltungSpeichern();
-                    //}
                 }
             }
         });
@@ -542,111 +505,112 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * speichern von aufgabe. noch nicht fertig wegen die Klasse
      * AktuelleSitzung.
      */
-    // public void aufgabeSpeichern() {
+    public void aufgabeSpeichern() {
 
-    // Aufgabe aufgabe = new Aufgabe();
+        Aufgabe aufgabe = new Aufgabe();
 
-    // String bezeichnung = tBezeichnung.getText();
-    // 7/aufgabe.setBezeichnung(bezeichnung);
+        String bezeichnung = tBezeichnung.getText();
+        aufgabe.setBezeichnung(bezeichnung);
 
-    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-    // + "." + cbJahr.getSelectedItem();
-    // aufgabe.setDatum(datum);
+        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+            + "." + cbJahr.getSelectedItem();
+        aufgabe.setDatum(datum);
 
-    // String zeit =
-    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-    // aufgabe.setUhrzeit(zeit);
+        String zeit =
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+        aufgabe.setUhrzeit(zeit);
 
-    // int dauer = cbDauer.getSelectedItem();
-    // aufgabe.setDauer(dauer);
+        //int dauer = cbDauer.getSelectedItem();
+        //aufgabe.setDauer(dauer);
 
-    // String notiz = tNotiz.getText();
-    // aufgabe.setKommentar(notiz);
+        String notiz = tNotiz.getText();
+        aufgabe.setKommentar(notiz);
 
-    // String wiederholen = cbWieOft.getSelectedItem();
-    // aufgabe.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+        //aufgabe.setWiederholbarkeitTermin(wiederholen);
 
-    // String kategorie = cbKategorie.getSelectedItem();
-    // aufgabe.setTerminTyp(kategorie);
-    // }
+        //String kategorie = cbKategorie.getSelectedItem();
+        //aufgabe.setTerminTyp(kategorie);
+    }
     /**
      * speichern von veranstaltung . noch nicht fertig wegen die Klasse
      * AktuelleSitzung.
      */
-    // public void veranstaltungSpeichern() {
+    public void veranstaltungSpeichern() {
 
-    // Veranstaltung veranstaltung = new Veranstaltung();
+        Veranstaltung veranstaltung = new Veranstaltung();
 
-    // String bezeichnung = tBezeichnung.getText();
-    // veranstaltung.setBezeichnung(bezeichnung);
+        String bezeichnung = tBezeichnung.getText();
+        veranstaltung.setBezeichnung(bezeichnung);
 
-    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-    // + "." + cbJahr.getSelectedItem();
-    // veranstaltung.setDatum(datum);
+        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+            + "." + cbJahr.getSelectedItem();
+        veranstaltung.setDatum(datum);
 
-    // String zeit =
-    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-    // veranstaltung.setUhrzeit(zeit);
+        String zeit =
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+        veranstaltung.setUhrzeit(zeit);
 
-    // int dauer = (int) cbDauer.getSelectedItem();
-    // veranstaltung.setDauer(dauer);
+        int dauer = (int) cbDauer.getSelectedItem();
+        veranstaltung.setDauer(dauer);
 
-    // String notiz = tNotiz.getText();
-    // veranstaltung.setKommentar(notiz);
+        String notiz = tNotiz.getText();
+        veranstaltung.setKommentar(notiz);
 
-    // String wiederholen = cbWieOft.getSelectedItem();
-    // veranstaltung.setWiederholbarkeitTermin(wiederholen);
+        //String wiederholen = cbWieOft.getSelectedItem();
+        //veranstaltung.setWiederholbarkeitTermin(wiederholen);
 
-    // String kategorie = cbKategorie.getSelectedItem();
-    // veranstaltung.setTerminTyp(kategorie);
+        //String kategorie = cbKategorie.getSelectedItem();
+        //veranstaltung.setTerminTyp(kategorie);
 
-    // String gebaeude = tGebaeude.getText();
-    // veranstaltung.setGebaeude(gebaeude);
+        String gebaeude = tGebaeude.getText();
+        veranstaltung.setGebaeude(gebaeude);
 
-    // String raumnummer = tRaum.getText();
-    // veranstaltung.setRaumnummer(raumnummer);
+        String raumnummer = tRaum.getText();
+        veranstaltung.setRaumnummer(raumnummer);
 
-    // String dozent = tDozent.getText();
-    // veranstaltung.setDozent(dozent);
+        String dozent = tDozent.getText();
+        veranstaltung.setDozent(dozent);
 
-    // String ects = tEcts.getText();
-    // veranstaltung.setEcts(ects);
-    // }
+        String ects = tEcts.getText();
+        //veranstaltung.setEcts(ects);
+    }
+
     /**
-     * speichern von pruefung . noch nicht fertig wegen die Klasse
+     * speichern von pruefung noch nicht fertig wegen die Klasse
      * AktuelleSitzung.
      */
-    // public void pruefungSpeichern() {
+    public void pruefungSpeichern() {
 
-    // Pruefung pruefung = new Pruefung();
+        Pruefung pruefung = new Pruefung();
 
-    // String bezeichnung = tBezeichnung.getText();
-    // pruefung.setBezeichnung(bezeichnung);
+        String bezeichnung = tBezeichnung.getText();
+        pruefung.setBezeichnung(bezeichnung);
 
-    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-    // + "." + cbJahr.getSelectedItem();
-    // pruefung.setDatum(datum);
+        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+            + "." + cbJahr.getSelectedItem();
+        pruefung.setDatum(datum);
 
-    // String zeit =
-    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-    // pruefung.setUhrzeit(zeit);
+        String zeit =
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+        pruefung.setUhrzeit(zeit);
 
-    // String dauer = cbDauer.getSelectedItem();
-    // pruefung.setDauer(dauer);
+        // String dauer = cbDauer.getSelectedItem();
+        // pruefung.setDauer(dauer);
 
-    // Object notiz = tNotiz.getText();
-    // pruefung.setKommentar(notiz);
+        Object notiz = tNotiz.getText();
+        // pruefung.setKommentar(notiz);
 
-    // Object kategorie = cbKategorie.getSelectedItem();
-    // pruefung.setTerminTyp(kategorie);
+        Object kategorie = cbKategorie.getSelectedItem();
+        // pruefung.setTerminTyp(kategorie);
 
-    // Object Gebaeude = tGebaeude.getText();
-    // pruefung.set
+        Object Gebaeude = tGebaeude.getText();
+        // pruefung.set
 
-    // Object raumnummer = tRaum.getText();
-    // pruefung.set
+        Object raumnummer = tRaum.getText();
+        // pruefung.set
 
-    // }
+    }
 
     /**
      * JRadioButton rbAufg wenn gewaehlt dann soll er ueberpruefen ob die felder
@@ -697,11 +661,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
+            aufgabeSpeichern();
+            
             JOptionPane.showMessageDialog(null,
-                "Jetzt kann gespeichert werden!", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+                "Aufgabe Gespeichert", "INFORMATION!",
+                JOptionPane.WARNING_MESSAGE);
+
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
+            new KalenderGui();
         }
     }
     /**
@@ -756,11 +724,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
         // zum speichern! noch nicht fertig
         } else {
+            pruefungSpeichern();
+            
             JOptionPane.showMessageDialog(null,
-                "Jetzt kann gespeichert werden!", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+                "Pruefung Gespeichert", "INFORMATION!",
+                JOptionPane.WARNING_MESSAGE);
+
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
+            new KalenderGui();
         }
     }
     /**
@@ -819,11 +791,14 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
+            veranstaltungSpeichern();
             JOptionPane.showMessageDialog(null,
-                "Jetzt kann gespeichert werden!", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+                "Veranstaltung Gespeichert", "INFORMATION!",
+                JOptionPane.WARNING_MESSAGE);
+
             NeuenTerminHinzu.this.setVisible(false);
-            NeuenTerminHinzu.this.dispose();  
+            NeuenTerminHinzu.this.dispose();
+            new KalenderGui(); 
         }
     }
 }
