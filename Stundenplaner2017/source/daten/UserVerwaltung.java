@@ -147,4 +147,14 @@ public class UserVerwaltung {
         // gebe benutzer informationen zurueck.
         return benutzer; 
     }
+    /**
+     * Methode, um den momentan angemeldeten Benutzer zu loeschen.
+     * @param userName wird uebergeben.
+     * @return geloescht
+     */
+    public static boolean loeschenBenutzer(String userName) {
+        File file = new File(userName + ".txt");
+        boolean geloescht = file.delete();
+        return geloescht;
+    }
 }
