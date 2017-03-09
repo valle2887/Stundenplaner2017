@@ -8,11 +8,14 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import daten.AktuelleSitzung;
 import daten.Benutzer;
+import daten.UserVerwaltung;
 
 /** Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von
  * JFrame und implementiert ActionListener.
@@ -24,17 +27,6 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      * Automatisch generierte SerialVersionUID.
      */
     private static final long serialVersionUID = 173569253861900744L;
-    
-    /**
-     * Label, um dem User einen neuen Namen geben zu koennen.
-     */
-    private JLabel lblNeuerName = 
-        new JLabel("Neuer Name: ", SwingConstants.CENTER);
-    
-    /**
-     * Textfeld, um dem User einen neuen Namen geben zu koennen.
-     */
-    private JTextField txtNeuerName = new JTextField(20);
     
     /**
      * Label um dem User einen neuen Studiengang geben zu koennen.
@@ -100,16 +92,19 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      * @return userGeloescht
      */
     public boolean userLoeschen(String userName) {
+        AktuelleSitzung.getBenutzer();
         userName = Benutzer.getUsername();
         File file = new File(userName + ".txt");
         boolean userGeloescht = file.delete();
         return userGeloescht;
+        
     }
     
     /**
      * Methode, die den Buttonklick ausfuehrt.
      * @param event wird uebergeben
      */
+    /*
     public void actionPerformed(ActionEvent event) {
         if (event.getSource() == btnSpeichern) {
             dispose();
@@ -124,11 +119,19 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
             
             
             if (event.getSource() == btnLoeschen) {
-                userLoeschen(getName());
+                int auswahl = JOptionPane.showConfirmDialog(null,
+                    "Wirklich loeschen?", "Wirklich loeschen?",
+                    JOptionPane.YES_NO_OPTION);
+                if (auswahl == JOptionPane.YES_OPTION) {
+                    userLoeschen(getName());
+                } else if (auswahl == JOptionPane.NO_OPTION) {
+                    dispose();
+                }
+                    
             }
         }
     }
-    
+    */
     /**
      * Konstruktorklasse des Fensters um die User bearbeiten zu koennen.
      */
@@ -137,9 +140,6 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         setTitle("Benutzerdaten ändern");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLayout(new GridLayout(7, 2));
-        
-        this.add(lblNeuerName);
-        this.add(txtNeuerName);
         
         this.add(lblNeuStudiengang);
         this.add(txtNeuStudiengang);
@@ -156,6 +156,33 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         this.add(btnAbbrechen);
         this.add(btnLoeschen);
         
+        btnAbbrechen.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent event) {
+                dispose();       
+            }
+            
+        });
+        
+        btnLoeschen.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent event) {
+                int wirklich = JOptionPane.showConfirmDialog(null,
+                    "Wirklich loeschen?", "Wirklich loeschen?",
+                    JOptionPane.YES_NO_OPTION);
+                if (wirklich == JOptionPane.YES_OPTION) {
+                    AktuelleSitzung.getBenutzer();
+                    UserVerwaltung.loeschenBenutzer(Benutzer.getUsername());
+                    dispose();
+                    new LoginGUI();
+                } else if (wirklich == JOptionPane.NO_OPTION) {
+                    JOptionPane.getRootFrame().dispose();
+                }
+            }
+            
+            
+        });
+        
         pack();
         setVisible(true);
         
@@ -164,8 +191,11 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
             
        
     }
-    public static void main(String[] args) {
-        new UserBearbeitenGUI();
+
+
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+        
     }
 }
  
