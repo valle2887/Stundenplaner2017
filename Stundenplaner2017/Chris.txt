@@ -1,5 +1,0 @@
-Username: 	Chris
-Passwort: 	123
-Studiengang: 	Winf
-ECTS: 	107
-
