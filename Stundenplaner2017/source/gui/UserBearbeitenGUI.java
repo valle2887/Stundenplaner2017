@@ -4,12 +4,12 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.io.IOException;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
@@ -46,27 +46,23 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
     /** Textfeld, um dem User eine neue Anzahl an Creditpunkten zu geben.
      */
     private JTextField txtNeuECTS = new JTextField(3);
-    
     /**
-     * Label um dem User ein neues Passwort geben zu koennen.
+     * Label fuer das neue Passwort.
      */
-    private JLabel lblNeuPW = 
-        new JLabel("Neues Passwort: ", SwingConstants.CENTER);
+    private JLabel lblNeuPasswort = new JLabel("Neues Passwort: "
+        , SwingConstants.CENTER);
     /**
-     * Passwortfeld, um dem User ein neues Passwort geben zu koennen.
+     * Textfeld fuer das neue Passwort.
      */
-    private JPasswordField pwNeuPasswort = new JPasswordField(20);
-    
+    private JTextField txtNeuPasswort = new JTextField(20);
     /**
-     * Label zum erneutem angeben des neu gewaehlten Passwortes des Users.
+     * Label fuer das nochmals eingegebene Passwort.
      */
-    private JLabel lblPWnochmal = 
-        new JLabel("Passwort wiederholen: ", SwingConstants.CENTER);
+    private JLabel lblPasswortNochmal = new JLabel("Passwort nochmal ");
     /**
-     * Passwortfeld zum erneuten angeben des neu gewaehlten Passwortes des
-     * Users.
+     * Textfeld fuer das nochmal eingegebene Passwort.
      */
-    private JPasswordField pwNeuPasswordNochmal = new JPasswordField(20);
+    private JTextField txtNeuPasswortNochmal = new JTextField(20);
     
     /**
      * Button um die aktualisierten Daten zu speichern.
@@ -101,38 +97,6 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
     }
     
     /**
-     * Methode, die den Buttonklick ausfuehrt.
-     * @param event wird uebergeben
-     */
-    /*
-    public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == btnSpeichern) {
-            dispose();
-            new LoginGUI();
-        } else {
-            
-            
-            if (event.getSource() == btnAbbrechen) {
-                dispose();
-                new KalenderGui();
-            } 
-            
-            
-            if (event.getSource() == btnLoeschen) {
-                int auswahl = JOptionPane.showConfirmDialog(null,
-                    "Wirklich loeschen?", "Wirklich loeschen?",
-                    JOptionPane.YES_NO_OPTION);
-                if (auswahl == JOptionPane.YES_OPTION) {
-                    userLoeschen(getName());
-                } else if (auswahl == JOptionPane.NO_OPTION) {
-                    dispose();
-                }
-                    
-            }
-        }
-    }
-    */
-    /**
      * Konstruktorklasse des Fensters um die User bearbeiten zu koennen.
      */
     public UserBearbeitenGUI() {
@@ -140,32 +104,23 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         setTitle("Benutzerdaten ändern");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setLayout(new GridLayout(7, 2));
-        
         this.add(lblNeuStudiengang);
         this.add(txtNeuStudiengang);
         this.add(lblNeuECTS);
         this.add(txtNeuECTS);
-        
-        this.add(lblNeuPW);
-        this.add(pwNeuPasswort);
-        
-        this.add(lblPWnochmal);
-        this.add(pwNeuPasswordNochmal);
-        
+        this.add(lblNeuPasswort);
+        this.add(txtNeuPasswort);
+        this.add(lblPasswortNochmal);
+        this.add(txtNeuPasswortNochmal);
         this.add(btnSpeichern);
         this.add(btnAbbrechen);
         this.add(btnLoeschen);
-        
         btnAbbrechen.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent event) {
                 dispose();       
             }
-            
         });
-        
         btnLoeschen.addActionListener(new ActionListener() {
-
             public void actionPerformed(ActionEvent event) {
                 int wirklich = JOptionPane.showConfirmDialog(null,
                     "Wirklich loeschen?", "Wirklich loeschen?",
@@ -178,24 +133,43 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                 } else if (wirklich == JOptionPane.NO_OPTION) {
                     JOptionPane.getRootFrame().dispose();
                 }
-            }
-            
-            
+            } 
         });
-        
+        btnSpeichern.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                String[] daten = new String[4];
+                daten[0] = txtNeuPasswort.getText();
+                daten[1] = txtNeuStudiengang.getText();
+                daten[2] = txtNeuECTS.getText();
+                daten[3] = txtNeuPasswortNochmal.getText();
+     
+                AktuelleSitzung.
+                        getBenutzer();
+                    try {
+                        UserVerwaltung.bearbeitenBenutzer(
+                                    Benutzer.getUsername(), daten);
+                    } catch (IOException exc) {
+                        // TODO Auto-generated catch block
+                        exc.printStackTrace();
+                    }
+                    AktuelleSitzung.getAktuelleSitzung();
+                    AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
+                    AktuelleSitzung.getBenutzer().setEcts(daten[2]);
+                    AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
+                    dispose();
+                    
+            }         
+        });
         pack();
         setVisible(true);
-        
-
-
-            
-       
     }
-
-
+/**
+ * Autogeneriert.
+ * @param e 
+ */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
         
     }
 }
- 
+   

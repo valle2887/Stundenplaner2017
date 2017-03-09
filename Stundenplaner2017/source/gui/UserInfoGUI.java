@@ -7,6 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import daten.AktuelleSitzung;
+import daten.Benutzer;
 
 /**
  * Klasse, welche die Daten des Benutzers anzeigt.
@@ -49,7 +50,8 @@ public class UserInfoGUI extends JFrame {
      * anzeigen zu lassen.
      */
     public void infoAnzeigen() {
-        lblUsername.setText(AktuelleSitzung.getBenutzer().getUsername());
+        AktuelleSitzung.getBenutzer();
+        lblUsername.setText(Benutzer.getUsername());
         lblUserStudiengang.setText(
             AktuelleSitzung.getBenutzer().getStudiengang());
         lblUserECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
