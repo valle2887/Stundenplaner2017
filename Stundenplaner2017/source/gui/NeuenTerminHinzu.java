@@ -277,6 +277,15 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private JTextField tGebaeude = new JTextField(20);
     /**
+     * Label lZugehoerigV .
+     */
+    private JLabel lZugehoerigV =
+        new JLabel("    Zugehörige Veranstaltung:");
+    /**
+     * JTextField tZugehoerigV.
+     */
+    private JTextField tZugehoerigV = new JTextField(20);
+    /**
      * Label lRaum.
      */
     private JLabel lRaum = new JLabel("      Raum:    ");
@@ -318,7 +327,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     public NeuenTerminHinzu() {
         setTitle("Termin Hinzufügen");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(6, 1));
+        setLayout(new GridLayout(7, 1));
         setResizable(false);
         setLocationRelativeTo(null);
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
@@ -379,11 +388,9 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p3.add(cbDauer);
         p3.add(lMin);
         p3.add(lWiederh);
+        p3.add(cbWieOft);
         //p3.add(rbNein);
        // p3.add(rbJa);
-        p3.add(cbWieOft);
-        p3.add(lMarker);
-        p3.add(cbMarker);
        // bgWieder.add(rbNein);
        // bgWieder.add(rbJa);
         p4.add(lDozent);
@@ -392,6 +399,10 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p4.add(tGebaeude);
         p4.add(lRaum);
         p4.add(tRaum);
+        p5.add(lMarker);
+        p5.add(cbMarker);
+        p5.add(lZugehoerigV);
+        p5.add(tZugehoerigV);
         p5.add(lNotiz);
         p5.add(tNotiz);
         p6.add(speichern);
@@ -464,6 +475,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(false);
+        tZugehoerigV.setVisible(false);
     }
     /**
      * macht felder sichtbar fuer termin Typ Veranstaltung.
@@ -511,6 +524,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(false);
+        tZugehoerigV.setVisible(false);
     }
     /**
      * macht felder sichtbar fuer termin Typ Pruefung.
@@ -558,6 +573,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         cbMarker.setVisible(true);
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
+        lZugehoerigV.setVisible(true);
+        tZugehoerigV.setVisible(true);
     }
 
     /**
@@ -821,7 +838,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Dauer: muss gewählt sein!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
         // zum speichern! noch nicht fertig
+            // Zugehoerige Veranstaltung
+        } else if (tZugehoerigV.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Zugehoerige Veranstaltung: muss angegeben sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
         } else {
+            //methode umzu speichern.
             pruefungSpeichern();
             
             JOptionPane.showMessageDialog(null,
