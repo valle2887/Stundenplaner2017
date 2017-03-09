@@ -194,6 +194,10 @@ public class Termin {
      */
     public enum Markierung {
         /**
+         * 
+         */
+        Not_Selected,
+        /**
          * Markierung fuer einen erledigten Termin.
          */
         TERMIN_ERLEDIGT,
@@ -226,7 +230,7 @@ public class Termin {
         /**
          * Auswahlmoeglichkeiten des Types.
          */
-       Nicht_gewaehlt(""),
+        Not_Selected("Not Selected"),
        /**
         * Auswahlmoeglichkeiten Universitaet des Types.
         */
@@ -272,7 +276,15 @@ public class Termin {
          * Wiederholbarkeit, ob der Termin einmalig oder Woechentlich
          * stattfindet.
          */
-        Einmalig("Einmalig"), Woechentlich("Woechentlich");
+        Not_Selected("Not Selected"), 
+        /**
+         * 
+         */
+        Einmalig("Einmalig"), 
+        /**
+         * 
+         */
+        Woechentlich("Woechentlich");
         /**
          * Name des Termines.
          */

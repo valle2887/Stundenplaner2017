@@ -13,6 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import daten.Aufgabe;
+import daten.Termin;
+import daten.Termin.Markierung;
+import daten.Termin.Typ;
+import daten.Termin.Wiederholbarkeit;
 
 /**
  * @author Rakan Al-Swayyed
@@ -47,14 +51,14 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * und private.
      */
     //arrayKategorie brauchen wir nicht mehr.
-    private String[] arrayKategorie = {"", "Universität", "private" };
+   // private String[] arrayKategorie = {"", "Universität", "private" };
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
-    private JComboBox<Object> cbKategorie =
-        new JComboBox<Object>(arrayKategorie);
-    //private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
-      //  Typ.values());
+   // private JComboBox<Object> cbKategorie =
+       // new JComboBox<Object>(arrayKategorie);
+    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+        Typ.values());
     /**
      * Label lDatum.
      */
@@ -192,15 +196,15 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
-    private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
-        "Monatlich"};
+    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
+     //   "Monatlich"};
     /**
      * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
      * wochenlich.
      */
-    //private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
-      //  .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
-    private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
+        .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
      * Label lMarker.
      */
@@ -208,12 +212,14 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayMarker.
      */
-    private String[] arrayMarker =
-        {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
+    //private String[] arrayMarker =
+      //  {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
     /**
      * JComboBox cbMarker fuer marken.
      */
-    private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
+    //private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
+    private JComboBox<Markierung> cbMarker = new JComboBox<Termin
+        .Markierung>(Termin.Markierung.values());
     /**
      * Array arrayDauer.
      */

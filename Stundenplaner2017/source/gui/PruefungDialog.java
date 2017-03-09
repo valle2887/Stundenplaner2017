@@ -14,6 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import daten.Pruefung;
+import daten.Termin;
+import daten.Termin.Markierung;
+import daten.Termin.Typ;
 
 /**
  * @author Rakan Al-Swayyed
@@ -52,10 +55,10 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
-    private JComboBox<Object> cbKategorie =
-        new JComboBox<Object>(arrayKategorie);
-    //private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
-      //  Typ.values());
+    //private JComboBox<Object> cbKategorie =
+      //  new JComboBox<Object>(arrayKategorie);
+    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+        Typ.values());
     /**
      * Label lDatum.
      */
@@ -141,12 +144,14 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayMarker.
      */
-    private String[] arrayMarker =
-        {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
+    //private String[] arrayMarker =
+      //  {"", "noch nicht", "noch nicht", "noch nicht", "noch nicht"};
     /**
      * JComboBox cbMarker fuer marken.
      */
-    private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
+    //private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
+    private JComboBox<Markierung> cbMarker = new JComboBox<Termin
+        .Markierung>(Termin.Markierung.values());
     /**
      * Array arrayDauer.
      */
