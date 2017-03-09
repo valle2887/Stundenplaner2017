@@ -13,6 +13,7 @@ import javax.swing.JScrollPane;
 
 /**
  * @author Rakan Al-Swayyed
+ * brauchen wir vielleicht nicht wegen dialog.
  */
 public class TerminUebersicht extends JFrame implements ActionListener {
     /**

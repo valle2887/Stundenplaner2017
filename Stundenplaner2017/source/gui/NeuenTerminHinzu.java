@@ -16,11 +16,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //import daten.DatenVerwaltung;
-import daten.Aufgabe;
-import daten.Veranstaltung;
-import daten.Pruefung;
+//import daten.Aufgabe;
+//import daten.Veranstaltung;
+//import daten.Pruefung;
 //import daten.Termin;
 /**
+ * Die klasse ist dazu da um neue Termine Hinzufuegen.
  * @author Rakan Al-Swayyed
  */
 public class NeuenTerminHinzu extends JFrame implements ActionListener {
@@ -273,12 +274,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         setLayout(new GridLayout(5, 2));
         setResizable(false);
         setLocationRelativeTo(null);
-
+        // methode um Panel Zu Konstruktor fuegen wegen platz mangel
+        // ausgelagert.
+        fuegePanelZuKonstruktor();
+        
         // methode fehlerDialog zeigt MessageDialog falls was nicht ausgefüllt 
         // wurde und wenn alles vollständig ist dann soll er Termin speichern.
         fehlerDialog();
-       //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
-        fuegePanelZuKonstruktor();
 
         pack();
         setVisible(true);
@@ -471,6 +473,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         lNotiz.setVisible(true);
         tNotiz.setVisible(true);
     }
+
     /**
      * methoden aufgabeGewaehlt, pruefGewaehlt, veranGewaehlt ausgelagert da
      * sonst checkstyle fehler methode > 70 zeilen.
@@ -486,135 +489,168 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                         JOptionPane.ERROR_MESSAGE);
                 } else if (rbAufg.isSelected()) {
                     aufgabeGewaehlt();
-                    if (event.getSource() == speichern) {
-                        aufgabeSpeichern();
-                    }
-                    dispose();
+                    //if (event.getSource() == speichern) {
+                      //  aufgabeSpeichern();
+                    //}
                 } else if (rbPruef.isSelected()) {
                     pruefGewaehlt();
-                    if (event.getSource() == speichern) {
-                        pruefungSpeichern();
-                    }
-                    dispose();
+                    //if (event.getSource() == speichern) {
+                        //pruefungSpeichern();
+                    //}
                 } else {
                     veranGewaehlt();
-                    if (event.getSource() == speichern) {
-                        veranstaltungSpeichern();
-                    }
-                    dispose();
+                    //if (event.getSource() == speichern) {
+                      //  veranstaltungSpeichern();
+                    //}
+                }
+            }
+        });
+    }
+    //++++++++++++++++++++++++++++++++++++++++++ab hier 
+    /**
+     * 
+     */
+    private void allesSpeichern() {
+        speichern.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent event) {
+                // Termin Typ
+                if (!rbAufg.isSelected() && !rbVeran.isSelected()
+                    && !rbPruef.isSelected()) {
+                    JOptionPane.showMessageDialog(null,
+                        "Termin Typ: muss gewaehlt werden", "Error!",
+                        JOptionPane.ERROR_MESSAGE);
+                } else if (rbAufg.isSelected()) {
+                    aufgabeGewaehlt();
+                    //if (event.getSource() == speichern) {
+                      //  aufgabeSpeichern();
+                    //}
+                } else if (rbPruef.isSelected()) {
+                    pruefGewaehlt();
+                    //if (event.getSource() == speichern) {
+                        //pruefungSpeichern();
+                    //}
+                } else {
+                    veranGewaehlt();
+                    //if (event.getSource() == speichern) {
+                      //  veranstaltungSpeichern();
+                    //}
                 }
             }
         });
     }
     /**
-     * speichern von aufgabe.
+     * speichern von aufgabe. noch nicht fertig wegen die Klasse
+     * AktuelleSitzung.
      */
-    public void aufgabeSpeichern() {
-        
-        Aufgabe aufgabe = new Aufgabe();
-        
-        String bezeichnung = tBezeichnung.getText();
-        aufgabe.setBezeichnung(bezeichnung);
-        
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        aufgabe.setDatum(datum);
-        
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        aufgabe.setUhrzeit(zeit);
-        
-       // int dauer = cbDauer.getSelectedItem();
-        //aufgabe.setDauer(dauer);
-        
-        String notiz = tNotiz.getText();
-        aufgabe.setKommentar(notiz);
-        
-        //String wiederholen = cbWieOft.getSelectedItem();
-       // aufgabe.setWiederholbarkeitTermin(wiederholen);
-        
-       // String kategorie = cbKategorie.getSelectedItem();
-       // aufgabe.setTerminTyp(kategorie);
-    }
-    /**
-     * speichern von veranstaltung .
-     */
-    public void veranstaltungSpeichern() {
-        
-        Veranstaltung veranstaltung = new Veranstaltung();
-        
-        String bezeichnung = tBezeichnung.getText();
-        veranstaltung.setBezeichnung(bezeichnung);
+    // public void aufgabeSpeichern() {
 
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        veranstaltung.setDatum(datum);
-        
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        veranstaltung.setUhrzeit(zeit);
-        
-        int dauer = (int) cbDauer.getSelectedItem();
-        veranstaltung.setDauer(dauer);
-        
-        String notiz = tNotiz.getText();
-        veranstaltung.setKommentar(notiz);
-        
-        //String wiederholen = cbWieOft.getSelectedItem();
-       // veranstaltung.setWiederholbarkeitTermin(wiederholen);
-        
-       // String kategorie = cbKategorie.getSelectedItem();
-       // veranstaltung.setTerminTyp(kategorie);
-        
-        String gebaeude = tGebaeude.getText();
-        veranstaltung.setGebaeude(gebaeude);
-        
-        String raumnummer = tRaum.getText();
-        veranstaltung.setRaumnummer(raumnummer);
-        
-        String dozent = tDozent.getText();
-        veranstaltung.setDozent(dozent);
-        
-        //String ects = tEcts.getText();
-       // veranstaltung.setEcts(ects);
-    }
-    /**
-     * speichern von pruefung .
-     */
-    public void pruefungSpeichern() {
-        
-        Pruefung pruefung = new Pruefung();
-        
-        String bezeichnung = tBezeichnung.getText();
-        pruefung.setBezeichnung(bezeichnung);
-        
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        pruefung.setDatum(datum);
-        
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        pruefung.setUhrzeit(zeit);
-        
-        //String dauer = cbDauer.getSelectedItem();
-        //pruefung.setDauer(dauer);
-        
-        //Object notiz = tNotiz.getText();
-        //pruefung.setKommentar(notiz);
-        
-        //Object kategorie = cbKategorie.getSelectedItem();
-        //pruefung.setTerminTyp(kategorie);
-        
-        //Object Gebaeude = tGebaeude.getText();
-        //pruefung.set
-        
-       // Object raumnummer = tRaum.getText();
-        //pruefung.set
+    // Aufgabe aufgabe = new Aufgabe();
 
-    }
+    // String bezeichnung = tBezeichnung.getText();
+    // 7/aufgabe.setBezeichnung(bezeichnung);
+
+    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+    // + "." + cbJahr.getSelectedItem();
+    // aufgabe.setDatum(datum);
+
+    // String zeit =
+    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+    // aufgabe.setUhrzeit(zeit);
+
+    // int dauer = cbDauer.getSelectedItem();
+    // aufgabe.setDauer(dauer);
+
+    // String notiz = tNotiz.getText();
+    // aufgabe.setKommentar(notiz);
+
+    // String wiederholen = cbWieOft.getSelectedItem();
+    // aufgabe.setWiederholbarkeitTermin(wiederholen);
+
+    // String kategorie = cbKategorie.getSelectedItem();
+    // aufgabe.setTerminTyp(kategorie);
+    // }
     /**
-     * JRadioButton rbAufg wenn gewaehlt dann soll er ueberpruefen ob die 
-     * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
+     * speichern von veranstaltung . noch nicht fertig wegen die Klasse
+     * AktuelleSitzung.
+     */
+    // public void veranstaltungSpeichern() {
+
+    // Veranstaltung veranstaltung = new Veranstaltung();
+
+    // String bezeichnung = tBezeichnung.getText();
+    // veranstaltung.setBezeichnung(bezeichnung);
+
+    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+    // + "." + cbJahr.getSelectedItem();
+    // veranstaltung.setDatum(datum);
+
+    // String zeit =
+    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+    // veranstaltung.setUhrzeit(zeit);
+
+    // int dauer = (int) cbDauer.getSelectedItem();
+    // veranstaltung.setDauer(dauer);
+
+    // String notiz = tNotiz.getText();
+    // veranstaltung.setKommentar(notiz);
+
+    // String wiederholen = cbWieOft.getSelectedItem();
+    // veranstaltung.setWiederholbarkeitTermin(wiederholen);
+
+    // String kategorie = cbKategorie.getSelectedItem();
+    // veranstaltung.setTerminTyp(kategorie);
+
+    // String gebaeude = tGebaeude.getText();
+    // veranstaltung.setGebaeude(gebaeude);
+
+    // String raumnummer = tRaum.getText();
+    // veranstaltung.setRaumnummer(raumnummer);
+
+    // String dozent = tDozent.getText();
+    // veranstaltung.setDozent(dozent);
+
+    // String ects = tEcts.getText();
+    // veranstaltung.setEcts(ects);
+    // }
+    /**
+     * speichern von pruefung . noch nicht fertig wegen die Klasse
+     * AktuelleSitzung.
+     */
+    // public void pruefungSpeichern() {
+
+    // Pruefung pruefung = new Pruefung();
+
+    // String bezeichnung = tBezeichnung.getText();
+    // pruefung.setBezeichnung(bezeichnung);
+
+    // String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
+    // + "." + cbJahr.getSelectedItem();
+    // pruefung.setDatum(datum);
+
+    // String zeit =
+    // cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
+    // pruefung.setUhrzeit(zeit);
+
+    // String dauer = cbDauer.getSelectedItem();
+    // pruefung.setDauer(dauer);
+
+    // Object notiz = tNotiz.getText();
+    // pruefung.setKommentar(notiz);
+
+    // Object kategorie = cbKategorie.getSelectedItem();
+    // pruefung.setTerminTyp(kategorie);
+
+    // Object Gebaeude = tGebaeude.getText();
+    // pruefung.set
+
+    // Object raumnummer = tRaum.getText();
+    // pruefung.set
+
+    // }
+
+    /**
+     * JRadioButton rbAufg wenn gewaehlt dann soll er ueberpruefen ob die felder
+     * gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
      */
     public void aufgabeGewaehlt() {
         // Bezeichnung
@@ -624,9 +660,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
             // Katehorie
         } else if (cbKategorie.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null,
-                "Kategorie: muss gewählt sein!", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
             // Datum
         } else if (cbTag.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,
@@ -644,24 +679,22 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         } else if ((cbStunden.getSelectedIndex() == 0
             && cbMinuten.getSelectedIndex() != 0)) {
             JOptionPane.showMessageDialog(null,
-                "Uhrzeit: Stunden muss gewählt werden!",
-                "Error!", JOptionPane.ERROR_MESSAGE);
+                "Uhrzeit: Stunden muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
         } else if ((cbStunden.getSelectedIndex() != 0
             && cbMinuten.getSelectedIndex() == 0)) {
             JOptionPane.showMessageDialog(null,
-                "Uhrzeit: Minuten muss gewählt werden!",
-                "Error!", JOptionPane.ERROR_MESSAGE);
+                "Uhrzeit: Minuten muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
         } else if (cbStunden.getSelectedIndex() == 0
             && cbMinuten.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,
-                "Uhrzeit: Stunden und "
-                    + "Minuten müssen gewählt sein!",
+                "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            //Dauer
+            // Dauer
         } else if (cbDauer.getSelectedIndex() == 0) {
-            JOptionPane.showMessageDialog(null,
-                "Dauer: muss gewählt sein!", "Error!",
-                JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
             JOptionPane.showMessageDialog(null,
@@ -792,11 +825,5 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();  
         }
-    }
-    /**
-     * @param args .
-     */
-    public static void main(String[] args) {
-        new NeuenTerminHinzu();
     }
 }

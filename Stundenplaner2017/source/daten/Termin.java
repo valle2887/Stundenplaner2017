@@ -227,7 +227,13 @@ public class Termin {
          * Auswahlmoeglichkeiten des Types.
          */
        Nicht_gewaehlt(""),
+       /**
+        * Auswahlmoeglichkeiten Universitaet des Types.
+        */
        Universitaet("Universitaet"),
+       /**
+        * Auswahlmoeglichkeiten Privat des Types.
+        */
        Privat("Privat");
 
         /**

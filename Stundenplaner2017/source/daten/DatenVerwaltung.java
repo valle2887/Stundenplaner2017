@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * Klasse Datenverwaltung. Diese ist daf¸r da um die Eingaben in eine Datei
+ * Klasse Datenverwaltung. Diese ist dafuer da um die Eingaben in eine Datei
  * zuschreiben
  * 
  * @author Rakan Al-Swayyed

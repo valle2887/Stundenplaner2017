@@ -355,13 +355,4 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         });
         
     }
-    /**
-     * @param args .
-     */
-    public static void main(String[] args) {
-        new AufgabeDialog();
-    }
-
-    
-
 }

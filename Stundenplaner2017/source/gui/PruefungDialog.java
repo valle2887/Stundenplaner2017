@@ -297,12 +297,6 @@ public class PruefungDialog extends JDialog implements ActionListener {
        // aufgabe.setTerminTyp(kategorie);
     }
     /**
-     * @param args .
-     */
-    public static void main(String[] args) {
-        new PruefungDialog();
-    }
-    /**
      *@param e .
      */
     public void actionPerformed(ActionEvent e) {
