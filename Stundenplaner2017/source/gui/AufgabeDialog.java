@@ -12,13 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
-//import daten.DatenVerwaltung;
 import daten.Aufgabe;
-import daten.Session;
-//import daten.Veranstaltung;
-//import daten.Pruefung;
-//import daten.Termin;
+
 /**
  * @author Rakan Al-Swayyed
  */
@@ -129,7 +124,47 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * JLabel lDeadline.
      */
-   // private JLabel lDeadline = new JLabel("Deadline:");
+    private JLabel lDeadline = new JLabel("Deadline:");
+    /**
+     * Array arrayTagDeadL mit 31 tage.
+     */
+    private String[] arrayTagDeadL = {"", "1", "2", "3", "4", "5", "6", "7",
+        "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", 
+        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
+        "31" };
+    /**
+     * JComboBox cbTagDeadL.
+     */
+    private JComboBox<Object> cbTagDeadL = new JComboBox<Object>(arrayTagDeadL);
+    /**
+     * Array arrayMonatDeadL mit 12 Monate.
+     */
+    private String[] arrayMonatDeadL =
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+    /**
+     * Label lPkt3.
+     */
+    private JLabel lPkt3 = new JLabel(".");
+    /**
+     * Label lPkt1.
+     */
+    private JLabel lPkt4 = new JLabel(".");
+    /**
+     * JComboBox cbMonatDeadL.
+     */
+    private JComboBox<Object> cbMonatDeadL =
+        new JComboBox<Object>(arrayMonatDeadL);
+    /**
+     * Array arrayJahrDeadL mit 6 Jahre.
+     */
+    private String[] arrayJahrDeadL =
+        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+
+    /**
+     * JComboBox cbJahrDeadL.
+     */
+    private JComboBox<Object> cbJahrDeadL =
+        new JComboBox<Object>(arrayJahrDeadL);
     /**
      * Label lNotiz.
      */
@@ -236,7 +271,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         setLayout(new GridLayout(5, 1));
         setResizable(true);
         setLocationRelativeTo(null);
-        this.aufgabe = aufgabe;
+        //this.aufgabe = aufgabe;
         // methode buttonsSundLoe fuer speichern und loeschen.
         buttonsSundLoe();
        //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
@@ -257,16 +292,26 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         p1.add(tBezeichnung);
         p1.add(lKategorie);
         p1.add(cbKategorie);
+        //Datum
         p2.add(lDatum);
         p2.add(cbTag);
         p2.add(lPkt1);
         p2.add(cbMonat);
         p2.add(lPkt2);
         p2.add(cbJahr);
+        //Uhrzeit
         p2.add(lUhrzeit);
         p2.add(cbStunden);
         p2.add(lDpkt);
         p2.add(cbMinuten);
+        //Deadline
+        p3.add(lDeadline);
+        p3.add(cbTagDeadL);
+        p3.add(lPkt3);
+        p3.add(cbMonatDeadL);
+        p3.add(lPkt4);
+        p3.add(cbJahrDeadL);
+        //Dauer
         p3.add(lDauer);
         p3.add(cbDauer);
         p3.add(lMin);
@@ -297,30 +342,30 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Aufgabe aufgabe = new Aufgabe();
-
                 String bezeichnung = tBezeichnung.getText();
                 aufgabe.setBezeichnung(bezeichnung);
-
                 String datum =
                     cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
                         + "." + cbJahr.getSelectedItem();
                 aufgabe.setDatum(datum);
-
                 String zeit = cbStunden.getSelectedItem() + ":"
                     + cbMinuten.getSelectedItem();
                 aufgabe.setUhrzeit(zeit);
-
                 // int dauer = cbDauer.getSelectedItem();
                 // aufgabe.setDauer(dauer);
-
                 String notiz = tNotiz.getText();
                 aufgabe.setKommentar(notiz);
-
                 // String wiederholen = cbWieOft.getSelectedItem();
                 // aufgabe.setWiederholbarkeitTermin(wiederholen);
-
                 // String kategorie = cbKategorie.getSelectedItem();
                 // aufgabe.setTerminTyp(kategorie);
+                JOptionPane.showMessageDialog(null,
+                    "Aufgabe Bearbeitet", "INFORMATION!",
+                    JOptionPane.WARNING_MESSAGE);
+
+                AufgabeDialog.this.setVisible(false);
+                AufgabeDialog.this.dispose();
+                new KalenderGui();
             }
         });
         //Loeschen
@@ -339,10 +384,8 @@ public class AufgabeDialog extends JDialog implements ActionListener {
                 String zeit = cbStunden.getSelectedItem() + ":"
                     + cbMinuten.getSelectedItem();
                 aufgabe.setUhrzeit(zeit);
-
                 // int dauer = cbDauer.getSelectedItem();
                 // aufgabe.setDauer(dauer);
-
                 String notiz = tNotiz.getText();
                 aufgabe.setKommentar(notiz);
 
@@ -351,8 +394,23 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
                 // String kategorie = cbKategorie.getSelectedItem();
                 // aufgabe.setTerminTyp(kategorie);
+                
+                JOptionPane.showMessageDialog(null,
+                    "Aufgabe Gelöscht", "INFORMATION!",
+                    JOptionPane.WARNING_MESSAGE);
+
+                AufgabeDialog.this.setVisible(false);
+                AufgabeDialog.this.dispose();
+                new KalenderGui();
             }
         });
+        
+    }
+    /**
+     * @param e .
+     */
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
         
     }
 }
