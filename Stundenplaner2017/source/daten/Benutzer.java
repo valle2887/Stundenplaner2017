@@ -53,7 +53,7 @@ public class Benutzer {
      * @return username 
      * Ist der einzugebende Name fuer den Login.
     */
-    public static String getUsername() {
+    public String getUsername() {
         return username;
     }
     /** Setter fuer den Usernamen.

@@ -80,6 +80,22 @@ public class LoginGUI extends JFrame implements ActionListener {
     private JButton btnRegister = new JButton("Registrieren");
 
     /**
+     * Methode, um die eingegebenen Daten im Loginfenster zu ueberpruefen.
+     * @return eingabeKorrekt
+     */
+    public boolean eingabenUeberpruefen() {
+        boolean eingabeKorrekt = true;
+        if (txtUsername.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null,
+                "Bitte Benutzernamen eingeben");
+            eingabeKorrekt = false;
+        } else if (pwPasswort.getPassword().equals("")) {
+            JOptionPane.showMessageDialog(null, "Bitte Passwort eingeben.");
+            eingabeKorrekt = false;
+        }
+        return eingabeKorrekt;
+    }
+    /**
      * Konstruktorklasse des Loginfensters.
      */
     public LoginGUI() {
@@ -121,6 +137,13 @@ public class LoginGUI extends JFrame implements ActionListener {
         String dateiName = null;
         Scanner dateiScanner = null;
         File file = new File(username + ".txt");
+        if (!file.exists()) {
+            JOptionPane.showMessageDialog(null, "User Existiert nicht!");
+        }
+         
+        eingabenUeberpruefen();
+        
+       
         if (file.exists()) {
             dateiName = username;
             try {
@@ -134,24 +157,32 @@ public class LoginGUI extends JFrame implements ActionListener {
         try {
             if (UserVerwaltung.vergleichPasswort(dateiScanner, dateiName,
                 passwort)) {
-                Benutzer benutzer = UserVerwaltung.loadBenutzer(username);
-                DatenVerwaltung.leseAufgabe(username);
-                DatenVerwaltung.lesePruefung(username);
-                DatenVerwaltung.leseVeranstaltung(username);
-                AktuelleSitzung aktuelleSitzung =
-                    AktuelleSitzung.getAktuelleSitzung();
-                aktuelleSitzung.setBenutzer(benutzer);
-                // JOptionPane.showMessageDialog(null, "ERROR123!");
-                new KalenderGui();
-                dispose();
+                try {
+                    Benutzer benutzer = UserVerwaltung.loadBenutzer(username);
+                
+                    DatenVerwaltung.leseAufgabe(username);
+                    DatenVerwaltung.lesePruefung(username);
+                    DatenVerwaltung.leseVeranstaltung(username);
+                    AktuelleSitzung aktuelleSitzung =
+                        AktuelleSitzung.getAktuelleSitzung();
+                    aktuelleSitzung.setBenutzer(benutzer);
+                    new KalenderGui();
+                    dispose();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                    JOptionPane.showMessageDialog(null, "Error",
+                        "Anmeldedaten falsch", JOptionPane.ERROR_MESSAGE);
+                }
 
             } else {
                 JOptionPane.showMessageDialog(null,
-                    "Anmeldedaten " + "stimmen nicht ueberein!");
+                    "Anmeldedaten stimmen nicht ueberein", "ERROR",
+                    JOptionPane.ERROR_MESSAGE);
             }
 
         } catch (IOException e2) {
 
+            JOptionPane.showMessageDialog(null, "User existiert nicht!");
             e2.printStackTrace();
         }
 

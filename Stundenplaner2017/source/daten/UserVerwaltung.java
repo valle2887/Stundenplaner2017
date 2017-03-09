@@ -137,8 +137,8 @@ public class UserVerwaltung {
         //benutzerdaten werden in die ArrayListe eingefuegt. 
         String username = benutzerdaten.get(0);
         String passwort = benutzerdaten.get(1);
-        String ects = benutzerdaten.get(2);
-        String studiengang = benutzerdaten.get(3);
+        String studiengang = benutzerdaten.get(2);
+        String ects = benutzerdaten.get(3);
         
         Benutzer benutzer = new Benutzer(username, passwort, ects
             , studiengang);
