@@ -5,8 +5,6 @@ import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
@@ -19,7 +17,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -178,37 +175,15 @@ public class KalenderGui extends JFrame implements ActionListener {
         setTitle("Kalender - KW " + kalenderwoche + " von " + formatDate(montag)
             + " bis " + formatDate(sonntag));
 
-        menueBar.add(menuBenutzer);
-        menueBar.add(menuTermin);
-        menueBar.add(menuInf);
-        menueBar.add(btnLinks);
-        menueBar.add(btnRechts);
+        menuBarErstellen();
 
-        btnLinks.addActionListener(this);
-        btnRechts.addActionListener(this);
+        btnErstellen();
 
         lblWoche = new JLabel();
         lblWoche.setText("Woche");
-        menueBar.add(lblWoche);
         lblWoche.setPreferredSize(new Dimension(30, 2));
 
-        menueBar.add(btnRechts);
-
-        menuBenutzer.add(miBenutzerAnzeigen);
-        miBenutzerAnzeigen.addActionListener(this);
-        menuBenutzer.add(miBenutzerBarbeiten);
-        miBenutzerBarbeiten.addActionListener(this);
-        menuBenutzer.add(miBenutzerAusloggen);
-        miBenutzerAusloggen.addActionListener(this);
-        menuTermin.add(miNeuerTermin);
-        miNeuerTermin.addActionListener(this);
-        menuTermin.add(miTerminBearbeiten);
-        miTerminBearbeiten.addActionListener(this);
-        menuTermin.add(miTermineExportieren);
-        miTermineExportieren.addActionListener(this);
-        menuTermin.add(miTermineImportieren);
-
-        this.setJMenuBar(menueBar);
+        hinzufuegenItems();
 
         this.mainContainer = this.getContentPane();
 
@@ -216,13 +191,8 @@ public class KalenderGui extends JFrame implements ActionListener {
 
         tabellenmodellGruppeA = new DefaultTableModel(zeilen, spalten);
 
-        tblTable = new JTable(tabellenmodellGruppeA);
-        tblTable.getTableHeader().setEnabled(false);
-
-        tblTable.setAutoResizeMode(4);
-
         gedrueck();
-
+        tblErstellen();
         mainContainer.add(new JScrollPane(tblTable));
         this.pack();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -380,4 +350,67 @@ public class KalenderGui extends JFrame implements ActionListener {
     // }
     //
 
+    /**
+     * 
+     */
+    public void hinzufuegenItems() {
+
+        menuBenutzer.add(miBenutzerAnzeigen);
+        miBenutzerAnzeigen.addActionListener(this);
+        menuBenutzer.add(miBenutzerBarbeiten);
+        miBenutzerBarbeiten.addActionListener(this);
+        menuBenutzer.add(miBenutzerAusloggen);
+        miBenutzerAusloggen.addActionListener(this);
+        menuTermin.add(miNeuerTermin);
+        miNeuerTermin.addActionListener(this);
+        menuTermin.add(miTerminBearbeiten);
+        miTerminBearbeiten.addActionListener(this);
+        menuTermin.add(miTermineExportieren);
+        miTermineExportieren.addActionListener(this);
+        menuTermin.add(miTermineImportieren);
+    }
+
+    /**
+     * 
+     */
+    public void menuBarErstellen() {
+
+        menueBar.add(menuBenutzer);
+        menueBar.add(menuTermin);
+        menueBar.add(menuInf);
+        menueBar.add(btnLinks);
+        menueBar.add(btnRechts);
+        menueBar.add(lblWoche);
+        menueBar.add(btnRechts);
+        this.setJMenuBar(menueBar);
+    }
+
+    /**
+     * 
+     */
+    public void btnErstellen() {
+
+        btnLinks.addActionListener(this);
+        btnRechts.addActionListener(this);
+        btnRechts.setText(">>" + (kalenderwoche + 1));
+        btnLinks.setText((kalenderwoche - 1) + "<<");
+    }
+
+    /**
+     * 
+     */
+    public void tblErstellen() {
+
+        tblTable = new JTable(tabellenmodellGruppeA) {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int x, int y) {
+                return false;
+            }
+        };
+
+        tblTable.getTableHeader().setEnabled(false);
+
+        tblTable.setAutoResizeMode(4);
+    }
 }
