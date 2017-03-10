@@ -1,8 +1,6 @@
 package daten;
 
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Date;
 
 import gui.KalenderGui;
 
@@ -260,27 +258,6 @@ public class AktuelleSitzung {
      * noch nicht fertig!
      */
     public void loadAufgaben() {
-        try {
-            ArrayList<String> aufgaben =
-                DatenVerwaltung.leseAufgabe(Benutzer.getUsername());
-            for (int i = 0; i < aufgaben.size(); i = i + 7) {
-                Aufgabe aufgabe = new Aufgabe();
-                aufgabe.setBezeichnung(aufgaben.get(i + 0));
-                aufgabe.setDatum(aufgaben.get(i + 1));
-                aufgabe.setUhrzeit(aufgaben.get(i + 2));
-                aufgabe.setDauer(Integer.parseInt(aufgaben.get(i + 3)));
-                aufgabe.setKommentar(aufgaben.get(i + 4));
-                // aufgabe.setWiederholung(Integer.parseInt(aufgaben.get(i +
-                // 5)));
-                // aufgabe.setTyp(aufgaben.get(i + 6));
-                this.aufgaben.add(aufgabe);
-
-            }
-
-        } catch (IOException exc) {
-
-            exc.printStackTrace();
-        }
 
     }
 
@@ -288,29 +265,6 @@ public class AktuelleSitzung {
      * noch nicht fertig!
      */
     public void loadVeranstaltungen() {
-        try {
-            ArrayList<String> veranstaltungen =
-                DatenVerwaltung.leseVeranstaltung(Benutzer.getUsername());
-            for (int i = 0; i < veranstaltungen.size(); i = i + 11) {
-                Veranstaltung veranstaltung = new Veranstaltung();
-                veranstaltung.setBezeichnung(veranstaltungen.get(i + 0));
-                veranstaltung.setDatum(veranstaltungen.get(i + 1));
-                veranstaltung.setUhrzeit(veranstaltungen.get(i + 2));
-                veranstaltung
-                    .setDauer(Integer.parseInt(veranstaltungen.get(i + 3)));
-                veranstaltung.setKommentar(veranstaltungen.get(i + 4));
-                // veranstaltung.setWiederholung(
-                // Integer.parseInt(veranstaltungen.get(i + 5)));
-                // veranstaltung.setTyp(veranstaltungen.get(i + 6));
-                // veranstaltung.setRaumNummer(veranstaltungen.get(i + 7));
-                veranstaltung.setGebaeude(veranstaltungen.get(i + 8));
-                veranstaltung.setDozent(veranstaltungen.get(i + 9));
-                // veranstaltung.setEcts(veranstaltungen.get(i + 10));
-                this.veranstaltungen.add(veranstaltung);
-            }
-        } catch (Exception exc) {
-            exc.printStackTrace();
-        }
 
     }
 
@@ -318,28 +272,7 @@ public class AktuelleSitzung {
      * noch nicht fertig!
      */
     public void loadPruefungen() {
-        try {
-            ArrayList<String> pruefungen =
-                DatenVerwaltung.lesePruefung(Benutzer.getUsername());
-            for (int i = 0; i < pruefungen.size(); i = i + 10) {
-                Pruefung pruefung = new Pruefung();
-                pruefung.setBezeichnung(pruefungen.get(i + 0));
-                pruefung.setDatum(pruefungen.get(i + 1));
-                pruefung.setUhrzeit(pruefungen.get(i + 2));
-                pruefung.setDauer(Integer.parseInt(pruefungen.get(i + 3)));
-                pruefung.setKommentar(pruefungen.get(i + 4));
-                // pruefung
-                // .setWiederholung(Integer.parseInt(pruefungen.get(i + 5)));
-                // pruefung.setTyp(pruefungen.get(i + 6));
-                // pruefung.setVeranstaltung(pruefungen.get(i + 7));
-                // pruefung.setCampus(pruefungen.get(i + 8));
-                // pruefung.setRaum(pruefungen.get(i + 9));
-                this.pruefungen.add(pruefung);
-            }
-        } catch (Exception exc) {
 
-            exc.printStackTrace();
-        }
     }
 
     /**
@@ -347,49 +280,16 @@ public class AktuelleSitzung {
      *            .
      * @return wochenAufgaben.
      */
-    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
-        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
-        for (int i = 0; i < aufgaben.size(); i++) {
-            if (Datum.liegtImZeitintervall(start,
-                aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
-                aufgaben.get(i).getDauer())) {
-                wochenAufgaben.add(aufgaben.get(i));
-            }
-        }
-        return wochenAufgaben;
-    }
 
     /**
      * @return wochenPruefung
      */
-//    public ArrayList<Pruefung> wochenPruefung(Date start) {
-//        ArrayList<Pruefung> wochenPruefung = new ArrayList<Pruefung>();
-//        for (int i = 0; i < pruefungen.size(); i++) {
-//            if (Datum.liegtImZeitintervall(start,
-//                pruefungen.get(i).stringZuDatum(), 60 * 24 * 7,
-//                pruefungen.get(i).getDauer())) {
-//                wochenPruefung.add(pruefungen.get(i));
-//            }
-//        }
-//        return wochenPruefung;
-//    }
-//
-//    /**
-//     * @return wochenVeranstaltung
-//     */
-//    public ArrayList<Veranstaltung> wochenVeranstaltung(Date start) {
-//
-//        ArrayList<Veranstaltung> wochenVeranstaltung =
-//            new ArrayList<Veranstaltung>();
-//        for (int i = 0; i < veranstaltungen.size(); i++) {
-//            if (Datum.liegtImZeitintervall(start,
-//                veranstaltungen.get(i).stringZuDatum(), 60 * 24 * 7,
-//                veranstaltungen.get(i).getDauer())) {
-//                wochenVeranstaltung.add(veranstaltungen.get(i));
-//            }
-//        }
-//        return wochenVeranstaltung;
-
+    //
+    //
+    // /**
+    // * @return wochenVeranstaltung
+    // */
+    //
     /**
      * Der Setter von AktuelleSitzung aktuelleSitzung.
      * 
