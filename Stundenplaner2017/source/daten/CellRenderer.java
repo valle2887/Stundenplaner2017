@@ -60,64 +60,10 @@ public class CellRenderer extends DefaultTableCellRenderer {
             "/Bilder/TerminSchwierig.png"));
     }
     
-    
-    @Override
-    public Component getTableCellRendererComponent(final JTable table, 
-        Object value, boolean isSelected, boolean hasFocus, int row, int col) {
-        if (value == null) {
-            return new JLabel();
-        }
+
+        
+        
      
-        Termin termin = null;
-        JLabel lblCell = null;
-        if (termin != null) {
-            String bez = termin.getBezeichnung();
-            lblCell = new JLabel(bez);
-        } else {
-            lblCell = new JLabel((String) value);
-        }
-        JPanel panel = new JPanel();
-        panel.add(lblCell);
-        if (termin != null && termin.getMarkierung() != null) {
-            for (Markierung marker : termin.getMarkierung()) {
-                switch (marker) {
-                case TERMIN_ERLEDIGT:
-                    panel.add(new JLabel(imgTerminErledigt));
-                    break;
-                case TERMIN_ERFOLGREICH:
-                    panel.add(new JLabel(imgTerminErfolgreich));
-                    break;
-                case HOHE_PRIORITAET:
-                    panel.add(new JLabel(imgTerminHohePrio));
-                    break;
-                case NETTE_TUTOREN:
-                    panel.add(new JLabel(imgNetteTutoren));
-                    break;
-                default:
-                    break;
-          
-                }
-            }
-        }
-        super.getTableCellRendererComponent(table, value, isSelected,
-            hasFocus, row, col);
-        if (value instanceof Aufgabe) {
-            Aufgabe aufgabe = (Aufgabe) value;
-            setBackground(Color.BLUE);
-        }
-        
-        if (value instanceof Pruefung) {
-            Pruefung pruefung = (Pruefung) value;
-            setBackground(Color.YELLOW);
-        }
-        
-        if (value instanceof Veranstaltung) {
-            Veranstaltung veranstaltung = (Veranstaltung) value;
-            setBackground(Color.ORANGE);
-        }
-        
-        
-        return this;
     }
 
 }
