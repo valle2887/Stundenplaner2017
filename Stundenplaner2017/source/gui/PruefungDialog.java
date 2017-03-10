@@ -46,12 +46,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * Label lKategorie.
      */
     private JLabel lKategorie = new JLabel("Kategorie:");
-    /**
-     * Array arrayKategorie mit zwei unterschiedlichen kategorien Universität
-     * und private.
-     */
-    //arrayKategorie brauchen wir nicht mehr.
-    private String[] arrayKategorie = {"", "Universität", "private" };
+   
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */

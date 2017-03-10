@@ -226,7 +226,7 @@ public class DatenVerwaltung {
     }
     /**
      * Termin loeschen ob Aufgabe, Pruefung, Veranstaltung.
-     * @param benutzerName.
+     * @param benutzerName Der String BenutzerName.
      * @throws IOException .
      * @return geloescht .
      */
@@ -357,20 +357,7 @@ public class DatenVerwaltung {
     public void veranstaltungCase() {
         
     }
-    // Der Vorschlag von Dome
-    /**
-     * @return true.
-     * @param termin
-     *            es wird ein termin ¸bergeben.
-     */
-    // public boolean terminLoeschen(Termin termin) {
-    // boolean geloescht = false;
-    // while (this.termine.remove(termin)) {
-    // geloescht = true;
-    // }
-    // return geloescht;
-    // }
-//+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
     /**
      * Termin Bearbeiten .
      * @param benutzerName .
@@ -524,11 +511,11 @@ public class DatenVerwaltung {
      */
 
     /**
-     * Speichern in XLS Foramt
+     * Speichern in XLS Format
      */
 
     /**
-     * Speichern von Pr¸fung in XLS
+     * Speichern von Pruefung in XLS
      */
 
     /**

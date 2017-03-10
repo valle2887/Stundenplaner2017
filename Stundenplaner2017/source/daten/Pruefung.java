@@ -6,20 +6,20 @@ package daten;
  */
 public class Pruefung extends Termin {
 /**
- * Pruefungsdauer in Minuten.
+ * Pruefungsdauer in Minuten mit dem Datentyp Integer.
  */
     private int pruefungsdauer;
     
 /**
- * Der Raum, in der die Pruefung stattfindet.
+ * Der Raum, in der die Pruefung stattfindet mit dem Datentyp String.
  */
     private String raumnummer;
 /**
- * Das Gebaeude, in dem die Pruefung stattfindet. 
+ * Das Gebaeude, in dem die Pruefung stattfindet mit dem Datentyp String. 
  */
     private String gebaeude;
 /**
- * Die Veranstaltung, die zu einer Pruefung gehoert.
+ * Die Veranstaltung, die zu einer Pruefung gehoert mit dem Datentyp String.
  */ 
     private Veranstaltung zugehoerendeVeranstaltung;
     
@@ -46,7 +46,6 @@ public class Pruefung extends Termin {
      * @return zugehoerendeVeranstaltung
      * Gibt die Veranstaltung, zu der die Pruefung gehoert zurueck.
      */
-
     public Veranstaltung getZugehoerendeVeranstaltung() {
         return zugehoerendeVeranstaltung;
     }
