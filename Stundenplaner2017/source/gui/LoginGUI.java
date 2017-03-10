@@ -27,7 +27,7 @@ import daten.UserVerwaltung;
  * @author Christian Lindenberg
  */
 public class LoginGUI extends JFrame implements ActionListener {
-
+    
     /**
      * Automatisch generierte SerialVersionUID.
      */

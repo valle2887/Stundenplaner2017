@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 
 public class UserVerwaltung {
-    
+        
     /**
      * Passwort vergleichen.
      * @param benutzerName .
@@ -50,7 +50,6 @@ public class UserVerwaltung {
      * @param punkte.
      * @throws IOException .
      */
-    // String Passwort zu Char[] passwort ge‰ndert
     public static void speichernVonBenutzerdaten(String benutzerName, 
         char[] passwort, String studiengang, String punkte) throws IOException {
 
@@ -67,7 +66,6 @@ public class UserVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
-    // Ende fuer speichernVonBenutzerdaten++++++++++++++++++++++++++++
     /**
      * Benutzer Bearbeiten.
      *@param benutzerName .
@@ -102,7 +100,8 @@ public class UserVerwaltung {
 
         // true damit der Text angehängt wird, false(oder ohne)
         // wird die Datei komplett überschrieben
-        FileWriter write = new FileWriter(benutzerName + ".txt", false);
+        FileWriter write = new FileWriter(benutzerName 
+            + ".txt", false);
 
         for (int a = 0; a < arrayGroesse; a++) {
             write.write(benutzerDaten.get(a));

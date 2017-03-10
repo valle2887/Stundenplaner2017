@@ -22,7 +22,7 @@ import daten.UserVerwaltung;
  * @author Christian Lindenberg
  */
 public class RegistrierenGUI extends JFrame implements ActionListener {
-
+    
     /**
      * generated serial Version ID.
      */
@@ -186,16 +186,16 @@ public class RegistrierenGUI extends JFrame implements ActionListener {
      * Methode um einen User zu registrieren.
      */
     public void registerUser() {
-        String name = txtUsername.getText();
+        String benutzerName = txtUsername.getText();
         char[] passwort = pwPasswort.getPassword();
         String studiengang = txtStudiengang.getText();
         String punkte = txtECTS.getText();
         
         if (eingabenUeberpruefen()) {
-            File schreiben = new File(name + ".txt");
+            File schreiben = new File(benutzerName + ".txt");
             if (!schreiben.exists()) {
                 try {
-                    UserVerwaltung.speichernVonBenutzerdaten(name, 
+                    UserVerwaltung.speichernVonBenutzerdaten(benutzerName, 
                         passwort, studiengang, punkte);
 
                     dispose();
