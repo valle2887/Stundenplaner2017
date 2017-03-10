@@ -58,7 +58,8 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
     /**
      * Label fuer das nochmals eingegebene Passwort.
      */
-    private JLabel lblPasswortNochmal = new JLabel("Passwort nochmal ");
+    private JLabel lblPasswortNochmal = new JLabel("Passwort nochmal "
+        , SwingConstants.CENTER);
     /**
      * Textfeld fuer das nochmal eingegebene Passwort.
      */
@@ -89,7 +90,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
      */
     public boolean userLoeschen(String userName) {
         AktuelleSitzung.getBenutzer();
-        userName = Benutzer.getUsername();
+        userName = Benutzer.getUserName();
         File file = new File(userName + ".txt");
         boolean userGeloescht = file.delete();
         return userGeloescht;
@@ -127,7 +128,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                     JOptionPane.YES_NO_OPTION);
                 if (wirklich == JOptionPane.YES_OPTION) {
                     AktuelleSitzung.getBenutzer();
-                    UserVerwaltung.loeschenBenutzer(Benutzer.getUsername());
+                    UserVerwaltung.loeschenBenutzer(Benutzer.getUserName());
                     dispose();
                     new LoginGUI();
                 } else if (wirklich == JOptionPane.NO_OPTION) {
@@ -147,7 +148,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                         getBenutzer();
                     try {
                         UserVerwaltung.bearbeitenBenutzer(
-                                    Benutzer.getUsername(), daten);
+                                    Benutzer.getUserName(), daten);
                     } catch (IOException exc) {
                         // TODO Auto-generated catch block
                         exc.printStackTrace();

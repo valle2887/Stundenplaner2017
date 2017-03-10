@@ -13,7 +13,7 @@ public class Benutzer {
     /**
      * Name des users.
      */
-    private static String username;
+    private static String userName;
 
     /**
      * Passwort des users.
@@ -48,7 +48,7 @@ public class Benutzer {
      *            der Studiengang des Users werden uebergeben.
      */
     public Benutzer(String usName, String usPW, String usECTS, String usStud) {
-        username = usName;
+        userName = usName;
         passwort = usPW;
         ects = usECTS;
         studiengang = usStud;
@@ -60,18 +60,18 @@ public class Benutzer {
      * 
      * @return username Ist der einzugebende Name fuer den Login.
      */
-    public static String getUsername() {
-        return username;
+    public static String getUserName() {
+        return userName;
     }
 
     /**
      * Setter fuer den Usernamen.
      * 
-     * @param username
+     * @param userName
      *            Fuer den Login benötigt.
      */
-    public void setUsername(String username) {
-        Benutzer.username = username;
+    public void setUserName(String userName) {
+        Benutzer.userName = userName;
     }
 
     /**

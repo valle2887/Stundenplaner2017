@@ -51,7 +51,7 @@ public class UserInfoGUI extends JFrame {
      */
     public void infoAnzeigen() {
         AktuelleSitzung.getBenutzer();
-        lblUsername.setText(Benutzer.getUsername());
+        lblUsername.setText(Benutzer.getUserName());
         lblUserStudiengang.setText(
             AktuelleSitzung.getBenutzer().getStudiengang());
         lblUserECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
@@ -78,9 +78,7 @@ public class UserInfoGUI extends JFrame {
         add(lblUserECTS);
         
         infoAnzeigen();
-        
-        //TODO Methode fuer befuellen der Felder
-        
+                
         pack();
         setVisible(true);
     }

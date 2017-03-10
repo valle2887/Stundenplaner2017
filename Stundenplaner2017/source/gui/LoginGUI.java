@@ -134,20 +134,17 @@ public class LoginGUI extends JFrame implements ActionListener {
         String username = txtUsername.getText();
         char[] passwortChar = pwPasswort.getPassword();
         String passwort = new String(passwortChar);
-        String dateiName = null;
         Scanner dateiScanner = null;
         File file = new File(username + ".txt");
         if (!file.exists()) {
             JOptionPane.showMessageDialog(null, "User Existiert nicht!");
         }
-         
+        
         eingabenUeberpruefen();
         
-       
         if (file.exists()) {
-            dateiName = username;
             try {
-                dateiScanner = new Scanner(new File(dateiName + ".txt"));
+                dateiScanner = new Scanner(new File(username + ".txt"));
             } catch (FileNotFoundException exc) {
                 JOptionPane.showMessageDialog(null, "ERROR!", "ERROR!",
                     JOptionPane.ERROR_MESSAGE);
@@ -155,7 +152,7 @@ public class LoginGUI extends JFrame implements ActionListener {
             }
         }
         try {
-            if (UserVerwaltung.vergleichPasswort(dateiScanner, dateiName,
+            if (UserVerwaltung.vergleichPasswort(dateiScanner, username,
                 passwort)) {
                 try {
                     Benutzer benutzer = UserVerwaltung.loadBenutzer(username);
@@ -181,7 +178,7 @@ public class LoginGUI extends JFrame implements ActionListener {
 
         } catch (IOException e2) {
 
-            JOptionPane.showMessageDialog(null, "User existiert nicht!");
+            JOptionPane.showMessageDialog(null, "ERROR!");
             e2.printStackTrace();
         }
 

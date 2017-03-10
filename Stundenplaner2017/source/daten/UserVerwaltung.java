@@ -43,39 +43,39 @@ public class UserVerwaltung {
     }
     /**
      * Speichern von Benutzerdaten.
-     * @param benutzerName .
+     * @param userName .
      * @param passwort .
      * @param studiengang .
-     * @param punkte .
+     * @param ects .
      * @param punkte.
      * @throws IOException .
      */
-    public static void speichernVonBenutzerdaten(String benutzerName, 
-        char[] passwort, String studiengang, String punkte) throws IOException {
+    public static void speichernVonBenutzerdaten(String userName, 
+        char[] passwort, String studiengang, String ects) throws IOException {
 
-        FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
+        FileWriter schreiben = new FileWriter(userName + ".txt", true);
 
-        schreiben.write(benutzerName);
+        schreiben.write(userName);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write(passwort);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write(studiengang);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(punkte);
+        schreiben.write(ects);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
     /**
      * Benutzer Bearbeiten.
-     *@param benutzerName .
+     *@param userName .
      *@param daten . 
      *@throws IOException .
      */
-    public static void bearbeitenBenutzer(String benutzerName, String[] daten)
+    public static void bearbeitenBenutzer(String userName, String[] daten)
         throws IOException {
 
-        ArrayList<String> benutzerDaten = new ArrayList<String>();
+        ArrayList<String> userDaten = new ArrayList<String>();
 
         String inhaltVonDatei;
         int arrayGroesse;
@@ -84,27 +84,27 @@ public class UserVerwaltung {
         String studiengang = daten[1];
         String ects = daten[2];
 
-        File datei = new File(benutzerName + ".txt");
+        File datei = new File(userName + ".txt");
 
         BufferedReader read = new BufferedReader(new FileReader(datei));
 
         while ((inhaltVonDatei = read.readLine()) != null) {
-            benutzerDaten.add(inhaltVonDatei);
+            userDaten.add(inhaltVonDatei);
         }
 
-        benutzerDaten.set(1, passwort);
-        benutzerDaten.set(2, studiengang);
-        benutzerDaten.set(3, ects);
+        userDaten.set(1, passwort);
+        userDaten.set(2, studiengang);
+        userDaten.set(3, ects);
 
-        arrayGroesse = benutzerDaten.size();
+        arrayGroesse = userDaten.size();
 
         // true damit der Text angehängt wird, false(oder ohne)
         // wird die Datei komplett überschrieben
-        FileWriter write = new FileWriter(benutzerName 
+        FileWriter write = new FileWriter(userName 
             + ".txt", false);
 
         for (int a = 0; a < arrayGroesse; a++) {
-            write.write(benutzerDaten.get(a));
+            write.write(userDaten.get(a));
             write.append(System.getProperty("line.separator"));
         }
 
@@ -114,16 +114,16 @@ public class UserVerwaltung {
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Lese die Benutzerdaten aus die Datei (txt) aus.
-     * @param benutzerName vom benutzer der eingelogt ist .
-     * @return  gibt ArrayList mit den informationen vom benutzer .
+     * @param userName vom aktuell eingeloggten Benutzer .
+     * @return  ArrayList, welche die Informationen des Benutzers enthaelt .
      * @throws IOException  wenn kein zugriff auf die datei .
      */
-    public static Benutzer loadBenutzer(String benutzerName) 
+    public static Benutzer loadBenutzer(String userName) 
         throws IOException {
         //Erstelle benutzerdaten ArrayList 
         ArrayList<String> benutzerdaten = new ArrayList<String>();
         
-        File datei = new File(benutzerName + ".txt");
+        File datei = new File(userName + ".txt");
         BufferedReader read = new BufferedReader(new FileReader(datei));
         
         // hier werden die daten gelesen und dann in eine ArrayList geschrieben
