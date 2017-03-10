@@ -318,7 +318,6 @@ public class AktuelleSitzung {
      * noch nicht fertig!
      */
     public void loadPruefungen() {
-
         try {
             ArrayList<String> pruefungen =
                 DatenVerwaltung.lesePruefung(Benutzer.getUsername());
@@ -348,17 +347,17 @@ public class AktuelleSitzung {
      *            .
      * @return wochenAufgaben.
      */
-//    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
-//        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
-//        for (int i = 0; i < aufgaben.size(); i++) {
-//            if (Datum.liegtImZeitintervall(start,
-//                aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
-//                aufgaben.get(i).getDauer())) {
-//                wochenAufgaben.add(aufgaben.get(i));
-//            }
-//        }
-//        return wochenAufgaben;
-//    }
+    public ArrayList<Aufgabe> wochenAufgaben(Date anfang) {
+        ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
+        for (int i = 0; i < aufgaben.size(); i++) {
+            if (Datum.liegtImZeitintervall(start,
+                aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
+                aufgaben.get(i).getDauer())) {
+                wochenAufgaben.add(aufgaben.get(i));
+            }
+        }
+        return wochenAufgaben;
+    }
 
     /**
      * @return wochenPruefung
@@ -397,7 +396,7 @@ public class AktuelleSitzung {
      * @param aktuelleSitzung
      *            Die AktuelleSitzung vom Typ AktuelleSitzung
      */
-    public static void setAktuelleSitzung(AktuelleSitzung aktuelleSitzung) {
+    public void setAktuelleSitzung(AktuelleSitzung aktuelleSitzung) {
         AktuelleSitzung.aktuelleSitzung = aktuelleSitzung;
     }
 

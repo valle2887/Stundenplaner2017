@@ -1,7 +1,10 @@
 package daten;
 
+import java.awt.List;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Ein Kalender speichert alle Termine eines Benutzers ab.
@@ -54,9 +57,22 @@ public class Kalender {
      *            es wird ein termin übergeben.
      */
     public boolean terminHinzufuegen(Termin termin) {
+
+        boolean kollision = false;
+
         // TODO Kollisionstest?!
-        this.termine.add(termin);
-        return true;
+
+        for (Termin termin2 : termine) {
+            if (termin2.getBezeichnung().equals(termin.getBezeichnung())) {
+                kollision = true;
+            }
+        }
+        if (!kollision) {
+            this.termine.add(termin);
+        }
+
+        return !kollision;
+
     }
 
     /**
