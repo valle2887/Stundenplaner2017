@@ -1,8 +1,5 @@
 package daten;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * Klasse, welche den Benutzer zeigt, seinen Name, sein Passwort, Semester,
  * ECTs, Studiengang, und die personalierte Terminliste.
@@ -30,10 +27,6 @@ public class Benutzer {
      */
     private String studiengang;
 
-    /**
-     * ArrayList um die Termine des users festzuhalten.
-     */
-    private ArrayList<Termin> terminListe = new ArrayList<Termin>();
 
     /**
      * Klassenkonstruktor.
@@ -131,84 +124,5 @@ public class Benutzer {
         this.studiengang = studiengang;
     }
 
-    /**
-     * getter für die Terminliste.
-     * 
-     * @return terminListe Die Terminliste fuer den Benutzer.
-     */
-    public ArrayList<Termin> getTerminliste() {
-        return terminListe;
-    }
-
-    /**
-     * Setter für die Terminliste.
-     * 
-     * @param terminliste
-     *            Liste mit den Terminen des Benutzers.
-     */
-    public void setTerminliste(ArrayList<Termin> terminliste) {
-        this.terminListe = terminliste;
-    }
-
-    /**
-     * Getter fuer die Liste der Veranstaltungen.
-     * 
-     * @return veranstaltungen Geht zunaechst mit der For-Schleife saemtliche
-     *         Termine in der Terminliste durch, um dann einem Termin, der eine
-     *         Veranstaltung ist, auch so deklarieren zu koennen.
-     */
-    public List<Veranstaltung> getVeranstaltungen() {
-        List<Veranstaltung> veranstaltungen = new ArrayList<Veranstaltung>();
-        for (Termin termin : terminListe) {
-            if (termin instanceof Veranstaltung) {
-                veranstaltungen.add((Veranstaltung) termin);
-            }
-        }
-        return veranstaltungen;
-    }
-
-    /**
-     * Durchsucht die Terminliste nach Pruefungen, die Veranstaltungen
-     * zugeordnet sind.
-     * 
-     * @param veranst
-     *            wird uebergeben.
-     * @return eine Pruefung die gefunden wurde oder null Ueberprueft zunaechst
-     *         saemtliche Termine in der Terminliste durch die For-Schleife, ob
-     *         der Termin eine Pruefung ist. Wenn dem so ist, wird nach der
-     *         zugehoerigen Veranstaltung gesucht.
-     */
-    public Pruefung getPruefungFuerVeranstaltung(Veranstaltung veranst) {
-        Pruefung pruefungFuerVer = new Pruefung();
-        for (Termin termin : terminListe) {
-            if (termin instanceof Pruefung
-                && ((Pruefung) termin).getZugehoerendeVeranstaltung() != null
-                && ((Pruefung) termin).getZugehoerendeVeranstaltung()
-                    .equals(veranst)) {
-                pruefungFuerVer = (Pruefung) termin;
-            } else {
-                pruefungFuerVer = null;
-            }
-        }
-        return pruefungFuerVer;
-    }
-
-    /**
-     * Gleiche Prozedur wie bei der Veranstaltung, es wird zunaechst eine neue
-     * Liste fuer die Aufgaben erstellt und dann bei jedem Termin ueberprueft,
-     * ob der besagte Termin eine Aufgabe ist. Wenn dem so ist, wird in die
-     * Liste der Aufgaben eine neue Aufgabe (der besagte Termin) hinzugefuegt.
-     * 
-     * @return aufgaben werden zurueckgegeben.
-     */
-    public List<Aufgabe> getAufgaben() {
-        List<Aufgabe> aufgaben = new ArrayList<Aufgabe>();
-        for (Termin termin : terminListe) {
-            if (termin instanceof Aufgabe) {
-                aufgaben.add((Aufgabe) termin);
-            }
-        }
-        return aufgaben;
-    }
-
+ 
 }
