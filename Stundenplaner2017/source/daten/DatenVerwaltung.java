@@ -346,25 +346,6 @@ public class DatenVerwaltung {
         return geloescht;
     }
     /**
-     * 
-     */
-    public void aufgabeCase() {
-        
-    }
-    /**
-     * 
-     */
-    public void pruefungCase() {
-        
-    }
-    /**
-     * 
-     */
-    public void veranstaltungCase() {
-        
-    }
-
-    /**
      * Termin Bearbeiten .
      * @param benutzerName .
      * @param eingabe .

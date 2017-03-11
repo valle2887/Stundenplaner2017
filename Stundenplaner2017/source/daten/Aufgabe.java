@@ -416,7 +416,7 @@ public class Aufgabe {
         thisArray[5] = wiederholbarkeitTermin + "";
         thisArray[6] = terminTyp + "";
         thisArray[7] = markierung + "";
-        thisArray[8] = deadline;
+        thisArray[8] = deadline + "";
 
         return thisArray;
     }
