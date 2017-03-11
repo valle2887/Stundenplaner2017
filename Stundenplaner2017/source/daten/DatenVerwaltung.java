@@ -17,32 +17,34 @@ public class DatenVerwaltung {
     // Anfang fuer speichernAufagbeArray++++++++++++++++++++++++++++    
     /**
      * Speichern von Terminen in Datei des Eingelogten Benutzers.
-     *@param aufgabeArray .
-     *@param benutzerName . 
+     *@param terminarray .
+     *@param benutzerName .
      *@throws IOException .
      */
-    public void speichernAufagbeArray(String[] aufgabeArray, 
+    public static void speichernAufagbeArray(String[] terminarray,
         String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 
         schreiben.write("Aufgabe");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[0]);
+        schreiben.write("Bezeichnung: " + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write("Deadline: " + terminarray[8]);
         schreiben.append(System.getProperty("line.separator"));
 
         schreiben.close();
@@ -53,39 +55,40 @@ public class DatenVerwaltung {
     /**
      * Speichern von Veranstaltung in Datei.
      * @param veranstaltungArray .
+     * @param terminarray .
      * @param benutzerName .
      * @throws IOException .
      */
-    public void speichernVeranstungenArray(String[] veranstaltungArray
-        , String benutzerName) throws IOException {
+    public static void speichernVeranstungenArray(String[] terminarray,
+        String[] veranstaltungArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 
         schreiben.write("Veranstaltung");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[0]);
+        schreiben.write("Bezeichnung:" + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[8]);
+        schreiben.write("Raum: " + veranstaltungArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[9]);
+        schreiben.write("Gebäude: " + veranstaltungArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[10]);
+        schreiben.write("Dozent: " + veranstaltungArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[11]);
+        schreiben.write("ECTS: " + veranstaltungArray[3]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
@@ -95,34 +98,37 @@ public class DatenVerwaltung {
      * Speichern von Pr¸fung in Datei.
      * @param pruefungArray .
      * @param benutzerName .
+     * @param terminarray .
      * @throws IOException .
      */
-    public void speichernPruefungenArray(String[] pruefungArray
-        , String benutzerName) throws IOException {
+    public static void speichernPruefungenArray(String[] terminarray,
+        String[] pruefungArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 
         schreiben.write("Pruefung");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[0]);
+        schreiben.write("Bezeichnung:" + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[8]);
+        schreiben.write("Zugehoerende Veranstaltung: " + pruefungArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[9]);
+        schreiben.write("Gebäude: " + pruefungArray[1]);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write("Raum: " + pruefungArray[2]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }

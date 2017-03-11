@@ -15,7 +15,7 @@ public class Kalender {
     /**
      * ArrayListe der Termine.
      */
-    private ArrayList<Termin> termine;
+    private ArrayList<Aufgabe> termine;
 
     // ------------------------------------------------------------
     public static void veranstaltungHinzufuegen(ArrayList<Aufgabe> aufgaben,

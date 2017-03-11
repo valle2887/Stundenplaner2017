@@ -3,3 +3,63 @@ rakan1
 def
 34
 
+
+
+Aufgabe
+Bezeichnung: hj
+Kategorie: 3.3.2018
+Datum: 2:0
+Uhrzeit: 120
+Dauer: hf
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: NETTE_TUTOREN
+Deadline: null
+Veranstaltung
+Bezeichnung:hj
+Kategorie: 3.3.2018
+Datum: 2:0
+Uhrzeit: 120
+Dauer: hf
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: null
+Raum: def
+Gebäude: de
+Dozent: ade
+ECTS: sf
+Aufgabe
+Bezeichnung: dsdsdsd
+Kategorie: 3.5.2019
+Datum: 3:15
+Uhrzeit: 120
+Dauer: dwe
+Wiederholung: Not_Selected
+Marker: Universitaet
+Notiz: TERMIN_ERLEDIGT
+Deadline: null
+Veranstaltung
+Bezeichnung:dsdsdsd
+Kategorie: 3.5.2019
+Datum: 3:15
+Uhrzeit: 120
+Dauer: dwe
+Wiederholung: Not_Selected
+Marker: Universitaet
+Notiz: null
+Raum: vd
+Gebäude: dvd
+Dozent: dv
+ECTS: 32
+Pruefung
+Bezeichnung:dsdsdsd
+Kategorie: 3.5.2019
+Datum: 3:15
+Uhrzeit: 120
+Dauer: dwe
+Wiederholung: Not_Selected
+Marker: Universitaet
+Notiz: null
+Zugehoerende Veranstaltung: dvb
+Gebäude: dbv
+Raum: dvb

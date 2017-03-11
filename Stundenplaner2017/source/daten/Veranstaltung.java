@@ -5,7 +5,7 @@ package daten;
  * 
  * @author Rakan Al-Swayyed
  */
-public class Veranstaltung extends Termin {
+public class Veranstaltung extends Aufgabe {
     /**
      * Die Raumnummer, in dem die Veranstaltung stattfindet, ist ein String, da
      * es auch eine Kombination von Buchstaben und Zahlen sein kann, bsp H2.

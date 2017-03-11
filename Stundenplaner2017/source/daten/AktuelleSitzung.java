@@ -32,7 +32,6 @@ public class AktuelleSitzung {
      * Die ArrayList, die die veranstaltungen enthaelt.
      */
     private ArrayList<Veranstaltung> veranstaltungen;
-
     /**
      * die aufgabe vom Variablentyp Aufgabe.
      */
