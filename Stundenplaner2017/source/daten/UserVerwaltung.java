@@ -111,9 +111,8 @@ public class UserVerwaltung {
         read.close();
         write.close();
     }
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
-     * Lese die Benutzerdaten aus die Datei (txt) aus.
+     * Lese die Benutzerdaten aus der Datei aus.
      * @param userName vom aktuell eingeloggten Benutzer .
      * @return  ArrayList, welche die Informationen des Benutzers enthaelt .
      * @throws IOException  wenn kein zugriff auf die datei .
@@ -156,4 +155,5 @@ public class UserVerwaltung {
         boolean geloescht = file.delete();
         return geloescht;
     }
+   
 }
