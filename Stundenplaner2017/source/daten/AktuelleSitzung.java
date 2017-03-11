@@ -284,12 +284,7 @@ public class AktuelleSitzung {
     /**
      * @return wochenPruefung
      */
-    //
-    //
-    // /**
-    // * @return wochenVeranstaltung
-    // */
-    //
+    
     /**
      * Der Setter von AktuelleSitzung aktuelleSitzung.
      * 
