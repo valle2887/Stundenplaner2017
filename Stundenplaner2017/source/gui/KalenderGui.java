@@ -146,18 +146,18 @@ public class KalenderGui extends JFrame implements ActionListener {
      */
     // Spalten anlegen
     private String[] spalten =
-        { "Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So." };
+        {"Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So."};
 
     /**
      * 
      */
     // zeilen anlegen
     private String[][] zeilen =
-        { { "01:00" }, { "02:00" }, { "03:00" }, { "04:00" }, { "05:00" },
-            { "06:00" }, { "07:00" }, { "08.00" }, { "09:00" }, { "10:00" },
-            { "11:00" }, { "12:00" }, { "13:00" }, { "14:00" }, { "15:00" },
-            { "16:00" }, { "17:00" }, { "18:00" }, { "19:00" }, { "20:00" },
-            { "21:00" }, { "22:00" }, { "23:00" }, { "00:00" } };
+        {{"01:00"}, {"02:00"}, {"03:00"}, {"04:00"}, {"05:00"},
+            {"06:00"}, {"07:00"}, {"08.00"}, {"09:00"}, {"10:00"},
+            {"11:00"}, {"12:00"}, {"13:00"}, {"14:00"}, {"15:00"},
+            {"16:00"}, {"17:00"}, {"18:00"}, {"19:00"}, {"20:00"},
+            {"21:00"}, {"22:00"}, {"23:00"}, {"00:00"}};
 
     /**
      * 
@@ -285,6 +285,7 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * @return formatter
      * @param date
+     *            es wird ein datum uebergeben
      */
     private String formatDate(LocalDateTime date) {
         DateTimeFormatter formatter =
@@ -296,6 +297,7 @@ public class KalenderGui extends JFrame implements ActionListener {
      *
      * 
      * @param e
+     *            es wird ein e uebergeben
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLinks)) {
