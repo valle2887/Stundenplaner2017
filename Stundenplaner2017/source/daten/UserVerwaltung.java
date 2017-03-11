@@ -11,29 +11,34 @@ import java.util.Scanner;
 
 /**
  * Klasse, die fuer die Daten der Nutzerverwaltung verantworklich ist.
+ * 
  * @author Christian Lindenberg
  */
 
 public class UserVerwaltung {
-        
+
     /**
      * Passwort vergleichen.
-     * @param benutzerName .
-     * @param passwort .
-     * @param scan .
+     * 
+     * @param benutzerName
+     *            .
+     * @param passwort
+     *            .
+     * @param scan
+     *            .
      * @return name, passwort .
-     * @throws FileNotFoundException .
+     * @throws FileNotFoundException
+     *             .
      */
 
-    public static boolean vergleichPasswort(Scanner scan,
-        String benutzerName, String passwort)
-        throws FileNotFoundException {
+    public static boolean vergleichPasswort(Scanner scan, String benutzerName,
+        String passwort) throws FileNotFoundException {
 
         String loginName = benutzerName;
         String loginPW = passwort;
         String userName = scan.next();
         String userPW = scan.next();
-        
+
         if (userName.equals(loginName)) {
             scan.close();
             return userPW.equals(loginPW);
@@ -41,16 +46,23 @@ public class UserVerwaltung {
             return false;
         }
     }
+
     /**
      * Speichern von Benutzerdaten.
-     * @param userName .
-     * @param passwort .
-     * @param studiengang .
-     * @param ects .
+     * 
+     * @param userName
+     *            .
+     * @param passwort
+     *            .
+     * @param studiengang
+     *            .
+     * @param ects
+     *            .
      * @param punkte.
-     * @throws IOException .
+     * @throws IOException
+     *             .
      */
-    public static void speichernVonBenutzerdaten(String userName, 
+    public static void speichernVonBenutzerdaten(String userName,
         char[] passwort, String studiengang, String ects) throws IOException {
 
         FileWriter schreiben = new FileWriter(userName + ".txt", true);
@@ -66,11 +78,16 @@ public class UserVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
+
     /**
      * Benutzer Bearbeiten.
-     *@param userName .
-     *@param daten . 
-     *@throws IOException .
+     * 
+     * @param userName
+     *            .
+     * @param daten
+     *            .
+     * @throws IOException
+     *             .
      */
     public static void bearbeitenBenutzer(String userName, String[] daten)
         throws IOException {
@@ -100,8 +117,7 @@ public class UserVerwaltung {
 
         // true damit der Text angehängt wird, false(oder ohne)
         // wird die Datei komplett überschrieben
-        FileWriter write = new FileWriter(userName 
-            + ".txt", false);
+        FileWriter write = new FileWriter(userName + ".txt", false);
 
         for (int a = 0; a < arrayGroesse; a++) {
             write.write(userDaten.get(a));
@@ -111,21 +127,24 @@ public class UserVerwaltung {
         read.close();
         write.close();
     }
-    //++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Lese die Benutzerdaten aus die Datei (txt) aus.
-     * @param userName vom aktuell eingeloggten Benutzer .
-     * @return  ArrayList, welche die Informationen des Benutzers enthaelt .
-     * @throws IOException  wenn kein zugriff auf die datei .
+     * 
+     * @param userName
+     *            vom aktuell eingeloggten Benutzer .
+     * @return ArrayList, welche die Informationen des Benutzers enthaelt .
+     * @throws IOException
+     *             wenn kein zugriff auf die datei .
      */
-    public static Benutzer loadBenutzer(String userName) 
-        throws IOException {
-        //Erstelle benutzerdaten ArrayList 
+    public static Benutzer loadBenutzer(String userName) throws IOException {
+        // Erstelle benutzerdaten ArrayList
         ArrayList<String> benutzerdaten = new ArrayList<String>();
-        
+
         File datei = new File(userName + ".txt");
         BufferedReader read = new BufferedReader(new FileReader(datei));
-        
+
         // hier werden die daten gelesen und dann in eine ArrayList geschrieben
         // 4 steht fuer benutzername
         String inhaltVonDatei;
@@ -133,22 +152,24 @@ public class UserVerwaltung {
             inhaltVonDatei = read.readLine();
             benutzerdaten.add(inhaltVonDatei);
         }
-        //benutzerdaten werden in die ArrayListe eingefuegt. 
+        // benutzerdaten werden in die ArrayListe eingefuegt.
         String username = benutzerdaten.get(0);
         String passwort = benutzerdaten.get(1);
         String studiengang = benutzerdaten.get(2);
         String ects = benutzerdaten.get(3);
-        
-        Benutzer benutzer = new Benutzer(username, passwort, ects
-            , studiengang);
+
+        Benutzer benutzer = new Benutzer(username, passwort, ects, studiengang);
         // schliesse den reader sonst gibt es ein leak.
         read.close();
         // gebe benutzer informationen zurueck.
-        return benutzer; 
+        return benutzer;
     }
+
     /**
      * Methode, um den momentan angemeldeten Benutzer zu loeschen.
-     * @param userName wird uebergeben.
+     * 
+     * @param userName
+     *            wird uebergeben.
      * @return geloescht
      */
     public static boolean loeschenBenutzer(String userName) {
