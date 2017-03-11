@@ -197,4 +197,47 @@ public class Datum {
         
         
     }
+    /**
+     * Gibt an ob sich zwei Daten im selben Zeitfenster befinden.
+     * 
+     * @param datum1 Datum des ersten Termins
+     * @param datum2 Datum des zweiten Termins
+     * @param dauer1 Dauer des ersten Termins
+     * @param dauer2 Dauer des zweiten Termins
+     * 
+     * @return true wenn beide im Intervall liegen
+     */
+    public static boolean liegtImZeitintervall(Date datum1, Date datum2,
+        int dauer1, int dauer2) {
+        Calendar cal1 = Calendar.getInstance();
+        cal1.setTime(datum1);
+        cal1.add(Calendar.MINUTE, dauer1);
+        Date ende1 = cal1.getTime();
+
+        Calendar cal2 = Calendar.getInstance();
+        cal2.setTime(datum2);
+        cal2.add(Calendar.MINUTE, dauer2);
+        Date ende2 = cal2.getTime();
+
+        boolean liegtImIntervall = false;
+
+        if (datum1.before(datum2)) {
+            if (datum2.before(ende1)) {
+                liegtImIntervall = true;
+            } else {
+                liegtImIntervall = false;
+            }
+
+        } else if (datum2.before(datum1)) {
+            if (datum1.before(ende2)) {
+                liegtImIntervall = true;
+            } else {
+                liegtImIntervall = false;
+            }
+        } else {
+            liegtImIntervall = true;
+        }
+
+        return liegtImIntervall;
+    }
 }
