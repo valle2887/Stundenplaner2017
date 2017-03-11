@@ -54,13 +54,13 @@ public class DatenVerwaltung {
     // Anfang fuer speichernVeranstungsArray++++++++++++++++++++++++++++    
     /**
      * Speichern von Veranstaltung in Datei.
-     * @param veranstaltungArray .
+     * @param veranstaltungsArray .
      * @param terminarray .
      * @param benutzerName .
      * @throws IOException .
      */
     public static void speichernVeranstungenArray(String[] terminarray,
-        String[] veranstaltungArray, String benutzerName) throws IOException {
+        String[] veranstaltungsArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
 
@@ -82,13 +82,13 @@ public class DatenVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Raum: " + veranstaltungArray[0]);
+        schreiben.write("Raum: " + veranstaltungsArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Gebäude: " + veranstaltungArray[1]);
+        schreiben.write("Gebäude: " + veranstaltungsArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("Dozent: " + veranstaltungArray[2]);
+        schreiben.write("Dozent: " + veranstaltungsArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write("ECTS: " + veranstaltungArray[3]);
+        schreiben.write("ECTS: " + veranstaltungsArray[3]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }

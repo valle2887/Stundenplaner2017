@@ -16,3 +16,38 @@ Notiz: null
 Zugehoerende Veranstaltung: ,knj
 Gebäude: klhj
 Raum: mklnjk
+Aufgabe
+Bezeichnung: dsdsds
+Kategorie: 2.6.2019
+Datum: 2:15
+Uhrzeit: 240
+Dauer: kjskdjs
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: TERMIN_ERLEDIGT
+Deadline: null
+Veranstaltung
+Bezeichnung:dsdsds
+Kategorie: 2.6.2019
+Datum: 2:15
+Uhrzeit: 240
+Dauer: kjskdjs
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: null
+Raum: dss
+Gebäude: ree
+Dozent: ewwew
+ECTS: 3
+Pruefung
+Bezeichnung:dsdsds
+Kategorie: 2.6.2019
+Datum: 2:15
+Uhrzeit: 240
+Dauer: kjskdjs
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: null
+Zugehoerende Veranstaltung: dsjksdj
+Gebäude: dssd
+Raum: eww

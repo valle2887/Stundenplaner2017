@@ -861,7 +861,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
- //+++++++++++++++++++++++++++++++++++++++++
+
             aufgabeSpeichern();
             
             try {
