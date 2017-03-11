@@ -283,29 +283,16 @@ public class KalenderGui extends JFrame implements ActionListener {
     }
 
     /**
-     * @return formatter
-<<<<<<< HEAD
      * @param date .
-=======
-     * @param date
-     *            es wird ein datum uebergeben
->>>>>>> branch 'master' of git@github.com:valle2887/Stundenplaner2017.git
+     * @return formatter.
      */
     private String formatDate(LocalDateTime date) {
         DateTimeFormatter formatter =
-            DateTimeFormatter.ofPattern("E dd.MMMM.yyyy");
+            DateTimeFormatter.ofPattern("E dd.MM.yyyy");
         return formatter.format(date);
     }
-
     /**
-     *
-     * 
-<<<<<<< HEAD
      * @param e .
-=======
-     * @param e
-     *            es wird ein e uebergeben
->>>>>>> branch 'master' of git@github.com:valle2887/Stundenplaner2017.git
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLinks)) {

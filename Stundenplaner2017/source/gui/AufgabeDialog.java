@@ -463,8 +463,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * @param e
-     *            .
+     * @param e    .
      */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
