@@ -1,6 +1,8 @@
 package daten;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +37,16 @@ public class Termin {
      * Die Uhrzeit, an der der Termin stattfindet.
      */
     private String uhrzeit;
+
+    /**
+     * 
+     */
+    private boolean konflikt;
+
+    /**
+     * 
+     */
+    private boolean mehrereTermine;
 
     /**
      * Eine Liste, welche die Markierungen fuer einen Termin enthaelt.
@@ -322,4 +334,85 @@ public class Termin {
      * Der Typ eines Termins.
      */
     private Typ terminTyp;
+
+    /**
+     * @return konflikt
+     */
+    public boolean isKonflikt() {
+        return konflikt;
+    }
+
+    /**
+     * @param konflikt
+     *            wird ein konflikt übergeben.
+     */
+    public void setKonflikt(boolean konflikt) {
+        this.konflikt = konflikt;
+    }
+
+    /**
+     * @return mehereTermine
+     */
+    public boolean isMehrereTermine() {
+        return mehrereTermine;
+    }
+
+    /**
+     * @param mehrereTermine
+     *            es wirden mehrere Temine übergeben.
+     */
+    public void setMehrereTermine(boolean mehrereTermine) {
+        this.mehrereTermine = mehrereTermine;
+    }
+
+    /**
+     * @return Umwandlung des datums in string
+     */
+    public Date stringZuDatum() {
+        Calendar cal = Calendar.getInstance();
+
+        String[] tagMonatJahr = datum.split(":");
+        String[] zeit = uhrzeit.split(":");
+        cal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(tagMonatJahr[0]));
+        cal.set(Calendar.MONTH, Integer.parseInt(tagMonatJahr[1]) - 1);
+        cal.set(Calendar.YEAR, Integer.parseInt(tagMonatJahr[2]));
+        cal.set(Calendar.SECOND, 0);
+        cal.set(Calendar.MILLISECOND, 0);
+        cal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(zeit[0]));
+        cal.set(Calendar.MINUTE, Integer.parseInt(zeit[1]));
+
+        return cal.getTime();
+    }
+
+    /**
+     * Methode die die Daten einer Aufgabe in ein Array schreibt.
+     * 
+     * @return Array das die Daten der Aufgabe enthält
+     **/
+    public String[] terminarray() {
+
+        String[] thisArray = new String[8];
+
+        thisArray[0] = bezeichnung;
+        thisArray[1] = datum;
+        thisArray[2] = uhrzeit;
+        thisArray[3] = dauer + "";
+        thisArray[4] = kommentar;
+        thisArray[5] = wiederholbarkeitTermin + "";
+        thisArray[6] = terminTyp + "";
+
+        return thisArray;
+    }
+
+    /**
+     * Die Methode macht aus einem übergebenen String-Objekt (der Position)
+     * einen String mit dem Inhalt.
+     * 
+     * @return Bezeichnung des Termins
+     */
+    public String toString() {
+
+        return getBezeichnung();
+    }
+
 }

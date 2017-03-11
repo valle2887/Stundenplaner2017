@@ -276,21 +276,6 @@ public class AktuelleSitzung {
     }
 
     /**
-     * @param anfang
-     *            .
-     * @return wochenAufgaben.
-     */
-
-    /**
-     * @return wochenPruefung
-     */
-    //
-    //
-    // /**
-    // * @return wochenVeranstaltung
-    // */
-    //
-    /**
      * Der Setter von AktuelleSitzung aktuelleSitzung.
      * 
      * @param aktuelleSitzung
