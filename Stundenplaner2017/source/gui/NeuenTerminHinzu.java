@@ -3,6 +3,7 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -15,13 +16,15 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import daten.AktuelleSitzung;
 import daten.Aufgabe;
+import daten.Benutzer;
+import daten.DatenVerwaltung;
 import daten.Veranstaltung;
 import daten.Pruefung;
-import daten.Termin;
-import daten.Termin.Markierung;
-import daten.Termin.Typ;
-import daten.Termin.Wiederholbarkeit;
+import daten.Aufgabe.Markierung;
+import daten.Aufgabe.Typ;
+import daten.Aufgabe.Wiederholbarkeit;
 
 /**
  * Die Klasse ist dazu da um neue Termine Hinzuzufuegen.
@@ -80,7 +83,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     // private JComboBox<Object> cbKategorie =
     // new JComboBox<Object>(arrayKategorie);
     private JComboBox<Typ> cbKategorie =
-        new JComboBox<Termin.Typ>(Termin.Typ.values());
+        new JComboBox<Aufgabe.Typ>(Aufgabe.Typ.values());
 
     /**
      * Label lDatum.
@@ -90,7 +93,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayTag mit 31 tage.
      */
-    private String[] arrayTag = {"", "1", "2", "3", "4", "5", "6", "7", "8",
+    private String[] arrayTag = { "", "1", "2", "3", "4", "5", "6", "7", "8",
         "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
         "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
 
@@ -103,7 +106,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonat.
@@ -114,7 +117,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+        { "", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahr.
@@ -154,7 +157,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayStd mit 24 Stunden.
      */
-    private String[] arrayStd = {"", "0", "1", "2", "3", "4", "5", "6", "7",
+    private String[] arrayStd = { "", "0", "1", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
         "20", "21", "22", "23" };
 
@@ -166,7 +169,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = {"", "0", "15", "30", "45" };
+    private String[] arrayMinuten = { "", "0", "15", "30", "45" };
 
     /**
      * JComboBox cbMinuten.
@@ -182,7 +185,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayTagDeadL mit 31 tage.
      */
     private String[] arrayTagDeadL =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
             "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
             "24", "25", "26", "27", "28", "29", "30", "31" };
 
@@ -195,7 +198,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonatDeadL mit 12 Monate.
      */
     private String[] arrayMonatDeadL =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonatDeadL.
@@ -207,7 +210,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahrDeadL mit 6 Jahre.
      */
     private String[] arrayJahrDeadL =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
+        { "", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahrDeadL.
@@ -252,8 +255,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * wochenlich.
      */
     private JComboBox<Wiederholbarkeit> cbWieOft =
-        new JComboBox<Termin.Wiederholbarkeit>(
-            Termin.Wiederholbarkeit.values());
+        new JComboBox<Aufgabe.Wiederholbarkeit>(
+            Aufgabe.Wiederholbarkeit.values());
 
     // private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
@@ -272,12 +275,12 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     // private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
     private JComboBox<Markierung> cbMarker =
-        new JComboBox<Termin.Markierung>(Termin.Markierung.values());
+        new JComboBox<Aufgabe.Markierung>(Aufgabe.Markierung.values());
 
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240" };
+    private String[] arrayDauer = { "", "30", "60", "90", "120", "240" };
 
     /**
      * JComboBox cbDauer.
@@ -673,32 +676,56 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * speichern von aufgabe. noch nicht fertig wegen die Klasse
      * AktuelleSitzung.
      */
+    // ++++++++++++++++++++++++++++++++++
     public void aufgabeSpeichern() {
 
         Aufgabe aufgabe = new Aufgabe();
 
+        // fuer Bezeichnung holen und deklarieren.
         String bezeichnung = tBezeichnung.getText();
         aufgabe.setBezeichnung(bezeichnung);
 
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        aufgabe.setDatum(datum);
+        // fuer Kategorie holen und deklarieren.
+        Typ kategorie = (Typ) cbKategorie.getSelectedItem();
+        aufgabe.setTerminTyp(kategorie);
 
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        aufgabe.setUhrzeit(zeit);
+        // fuer Datum tag, monat, jahr holen und deklarieren.
+        Object tag = cbTag.getSelectedItem();
+        Object monat = cbMonat.getSelectedItem();
+        Object jahr = cbJahr.getSelectedItem();
+        aufgabe.setDatum(tag + "." + monat + "." + jahr);
 
-        // int dauer = cbDauer.getSelectedItem();
-        // aufgabe.setDauer(dauer);
+        // fuer Deadline tag, monat, jahr holen und deklarieren.
+        Object deadlineTag = cbTagDeadL.getSelectedItem();
+        Object deadlineMonat = cbMonatDeadL.getSelectedItem();
+        Object deadlineJahr = cbJahrDeadL.getSelectedItem();
+        aufgabe
+            .setDatum(deadlineTag + "." + deadlineMonat + "." + deadlineJahr);
 
+        // fuer Uhrzeit stunden, minuten holen und deklarieren.
+        Object stunden = cbStunden.getSelectedItem();
+        Object minuten = cbMinuten.getSelectedItem();
+        aufgabe.setUhrzeit(stunden + ":" + minuten);
+
+        // fuer Dauer in minuten.
+        Object dauer = cbDauer.getSelectedItem();
+        aufgabe.setDauer(dauer);
+
+        // fuer wiederholung
+        Wiederholbarkeit wiederholung =
+            (Wiederholbarkeit) cbWieOft.getSelectedItem();
+        aufgabe.setWiederholbarkeitTermin(wiederholung);
+
+        // fuer Marker
+        Object marker = cbMarker.getSelectedItem() + "";
+        aufgabe.setMarkierung(marker);
+
+        // fuer Notiz
         String notiz = tNotiz.getText();
         aufgabe.setKommentar(notiz);
 
-        // String wiederholen = cbWieOft.getSelectedItem();
-        // aufgabe.setWiederholbarkeitTermin(wiederholen);
-
-        // String kategorie = cbKategorie.getSelectedItem();
-        // aufgabe.setTerminTyp(kategorie);
+        AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();
+        aktuelleSitzung.setAufgabe(aufgabe);
     }
 
     /**
@@ -707,30 +734,19 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void veranstaltungSpeichern() {
 
+        AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();
+        Aufgabe aufgabe = AktuelleSitzung.getAufgabe();
+
         Veranstaltung veranstaltung = new Veranstaltung();
 
-        String bezeichnung = tBezeichnung.getText();
-        veranstaltung.setBezeichnung(bezeichnung);
-
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        veranstaltung.setDatum(datum);
-
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        veranstaltung.setUhrzeit(zeit);
-
-        int dauer = (int) cbDauer.getSelectedItem();
-        veranstaltung.setDauer(dauer);
-
-        String notiz = tNotiz.getText();
-        veranstaltung.setKommentar(notiz);
-
-        // String wiederholen = cbWieOft.getSelectedItem();
-        // veranstaltung.setWiederholbarkeitTermin(wiederholen);
-
-        // String kategorie = cbKategorie.getSelectedItem();
-        // veranstaltung.setTerminTyp(kategorie);
+        veranstaltung.setBezeichnung(aufgabe.getBezeichnung());
+        veranstaltung.setDatum(aufgabe.getDatum());
+        veranstaltung.setDauer(Aufgabe.getDauer());
+        veranstaltung.setKommentar(aufgabe.getKommentar());
+        veranstaltung.setTerminTyp(aufgabe.getTerminTyp());
+        veranstaltung.setUhrzeit(aufgabe.getUhrzeit());
+        veranstaltung
+            .setWiederholbarkeitTermin(aufgabe.getWiederholbarkeitTermin());
 
         String gebaeude = tGebaeude.getText();
         veranstaltung.setGebaeude(gebaeude);
@@ -743,6 +759,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
         String ects = tEcts.getText();
         veranstaltung.setEcts(ects);
+
+        aktuelleSitzung.setVeranstaltung(veranstaltung);
     }
 
     // Hier kann erst weitergearbeitet werden, wenn die
@@ -754,34 +772,29 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void pruefungSpeichern() {
 
+        AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();
+        Aufgabe aufgabe = AktuelleSitzung.getAufgabe();
+
         Pruefung pruefung = new Pruefung();
 
-        String bezeichnung = tBezeichnung.getText();
-        pruefung.setBezeichnung(bezeichnung);
+        pruefung.setBezeichnung(aufgabe.getBezeichnung());
+        pruefung.setDatum(aufgabe.getDatum());
+        pruefung.setDauer(Aufgabe.getDauer());
+        pruefung.setKommentar(aufgabe.getKommentar());
+        pruefung.setTerminTyp(aufgabe.getTerminTyp());
+        pruefung.setUhrzeit(aufgabe.getUhrzeit());
+        pruefung.setWiederholbarkeitTermin(aufgabe.getWiederholbarkeitTermin());
 
-        String datum = cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-            + "." + cbJahr.getSelectedItem();
-        pruefung.setDatum(datum);
+        String gebaeude = tGebaeude.getText();
+        pruefung.setGebaeude(gebaeude);
 
-        String zeit =
-            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem();
-        pruefung.setUhrzeit(zeit);
+        String raumnummer = tRaum.getText();
+        pruefung.setRaumnummer(raumnummer);
 
-        // String dauer = cbDauer.getSelectedItem();
-        // pruefung.setDauer(dauer);
+        String zugehoerigVeranstaltung = tZugehoerigV.getText();
+        pruefung.setZugehoerendeVeranstaltung(zugehoerigVeranstaltung);
 
-        // Object notiz = tNotiz.getText();
-        // pruefung.setKommentar(notiz);
-
-        // Object kategorie = cbKategorie.getSelectedItem();
-        // pruefung.setTerminTyp(kategorie);
-
-        // Object gebaeude = tGebaeude.getText();
-        // pruefung.set
-
-        // Object raumnummer = tRaum.getText();
-        // pruefung.set
-
+        aktuelleSitzung.setPruefung(pruefung);
     }
 
     /**
@@ -846,8 +859,23 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
         } else {
+
             aufgabeSpeichern();
 
+            try {
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+
+                aktuelleSitzung.aufgHinzu(AktuelleSitzung.getAufgabe());
+
+                DatenVerwaltung.speichernAufagbeArray(
+                    AktuelleSitzung.getAufgabe().terminarray(),
+                    Benutzer.getUserName());
+
+            } catch (IOException exc) {
+                JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+            }
             JOptionPane.showMessageDialog(null, "Aufgabe Gespeichert",
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
@@ -914,6 +942,21 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             // methode umzu speichern.
             pruefungSpeichern();
 
+            try {
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+
+                aktuelleSitzung.pruefHinzu(aktuelleSitzung.getPruefung());
+
+                DatenVerwaltung.speichernPruefungenArray(
+                    aktuelleSitzung.getPruefung().terminarray(),
+                    aktuelleSitzung.getPruefung().pruefungArray(),
+                    Benutzer.getUserName());
+
+            } catch (IOException exc) {
+                JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+            }
             JOptionPane.showMessageDialog(null, "Pruefung Gespeichert",
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
@@ -978,6 +1021,22 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             // zum speichern! noch nicht fertig
         } else {
             veranstaltungSpeichern();
+
+            try {
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+
+                aktuelleSitzung.veranHinzu(aktuelleSitzung.getVeranstaltung());
+
+                DatenVerwaltung.speichernVeranstungenArray(
+                    aktuelleSitzung.getVeranstaltung().terminarray(),
+                    aktuelleSitzung.getVeranstaltung().veranstaltungsArray(),
+                    Benutzer.getUserName());
+
+            } catch (IOException exc) {
+                JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
+                    "Error!", JOptionPane.ERROR_MESSAGE);
+            }
             JOptionPane.showMessageDialog(null, "Veranstaltung Gespeichert",
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 

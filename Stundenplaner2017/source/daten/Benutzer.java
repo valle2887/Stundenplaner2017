@@ -27,7 +27,6 @@ public class Benutzer {
      */
     private static String studiengang;
 
-
     /**
      * Klassenkonstruktor.
      * 
@@ -124,5 +123,4 @@ public class Benutzer {
         Benutzer.studiengang = studiengang;
     }
 
- 
 }

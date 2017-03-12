@@ -3,3 +3,15 @@ abcd
 winf
 80
 
+
+Aufgabe
+Bezeichnung: saugen
+Kategorie: 12.3.2017
+Datum: 12:15
+Uhrzeit: 30
+Dauer: 
+Wiederholung: Einmalig
+Marker: Privat
+Notiz: HOHE_PRIORITAET
+Deadline: null
+

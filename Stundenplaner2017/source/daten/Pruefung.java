@@ -6,11 +6,7 @@ package daten;
  * 
  * @author Rakan Al-Swayyed
  */
-public class Pruefung extends Termin {
-    /**
-     * Pruefungsdauer in Minuten mit dem Datentyp Integer.
-     */
-    private int pruefungsdauer;
+public class Pruefung extends Aufgabe {
 
     /**
      * Der Raum, in der die Pruefung stattfindet mit dem Datentyp String.
@@ -25,7 +21,7 @@ public class Pruefung extends Termin {
     /**
      * Die Veranstaltung, die zu einer Pruefung gehoert mit dem Datentyp String.
      */
-    private Veranstaltung zugehoerendeVeranstaltung;
+    private String zugehoerendeVeranstaltung;
 
     /**
      * Konstruktor der Klasse Pruefung die von Termin erbt.
@@ -33,25 +29,6 @@ public class Pruefung extends Termin {
     public Pruefung() {
 
         super();
-    }
-
-    /**
-     * Getter fuer die Pruefungsdauer.
-     * 
-     * @return pruefungsdauer Gibt die Pruefungsdauer in Minuten zurueck.
-     */
-    public int getPruefungsdauer() {
-        return pruefungsdauer;
-    }
-
-    /**
-     * Setter fuer die Pruefungsdauer.
-     * 
-     * @param pruefungsdauer
-     *            Setzt die Pruefungsdauer.
-     */
-    public void setPruefungsdauer(int pruefungsdauer) {
-        this.pruefungsdauer = pruefungsdauer;
     }
 
     /**
@@ -71,7 +48,7 @@ public class Pruefung extends Termin {
      *            Setzt die zur Pruefung zugehoerende Veranstaltung.
      */
     public void setZugehoerendeVeranstaltung(
-        Veranstaltung zugehoerendeVeranstaltung) {
+        String zugehoerendeVeranstaltung) {
         this.zugehoerendeVeranstaltung = zugehoerendeVeranstaltung;
     }
 

@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import daten.Termin;
-import daten.Termin.Markierung;
-import daten.Termin.Typ;
-import daten.Termin.Wiederholbarkeit;
+import daten.Aufgabe;
+import daten.Aufgabe.Markierung;
+import daten.Aufgabe.Typ;
+import daten.Aufgabe.Wiederholbarkeit;
 import daten.Veranstaltung;
 
 /**
@@ -58,7 +58,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      */
     //private JComboBox<Object> cbKategorie =
       //  new JComboBox<Object>(arrayKategorie);
-    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+    private JComboBox<Typ> cbKategorie = new JComboBox<Aufgabe.Typ>(Aufgabe.
         Typ.values());
     /**
      * Label lDatum.
@@ -151,8 +151,8 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * JComboBox cbMarker fuer marken.
      */
     //private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
-    private JComboBox<Markierung> cbMarker = new JComboBox<Termin
-        .Markierung>(Termin.Markierung.values());
+    private JComboBox<Markierung> cbMarker = new JComboBox<Aufgabe
+        .Markierung>(Aufgabe.Markierung.values());
     /**
      * Array arrayDauer.
      */
@@ -170,8 +170,8 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
      * wochenlich.
      */
-    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Termin
-        .Wiederholbarkeit>(Termin.Wiederholbarkeit.values());
+    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Aufgabe
+        .Wiederholbarkeit>(Aufgabe.Wiederholbarkeit.values());
     //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
      * Label lMin.

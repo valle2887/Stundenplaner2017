@@ -17,34 +17,37 @@ public class DatenVerwaltung {
     // Anfang fuer speichernAufagbeArray++++++++++++++++++++++++++++    
     /**
      * Speichern von Terminen in Datei des Eingelogten Benutzers.
-     *@param aufgabeArray .
-     *@param benutzerName . 
+     *@param terminarray .
+     *@param benutzerName .
      *@throws IOException .
      */
-    public void speichernAufagbeArray(String[] aufgabeArray, 
+    public static void speichernAufagbeArray(String[] terminarray,
         String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+       
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Aufgabe");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[0]);
+        schreiben.write("Bezeichnung: " + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(aufgabeArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-
+        schreiben.write("Deadline: " + terminarray[8]);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
     // Ende fuer speichernAufagbeArray++++++++++++++++++++++++++++
@@ -52,40 +55,43 @@ public class DatenVerwaltung {
     // Anfang fuer speichernVeranstungsArray++++++++++++++++++++++++++++    
     /**
      * Speichern von Veranstaltung in Datei.
-     * @param veranstaltungArray .
+     * @param veranstaltungsArray .
+     * @param terminarray .
      * @param benutzerName .
      * @throws IOException .
      */
-    public void speichernVeranstungenArray(String[] veranstaltungArray
-        , String benutzerName) throws IOException {
+    public static void speichernVeranstungenArray(String[] terminarray,
+        String[] veranstaltungsArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+        
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Veranstaltung");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[0]);
+        schreiben.write("Bezeichnung:" + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[8]);
+        schreiben.write("Raum: " + veranstaltungsArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[9]);
+        schreiben.write("Gebäude: " + veranstaltungsArray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[10]);
+        schreiben.write("Dozent: " + veranstaltungsArray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(veranstaltungArray[11]);
+        schreiben.write("ECTS: " + veranstaltungsArray[3]);
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
@@ -95,34 +101,39 @@ public class DatenVerwaltung {
      * Speichern von Pr¸fung in Datei.
      * @param pruefungArray .
      * @param benutzerName .
+     * @param terminarray .
      * @throws IOException .
      */
-    public void speichernPruefungenArray(String[] pruefungArray
-        , String benutzerName) throws IOException {
+    public static void speichernPruefungenArray(String[] terminarray,
+        String[] pruefungArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+        
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Pruefung");
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[0]);
+        schreiben.write("Bezeichnung:" + terminarray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[1]);
+        schreiben.write("Kategorie: " + terminarray[1]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[2]);
+        schreiben.write("Datum: " + terminarray[2]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[3]);
+        schreiben.write("Uhrzeit: " + terminarray[3]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[4]);
+        schreiben.write("Dauer: " + terminarray[4]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[5]);
+        schreiben.write("Wiederholung: " + terminarray[5]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[6]);
+        schreiben.write("Marker: " + terminarray[6]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[7]);
+        schreiben.write("Notiz: " + terminarray[7]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[8]);
+        schreiben.write("Zugehoerende Veranstaltung: " + pruefungArray[0]);
         schreiben.append(System.getProperty("line.separator"));
-        schreiben.write(pruefungArray[9]);
+        schreiben.write("Gebäude: " + pruefungArray[1]);
+        schreiben.append(System.getProperty("line.separator"));
+        schreiben.write("Raum: " + pruefungArray[2]);
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
@@ -230,7 +241,7 @@ public class DatenVerwaltung {
      * @throws IOException .
      * @return geloescht .
      */
-    public static boolean aufgabeLoeschen(String benutzerName)
+    public static boolean terminLoeschen(String benutzerName)
         throws IOException {
 
         // Erstellt die ArrayList diese wird später mit den Daten gefüllt
@@ -264,100 +275,127 @@ public class DatenVerwaltung {
         // Wenn der Begriff in der Nummer steht dann wird switch ausgeführt
         if (index > 0 && benutzerDaten.get(index).equals(name)) {
 
-            switch (typ) {
-            case "Aufgabe":
-
-                System.out.println("Aufgabe kann gelöscht werden");
-
-                FileWriter speichern =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit auch das Wort Aufgabe + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 10 Stellen entfernt
-                arrayGroesse = arrayGroesse - 10;
-                // for-Schleife die die Daten löscht
-                for (int i = 0; i <= 8; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList speichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern.write(benutzerDaten.get(a));
-                    speichern.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                speichern.close();
+            if (typ.equals("Aufgabe")) {
+                
+                //methode aufgabeloeschen
+                aufgabeloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+                
+                read.close();   
+            } else if (typ.equals("Prüfung")) {
+              
+                //methode pruefungloeschen
+                pruefungloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+               
                 read.close();
-                break;
-
-            case "Prüfung":
-
-                FileWriter speichern1 =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit auch das Wort Prüfung + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 13 Stellen entfernt
-                arrayGroesse = arrayGroesse - 13;
-                // for-Schleife die Daten löscht
-                for (int i = 0; i <= 12; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList wieder abspeichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern1.write(benutzerDaten.get(a));
-                    speichern1.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                System.out.println("Prüfung gelöscht");
-                speichern1.close();
+            } else if (typ.equals("Veranstaltung")) {
+                
+                //methode veranstaltungloeschen
+                veranstaltungloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+                
                 read.close();
-                break;
-            case "Veranstaltung":
-
-                FileWriter speichern2 =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit das Wort Veranstaltung + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 14 Stellen entfernt
-                arrayGroesse = arrayGroesse - 14;
-                // for-Schleife die die Daten löscht
-                for (int i = 0; i <= 13; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList wieder abspeichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern2.write(benutzerDaten.get(a));
-                    speichern2.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                speichern2.close();
-                read.close();
-                break;
-            default:
-                geloescht = false;
-                break;
+            } else {
+                geloescht = false; 
             }
         }
         return geloescht;
     }
     /**
-     * 
+     * methode aufgabeloeschen loescht die Aufgabe.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
      */
-    public void aufgabeCase() {
-        
-    }
-    /**
-     * 
-     */
-    public void pruefungCase() {
-        
-    }
-    /**
-     * 
-     */
-    public void veranstaltungCase() {
-        
-    }
+    public static void aufgabeloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        System.out.println("Aufgabe kann gelöscht werden");
 
+        FileWriter speichern =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit auch das Wort Aufgabe + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 10 Stellen entfernt
+        arrayGroesse = arrayGroesse - 10;
+        // for-Schleife die die Daten löscht
+        for (int i = 0; i <= 8; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList speichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern.write(benutzerDaten.get(a));
+            speichern.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        speichern.close();
+    }
+    /**
+     *methode pruefungloeschen loescht die Pruefung.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
+     */
+    public static void pruefungloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        
+        FileWriter speichern1 =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit auch das Wort Prüfung + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 13 Stellen entfernt
+        arrayGroesse = arrayGroesse - 13;
+        // for-Schleife die Daten löscht
+        for (int i = 0; i <= 12; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList wieder abspeichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern1.write(benutzerDaten.get(a));
+            speichern1.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        System.out.println("Prüfung gelöscht");
+        speichern1.close();
+    }
+    /**
+     * methode veranstaltungloeschen loescht die Veranstaltung.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
+     */
+    public static void veranstaltungloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        FileWriter speichern2 =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit das Wort Veranstaltung + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 14 Stellen entfernt
+        arrayGroesse = arrayGroesse - 14;
+        // for-Schleife die die Daten löscht
+        for (int i = 0; i <= 13; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList wieder abspeichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern2.write(benutzerDaten.get(a));
+            speichern2.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        speichern2.close();
+    }
     /**
      * Termin Bearbeiten .
      * @param benutzerName .

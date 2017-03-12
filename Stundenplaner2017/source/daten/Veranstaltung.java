@@ -5,7 +5,7 @@ package daten;
  * 
  * @author Rakan Al-Swayyed
  */
-public class Veranstaltung extends Termin {
+public class Veranstaltung extends Aufgabe {
     /**
      * Die Raumnummer, in dem die Veranstaltung stattfindet, ist ein String, da
      * es auch eine Kombination von Buchstaben und Zahlen sein kann, bsp H2.
@@ -105,16 +105,7 @@ public class Veranstaltung extends Termin {
         this.ects = ects;
     }
 
-    /**
-     * Konstruktor der Klasse Veranstaltung die von Aufgabe erbt.
-     **/
-    public Veranstaltung() {
-
-        super();
-
-    }
-
-    /**
+   /**
      * Methode die ein Array mit den Zusatzdaten für Veranstaltungen beschreibt.
      * 
      * @return Das Array mit den Zusatzdaten für Veranstaltungen

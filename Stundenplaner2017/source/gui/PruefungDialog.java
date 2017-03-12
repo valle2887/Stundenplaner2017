@@ -14,9 +14,9 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import daten.Pruefung;
-import daten.Termin;
-import daten.Termin.Markierung;
-import daten.Termin.Typ;
+import daten.Aufgabe;
+import daten.Aufgabe.Markierung;
+import daten.Aufgabe.Typ;
 
 /**
  * @author Rakan Al-Swayyed
@@ -52,7 +52,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
      */
     //private JComboBox<Object> cbKategorie =
       //  new JComboBox<Object>(arrayKategorie);
-    private JComboBox<Typ> cbKategorie = new JComboBox<Termin.Typ>(Termin.
+    private JComboBox<Typ> cbKategorie = new JComboBox<Aufgabe.Typ>(Aufgabe.
         Typ.values());
     /**
      * Label lDatum.
@@ -145,8 +145,8 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * JComboBox cbMarker fuer marken.
      */
     //private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
-    private JComboBox<Markierung> cbMarker = new JComboBox<Termin
-        .Markierung>(Termin.Markierung.values());
+    private JComboBox<Markierung> cbMarker = new JComboBox<Aufgabe
+        .Markierung>(Aufgabe.Markierung.values());
     /**
      * Array arrayDauer.
      */

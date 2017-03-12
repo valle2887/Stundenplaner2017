@@ -1,5 +1,60 @@
+<<<<<<< HEAD
 rakan1
 123
 def
 34
 
+=======
+rakan1
+123
+def
+34
+
+Aufgabe
+Bezeichnung: wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
+Notiz: TERMIN_ERFOLGREICH
+Deadline: null
+Veranstaltung
+Bezeichnung:wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
+Notiz: null
+Raum: ÖJOi
+Gebäude: k.lnuz
+Dozent: .nk-ljb
+ECTS: 76
+Pruefung
+Bezeichnung:wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
+Notiz: null
+Zugehoerende Veranstaltung: ijou
+Gebäude: jkuvtzr
+Raum: löjiob
+
+Aufgabe
+Bezeichnung: dhf
+Kategorie: 6.4.2020
+Datum: 3:45
+Uhrzeit: 90
+Dauer: rztzhher
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: HOHE_PRIORITAET
+Deadline: null
+
+>>>>>>> refs/remotes/origin/master

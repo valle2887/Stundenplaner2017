@@ -13,10 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import daten.Aufgabe;
-import daten.Termin;
-import daten.Termin.Markierung;
-import daten.Termin.Typ;
-import daten.Termin.Wiederholbarkeit;
+import daten.Aufgabe.Markierung;
+import daten.Aufgabe.Typ;
+import daten.Aufgabe.Wiederholbarkeit;
 
 /**
  * @author Rakan Al-Swayyed
@@ -64,7 +63,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     // private JComboBox<Object> cbKategorie =
     // new JComboBox<Object>(arrayKategorie);
     private JComboBox<Typ> cbKategorie =
-        new JComboBox<Termin.Typ>(Termin.Typ.values());
+        new JComboBox<Aufgabe.Typ>(Aufgabe.Typ.values());
 
     /**
      * Label lDatum.
@@ -236,8 +235,8 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * wochenlich.
      */
     private JComboBox<Wiederholbarkeit> cbWieOft =
-        new JComboBox<Termin.Wiederholbarkeit>(
-            Termin.Wiederholbarkeit.values());
+        new JComboBox<Aufgabe.Wiederholbarkeit>(
+            Aufgabe.Wiederholbarkeit.values());
 
     // private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
@@ -255,7 +254,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      */
     // private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
     private JComboBox<Markierung> cbMarker =
-        new JComboBox<Termin.Markierung>(Termin.Markierung.values());
+        new JComboBox<Aufgabe.Markierung>(Aufgabe.Markierung.values());
 
     /**
      * Array arrayDauer.
@@ -464,8 +463,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * @param e
-     *            .
+     * @param e    .
      */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
