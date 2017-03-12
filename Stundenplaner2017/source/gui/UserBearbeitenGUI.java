@@ -139,13 +139,12 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         btnSpeichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 String[] daten = new String[4];
-                daten[0] = txtNeuPasswort.getText();
-                daten[1] = txtNeuStudiengang.getText();
-                daten[2] = txtNeuECTS.getText();
-                daten[3] = txtNeuPasswortNochmal.getText();
-     
-                AktuelleSitzung.
-                        getBenutzer();
+                    daten[0] = txtNeuPasswort.getText();
+                    daten[1] = txtNeuStudiengang.getText();
+                    daten[2] = txtNeuECTS.getText();
+                    daten[3] = txtNeuPasswortNochmal.getText();
+
+                AktuelleSitzung.getBenutzer();
                     try {
                         UserVerwaltung.bearbeitenBenutzer(
                                     Benutzer.getUserName(), daten);
@@ -154,11 +153,18 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                         exc.printStackTrace();
                     }
                     AktuelleSitzung.getAktuelleSitzung();
-                    AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
-                    AktuelleSitzung.getBenutzer().setEcts(daten[2]);
-                    AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
-                    dispose();
+                    if (!daten[1].isEmpty()) {
+                        AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
+                    } 
+                    if (!daten[2].isEmpty()) {
+                        AktuelleSitzung.getBenutzer().setEcts(daten[2]);    
+                    }
                     
+                    if (!daten[0].isEmpty() && !daten[3].isEmpty() 
+                        && daten[0].equals(daten[3])) { 
+                    AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
+                    }
+                    dispose();
             }         
         });
         pack();

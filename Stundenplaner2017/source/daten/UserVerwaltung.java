@@ -108,10 +108,15 @@ public class UserVerwaltung {
         while ((inhaltVonDatei = read.readLine()) != null) {
             userDaten.add(inhaltVonDatei);
         }
-
-        userDaten.set(1, passwort);
-        userDaten.set(2, studiengang);
-        userDaten.set(3, ects);
+        if (!"".equals(passwort)) {
+            userDaten.set(1, passwort);
+        }
+        if (!"".equals(studiengang)) {
+            userDaten.set(2, studiengang);
+        }
+        if (!"".equals(ects)) {
+            userDaten.set(3, ects);
+        }
 
         arrayGroesse = userDaten.size();
 
@@ -120,23 +125,20 @@ public class UserVerwaltung {
         FileWriter write = new FileWriter(userName + ".txt", false);
 
         for (int a = 0; a < arrayGroesse; a++) {
-            write.write(userDaten.get(a));
+            write.write(userDaten.get(a++));
             write.append(System.getProperty("line.separator"));
         }
 
         read.close();
         write.close();
     }
-
-    // ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
+     * Lese die Benutzerdaten aus der Datei aus.
+     * @param userName vom aktuell eingeloggten Benutzer .
+     * @return  ArrayList, welche die Informationen des Benutzers enthaelt .
+     * @throws IOException  wenn kein zugriff auf die datei .
      * Lese die Benutzerdaten aus die Datei (txt) aus.
      * 
-     * @param userName
-     *            vom aktuell eingeloggten Benutzer .
-     * @return ArrayList, welche die Informationen des Benutzers enthaelt .
-     * @throws IOException
-     *             wenn kein zugriff auf die datei .
      */
     public static Benutzer loadBenutzer(String userName) throws IOException {
         // Erstelle benutzerdaten ArrayList
@@ -177,4 +179,5 @@ public class UserVerwaltung {
         boolean geloescht = file.delete();
         return geloescht;
     }
+   
 }

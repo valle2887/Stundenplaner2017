@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+rakan1
+123
+def
+34
+
+=======
 rakan1
 123
 def
@@ -50,3 +57,4 @@ Marker: Universitaet
 Notiz: HOHE_PRIORITAET
 Deadline: null
 
+>>>>>>> refs/remotes/origin/master
