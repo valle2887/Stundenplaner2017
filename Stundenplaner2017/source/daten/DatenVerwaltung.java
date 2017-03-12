@@ -190,7 +190,7 @@ public class DatenVerwaltung {
         
         while ((inhaltVonDatei = read.readLine()) != null) {
             // wonach er suchen soll. 
-            String stichwort = "Pr¸fung";
+            String stichwort = "Pruefung";
             // bedingung falls stichwort gleich inhaltVonDatei.
             if (inhaltVonDatei.equals(stichwort)) {
                 //speichernPruefungenArray hat ein Array der groesse 10   

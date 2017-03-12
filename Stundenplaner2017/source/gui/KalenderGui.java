@@ -394,7 +394,7 @@ public class KalenderGui extends JFrame implements ActionListener {
     public void fensterUpdate() {
         for (int wochentag = 1; wochentag <= 7; wochentag++) {
             for (int uhrzeit = 0; uhrzeit <= 23; uhrzeit++) {
-                plan.setValueAt(null, uhrzeit, wochentag);
+                ((JTable) plan).setValueAt(null, uhrzeit, wochentag);
             }
         }
         AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();

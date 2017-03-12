@@ -20,11 +20,10 @@ import daten.AktuelleSitzung;
 import daten.Aufgabe;
 import daten.Benutzer;
 import daten.DatenVerwaltung;
-import daten.Veranstaltung;
 import daten.Pruefung;
-import daten.Aufgabe.Markierung;
-import daten.Aufgabe.Typ;
-import daten.Aufgabe.Wiederholbarkeit;
+import daten.Termin;
+import daten.Termin.Typ;
+import daten.Veranstaltung;
 
 /**
  * Die Klasse ist dazu da um neue Termine Hinzuzufuegen.
@@ -254,7 +253,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig,
      * wochenlich.
      */
-    private JComboBox<Wiederholbarkeit> cbWieOft =
+    private JComboBox<daten.Termin.Wiederholbarkeit> cbWieOft =
         new JComboBox<Aufgabe.Wiederholbarkeit>(
             Aufgabe.Wiederholbarkeit.values());
 
@@ -274,7 +273,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * JComboBox cbMarker fuer marken.
      */
     // private JComboBox<Object> cbMarker = new JComboBox<Object>(arrayMarker);
-    private JComboBox<Markierung> cbMarker =
+    private JComboBox<daten.Termin.Markierung> cbMarker =
         new JComboBox<Aufgabe.Markierung>(Aufgabe.Markierung.values());
 
     /**
@@ -686,7 +685,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         aufgabe.setBezeichnung(bezeichnung);
 
         // fuer Kategorie holen und deklarieren.
-        Typ kategorie = (Typ) cbKategorie.getSelectedItem();
+        daten.Termin.Typ kategorie =
+            (daten.Termin.Typ) cbKategorie.getSelectedItem();
         aufgabe.setTerminTyp(kategorie);
 
         // fuer Datum tag, monat, jahr holen und deklarieren.
@@ -709,11 +709,11 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
         // fuer Dauer in minuten.
         Object dauer = cbDauer.getSelectedItem();
-        aufgabe.setDauer(dauer);
+        aufgabe.setDauer((int) dauer);
 
         // fuer wiederholung
-        Wiederholbarkeit wiederholung =
-            (Wiederholbarkeit) cbWieOft.getSelectedItem();
+        daten.Termin.Wiederholbarkeit wiederholung =
+            (daten.Termin.Wiederholbarkeit) cbWieOft.getSelectedItem();
         aufgabe.setWiederholbarkeitTermin(wiederholung);
 
         // fuer Marker
@@ -740,8 +740,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         Veranstaltung veranstaltung = new Veranstaltung();
 
         veranstaltung.setBezeichnung(aufgabe.getBezeichnung());
-        veranstaltung.setDatum(aufgabe.getDatum());
-        veranstaltung.setDauer(Aufgabe.getDauer());
+        veranstaltung.setDatum(Termin.getDatum());
+        veranstaltung.setDauer(String.valueOf(Termin.getDauer()));
         veranstaltung.setKommentar(aufgabe.getKommentar());
         veranstaltung.setTerminTyp(aufgabe.getTerminTyp());
         veranstaltung.setUhrzeit(aufgabe.getUhrzeit());
@@ -758,7 +758,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         veranstaltung.setDozent(dozent);
 
         String ects = tEcts.getText();
-        veranstaltung.setEcts(ects);
+        Integer.parseInt(Termin.setEcts(ects));
 
         aktuelleSitzung.setVeranstaltung(veranstaltung);
     }
@@ -778,8 +778,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         Pruefung pruefung = new Pruefung();
 
         pruefung.setBezeichnung(aufgabe.getBezeichnung());
-        pruefung.setDatum(aufgabe.getDatum());
-        pruefung.setDauer(Aufgabe.getDauer());
+        pruefung.setDatum(Termin.getDatum());
+        pruefung.setDauer(String.valueOf(Termin.getDauer()));
         pruefung.setKommentar(aufgabe.getKommentar());
         pruefung.setTerminTyp(aufgabe.getTerminTyp());
         pruefung.setUhrzeit(aufgabe.getUhrzeit());
