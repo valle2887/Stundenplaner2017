@@ -55,6 +55,13 @@ public class Termin {
     private Wiederholbarkeit wiederholbarkeitTermin;
 
     /**
+     * 
+     */
+    public Termin() {
+    }
+
+
+    /**
      * @return bezeichnung
      */
     public String getBezeichnung() {
@@ -111,7 +118,7 @@ public class Termin {
      *            es wird eine dauer uebergeben
      */
     public void setDauer(int dauer) {
-        this.dauer = dauer;
+        Termin.dauer = dauer;
     }
 
     /**

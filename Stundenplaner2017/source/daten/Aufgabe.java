@@ -32,11 +32,4 @@ public class Aufgabe extends Termin {
     public String getDeadline() {
         return deadline;
     }
-
-    /**
-     * Konstruktor.
-     */
-    public Aufgabe() {
-
-    }
 }
