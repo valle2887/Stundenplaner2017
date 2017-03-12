@@ -139,12 +139,12 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         btnSpeichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 String[] daten = new String[4];
-                daten[0] = txtNeuPasswort.getText();
-                daten[1] = txtNeuStudiengang.getText();
-                daten[2] = txtNeuECTS.getText();
-                daten[3] = txtNeuPasswortNochmal.getText();
-                AktuelleSitzung.
-                        getBenutzer();
+                    daten[0] = txtNeuPasswort.getText();
+                    daten[1] = txtNeuStudiengang.getText();
+                    daten[2] = txtNeuECTS.getText();
+                    daten[3] = txtNeuPasswortNochmal.getText();
+
+                AktuelleSitzung.getBenutzer();
                     try {
                         UserVerwaltung.bearbeitenBenutzer(
                                     Benutzer.getUserName(), daten);

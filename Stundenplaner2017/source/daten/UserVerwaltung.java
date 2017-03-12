@@ -108,10 +108,15 @@ public class UserVerwaltung {
         while ((inhaltVonDatei = read.readLine()) != null) {
             userDaten.add(inhaltVonDatei);
         }
-
-        userDaten.set(1, passwort);
-        userDaten.set(2, studiengang);
-        userDaten.set(3, ects);
+        if (!"".equals(passwort)) {
+            userDaten.set(1, passwort);
+        }
+        if (!"".equals(studiengang)) {
+            userDaten.set(2, studiengang);
+        }
+        if (!"".equals(ects)) {
+            userDaten.set(3, ects);
+        }
 
         arrayGroesse = userDaten.size();
 
@@ -120,7 +125,7 @@ public class UserVerwaltung {
         FileWriter write = new FileWriter(userName + ".txt", false);
 
         for (int a = 0; a < arrayGroesse; a++) {
-            write.write(userDaten.get(a));
+            write.write(userDaten.get(a++));
             write.append(System.getProperty("line.separator"));
         }
 
