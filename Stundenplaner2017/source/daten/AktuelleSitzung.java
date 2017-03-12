@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
-import gui.KalenderGui;
-
 /**
  * Die Klasse AktuelleSitzung managed alle Termine des eingeloggten Benutzers,
  * d.h. die Termine vom Kalender. Es werden fuer die Variablen-Typen Aufgabe,
@@ -23,7 +21,7 @@ public class AktuelleSitzung {
     /**
      * Die ArrayList, die die aufgaben enthaehlt.
      */
-    private ArrayList<Aufgabe> aufgaben;
+    private static ArrayList<Aufgabe> aufgaben;
 
     /**
      * Die ArrayList, die die pruefungen enthaelt.
@@ -34,6 +32,7 @@ public class AktuelleSitzung {
      * Die ArrayList, die die veranstaltungen enthaelt.
      */
     private ArrayList<Veranstaltung> veranstaltungen;
+
     /**
      * die aufgabe vom Variablentyp Aufgabe.
      */
@@ -48,12 +47,6 @@ public class AktuelleSitzung {
      * die veranstaltung vom Variablentyp Veranstaltung.
      */
     private Veranstaltung veranstaltung;
-
-    /**
-     * klasse kalender muss noch erstellt werden.
-     */
-    // private Kalender GUI kalendergui;
-    private KalenderGui kalenderGui;
 
     /**
      * die aktuelleSitzung vom Variablentyp AktuelleSitzung wird hier auf static
@@ -85,7 +78,7 @@ public class AktuelleSitzung {
      * 
      * @return aufgaben
      */
-    public ArrayList<Aufgabe> getAufgaben() {
+    public static ArrayList<Aufgabe> getAufgaben() {
         return aufgaben;
     }
 
@@ -165,7 +158,7 @@ public class AktuelleSitzung {
      *            Die Aufgaben vom Typ Arraylist
      */
     public void setAufgaben(ArrayList<Aufgabe> aufgaben) {
-        this.aufgaben = aufgaben;
+        AktuelleSitzung.aufgaben = aufgaben;
     }
 
     /**
@@ -226,7 +219,7 @@ public class AktuelleSitzung {
      *            Die Aufgabe vom Typ Aufgabe.
      */
     public void aufgHinzu(Aufgabe aufgabe) {
-        this.aufgaben.add(aufgabe);
+        AktuelleSitzung.aufgaben.add(aufgabe);
         // kalender muss aktualisiert werden!
     }
 
@@ -270,7 +263,7 @@ public class AktuelleSitzung {
                 aufgabe.setDauer(Integer.parseInt(aufgaben.get(i + 3)));
                 aufgabe.setKommentar(aufgaben.get(i + 4));
 
-                this.aufgaben.add(aufgabe);
+                AktuelleSitzung.aufgaben.add(aufgabe);
 
             }
 
@@ -350,9 +343,10 @@ public class AktuelleSitzung {
     public ArrayList<Pruefung> wochenPruefung(Date start) {
         ArrayList<Pruefung> wochenPruefung = new ArrayList<Pruefung>();
         for (int i = 0; i < pruefungen.size(); i++) {
+            pruefungen.get(i);
             if (Datum.liegtImZeitintervall(start,
                 pruefungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                pruefungen.get(i).getDauer())) {
+                Aufgabe.getDauer())) {
                 wochenPruefung.add(pruefungen.get(i));
             }
         }
@@ -368,9 +362,10 @@ public class AktuelleSitzung {
     public ArrayList<Aufgabe> wochenAufgaben(Date start) {
         ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
         for (int i = 0; i < aufgaben.size(); i++) {
+            aufgaben.get(i);
             if (Datum.liegtImZeitintervall(start,
                 aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
-                aufgaben.get(i).getDauer())) {
+                Aufgabe.getDauer())) {
                 wochenAufgaben.add(aufgaben.get(i));
             }
         }
@@ -388,9 +383,10 @@ public class AktuelleSitzung {
         ArrayList<Veranstaltung> wochenVeranstaltung =
             new ArrayList<Veranstaltung>();
         for (int i = 0; i < veranstaltungen.size(); i++) {
+            veranstaltungen.get(i);
             if (Datum.liegtImZeitintervall(start,
                 veranstaltungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                veranstaltungen.get(i).getDauer())) {
+                Aufgabe.getDauer())) {
                 wochenVeranstaltung.add(veranstaltungen.get(i));
             }
         }

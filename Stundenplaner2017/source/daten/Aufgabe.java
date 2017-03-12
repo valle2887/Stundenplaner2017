@@ -24,7 +24,7 @@ public class Aufgabe {
     /**
      * Die Dauer des Termins.
      */
-    private String dauer;
+    private static int dauer;
 
     /**
      * Das Datum, an dem der Termin stattfindet.
@@ -50,27 +50,31 @@ public class Aufgabe {
      * Eine Liste, welche die Markierungen fuer einen Termin enthaelt.
      */
     private Object markierung;
+
     /**
      * Datum fuer die Deadline der Aufgabe.
      */
     private String deadline;
-    
+
     /**
      * Setter fuer die Deadline der Aufgabe.
+     * 
      * @param deadline
-     * Setzt die deadline einer Aufgabe.
+     *            Setzt die deadline einer Aufgabe.
      */
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
-    
+
     /**
      * Getter fuer die Deadline der Aufgabe.
+     * 
      * @return deadline gibt die Deadline der Aufgabe aus.
      */
     public String getDeadline() {
         return deadline;
     }
+
     /**
      * Getter fuer die Markierung des Termins.
      * 
@@ -82,7 +86,9 @@ public class Aufgabe {
 
     /**
      * Setter fuer die Markierung des Termins.
-     * @param marker Die Markierung des Termins wird gesetzt.
+     * 
+     * @param marker
+     *            Die Markierung des Termins wird gesetzt.
      */
     public void setMarkierung(Object marker) {
         this.markierung = marker;
@@ -132,17 +138,18 @@ public class Aufgabe {
      * 
      * @return dauer; Gibt aus, wie lange der Termin dauert.
      */
-    public String getDauer() {
+    public static int getDauer() {
         return dauer;
     }
 
     /**
      * Setter fuer die Dauer.
      * 
-     * @param dauer2 Setzt die Dauer des Termins.
+     * @param i
+     *            Setzt Dauer des Termins.
      */
-    public void setDauer(String dauer2) {
-        this.dauer = dauer2;
+    public void setDauer(int i) {
+        Aufgabe.dauer = i;
     }
 
     /**

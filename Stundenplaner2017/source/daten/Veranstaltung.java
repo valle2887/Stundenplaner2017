@@ -105,16 +105,7 @@ public class Veranstaltung extends Aufgabe {
         this.ects = ects;
     }
 
-    /**
-     * Konstruktor der Klasse Veranstaltung die von Aufgabe erbt.
-     **/
-    public Veranstaltung() {
-
-        super();
-
-    }
-
-    /**
+   /**
      * Methode die ein Array mit den Zusatzdaten für Veranstaltungen beschreibt.
      * 
      * @return Das Array mit den Zusatzdaten für Veranstaltungen
