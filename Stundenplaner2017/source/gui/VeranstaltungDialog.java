@@ -14,9 +14,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import daten.Aufgabe;
-import daten.Aufgabe.Markierung;
-import daten.Aufgabe.Typ;
-import daten.Aufgabe.Wiederholbarkeit;
 import daten.Veranstaltung;
 
 /**
@@ -75,7 +72,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayTag mit 31 tage.
      */
-    private String[] arrayTag = { "", "1", "2", "3", "4", "5", "6", "7", "8",
+    private String[] arrayTag = {"", "1", "2", "3", "4", "5", "6", "7", "8",
         "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
         "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
 
@@ -93,7 +90,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonat.
@@ -109,7 +106,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        { "", "2017", "2018", "2019", "2020", "2021", "2022" };
+        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahr.
@@ -129,7 +126,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayStd mit 24 Stunden.
      */
-    private String[] arrayStd = { "", "0", "1", "2", "3", "4", "5", "6", "7",
+    private String[] arrayStd = {"", "0", "1", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
         "20", "21", "22", "23" };
 
@@ -141,7 +138,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = { "", "0", "15", "30", "45" };
+    private String[] arrayMinuten = {"", "0", "15", "30", "45" };
 
     /**
      * JComboBox cbMinuten.
@@ -182,7 +179,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = { "", "30", "60", "90", "120", "240" };
+    private String[] arrayDauer = {"", "30", "60", "90", "120", "240" };
 
     /**
      * JComboBox cbDauer.

@@ -13,9 +13,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import daten.Aufgabe;
-import daten.Aufgabe.Markierung;
-import daten.Aufgabe.Typ;
-import daten.Aufgabe.Wiederholbarkeit;
+import daten.Termin.Markierung;
+import daten.Termin.Typ;
+import daten.Termin.Wiederholbarkeit;
 
 /**
  * @author Rakan Al-Swayyed
@@ -91,7 +91,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonat.
@@ -107,7 +107,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahr.
@@ -139,7 +139,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = {"", "0", "15", "30", "45"};
+    private String[] arrayMinuten = {"", "0", "15", "30", "45" };
 
     /**
      * JComboBox cbMinuten.
@@ -154,10 +154,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayTagDeadL mit 31 tage.
      */
-    private String[] arrayTagDeadL = {"", "1", "2", "3", "4", "5", "6", "7",
-        "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", 
-        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-        "31" };
+    private String[] arrayTagDeadL =
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
+            "24", "25", "26", "27", "28", "29", "30", "31" };
 
     /**
      * JComboBox cbTagDeadL.
@@ -168,7 +168,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * Array arrayMonatDeadL mit 12 Monate.
      */
     private String[] arrayMonatDeadL =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * Label lPkt3.
@@ -190,7 +190,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * Array arrayJahrDeadL mit 6 Jahre.
      */
     private String[] arrayJahrDeadL =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahrDeadL.
@@ -259,7 +259,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    private String[] arrayDauer = {"", "30", "60", "90", "120", "240" };
 
     /**
      * JComboBox cbDauer.
@@ -314,7 +314,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Aufgabe aufgabe muss geleich null.
      */
-    //private Aufgabe aufgabe = null;
+    // private Aufgabe aufgabe = null;
 
     /**
      * Konstruktor der Klasse NeuenTerminHinzu .
@@ -463,7 +463,8 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * @param e    .
+     * @param e
+     *            .
      */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
