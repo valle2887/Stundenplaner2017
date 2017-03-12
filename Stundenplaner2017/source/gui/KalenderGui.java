@@ -29,7 +29,9 @@ import javax.swing.table.DefaultTableModel;
 import daten.AktuelleSitzung;
 import daten.Aufgabe;
 import daten.Datum;
+import daten.Kalender;
 import daten.Pruefung;
+import daten.Session;
 import daten.Veranstaltung;
 
 /**
@@ -171,6 +173,8 @@ public class KalenderGui extends JFrame implements ActionListener {
             { "21:00" }, { "22:00" }, { "23:00" }, { "00:00" } };
 
     private Component plan;
+
+    private Object zaehler;
 
     /**
      * 
@@ -382,6 +386,47 @@ public class KalenderGui extends JFrame implements ActionListener {
                 }
             }
         });
+    }
+
+    /**
+     * 
+     */
+    public void fensterUpdate() {
+        for (int wochentag = 1; wochentag <= 7; wochentag++) {
+            for (int uhrzeit = 0; uhrzeit <= 23; uhrzeit++) {
+                plan.setValueAt(null, uhrzeit, wochentag);
+            }
+        }
+        AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();
+
+        Calendar start = Calendar.getInstance();
+        start.setWeekDate(start.get(Calendar.YEAR),
+            start.get(Calendar.WEEK_OF_YEAR) + zaehler, 2);
+        start.set(Calendar.HOUR_OF_DAY, 0);
+        start.set(Calendar.MINUTE, 0);
+        start.set(Calendar.SECOND, 0);
+        start.set(Calendar.MILLISECOND, 0);
+
+        // die jeweiligen ArrayListen werden aus der Session entnommen.
+
+        ArrayList<Aufgabe> aufgaben = AktuelleSitzung.getAufgaben();
+
+        ArrayList<Pruefung> pruefungen = AktuelleSitzung.getPruefungen();
+
+        ArrayList<Veranstaltung> veranstaltungen =
+            AktuelleSitzung.getVeranstaltungen();
+
+        /*
+         * Es werden aus der Klasse Kalender die Methoden zum Hinzufuegen von
+         * Aufgabe, Pruefung und Veranstaltung entnommen.
+         */
+        Kalender.aufgabenHinzufuegen(aufgaben, pruefungen, veranstaltungen,
+            zaehler, plan);
+        Kalender.pruefungHinzufuegen(aufgaben, pruefungen, veranstaltungen,
+            zaehler, plan);
+        Kalender.veranstaltungHinzufuegen(aufgaben, pruefungen, veranstaltungen,
+            zaehler, plan);
+
     }
 
     /**
