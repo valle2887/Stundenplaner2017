@@ -1,6 +1,7 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -168,6 +169,8 @@ public class KalenderGui extends JFrame implements ActionListener {
             { "11:00" }, { "12:00" }, { "13:00" }, { "14:00" }, { "15:00" },
             { "16:00" }, { "17:00" }, { "18:00" }, { "19:00" }, { "20:00" },
             { "21:00" }, { "22:00" }, { "23:00" }, { "00:00" } };
+
+    private Component plan;
 
     /**
      * 

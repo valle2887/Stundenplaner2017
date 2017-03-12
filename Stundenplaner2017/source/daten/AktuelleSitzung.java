@@ -36,7 +36,7 @@ public class AktuelleSitzung {
     /**
      * die aufgabe vom Variablentyp Aufgabe.
      */
-    private Aufgabe aufgabe;
+    private static ArrayList<Aufgabe> aufgabe;
 
     /**
      * die pruefung vom Variablentyp Pruefung.
@@ -105,7 +105,7 @@ public class AktuelleSitzung {
      * 
      * @return aufgabe
      */
-    public Aufgabe getAufgabe() {
+    public static ArrayList<Aufgabe> getAufgabe() {
         return aufgabe;
     }
 
@@ -187,8 +187,8 @@ public class AktuelleSitzung {
      * @param aufgabe
      *            Die Aufgabe vom Typ Aufgabe
      */
-    public void setAufgabe(Aufgabe aufgabe) {
-        this.aufgabe = aufgabe;
+    public void setAufgabe(ArrayList<Aufgabe> aufgabe) {
+        AktuelleSitzung.aufgabe = aufgabe;
     }
 
     /**

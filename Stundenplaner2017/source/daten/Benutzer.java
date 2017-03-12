@@ -25,8 +25,7 @@ public class Benutzer {
     /**
      * Studiengang des users.
      */
-    private String studiengang;
-
+    private static String studiengang;
 
     /**
      * Klassenkonstruktor.
@@ -110,7 +109,7 @@ public class Benutzer {
      * 
      * @return studiengang
      */
-    public String getStudiengang() {
+    public static String getStudiengang() {
         return studiengang;
     }
 
@@ -121,8 +120,7 @@ public class Benutzer {
      *            Der Studiengang des Users
      */
     public void setStudiengang(String studiengang) {
-        this.studiengang = studiengang;
+        Benutzer.studiengang = studiengang;
     }
 
- 
 }

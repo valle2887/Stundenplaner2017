@@ -102,7 +102,7 @@ public class Kalender {
         Benutzer benutzer = AktuelleSitzung.getBenutzer();
 
         try {
-            DatenVerwaltung.loeschenBenutzer(Benutzer.getUserName());
+            UserVerwaltung.loeschenBenutzer(Benutzer.getUserName());
             DatenVerwaltung.speicherBenutzerdaten(Benutzer.getUserName(),
                 Benutzer.getPasswort(), Benutzer.getStudiengang(),
                 Benutzer.getECTS());
@@ -113,7 +113,7 @@ public class Kalender {
                 sAufgabe[0] = pruefung.getBezeichnung();
                 sAufgabe[1] = pruefung.getDatum();
                 sAufgabe[2] = pruefung.getUhrzeit();
-                sAufgabe[3] = pruefung.getDauer() + "";
+                sAufgabe[3] = Aufgabe.getDauer() + "";
                 sAufgabe[4] = pruefung.getKommentar();
                 sAufgabe[5] = pruefung.getWiederholung() + "";
                 sAufgabe[6] = pruefung.getTerminTyp();
