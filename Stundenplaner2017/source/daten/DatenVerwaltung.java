@@ -241,7 +241,7 @@ public class DatenVerwaltung {
      * @throws IOException .
      * @return geloescht .
      */
-    public static boolean aufgabeLoeschen(String benutzerName)
+    public static boolean terminLoeschen(String benutzerName)
         throws IOException {
 
         // Erstellt die ArrayList diese wird später mit den Daten gefüllt
@@ -275,80 +275,126 @@ public class DatenVerwaltung {
         // Wenn der Begriff in der Nummer steht dann wird switch ausgeführt
         if (index > 0 && benutzerDaten.get(index).equals(name)) {
 
-            switch (typ) {
-            case "Aufgabe":
-
-                System.out.println("Aufgabe kann gelöscht werden");
-
-                FileWriter speichern =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit auch das Wort Aufgabe + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 10 Stellen entfernt
-                arrayGroesse = arrayGroesse - 10;
-                // for-Schleife die die Daten löscht
-                for (int i = 0; i <= 8; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList speichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern.write(benutzerDaten.get(a));
-                    speichern.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                speichern.close();
+            if (typ.equals("Aufgabe")) {
+                
+                //methode aufgabeloeschen
+                aufgabeloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+                
+                read.close();   
+            } else if (typ.equals("Prüfung")) {
+              
+                //methode pruefungloeschen
+                pruefungloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+               
                 read.close();
-                break;
-
-            case "Prüfung":
-
-                FileWriter speichern1 =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit auch das Wort Prüfung + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 13 Stellen entfernt
-                arrayGroesse = arrayGroesse - 13;
-                // for-Schleife die Daten löscht
-                for (int i = 0; i <= 12; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList wieder abspeichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern1.write(benutzerDaten.get(a));
-                    speichern1.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                System.out.println("Prüfung gelöscht");
-                speichern1.close();
+            } else if (typ.equals("Veranstaltung")) {
+                
+                //methode veranstaltungloeschen
+                veranstaltungloeschen(benutzerName, index, arrayGroesse,
+                    benutzerDaten, geloescht);
+                
                 read.close();
-                break;
-            case "Veranstaltung":
-
-                FileWriter speichern2 =
-                    new FileWriter(benutzerName + ".txt", false);
-                // Damit das Wort Veranstaltung + Leerzeile gelöscht wird
-                index = index - 2;
-                // Es werden 14 Stellen entfernt
-                arrayGroesse = arrayGroesse - 14;
-                // for-Schleife die die Daten löscht
-                for (int i = 0; i <= 13; i++) {
-                    benutzerDaten.remove(index);
-                }
-                // for-Schleife die die ArrayList wieder abspeichert
-                for (int a = 0; a <= arrayGroesse; a++) {
-                    speichern2.write(benutzerDaten.get(a));
-                    speichern2.append(System.getProperty("line.separator"));
-                }
-                geloescht = true;
-                speichern2.close();
-                read.close();
-                break;
-            default:
-                geloescht = false;
-                break;
+            } else {
+                geloescht = false; 
             }
         }
         return geloescht;
+    }
+    /**
+     * methode aufgabeloeschen loescht die Aufgabe.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
+     */
+    public static void aufgabeloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        System.out.println("Aufgabe kann gelöscht werden");
+
+        FileWriter speichern =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit auch das Wort Aufgabe + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 10 Stellen entfernt
+        arrayGroesse = arrayGroesse - 10;
+        // for-Schleife die die Daten löscht
+        for (int i = 0; i <= 8; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList speichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern.write(benutzerDaten.get(a));
+            speichern.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        speichern.close();
+    }
+    /**
+     *methode pruefungloeschen loescht die Pruefung.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
+     */
+    public static void pruefungloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        
+        FileWriter speichern1 =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit auch das Wort Prüfung + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 13 Stellen entfernt
+        arrayGroesse = arrayGroesse - 13;
+        // for-Schleife die Daten löscht
+        for (int i = 0; i <= 12; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList wieder abspeichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern1.write(benutzerDaten.get(a));
+            speichern1.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        System.out.println("Prüfung gelöscht");
+        speichern1.close();
+    }
+    /**
+     * methode veranstaltungloeschen loescht die Veranstaltung.
+     *@param benutzerName .
+     * @param index .
+     * @param arrayGroesse .
+     * @param benutzerDaten .
+     * @param geloescht .
+     * @throws IOException .
+     */
+    public static void veranstaltungloeschen(String benutzerName, int index,
+        int arrayGroesse, ArrayList<String> benutzerDaten, boolean geloescht)
+        throws IOException {
+        FileWriter speichern2 =
+            new FileWriter(benutzerName + ".txt", false);
+        // Damit das Wort Veranstaltung + Leerzeile gelöscht wird
+        index = index - 2;
+        // Es werden 14 Stellen entfernt
+        arrayGroesse = arrayGroesse - 14;
+        // for-Schleife die die Daten löscht
+        for (int i = 0; i <= 13; i++) {
+            benutzerDaten.remove(index);
+        }
+        // for-Schleife die die ArrayList wieder abspeichert
+        for (int a = 0; a <= arrayGroesse; a++) {
+            speichern2.write(benutzerDaten.get(a));
+            speichern2.append(System.getProperty("line.separator"));
+        }
+        geloescht = true;
+        speichern2.close();
     }
     /**
      * Termin Bearbeiten .
