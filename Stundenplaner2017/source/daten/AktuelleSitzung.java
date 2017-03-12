@@ -26,12 +26,12 @@ public class AktuelleSitzung {
     /**
      * Die ArrayList, die die pruefungen enthaelt.
      */
-    private ArrayList<Pruefung> pruefungen;
+    private static ArrayList<Pruefung> pruefungen;
 
     /**
      * Die ArrayList, die die veranstaltungen enthaelt.
      */
-    private ArrayList<Veranstaltung> veranstaltungen;
+    private static ArrayList<Veranstaltung> veranstaltungen;
 
     /**
      * die aufgabe vom Variablentyp Aufgabe.
@@ -87,7 +87,7 @@ public class AktuelleSitzung {
      * 
      * @return pruefungen
      */
-    public ArrayList<Pruefung> getPruefungen() {
+    public static ArrayList<Pruefung> getPruefungen() {
         return pruefungen;
     }
 
@@ -96,7 +96,7 @@ public class AktuelleSitzung {
      * 
      * @return veranstaltungen
      */
-    public ArrayList<Veranstaltung> getVeranstaltungen() {
+    public static ArrayList<Veranstaltung> getVeranstaltungen() {
         return veranstaltungen;
     }
 
@@ -168,7 +168,7 @@ public class AktuelleSitzung {
      *            Die Pruefung vom Typ Arraylist
      */
     public void setPruefungen(ArrayList<Pruefung> pruefungen) {
-        this.pruefungen = pruefungen;
+        AktuelleSitzung.pruefungen = pruefungen;
     }
 
     /**
@@ -178,7 +178,7 @@ public class AktuelleSitzung {
      *            Die Veranstaltung vom Typ Arraylist
      */
     public void setVeranstaltungen(ArrayList<Veranstaltung> veranstaltungen) {
-        this.veranstaltungen = veranstaltungen;
+        AktuelleSitzung.veranstaltungen = veranstaltungen;
     }
 
     /**
@@ -231,7 +231,7 @@ public class AktuelleSitzung {
      *            Die Pruefung vom Typ Pruefung.
      */
     public void pruefHinzu(Pruefung pruefung) {
-        this.pruefungen.add(pruefung);
+        AktuelleSitzung.pruefungen.add(pruefung);
         // kalender muss aktualisiert werden!
     }
 
@@ -244,7 +244,7 @@ public class AktuelleSitzung {
      *            Die Veranstaltung vom Typ Veranstaltung.
      */
     public void veranHinzu(Veranstaltung veranstaltung) {
-        this.veranstaltungen.add(veranstaltung);
+        AktuelleSitzung.veranstaltungen.add(veranstaltung);
         // kalender muss aktualisiert werden!
     }
 
@@ -296,7 +296,7 @@ public class AktuelleSitzung {
                 veranstaltung.setGebaeude(veranstaltungen.get(i + 8));
                 veranstaltung.setDozent(veranstaltungen.get(i + 9));
                 veranstaltung.setEcts(veranstaltungen.get(i + 10));
-                this.veranstaltungen.add(veranstaltung);
+                AktuelleSitzung.veranstaltungen.add(veranstaltung);
             }
         } catch (Exception exc) {
             exc.printStackTrace();
@@ -325,7 +325,7 @@ public class AktuelleSitzung {
                 // pruefung.setZugehoerendeVeranstaltung(pruefungen.get(i + 7));
 
                 pruefung.setRaumnummer(pruefungen.get(i + 9));
-                this.pruefungen.add(pruefung);
+                AktuelleSitzung.pruefungen.add(pruefung);
             }
         } catch (Exception exc) {
 
@@ -346,7 +346,7 @@ public class AktuelleSitzung {
             pruefungen.get(i);
             if (Datum.liegtImZeitintervall(start,
                 pruefungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                Aufgabe.getDauer())) {
+                (int) Aufgabe.getDauer())) {
                 wochenPruefung.add(pruefungen.get(i));
             }
         }
@@ -365,7 +365,7 @@ public class AktuelleSitzung {
             aufgaben.get(i);
             if (Datum.liegtImZeitintervall(start,
                 aufgaben.get(i).stringZuDatum(), 60 * 24 * 7,
-                Aufgabe.getDauer())) {
+                (int) Aufgabe.getDauer())) {
                 wochenAufgaben.add(aufgaben.get(i));
             }
         }
@@ -386,7 +386,7 @@ public class AktuelleSitzung {
             veranstaltungen.get(i);
             if (Datum.liegtImZeitintervall(start,
                 veranstaltungen.get(i).stringZuDatum(), 60 * 24 * 7,
-                Aufgabe.getDauer())) {
+                (int) Aufgabe.getDauer())) {
                 wochenVeranstaltung.add(veranstaltungen.get(i));
             }
         }

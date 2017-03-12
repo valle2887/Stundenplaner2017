@@ -116,7 +116,7 @@ public class Kalender {
                 sAufgabe[3] = pruefung.getDauer() + "";
                 sAufgabe[4] = pruefung.getKommentar();
                 sAufgabe[5] = pruefung.getWiederholung() + "";
-                sAufgabe[6] = pruefung.getTyp();
+                sAufgabe[6] = pruefung.getTerminTyp();
 
                 // ...
 
@@ -134,15 +134,14 @@ public class Kalender {
                 terminArray[3] = Aufgabe.getDauer() + "";
                 terminArray[4] = pruefung.getKommentar();
                 terminArray[5] = pruefung.getWiederholung() + "";
-                terminArray[6] = pruefung.getTyp();
+                terminArray[6] = pruefung.getTerminTyp();
                 // ...
                 String[] pruefungArray = new String[3];
-                pruefungArray[0] = pruefung.getVeranstaltung();
-                pruefungArray[1] = pruefung.getCampus();
-                pruefungArray[2] = pruefung.getRaum();
+                pruefungArray[0] = pruefung.getZugehoerendeVeranstaltung();
+                pruefungArray[2] = pruefung.getRaumnummer();
 
-                FileHandler.speicherPruefArray(terminArray, pruefungArray,
-                    benutzer.getName());
+                DatenVerwaltung.speichernPruefungenArray(terminArray,
+                    pruefungArray, Benutzer.getUserName());
             }
 
             ArrayList<Veranstaltung> veranstaltungen =
@@ -157,7 +156,7 @@ public class Kalender {
                 terminArray[3] = Aufgabe.getDauer() + "";
                 terminArray[4] = veranstaltung.getKommentar();
                 terminArray[5] = veranstaltung.getWiederholung() + "";
-                terminArray[6] = veranstaltung.getTyp();
+                terminArray[6] = veranstaltung.getTerminTyp();
 
                 // ...
                 String[] sVeranstaltung = new String[4];
