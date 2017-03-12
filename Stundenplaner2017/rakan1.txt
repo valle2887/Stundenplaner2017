@@ -3,51 +3,50 @@ rakan1
 def
 34
 
-
-Pruefung
-Bezeichnung:j-bözil
-Kategorie: 3.4.2019
-Datum: 2:30
-Uhrzeit: 60
-Dauer: kljkl
-Wiederholung: Woechentlich
-Marker: Universitaet
-Notiz: null
-Zugehoerende Veranstaltung: ,knj
-Gebäude: klhj
-Raum: mklnjk
 Aufgabe
-Bezeichnung: dsdsds
-Kategorie: 2.6.2019
-Datum: 2:15
-Uhrzeit: 240
-Dauer: kjskdjs
-Wiederholung: Einmalig
-Marker: Universitaet
-Notiz: TERMIN_ERLEDIGT
+Bezeichnung: wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
+Notiz: TERMIN_ERFOLGREICH
 Deadline: null
 Veranstaltung
-Bezeichnung:dsdsds
-Kategorie: 2.6.2019
-Datum: 2:15
-Uhrzeit: 240
-Dauer: kjskdjs
-Wiederholung: Einmalig
-Marker: Universitaet
+Bezeichnung:wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
 Notiz: null
-Raum: dss
-Gebäude: ree
-Dozent: ewwew
-ECTS: 3
+Raum: ÖJOi
+Gebäude: k.lnuz
+Dozent: .nk-ljb
+ECTS: 76
 Pruefung
-Bezeichnung:dsdsds
-Kategorie: 2.6.2019
-Datum: 2:15
-Uhrzeit: 240
-Dauer: kjskdjs
-Wiederholung: Einmalig
-Marker: Universitaet
+Bezeichnung:wfe
+Kategorie: 4.3.2022
+Datum: 2:30
+Uhrzeit: 120
+Dauer: adsadf
+Wiederholung: Woechentlich
+Marker: Privat
 Notiz: null
-Zugehoerende Veranstaltung: dsjksdj
-Gebäude: dssd
-Raum: eww
+Zugehoerende Veranstaltung: ijou
+Gebäude: jkuvtzr
+Raum: löjiob
+
+Aufgabe
+Bezeichnung: dhf
+Kategorie: 6.4.2020
+Datum: 3:45
+Uhrzeit: 90
+Dauer: rztzhher
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: HOHE_PRIORITAET
+Deadline: null
+

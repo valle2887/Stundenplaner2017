@@ -24,7 +24,7 @@ public class Aufgabe {
     /**
      * Die Dauer des Termins.
      */
-    private static int dauer;
+    private static Object dauer;
 
     /**
      * Das Datum, an dem der Termin stattfindet.
@@ -138,18 +138,17 @@ public class Aufgabe {
      * 
      * @return dauer; Gibt aus, wie lange der Termin dauert.
      */
-    public static int getDauer() {
+    public static Object getDauer() {
         return dauer;
     }
 
     /**
      * Setter fuer die Dauer.
      * 
-     * @param i
-     *            Setzt Dauer des Termins.
+     * @param dauer2 Setzt Dauer des Termins.
      */
-    public void setDauer(int i) {
-        Aufgabe.dauer = i;
+    public void setDauer(Object dauer2) {
+        Aufgabe.dauer = dauer2;
     }
 
     /**

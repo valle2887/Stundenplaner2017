@@ -25,7 +25,8 @@ public class DatenVerwaltung {
         String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+       
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Aufgabe");
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Bezeichnung: " + terminarray[0]);
@@ -46,7 +47,7 @@ public class DatenVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Deadline: " + terminarray[8]);
         schreiben.append(System.getProperty("line.separator"));
-
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
     // Ende fuer speichernAufagbeArray++++++++++++++++++++++++++++
@@ -63,7 +64,8 @@ public class DatenVerwaltung {
         String[] veranstaltungsArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+        
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Veranstaltung");
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Bezeichnung:" + terminarray[0]);
@@ -90,6 +92,7 @@ public class DatenVerwaltung {
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("ECTS: " + veranstaltungsArray[3]);
         schreiben.append(System.getProperty("line.separator"));
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }
     // Ende fuer speichernVeranstungsArray++++++++++++++++++++++++++++    
@@ -105,7 +108,8 @@ public class DatenVerwaltung {
         String[] pruefungArray, String benutzerName) throws IOException {
 
         FileWriter schreiben = new FileWriter(benutzerName + ".txt", true);
-
+        
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Pruefung");
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Bezeichnung:" + terminarray[0]);
@@ -129,6 +133,7 @@ public class DatenVerwaltung {
         schreiben.write("Gebäude: " + pruefungArray[1]);
         schreiben.append(System.getProperty("line.separator"));
         schreiben.write("Raum: " + pruefungArray[2]);
+        schreiben.append(System.getProperty("line.separator"));
         schreiben.append(System.getProperty("line.separator"));
         schreiben.close();
     }

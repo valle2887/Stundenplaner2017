@@ -708,7 +708,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         aufgabe.setUhrzeit(stunden + ":" + minuten);
         
         //fuer Dauer in minuten.
-        String dauer = (String) cbDauer.getSelectedItem();
+        Object dauer = cbDauer.getSelectedItem();
         aufgabe.setDauer(dauer);
         
         // fuer wiederholung
@@ -741,7 +741,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         
         veranstaltung.setBezeichnung(aufgabe.getBezeichnung());
         veranstaltung.setDatum(aufgabe.getDatum());
-        veranstaltung.setDauer(aufgabe.getDauer());
+        veranstaltung.setDauer(Aufgabe.getDauer());
         veranstaltung.setKommentar(aufgabe.getKommentar());
         veranstaltung.setTerminTyp(aufgabe.getTerminTyp());
         veranstaltung.setUhrzeit(aufgabe.getUhrzeit());
@@ -780,7 +780,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         
         pruefung.setBezeichnung(aufgabe.getBezeichnung());
         pruefung.setDatum(aufgabe.getDatum());
-        pruefung.setDauer(aufgabe.getDauer());
+        pruefung.setDauer(Aufgabe.getDauer());
         pruefung.setKommentar(aufgabe.getKommentar());
         pruefung.setTerminTyp(aufgabe.getTerminTyp());
         pruefung.setUhrzeit(aufgabe.getUhrzeit());
