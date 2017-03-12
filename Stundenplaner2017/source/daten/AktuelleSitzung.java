@@ -340,7 +340,7 @@ public class AktuelleSitzung {
      * @param start
      *            es wird eine zeit übergeben.
      */
-    public ArrayList<Pruefung> wochenPruefung(Date start) {
+    public static ArrayList<Pruefung> wochenPruefung(Date start) {
         ArrayList<Pruefung> wochenPruefung = new ArrayList<Pruefung>();
         for (int i = 0; i < pruefungen.size(); i++) {
             pruefungen.get(i);
@@ -359,7 +359,7 @@ public class AktuelleSitzung {
      * @param start
      *            eine zeit wird übergeben
      */
-    public ArrayList<Aufgabe> wochenAufgaben(Date start) {
+    public static ArrayList<Aufgabe> wochenAufgaben(Date start) {
         ArrayList<Aufgabe> wochenAufgaben = new ArrayList<Aufgabe>();
         for (int i = 0; i < aufgaben.size(); i++) {
             aufgaben.get(i);
@@ -378,7 +378,7 @@ public class AktuelleSitzung {
      * @param start
      *            eine zeit wird übergeben
      */
-    public ArrayList<Veranstaltung> wochenVeranstaltung(Date start) {
+    public static ArrayList<Veranstaltung> wochenVeranstaltung(Date start) {
 
         ArrayList<Veranstaltung> wochenVeranstaltung =
             new ArrayList<Veranstaltung>();
