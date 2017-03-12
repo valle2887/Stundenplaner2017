@@ -93,7 +93,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayTag mit 31 tage.
      */
-    private String[] arrayTag = { "", "1", "2", "3", "4", "5", "6", "7", "8",
+    private String[] arrayTag = {"", "1", "2", "3", "4", "5", "6", "7", "8",
         "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20",
         "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31" };
 
@@ -106,7 +106,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
     /**
      * JComboBox cbMonat.
@@ -117,7 +117,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        { "", "2017", "2018", "2019", "2020", "2021", "2022" };
+        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
 
     /**
      * JComboBox cbJahr.
@@ -157,9 +157,9 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayStd mit 24 Stunden.
      */
-    private String[] arrayStd = { "", "0", "1", "2", "3", "4", "5", "6", "7",
+    private String[] arrayStd = {"", "0", "1", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-        "20", "21", "22", "23" };
+        "20", "21", "22", "23"};
 
     /**
      * JComboBox cbStunden.
@@ -169,7 +169,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = { "", "0", "15", "30", "45" };
+    private String[] arrayMinuten = {"", "0", "15", "30", "45"};
 
     /**
      * JComboBox cbMinuten.
@@ -185,7 +185,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayTagDeadL mit 31 tage.
      */
     private String[] arrayTagDeadL =
-        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
             "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
             "24", "25", "26", "27", "28", "29", "30", "31" };
 
@@ -198,7 +198,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonatDeadL mit 12 Monate.
      */
     private String[] arrayMonatDeadL =
-        { "", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
     /**
      * JComboBox cbMonatDeadL.
@@ -210,7 +210,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahrDeadL mit 6 Jahre.
      */
     private String[] arrayJahrDeadL =
-        { "", "2017", "2018", "2019", "2020", "2021", "2022" };
+        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
 
     /**
      * JComboBox cbJahrDeadL.
@@ -280,7 +280,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = { "", "30", "60", "90", "120", "240" };
+    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
 
     /**
      * JComboBox cbDauer.
@@ -802,16 +802,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
      */
     public void aufgabeGewaehlt() {
-        // Bezeichnung
         if (tBezeichnung.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
                 "Bezeichnung: darf nicht leer sein!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
-            // Katehorie
         } else if (cbKategorie.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            // Datum
         } else if (cbTag.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,
                 "Datum: Tag muss gewählt werden!", "Error!",
@@ -824,7 +821,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Datum: Jahr muss gewählt werden!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
-            // DeadLine
         } else if (cbTagDeadL.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,
                 "Deadline: Tag muss gewählt werden!", "Error!",
@@ -837,7 +833,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Deadline: Jahr muss gewählt werden!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
-            // uhrzeit
         } else if ((cbStunden.getSelectedIndex() == 0
             && cbMinuten.getSelectedIndex() != 0)) {
             JOptionPane.showMessageDialog(null,
@@ -853,32 +848,24 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            // Dauer
         } else if (cbDauer.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            // zum speichern! noch nicht fertig
         } else {
-
             aufgabeSpeichern();
-
             try {
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-
                 aktuelleSitzung.aufgHinzu(AktuelleSitzung.getAufgabe());
-
                 DatenVerwaltung.speichernAufagbeArray(
                     AktuelleSitzung.getAufgabe().terminarray(),
                     Benutzer.getUserName());
-
             } catch (IOException exc) {
                 JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
                     "Error!", JOptionPane.ERROR_MESSAGE);
             }
             JOptionPane.showMessageDialog(null, "Aufgabe Gespeichert",
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
-
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
             new KalenderGui();
@@ -890,16 +877,13 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * felder gewaehlt wurden wenn ja soll der fenster schliessen und speichern.
      */
     public void pruefGewaehlt() {
-        // Bezeichnung
         if (tBezeichnung.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
                 "Bezeichnung: darf nicht leer sein!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
-            // Katehorie
         } else if (cbKategorie.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            // Datum
         } else if (cbTag.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,
                 "Datum: Tag muss gewählt werden!", "Error!",
@@ -912,7 +896,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Datum: Jahr muss gewählt werden!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
-            // Uhrzeit
         } else if ((cbStunden.getSelectedIndex() == 0
             && cbMinuten.getSelectedIndex() != 0)) {
             JOptionPane.showMessageDialog(null,
@@ -928,7 +911,6 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-            // Dauer
         } else if (cbDauer.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
@@ -941,25 +923,21 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         } else {
             // methode umzu speichern.
             pruefungSpeichern();
-
             try {
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-
                 aktuelleSitzung.pruefHinzu(aktuelleSitzung.getPruefung());
 
                 DatenVerwaltung.speichernPruefungenArray(
                     aktuelleSitzung.getPruefung().terminarray(),
                     aktuelleSitzung.getPruefung().pruefungArray(),
                     Benutzer.getUserName());
-
             } catch (IOException exc) {
                 JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
                     "Error!", JOptionPane.ERROR_MESSAGE);
             }
             JOptionPane.showMessageDialog(null, "Pruefung Gespeichert",
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
-
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
             new KalenderGui();
@@ -1021,18 +999,14 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             // zum speichern! noch nicht fertig
         } else {
             veranstaltungSpeichern();
-
             try {
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-
                 aktuelleSitzung.veranHinzu(aktuelleSitzung.getVeranstaltung());
-
                 DatenVerwaltung.speichernVeranstungenArray(
                     aktuelleSitzung.getVeranstaltung().terminarray(),
                     aktuelleSitzung.getVeranstaltung().veranstaltungsArray(),
                     Benutzer.getUserName());
-
             } catch (IOException exc) {
                 JOptionPane.showMessageDialog(null, "Kein Datenzugriff!",
                     "Error!", JOptionPane.ERROR_MESSAGE);

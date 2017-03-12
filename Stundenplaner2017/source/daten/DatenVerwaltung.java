@@ -235,6 +235,7 @@ public class DatenVerwaltung {
         read.close();
         return veranstaltungenDaten;
     }
+    // Anfang  termin loeschen ++++++++++++++++++++++++++++++++++
     /**
      * Termin loeschen ob Aufgabe, Pruefung, Veranstaltung.
      * @param benutzerName Der String BenutzerName.
@@ -396,6 +397,9 @@ public class DatenVerwaltung {
         geloescht = true;
         speichern2.close();
     }
+    // Ende termin loeschen ++++++++++++++++++++++++++++++++++
+    
+    // Anfang termine Bearbeiten ++++++++++++++++++++++++++++++++++
     /**
      * Termin Bearbeiten .
      * @param benutzerName .
@@ -404,7 +408,35 @@ public class DatenVerwaltung {
      */
     public static void termineBearbeiten(String benutzerName, String[] eingabe)
         throws IOException {
+        
+        String art = eingabe[0];
 
+        if (art.equals("Aufgabe")) {
+            //
+            aufgabeBearbeiten(benutzerName, eingabe);
+        } else if (art.equals("Prüfung")) {
+            //
+            pruefungBearbeiten(benutzerName, eingabe);
+        } else if (art.equals("Veranstaltung")) {
+            //
+            veranstaltungBearbeiten(benutzerName, eingabe);
+        } else {
+            // weiß nicht was da rein soll...
+            System.out.println("file not found!");
+        }
+    }
+    /**
+     * methode aufgabeBearbeiten bearbeiten die Aufgabe.
+     * 
+     * @param benutzerName
+     *            .
+     * @param eingabe
+     *            .
+     * @throws IOException
+     *             .
+     */
+    public static void aufgabeBearbeiten(String benutzerName,
+        String[] eingabe) throws IOException {
         String bezeichnung = eingabe[1];
         String datum = eingabe[2];
         String uhrzeit = eingabe[3];
@@ -413,20 +445,18 @@ public class DatenVerwaltung {
         String wiederholung = eingabe[6];
         String typ = eingabe[7];
 
-        String art = eingabe[0];
-
         // ArrayList mit den Daten aus der Datei des Benutzers
         ArrayList<String> terminDaten = new ArrayList<String>();
 
-        // inhaltVonDatei der Zeile aus der Textdatei
-        String inhaltVonDatei;
+        // Inhalt der Zeile aus der Textdatei
+        String inhalt;
 
         //Name des Termins der bearbeitet werden soll
         String terName = eingabe[1];
 
         // Zeilennumer
         int index = 0;
-
+        //Array groesse.
         int arrayGroesse;
 
         // Zum Auslesen der Textdatei mit den Benutzerdaten
@@ -434,115 +464,197 @@ public class DatenVerwaltung {
         BufferedReader read = new BufferedReader(new FileReader(datei));
 
         // Erstellt ArrayList mit den Daten aus der Textdatei
-        while ((inhaltVonDatei = read.readLine()) != null) {
-            terminDaten.add(inhaltVonDatei);
+        while ((inhalt = read.readLine()) != null) {
+            terminDaten.add(inhalt);
         }
-
+        //Array groesse.
         arrayGroesse = terminDaten.size();
         index = terminDaten.indexOf(terName);
 
         FileWriter speichern = new FileWriter(benutzerName + ".txt", false);
+        
+        terminDaten.set(index, bezeichnung);
+        index++;
+        terminDaten.set(index, datum);
+        index++;
+        terminDaten.set(index, uhrzeit);
+        index++;
+        terminDaten.set(index, dauer);
+        index++;
+        terminDaten.set(index, kommentar);
+        index++;
+        terminDaten.set(index, wiederholung);
+        index++;
+        terminDaten.set(index, typ);
 
-        switch (art) {
-
-        case "Aufgabe":
-
-            terminDaten.set(index, bezeichnung);
-            index++;
-            terminDaten.set(index, datum);
-            index++;
-            terminDaten.set(index, uhrzeit);
-            index++;
-            terminDaten.set(index, dauer);
-            index++;
-            terminDaten.set(index, kommentar);
-            index++;
-            terminDaten.set(index, wiederholung);
-            index++;
-            terminDaten.set(index, typ);
-
-            for (int a = 0; a <= arrayGroesse; a++) {
-                speichern.write(terminDaten.get(a));
-                speichern.append(System.getProperty("line.separator"));
-            }
-            speichern.close();
-            read.close();
-            break;
-        case "Prüfung":
-
-            String veranstaltung = eingabe[8];
-            String campus = eingabe[9];
-            String raum = eingabe[10];
-
-            terminDaten.set(index, bezeichnung);
-            index++;
-            terminDaten.set(index, datum);
-            index++;
-            terminDaten.set(index, uhrzeit);
-            index++;
-            terminDaten.set(index, dauer);
-            index++;
-            terminDaten.set(index, kommentar);
-            index++;
-            terminDaten.set(index, wiederholung);
-            index++;
-            terminDaten.set(index, typ);
-            index++;
-            terminDaten.set(index, veranstaltung);
-            index++;
-            terminDaten.set(index, campus);
-            index++;
-            terminDaten.set(index, raum);
-
-            for (int a = 0; a <= arrayGroesse; a++) {
-                speichern.write(terminDaten.get(a));
-                speichern.append(System.getProperty("line.separator"));
-            }
-            speichern.close();
-            read.close();
-            break;
-        case "Veranstaltung":
-
-            String raumNummer = eingabe[8];
-            String gebaeude = eingabe[9];
-            String dozent = eingabe[10];
-            String ects = eingabe[11];
-
-            terminDaten.set(index, bezeichnung);
-            index++;
-            terminDaten.set(index, datum);
-            index++;
-            terminDaten.set(index, uhrzeit);
-            index++;
-            terminDaten.set(index, dauer);
-            index++;
-            terminDaten.set(index, kommentar);
-            index++;
-            terminDaten.set(index, wiederholung);
-            index++;
-            terminDaten.set(index, typ);
-            index++;
-            terminDaten.set(index, raumNummer);
-            index++;
-            terminDaten.set(index, gebaeude);
-            index++;
-            terminDaten.set(index, dozent);
-            index++;
-            terminDaten.set(index, ects);
-
-            for (int a = 0; a <= arrayGroesse; a++) {
-                speichern.write(terminDaten.get(a));
-                speichern.append(System.getProperty("line.separator"));
-            }
-            speichern.close();
-            read.close();
-            break;
-        default:
-            speichern.close();
-            read.close();
-            break;
+        for (int x = 0; x <= arrayGroesse; x++) {
+            speichern.write(terminDaten.get(x));
+            speichern.append(System.getProperty("line.separator"));
         }
+        speichern.close();
+        read.close();
     }
+    /**
+     * methode pruefungBearbeiten bearbeiten die Pruefung.
+     * 
+     * @param benutzerName
+     *            .
+     * @param eingabe
+     *            .
+     * @throws IOException
+     *             .
+     */
+    public static void pruefungBearbeiten(String benutzerName, String[] eingabe)
+        throws IOException {
+        String bezeichnung = eingabe[1];
+        String datum = eingabe[2];
+        String uhrzeit = eingabe[3];
+        String dauer = eingabe[4];
+        String kommentar = eingabe[5];
+        String wiederholung = eingabe[6];
+        String typ = eingabe[7];
+
+        // ArrayList mit den Daten aus der Datei des Benutzers
+        ArrayList<String> terminDaten = new ArrayList<String>();
+
+        // Inhalt der Zeile aus der Textdatei
+        String inhalt;
+
+        //Name des Termins der bearbeitet werden soll
+        String terName = eingabe[1];
+
+        // Zeilennumer
+        int index = 0;
+        //Array groesse.
+        int arrayGroesse;
+
+        // Zum Auslesen der Textdatei mit den Benutzerdaten
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
+
+        // Erstellt ArrayList mit den Daten aus der Textdatei
+        while ((inhalt = read.readLine()) != null) {
+            terminDaten.add(inhalt);
+        }
+        //Array groesse.
+        arrayGroesse = terminDaten.size();
+        index = terminDaten.indexOf(terName);
+
+        FileWriter speichern = new FileWriter(benutzerName + ".txt", false);
+        
+        String veranstaltung = eingabe[8];
+        String campus = eingabe[9];
+        String raum = eingabe[10];
+
+        terminDaten.set(index, bezeichnung);
+        index++;
+        terminDaten.set(index, datum);
+        index++;
+        terminDaten.set(index, uhrzeit);
+        index++;
+        terminDaten.set(index, dauer);
+        index++;
+        terminDaten.set(index, kommentar);
+        index++;
+        terminDaten.set(index, wiederholung);
+        index++;
+        terminDaten.set(index, typ);
+        index++;
+        terminDaten.set(index, veranstaltung);
+        index++;
+        terminDaten.set(index, campus);
+        index++;
+        terminDaten.set(index, raum);
+
+        for (int x = 0; x <= arrayGroesse; x++) {
+            speichern.write(terminDaten.get(x));
+            speichern.append(System.getProperty("line.separator"));
+        }
+        speichern.close();
+        read.close();
+    }
+    /**
+     * methode veranstaltungBearbeiten bearbeiten die Veranstaltung.
+     * 
+     * @param benutzerName
+     *            .
+     * @param eingabe
+     *            .
+     * @throws IOException
+     *             .
+     */
+    public static void veranstaltungBearbeiten(String benutzerName,
+        String[] eingabe) throws IOException {
+
+        String bezeichnung = eingabe[1];
+        String datum = eingabe[2];
+        String uhrzeit = eingabe[3];
+        String dauer = eingabe[4];
+        String kommentar = eingabe[5];
+        String wiederholung = eingabe[6];
+        String typ = eingabe[7];
+        // ArrayList mit den Daten aus der Datei des Benutzers
+        ArrayList<String> terminDaten = new ArrayList<String>();
+        // Inhalt der Zeile aus der Textdatei
+        String inhalt;
+
+        //Name des Termins der bearbeitet werden soll
+        String terName = eingabe[1];
+
+        // Zeilennumer
+        int index = 0;
+        //Array groesse.
+        int arrayGroesse;
+
+        // Zum Auslesen der Textdatei mit den Benutzerdaten
+        File datei = new File(benutzerName + ".txt");
+        BufferedReader read = new BufferedReader(new FileReader(datei));
+
+        // Erstellt ArrayList mit den Daten aus der Textdatei
+        while ((inhalt = read.readLine()) != null) {
+            terminDaten.add(inhalt);
+        }
+        //Array groesse.
+        arrayGroesse = terminDaten.size();
+        index = terminDaten.indexOf(terName);
+
+        FileWriter speichern = new FileWriter(benutzerName + ".txt", false);
+        
+        String raumNummer = eingabe[8];
+        String gebaeude = eingabe[9];
+        String dozent = eingabe[10];
+        String ects = eingabe[11];
+
+        terminDaten.set(index, bezeichnung);
+        index++;
+        terminDaten.set(index, datum);
+        index++;
+        terminDaten.set(index, uhrzeit);
+        index++;
+        terminDaten.set(index, dauer);
+        index++;
+        terminDaten.set(index, kommentar);
+        index++;
+        terminDaten.set(index, wiederholung);
+        index++;
+        terminDaten.set(index, typ);
+        index++;
+        terminDaten.set(index, raumNummer);
+        index++;
+        terminDaten.set(index, gebaeude);
+        index++;
+        terminDaten.set(index, dozent);
+        index++;
+        terminDaten.set(index, ects);
+
+        for (int x = 0; x <= arrayGroesse; x++) {
+            speichern.write(terminDaten.get(x));
+            speichern.append(System.getProperty("line.separator"));
+        }
+        speichern.close();
+        read.close();
+    }
+    // Ende termine Bearbeiten ++++++++++++++++++++++++++++++++++
     //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
     /**
      * Export in Excel
