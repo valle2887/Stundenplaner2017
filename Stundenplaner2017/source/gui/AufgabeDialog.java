@@ -370,7 +370,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * .
+     * methode fuegePanelZuKonstruktor .
      */
     public void fuegePanelZuKonstruktor() {
         speichern.addActionListener(this);
@@ -436,7 +436,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
                 AufgabeDialog.this.setVisible(false);
                 AufgabeDialog.this.dispose();
-                new KalenderGui();
+                new KalenderGui(AktuelleSitzung.getBenutzer());
             }
         });
         // Loeschen
@@ -453,7 +453,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
                 AufgabeDialog.this.setVisible(false);
                 AufgabeDialog.this.dispose();
-                new KalenderGui();
+                new KalenderGui(AktuelleSitzung.getBenutzer());
             }
         });
 
@@ -518,7 +518,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * 
+     * methode speichernDas .
      */
     public void speichernDas() {
         Aufgabe aufgabe = AufgabeDialog.this.aufgabe;
@@ -528,12 +528,12 @@ public class AufgabeDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         aufgabe.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        aufgabe.setDauer(cbDauer.getSelectedItem());
+        aufgabe.setDauer(cbDauer.getSelectedItem() + "");
         aufgabe.setKommentar(tNotiz.getText());
         aufgabe.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());
         aufgabe.setTerminTyp((Typ) cbKategorie.getSelectedItem());
-        aufgabe.setMarkierung(cbMarker.getSelectedItem());
+        aufgabe.setMarkierung((Markierung) cbMarker.getSelectedItem());
         aufgabe.setDeadline(
             cbTagDeadL.getSelectedItem() + "." + cbMonatDeadL.getSelectedItem()
                 + "." + cbJahrDeadL.getSelectedItem());

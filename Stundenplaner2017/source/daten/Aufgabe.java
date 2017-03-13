@@ -24,7 +24,7 @@ public class Aufgabe {
     /**
      * Die Dauer des Termins.
      */
-    private static Object dauer;
+    private static String dauer;
 
     /**
      * Das Datum, an dem der Termin stattfindet.
@@ -49,7 +49,7 @@ public class Aufgabe {
     /**
      * Eine Liste, welche die Markierungen fuer einen Termin enthaelt.
      */
-    private Object markierung;
+    private Markierung markierung;
 
     /**
      * Datum fuer die Deadline der Aufgabe.
@@ -90,7 +90,7 @@ public class Aufgabe {
      * @param marker
      *            Die Markierung des Termins wird gesetzt.
      */
-    public void setMarkierung(Object marker) {
+    public void setMarkierung(Markierung marker) {
         this.markierung = marker;
     }
 
@@ -138,8 +138,8 @@ public class Aufgabe {
      * 
      * @return dauer; Gibt aus, wie lange der Termin dauert.
      */
-    public static int getDauer() {
-        return (int) dauer;
+    public static String getDauer() {
+        return dauer;
     }
 
     /**
@@ -148,7 +148,7 @@ public class Aufgabe {
      * @param dauer2
      *            Setzt Dauer des Termins.
      */
-    public void setDauer(Object dauer2) {
+    public void setDauer(String dauer2) {
         Aufgabe.dauer = dauer2;
     }
 
@@ -416,13 +416,13 @@ public class Aufgabe {
         String[] thisArray = new String[9];
 
         thisArray[0] = bezeichnung;
-        thisArray[1] = datum;
-        thisArray[2] = uhrzeit;
-        thisArray[3] = dauer + "";
-        thisArray[4] = kommentar;
+        thisArray[1] = terminTyp + "";
+        thisArray[2] = datum;
+        thisArray[3] = uhrzeit;
+        thisArray[4] = dauer + "";
         thisArray[5] = wiederholbarkeitTermin + "";
-        thisArray[6] = terminTyp + "";
-        thisArray[7] = markierung + "";
+        thisArray[6] = markierung + "";
+        thisArray[7] = kommentar;
         thisArray[8] = deadline + "";
 
         return thisArray;

@@ -1,0 +1,89 @@
+
+Aufgabe
+Bezeichnung: kjufinle
+Kategorie: 4.3.2020
+Datum: 2:15
+Uhrzeit: 120
+Dauer: r3t4t4g
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: HOHE_PRIORITAET
+Deadline: null
+
+
+Aufgabe
+Bezeichnung: ergre
+Kategorie: 4.4.2020
+Datum: 1:45
+Uhrzeit: 90
+Dauer: dgd
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: HOHE_PRIORITAET
+Deadline: null
+
+
+Aufgabe
+Bezeichnung: wt4
+Kategorie: 4.4.2021
+Datum: 2:30
+Uhrzeit: 30
+Dauer: efw4t
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: TERMIN_ERFOLGREICH
+Deadline: null
+
+
+Veranstaltung
+Bezeichnung:wt4
+Kategorie: 4.4.2021
+Datum: 2:30
+Uhrzeit: 30
+Dauer: efw4t
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: null
+Raum: wdqd
+Gebäude: dwqd
+Dozent: we3
+ECTS: waf
+
+
+Pruefung
+Bezeichnung:wt4
+Kategorie: 4.4.2021
+Datum: 2:30
+Uhrzeit: 30
+Dauer: efw4t
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: null
+Zugehoerende Veranstaltung: wadwq
+Gebäude: wr
+Raum: wdwq
+
+
+Aufgabe
+Bezeichnung: nez
+Kategorie: 2.2.2020
+Datum: 1:15
+Uhrzeit: 60
+Dauer: saedf
+Wiederholung: Woechentlich
+Marker: Privat
+Notiz: TERMIN_ERFOLGREICH
+Deadline: null
+
+
+Aufgabe
+Bezeichnung: efewf
+Kategorie: 5.5.2019
+Datum: 3:45
+Uhrzeit: 120
+Dauer: dfewf
+Wiederholung: Woechentlich
+Marker: Universitaet
+Notiz: NETTE_TUTOREN
+Deadline: null
+
