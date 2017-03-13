@@ -106,7 +106,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonat mit 12 Monate.
      */
     private String[] arrayMonat =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonat.
@@ -117,7 +117,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahr mit 6 Jahre.
      */
     private String[] arrayJahr =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahr.
@@ -159,7 +159,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     private String[] arrayStd = {"", "0", "1", "2", "3", "4", "5", "6", "7",
         "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19",
-        "20", "21", "22", "23"};
+        "20", "21", "22", "23" };
 
     /**
      * JComboBox cbStunden.
@@ -169,7 +169,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayMinuten mit 15 minuten Intervall.
      */
-    private String[] arrayMinuten = {"", "0", "15", "30", "45"};
+    private String[] arrayMinuten = {"", "0", "15", "30", "45" };
 
     /**
      * JComboBox cbMinuten.
@@ -198,7 +198,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayMonatDeadL mit 12 Monate.
      */
     private String[] arrayMonatDeadL =
-        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
 
     /**
      * JComboBox cbMonatDeadL.
@@ -210,7 +210,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      * Array arrayJahrDeadL mit 6 Jahre.
      */
     private String[] arrayJahrDeadL =
-        {"", "2017", "2018", "2019", "2020", "2021", "2022"};
+        {"", "2017", "2018", "2019", "2020", "2021", "2022" };
 
     /**
      * JComboBox cbJahrDeadL.
@@ -280,7 +280,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    private String[] arrayDauer = {"", "30", "60", "90", "120", "240" };
 
     /**
      * JComboBox cbDauer.
@@ -406,7 +406,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     }
 
     /**
-     *  methode fuegePanelZuKonstruktor  .
+     * methode fuegePanelZuKonstruktor .
      */
     public void fuegePanelZuKonstruktor() {
         // RadioButtons werden zu p1 zugewiesen.
@@ -749,7 +749,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             .setWiederholbarkeitTermin(aufgabe.getWiederholbarkeitTermin());
         Markierung marker = (Markierung) cbMarker.getSelectedItem();
         veranstaltung.setMarkierung(marker);
-        
+
         String gebaeude = tGebaeude.getText();
         veranstaltung.setGebaeude(gebaeude);
 
@@ -871,7 +871,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
-            new KalenderGui();
+            new KalenderGui(AktuelleSitzung.getBenutzer());
         }
     }
 
@@ -943,7 +943,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "INFORMATION!", JOptionPane.WARNING_MESSAGE);
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
-            new KalenderGui();
+            new KalenderGui(AktuelleSitzung.getBenutzer());
         }
     }
 
@@ -1019,7 +1019,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
             NeuenTerminHinzu.this.setVisible(false);
             NeuenTerminHinzu.this.dispose();
-            new KalenderGui();
+            new KalenderGui(AktuelleSitzung.getBenutzer());
         }
     }
 }

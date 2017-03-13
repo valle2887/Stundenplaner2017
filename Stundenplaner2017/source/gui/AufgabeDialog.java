@@ -436,7 +436,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
                 AufgabeDialog.this.setVisible(false);
                 AufgabeDialog.this.dispose();
-                new KalenderGui();
+                new KalenderGui(AktuelleSitzung.getBenutzer());
             }
         });
         // Loeschen
@@ -453,7 +453,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
                 AufgabeDialog.this.setVisible(false);
                 AufgabeDialog.this.dispose();
-                new KalenderGui();
+                new KalenderGui(AktuelleSitzung.getBenutzer());
             }
         });
 
