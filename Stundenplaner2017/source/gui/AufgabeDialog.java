@@ -12,6 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import daten.AktuelleSitzung;
 import daten.Aufgabe;
 import daten.Aufgabe.Markierung;
 import daten.Aufgabe.Typ;
@@ -25,7 +27,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * generated serial Version ID.
      */
     private static final long serialVersionUID = 5043569320233706529L;
-
+    /**
+     * Aufgabe aufgabe auf null gesetzt.
+     */
+    private Aufgabe aufgabe = null;
     /**
      * Label lTerminTyp.
      */
@@ -318,20 +323,53 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
     /**
      * Konstruktor der Klasse NeuenTerminHinzu .
+     * @param aufgabe von variablen typs Aufgabe .
      */
-    public AufgabeDialog() {
+    public AufgabeDialog(Aufgabe aufgabe) {
         setTitle("Aufgabe");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 1));
-        setResizable(true);
+         // Dialog wird auf modal gesetzt
+        setModal(true);
         setLocationRelativeTo(null);
-        // this.aufgabe = aufgabe;
-        // methode buttonsSundLoe fuer speichern und loeschen.
-        buttonsSundLoe();
+        this.aufgabe = aufgabe;
+        //array fuer datum und getrennt durch punkt
+        String[] datum = aufgabe.getDatum().split(".");
+        //uhrzeit array.
+        String[] uhrzeit = aufgabe.getUhrzeit().split(":");
+        // deadline array .
+        String[] deadline = aufgabe.getDeadline().split(".");
+        // rufe daten auf die gespeichert worden+++++++++++++++++
+        tBezeichnung.setText(aufgabe.getBezeichnung());
+        //Termin Typ uni oder private
+        tTerminTyp.setText(aufgabe.getTerminTyp() + "");
+        //Datum
+        cbTag.setSelectedItem(datum[0]);
+        cbMonat.setSelectedItem(datum[1]);
+        cbJahr.setSelectedItem(datum[2]);
+        //uhrzeit.
+        cbStunden.setSelectedItem(uhrzeit[0]);
+        cbMinuten.setSelectedItem(uhrzeit[1]);
+        //Deadline
+        cbTagDeadL.setSelectedItem(deadline[0]);
+        cbMonatDeadL.setSelectedItem(deadline[1]);
+        cbJahrDeadL.setSelectedItem(deadline[2]);
+        //WiederholbarkeitTermin.
+        cbWieOft.setSelectedItem(aufgabe.getWiederholbarkeitTermin());
+        //Marker
+        cbMarker.setSelectedItem(aufgabe.getMarkierung());
+        //Dauer.
+        cbDauer.setSelectedItem(Aufgabe.getDauer());
+        //Notiz.
+        tNotiz.setText(aufgabe.getKommentar());
+
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
         // ausgelagert.
         fuegePanelZuKonstruktor();
-
+        // this.aufgabe = aufgabe;
+        // methode bSundLoe fuer speichern und loeschen.
+        bSundLoe();
+        
         pack();
         setVisible(true);
     }
@@ -394,28 +432,13 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * buttons loeschen und speichern.
      */
-    public void buttonsSundLoe() {
+    public void bSundLoe() {
         // speichen
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Aufgabe aufgabe = new Aufgabe();
-                String bezeichnung = tBezeichnung.getText();
-                aufgabe.setBezeichnung(bezeichnung);
-                String datum =
-                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-                        + "." + cbJahr.getSelectedItem();
-                aufgabe.setDatum(datum);
-                String zeit = cbStunden.getSelectedItem() + ":"
-                    + cbMinuten.getSelectedItem();
-                aufgabe.setUhrzeit(zeit);
-                // int dauer = cbDauer.getSelectedItem();
-                // aufgabe.setDauer(dauer);
-                String notiz = tNotiz.getText();
-                aufgabe.setKommentar(notiz);
-                // String wiederholen = cbWieOft.getSelectedItem();
-                // aufgabe.setWiederholbarkeitTermin(wiederholen);
-                // String kategorie = cbKategorie.getSelectedItem();
-                // aufgabe.setTerminTyp(kategorie);
+                // methode pruefenOK ueberprueft ob man speichern kann.
+                pruefenOK();
+
                 JOptionPane.showMessageDialog(null, "Aufgabe Bearbeitet",
                     "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
@@ -427,29 +450,11 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // Loeschen
         loeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Aufgabe aufgabe = new Aufgabe();
-
-                String bezeichnung = tBezeichnung.getText();
-                aufgabe.setBezeichnung(bezeichnung);
-
-                String datum =
-                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-                        + "." + cbJahr.getSelectedItem();
-                aufgabe.setDatum(datum);
-
-                String zeit = cbStunden.getSelectedItem() + ":"
-                    + cbMinuten.getSelectedItem();
-                aufgabe.setUhrzeit(zeit);
-                // int dauer = cbDauer.getSelectedItem();
-                // aufgabe.setDauer(dauer);
-                String notiz = tNotiz.getText();
-                aufgabe.setKommentar(notiz);
-
-                // String wiederholen = cbWieOft.getSelectedItem();
-                // aufgabe.setWiederholbarkeitTermin(wiederholen);
-
-                // String kategorie = cbKategorie.getSelectedItem();
-                // aufgabe.setTerminTyp(kategorie);
+                // loeschen aus der AktuelleSitzung
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+                AktuelleSitzung.getAufgaben()
+                    .remove(AufgabeDialog.this.aufgabe);
 
                 JOptionPane.showMessageDialog(null, "Aufgabe Gelöscht",
                     "INFORMATION!", JOptionPane.WARNING_MESSAGE);
@@ -462,6 +467,79 @@ public class AufgabeDialog extends JDialog implements ActionListener {
 
     }
 
+    /**
+     * methode prueft ob alles inordnung.
+     */
+    public void pruefenOK() {
+        if (tBezeichnung.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Bezeichnung: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbKategorie.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbTag.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahr.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbTagDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonatDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahrDeadL.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Deadline: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() != 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() != 0
+            && cbMinuten.getSelectedIndex() == 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Minuten muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbDauer.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else {
+            Aufgabe aufgabe = AufgabeDialog.this.aufgabe;
+            aufgabe.setBezeichnung(tBezeichnung.getText());
+            aufgabe.setTerminTyp((Typ) cbKategorie.getSelectedItem());
+            aufgabe.setDatum(cbTag.getSelectedItem() + "."
+                + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
+            aufgabe.setUhrzeit(cbStunden.getSelectedItem() + ":"
+                + cbMinuten.getSelectedItem());
+            aufgabe.setDeadline(cbTagDeadL.getSelectedItem() + "."
+                + cbMonatDeadL.getSelectedItem() + "."
+                + cbJahrDeadL.getSelectedItem());
+            aufgabe.setWiederholbarkeitTermin(
+                (Wiederholbarkeit) cbWieOft.getSelectedItem());
+            aufgabe.setMarkierung(cbMarker.getSelectedItem());
+            aufgabe.setDauer(cbDauer.getSelectedItem());
+            aufgabe.setKommentar(tNotiz.getText());
+            JOptionPane.showMessageDialog(null, "Aufgabe Bearbeitet",
+                "INFORMATION!", JOptionPane.WARNING_MESSAGE);
+        }
+    }    
     /**
      * @param e    .
      */

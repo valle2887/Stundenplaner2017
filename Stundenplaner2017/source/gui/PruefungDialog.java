@@ -14,9 +14,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import daten.Pruefung;
+import daten.AktuelleSitzung;
 import daten.Aufgabe;
 import daten.Aufgabe.Markierung;
 import daten.Aufgabe.Typ;
+import daten.Aufgabe.Wiederholbarkeit;
 
 /**
  * @author Rakan Al-Swayyed
@@ -26,6 +28,10 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * generated serial Version ID.
      */
     private static final long serialVersionUID = 5043569320233706529L;
+    /**
+     * Pruefung pruefung setze auf null.
+     */
+    private Pruefung pruefung = null;
     /**
      * Label lTerminTyp.
      */
@@ -46,7 +52,18 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * Label lKategorie.
      */
     private JLabel lKategorie = new JLabel("Kategorie:");
-   
+    /**
+     * arrayWieOft brauchen wir nicht mehr..
+     */
+    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
+       // "Monatlich"};
+    /**
+     * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
+     * wochenlich.
+     */
+    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Aufgabe
+        .Wiederholbarkeit>(Aufgabe.Wiederholbarkeit.values());
+    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
@@ -218,18 +235,50 @@ public class PruefungDialog extends JDialog implements ActionListener {
     private JPanel p5 = new JPanel();
     /**
      * Konstruktor der Klasse NeuenTerminHinzu .
+     * @param pruefung .
      */
-    public PruefungDialog() {
+    public PruefungDialog(Pruefung pruefung) {
         setTitle("Prüfung");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 1));
-        setResizable(true);
+        setModal(true);
         setLocationRelativeTo(null);
-
-       //methode um Panel Zu Konstruktor fuegen wegen platz mangel ausgelagert. 
+        this.pruefung = pruefung;
+        //array fuer datum und getrennt durch punkt
+        String[] datum = pruefung.getDatum().split(".");
+        //uhrzeit array.
+        String[] uhrzeit = pruefung.getUhrzeit().split(":");
+        // rufe daten auf die gespeichert worden+++++++++++++++++
+        tBezeichnung.setText(pruefung.getBezeichnung());
+        //Termin Typ uni oder private
+        tTerminTyp.setText(pruefung.getTerminTyp() + "");
+        //Datum
+        cbTag.setSelectedItem(datum[0]);
+        cbMonat.setSelectedItem(datum[1]);
+        cbJahr.setSelectedItem(datum[2]);
+        //uhrzeit.
+        cbStunden.setSelectedItem(uhrzeit[0]);
+        cbMinuten.setSelectedItem(uhrzeit[1]);
+        //WiederholbarkeitTermin.
+        cbWieOft.setSelectedItem(pruefung.getWiederholbarkeitTermin());
+        //Marker
+        cbMarker.setSelectedItem(pruefung.getMarkierung());
+        //Dauer.
+        cbDauer.setSelectedItem(Aufgabe.getDauer());
+        //Notiz.
+        tNotiz.setText(pruefung.getKommentar());
+        //Raum
+        tRaum.setText(pruefung.getRaumnummer());
+        //Gebaeude
+        tGebaeude.setText(pruefung.getGebaeude());
+        //Zugehoerende Veranstaltung
+        tZugehoerigV.setText(pruefung.getZugehoerendeVeranstaltung());
+        // methode um Panel Zu Konstruktor fuegen wegen platz mangel
+        // ausgelagert.
         fuegePanelZuKonstruktor();
-        
-        buttonsSundLoe();
+        // this.aufgabe = aufgabe;
+        // methode bSundLoe fuer speichern und loeschen.
+        bSundLoe();
         
         pack();
         setVisible(true);
@@ -279,31 +328,13 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * buttons loeschen und speichern.
      */
-    public void buttonsSundLoe() {
+    public void bSundLoe() {
         //speichen
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Pruefung pruefung = new Pruefung();
-                String bezeichnung = tBezeichnung.getText();
-                pruefung.setBezeichnung(bezeichnung);
-                String datum =
-                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-                        + "." + cbJahr.getSelectedItem();
-                pruefung.setDatum(datum);
-                String zeit = cbStunden.getSelectedItem() + ":"
-                    + cbMinuten.getSelectedItem();
-                pruefung.setUhrzeit(zeit);
-                // int dauer = cbDauer.getSelectedItem();
-                // pruefung.setDauer(dauer);
-                String notiz = tNotiz.getText();
-                pruefung.setKommentar(notiz);
-                // String wiederholen = cbWieOft.getSelectedItem();
-                // pruefung.setWiederholbarkeitTermin(wiederholen);
-                // String kategorie = cbKategorie.getSelectedItem();
-                // pruefung.setTerminTyp(kategorie);
-                JOptionPane.showMessageDialog(null,
-                    "Prüfung Bearbeitet", "INFORMATION!",
-                    JOptionPane.WARNING_MESSAGE);
+                // methode pruefenOK ueberprueft ob man speichern kann.
+                pruefenOK();
+
                 PruefungDialog.this.setVisible(false);
                 PruefungDialog.this.dispose();
                 new KalenderGui();
@@ -312,38 +343,98 @@ public class PruefungDialog extends JDialog implements ActionListener {
         //Loeschen
         loeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                Pruefung pruefung = new Pruefung();
-                String bezeichnung = tBezeichnung.getText();
-                pruefung.setBezeichnung(bezeichnung);
-                String datum =
-                    cbTag.getSelectedItem() + "." + cbMonat.getSelectedItem()
-                        + "." + cbJahr.getSelectedItem();
-                pruefung.setDatum(datum);
-                String zeit = cbStunden.getSelectedItem() + ":"
-                    + cbMinuten.getSelectedItem();
-                pruefung.setUhrzeit(zeit);
-
-                // int dauer = cbDauer.getSelectedItem();
-                // aufgabe.setDauer(dauer);
-
-                String notiz = tNotiz.getText();
-                pruefung.setKommentar(notiz);
-                // String wiederholen = cbWieOft.getSelectedItem();
-                // pruefung.setWiederholbarkeitTermin(wiederholen);
-                // String kategorie = cbKategorie.getSelectedItem();
-                // pruefung.setTerminTyp(kategorie);
-               
-                JOptionPane.showMessageDialog(null,
-                    "Prüfung Gelöscht", "INFORMATION!",
-                    JOptionPane.WARNING_MESSAGE);
+                // loeschen aus der AktuelleSitzung
+                AktuelleSitzung aktuelleSitzung =
+                    AktuelleSitzung.getAktuelleSitzung();
+                
+                AktuelleSitzung.getPruefungen()
+                    .remove(PruefungDialog.this.pruefung);
+                
+                JOptionPane.showMessageDialog(null, "Prüfung Gelöscht",
+                    "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
                 PruefungDialog.this.setVisible(false);
                 PruefungDialog.this.dispose();
                 new KalenderGui();
-                
+                new KalenderGui(); 
             }
         });
-        
+    }
+    /**
+     * methode prueft ob alles inordnung.
+     */
+    public void pruefenOK() {
+        if (tBezeichnung.getText().equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Bezeichnung: darf nicht leer sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbKategorie.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Kategorie: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbTag.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Tag muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbMonat.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Monat muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbJahr.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Datum: Jahr muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() != 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if ((cbStunden.getSelectedIndex() != 0
+            && cbMinuten.getSelectedIndex() == 0)) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Minuten muss gewählt werden!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else if (cbStunden.getSelectedIndex() == 0
+            && cbMinuten.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null,
+                "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+        } else if (cbDauer.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
+                "Error!", JOptionPane.ERROR_MESSAGE);
+            // zum speichern! noch nicht fertig
+            // Zugehoerige Veranstaltung
+        } else if (tZugehoerigV.equals("")) {
+            JOptionPane.showMessageDialog(null,
+                "Zugehoerige Veranstaltung: muss angegeben sein!", "Error!",
+                JOptionPane.ERROR_MESSAGE);
+        } else {
+            dasSpeichern();
+        }
+    }
+
+    /**
+     * methode dasSpeichern daa pruefenOK zu lang war.
+     */
+    public void dasSpeichern() {
+
+        Pruefung pruefung = PruefungDialog.this.pruefung;
+        pruefung.setBezeichnung(tBezeichnung.getText());
+        pruefung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
+        pruefung.setDatum(cbTag.getSelectedItem() + "."
+            + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
+        pruefung.setUhrzeit(
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
+        pruefung.setWiederholbarkeitTermin(
+            (Wiederholbarkeit) cbWieOft.getSelectedItem());
+        pruefung.setMarkierung(cbMarker.getSelectedItem());
+        pruefung.setDauer(cbDauer.getSelectedItem());
+        pruefung.setKommentar(tNotiz.getText());
+        pruefung.setRaumnummer(tRaum.getText());
+        pruefung.setGebaeude(tGebaeude.getText());
+        pruefung.setZugehoerendeVeranstaltung(tZugehoerigV.getText());
+
+        JOptionPane.showMessageDialog(null, "Prüfung Bearbeitet",
+            "INFORMATION!", JOptionPane.WARNING_MESSAGE);
     }
     /**
      *@param e .
