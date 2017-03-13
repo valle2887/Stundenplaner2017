@@ -52,8 +52,9 @@ public class UserInfoGUI extends JFrame {
     public void infoAnzeigen() {
         AktuelleSitzung.getBenutzer();
         lblUsername.setText(Benutzer.getUserName());
+        AktuelleSitzung.getBenutzer();
         lblUserStudiengang.setText(
-            AktuelleSitzung.getBenutzer().getStudiengang());
+            Benutzer.getStudiengang());
         lblUserECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
     }
     /**

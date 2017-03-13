@@ -163,8 +163,8 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                     if (!daten[0].isEmpty() && !daten[3].isEmpty() 
                         && daten[0].equals(daten[3])) { 
                     AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
-                    }
-                    dispose();
+                    } 
+                    dispose();          
             }         
         });
         pack();
