@@ -27,10 +27,12 @@ public class AufgabeDialog extends JDialog implements ActionListener {
      * generated serial Version ID.
      */
     private static final long serialVersionUID = 5043569320233706529L;
+
     /**
      * Aufgabe aufgabe auf null gesetzt.
      */
     private Aufgabe aufgabe = null;
+
     /**
      * Label lTerminTyp.
      */
@@ -159,10 +161,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayTagDeadL mit 31 tage.
      */
-    private String[] arrayTagDeadL = {"", "1", "2", "3", "4", "5", "6", "7",
-        "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", 
-        "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30",
-        "31" };
+    private String[] arrayTagDeadL =
+        {"", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12",
+            "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23",
+            "24", "25", "26", "27", "28", "29", "30", "31"};
 
     /**
      * JComboBox cbTagDeadL.
@@ -232,7 +234,6 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
-
     // private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich",
     // "Monatlich"};
     /**
@@ -317,59 +318,53 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     private JPanel p5 = new JPanel();
 
     /**
-     * Aufgabe aufgabe muss geleich null.
-     */
-    //private Aufgabe aufgabe = null;
-
-    /**
      * Konstruktor der Klasse NeuenTerminHinzu .
-     * @param aufgabe von variablen typs Aufgabe .
+     * 
+     * @param aufgabe
+     *            von variablen typs Aufgabe .
      */
     public AufgabeDialog(Aufgabe aufgabe) {
         setTitle("Aufgabe");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 1));
-         // Dialog wird auf modal gesetzt
+        // Dialog wird auf modal gesetzt
         setModal(true);
         setLocationRelativeTo(null);
         this.aufgabe = aufgabe;
-        //array fuer datum und getrennt durch punkt
+        // array fuer datum und getrennt durch punkt
         String[] datum = aufgabe.getDatum().split(".");
-        //uhrzeit array.
+        // uhrzeit array.
         String[] uhrzeit = aufgabe.getUhrzeit().split(":");
         // deadline array .
         String[] deadline = aufgabe.getDeadline().split(".");
         // rufe daten auf die gespeichert worden+++++++++++++++++
         tBezeichnung.setText(aufgabe.getBezeichnung());
-        //Termin Typ uni oder private
+        // Termin Typ uni oder private
         tTerminTyp.setText(aufgabe.getTerminTyp() + "");
-        //Datum
+        // Datum
         cbTag.setSelectedItem(datum[0]);
         cbMonat.setSelectedItem(datum[1]);
         cbJahr.setSelectedItem(datum[2]);
-        //uhrzeit.
+        // uhrzeit.
         cbStunden.setSelectedItem(uhrzeit[0]);
         cbMinuten.setSelectedItem(uhrzeit[1]);
-        //Deadline
+        // Deadline
         cbTagDeadL.setSelectedItem(deadline[0]);
         cbMonatDeadL.setSelectedItem(deadline[1]);
         cbJahrDeadL.setSelectedItem(deadline[2]);
-        //WiederholbarkeitTermin.
+        // WiederholbarkeitTermin.
         cbWieOft.setSelectedItem(aufgabe.getWiederholbarkeitTermin());
-        //Marker
+        // Marker
         cbMarker.setSelectedItem(aufgabe.getMarkierung());
-        //Dauer.
-        cbDauer.setSelectedItem(Aufgabe.getDauer());
-        //Notiz.
-        tNotiz.setText(aufgabe.getKommentar());
+        // Dauer.
+        cbDauer.setSelectedItem(aufgabe.getKommentar());
 
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
         // ausgelagert.
         fuegePanelZuKonstruktor();
-        // this.aufgabe = aufgabe;
         // methode bSundLoe fuer speichern und loeschen.
         bSundLoe();
-        
+
         pack();
         setVisible(true);
     }
@@ -436,11 +431,8 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // speichen
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // methode pruefenOK ueberprueft ob man speichern kann.
-                pruefenOK();
-
-                JOptionPane.showMessageDialog(null, "Aufgabe Bearbeitet",
-                    "INFORMATION!", JOptionPane.WARNING_MESSAGE);
+                // methode
+                pruefeOK();
 
                 AufgabeDialog.this.setVisible(false);
                 AufgabeDialog.this.dispose();
@@ -450,10 +442,10 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // Loeschen
         loeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // loeschen aus der AktuelleSitzung
+
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-                AktuelleSitzung.getAufgaben()
+                aktuelleSitzung.getAufgaben()
                     .remove(AufgabeDialog.this.aufgabe);
 
                 JOptionPane.showMessageDialog(null, "Aufgabe Gelöscht",
@@ -468,9 +460,9 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     }
 
     /**
-     * methode prueft ob alles inordnung.
+     * pruefe ob alles inordung dann rufe methode speichernDas.
      */
-    public void pruefenOK() {
+    public void pruefeOK() {
         if (tBezeichnung.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
                 "Bezeichnung: darf nicht leer sein!", "Error!",
@@ -521,27 +513,37 @@ public class AufgabeDialog extends JDialog implements ActionListener {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
-            Aufgabe aufgabe = AufgabeDialog.this.aufgabe;
-            aufgabe.setBezeichnung(tBezeichnung.getText());
-            aufgabe.setTerminTyp((Typ) cbKategorie.getSelectedItem());
-            aufgabe.setDatum(cbTag.getSelectedItem() + "."
-                + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
-            aufgabe.setUhrzeit(cbStunden.getSelectedItem() + ":"
-                + cbMinuten.getSelectedItem());
-            aufgabe.setDeadline(cbTagDeadL.getSelectedItem() + "."
-                + cbMonatDeadL.getSelectedItem() + "."
-                + cbJahrDeadL.getSelectedItem());
-            aufgabe.setWiederholbarkeitTermin(
-                (Wiederholbarkeit) cbWieOft.getSelectedItem());
-            aufgabe.setMarkierung(cbMarker.getSelectedItem());
-            aufgabe.setDauer(cbDauer.getSelectedItem());
-            aufgabe.setKommentar(tNotiz.getText());
-            JOptionPane.showMessageDialog(null, "Aufgabe Bearbeitet",
-                "INFORMATION!", JOptionPane.WARNING_MESSAGE);
+            speichernDas();
         }
-    }    
+    }
+
     /**
-     * @param e    .
+     * 
+     */
+    public void speichernDas() {
+        Aufgabe aufgabe = AufgabeDialog.this.aufgabe;
+
+        aufgabe.setBezeichnung(tBezeichnung.getText());
+        aufgabe.setDatum(cbTag.getSelectedItem() + "."
+            + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
+        aufgabe.setUhrzeit(
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
+        aufgabe.setDauer(cbDauer.getSelectedItem());
+        aufgabe.setKommentar(tNotiz.getText());
+        aufgabe.setWiederholbarkeitTermin(
+            (Wiederholbarkeit) cbWieOft.getSelectedItem());
+        aufgabe.setTerminTyp((Typ) cbKategorie.getSelectedItem());
+        aufgabe.setMarkierung(cbMarker.getSelectedItem());
+        aufgabe.setDeadline(
+            cbTagDeadL.getSelectedItem() + "." + cbMonatDeadL.getSelectedItem()
+                + "." + cbJahrDeadL.getSelectedItem());
+        
+        JOptionPane.showMessageDialog(null, "Aufgabe Bearbeitet",
+            "INFORMATION!", JOptionPane.WARNING_MESSAGE);
+    }
+    /**
+     * @param e
+     *            .
      */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub

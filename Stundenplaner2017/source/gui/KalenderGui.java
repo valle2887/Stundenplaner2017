@@ -1,20 +1,15 @@
 package gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
+
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -25,14 +20,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-
-import daten.AktuelleSitzung;
-import daten.Aufgabe;
-import daten.Datum;
-import daten.Kalender;
-import daten.Pruefung;
-import daten.Session;
-import daten.Veranstaltung;
 
 /**
  * Klasse Gui.
@@ -158,15 +145,17 @@ public class KalenderGui extends JFrame implements ActionListener {
      * 
      */
     // Spalten anlegen
-    private String[] spalten =
-        {"Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So."};
+    private String[] spalten = 
+    {"Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So."};
+
+
 
     /**
      * 
      */
     // zeilen anlegen
     private String[][] zeilen =
-        {{"01:00"}, {"02:00" }, { "03:00" }, { "04:00" }, { "05:00" },
+            {{"01:00"}, {"02:00" }, { "03:00" }, { "04:00" }, { "05:00" },
             {"06:00" }, { "07:00" }, { "08.00" }, { "09:00" }, { "10:00"},
             {"11:00" }, { "12:00" }, { "13:00" }, { "14:00" }, { "15:00"},
             {"16:00" }, { "17:00" }, { "18:00" }, { "19:00" }, { "20:00"},
@@ -176,9 +165,15 @@ public class KalenderGui extends JFrame implements ActionListener {
 
     private Object zaehler;
 
+        {{"01:00" }, {"02:00" }, {"03:00" }, {"04:00" }, {"05:00" },
+            {"06:00" }, {"07:00" }, {"08.00" }, {"09:00" }, {"10:00" },
+            {"11:00" }, {"12:00" }, {"13:00" }, {"14:00" }, {"15:00" },
+            {"16:00" }, {"17:00" }, {"18:00" }, {"19:00" }, {"20:00" },
+            {"21:00" }, {"22:00" }, {"23:00" }, {"00:00" } };
+
     /**
-     * 
-     */
+    * 
+    */
     public KalenderGui() {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
@@ -302,132 +297,6 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * 
      */
-    private void zellenAnclicken() {
-        // http://mycodepage.blogspot.de/2006/09/how-to-create-double-click-
-        // event-on.html stand *datum*
-        plan.addMouseListener(new MouseAdapter() {
-            private int zaehler;
-
-            public void mouseClicked(MouseEvent mausEreignis) {
-                // wenn zwei auf die Zelle geklickt wird
-                if (mausEreignis.getClickCount() == 2) {
-                    JTable tabelle = (JTable) mausEreignis.getSource();
-
-                    int zeile = tabelle.getSelectedRow();
-                    int spalte = tabelle.getSelectedColumn();
-
-                    Calendar wochenStart = Calendar.getInstance();
-                    wochenStart.setWeekDate(wochenStart.get(Calendar.YEAR),
-                        wochenStart.get(Calendar.WEEK_OF_YEAR) + zaehler, 2);
-                    wochenStart.set(Calendar.HOUR_OF_DAY, 0);
-                    wochenStart.set(Calendar.MINUTE, 0);
-                    wochenStart.set(Calendar.SECOND, 0);
-                    wochenStart.set(Calendar.MILLISECOND, 0);
-
-                    Calendar cal = Calendar.getInstance();
-                    cal.setWeekDate(cal.get(Calendar.YEAR),
-                        cal.get(Calendar.WEEK_OF_YEAR) + zaehler, 2);
-                    cal.set(Calendar.MINUTE, 0);
-                    cal.set(Calendar.SECOND, 0);
-                    cal.set(Calendar.MILLISECOND, 0);
-
-                    int stunde = (zeile + 1);
-                    if (stunde == 24) {
-                        stunde = 0;
-                    }
-
-                    cal.set(Calendar.HOUR_OF_DAY, stunde);
-                    cal.add(Calendar.DAY_OF_YEAR, spalte - 1);
-
-                    Date start = cal.getTime();
-
-                    AktuelleSitzung aktuelleSitzung =
-                        AktuelleSitzung.getAktuelleSitzung();
-
-                    ArrayList<Aufgabe> aufgaben =
-                        AktuelleSitzung.wochenAufgaben(wochenStart.getTime());
-                    ArrayList<Pruefung> pruefungen =
-                        AktuelleSitzung.wochenPruefung(wochenStart.getTime());
-                    ArrayList<Veranstaltung> veranstaltungen = AktuelleSitzung
-                        .wochenVeranstaltung(wochenStart.getTime());
-
-                    for (int a = 0; a < aufgaben.size(); a++) {
-                        Aufgabe aufgabe = aufgaben.get(a);
-                        if (Datum.liegtImZeitintervall(start,
-                            aufgabe.stringZuDatum(), 60,
-                            (int) Aufgabe.getDauer())) {
-
-                            new TerminAufgabe(aufgabe);
-
-                        }
-                    }
-
-                    for (int p = 0; p < pruefungen.size(); p++) {
-                        Pruefung pruefung = pruefungen.get(p);
-                        if (Datum.liegtImZeitintervall(start,
-                            pruefung.stringZuDatum(), 60,
-                            (int) Aufgabe.getDauer())) {
-
-                            new TerminPruefung(pruefung);
-                        }
-                    }
-
-                    for (int v = 0; v < veranstaltungen.size(); v++) {
-                        Veranstaltung veranstaltung = veranstaltungen.get(v);
-                        if (Datum.liegtImZeitintervall(start,
-                            veranstaltung.stringZuDatum(), 60,
-                            (int) Aufgabe.getDauer())) {
-
-                            new TerminVeranstaltung(veranstaltung);
-                        }
-                    }
-
-                    fensterUpdate();
-                }
-            }
-        });
-    }
-
-    /**
-     * 
-     */
-    public void fensterUpdate() {
-        for (int wochentag = 1; wochentag <= 7; wochentag++) {
-            for (int uhrzeit = 0; uhrzeit <= 23; uhrzeit++) {
-                plan.setValueAt(null, uhrzeit, wochentag);
-            }
-        }
-        AktuelleSitzung aktuelleSitzung = AktuelleSitzung.getAktuelleSitzung();
-
-        Calendar start = Calendar.getInstance();
-        start.setWeekDate(start.get(Calendar.YEAR),
-            start.get(Calendar.WEEK_OF_YEAR) + zaehler, 2);
-        start.set(Calendar.HOUR_OF_DAY, 0);
-        start.set(Calendar.MINUTE, 0);
-        start.set(Calendar.SECOND, 0);
-        start.set(Calendar.MILLISECOND, 0);
-
-        // die jeweiligen ArrayListen werden aus der Session entnommen.
-
-        ArrayList<Aufgabe> aufgaben = AktuelleSitzung.getAufgaben();
-
-        ArrayList<Pruefung> pruefungen = AktuelleSitzung.getPruefungen();
-
-        ArrayList<Veranstaltung> veranstaltungen =
-            AktuelleSitzung.getVeranstaltungen();
-
-        /*
-         * Es werden aus der Klasse Kalender die Methoden zum Hinzufuegen von
-         * Aufgabe, Pruefung und Veranstaltung entnommen.
-         */
-        Kalender.aufgabenHinzufuegen(aufgaben, pruefungen, veranstaltungen,
-            zaehler, plan);
-        Kalender.pruefungHinzufuegen(aufgaben, pruefungen, veranstaltungen,
-            zaehler, plan);
-        Kalender.veranstaltungHinzufuegen(aufgaben, pruefungen, veranstaltungen,
-            zaehler, plan);
-
-    }
 
     /**
      * @param date

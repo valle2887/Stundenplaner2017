@@ -996,6 +996,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         } else if (cbDauer.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
+            // zum speichern! noch nicht fertig
         } else {
             veranstaltungSpeichern();
             try {

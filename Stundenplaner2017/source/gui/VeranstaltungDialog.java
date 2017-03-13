@@ -29,7 +29,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      */
     private static final long serialVersionUID = 5043569320233706529L;
     /**
-     * Veranstaltung veranstaltung setze auf null.
+     * Veranstaltung veranstaltung .
      */
     private Veranstaltung veranstaltung = null;
     /**
@@ -259,47 +259,47 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         setTitle("Veranstaltung");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 1));
+        // Dialog wird auf modal gesetzt
         setModal(true);
         setLocationRelativeTo(null);
         this.veranstaltung = veranstaltung;
-        //array fuer datum und getrennt durch punkt
+        // array fuer datum und getrennt durch punkt
         String[] datum = veranstaltung.getDatum().split(".");
-        //uhrzeit array.
+        // uhrzeit array.
         String[] uhrzeit = veranstaltung.getUhrzeit().split(":");
         // rufe daten auf die gespeichert worden+++++++++++++++++
         tBezeichnung.setText(veranstaltung.getBezeichnung());
-        //Termin Typ uni oder private
+        // Termin Typ uni oder private
         tTerminTyp.setText(veranstaltung.getTerminTyp() + "");
-        //Datum
+        // Datum
         cbTag.setSelectedItem(datum[0]);
         cbMonat.setSelectedItem(datum[1]);
         cbJahr.setSelectedItem(datum[2]);
-        //uhrzeit.
+        // uhrzeit.
         cbStunden.setSelectedItem(uhrzeit[0]);
         cbMinuten.setSelectedItem(uhrzeit[1]);
-        //WiederholbarkeitTermin.
+        // WiederholbarkeitTermin.
         cbWieOft.setSelectedItem(veranstaltung.getWiederholbarkeitTermin());
-        //Marker
+        // Marker
         cbMarker.setSelectedItem(veranstaltung.getMarkierung());
-        //Dauer.
-        cbDauer.setSelectedItem(Aufgabe.getDauer());
-        //Notiz.
-        tNotiz.setText(veranstaltung.getKommentar());
+        // Dauer.
+        cbDauer.setSelectedItem(veranstaltung.getKommentar());
+        //gebaeude
+        tGebaeude.setText(veranstaltung.getGebaeude());
         //Raum
         tRaum.setText(veranstaltung.getRaumnummer());
         //Dozent
         tDozent.setText(veranstaltung.getDozent());
-        //Gebaeude
-        tGebaeude.setText(veranstaltung.getGebaeude());
-        //ECTS
+        //Ects
         tEcts.setText(veranstaltung.getEcts());
+        
+
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
         // ausgelagert.
         fuegePanelZuKonstruktor();
-        // this.aufgabe = aufgabe;
         // methode bSundLoe fuer speichern und loeschen.
         bSundLoe();
-        
+
         pack();
         setVisible(true);
     }
@@ -354,11 +354,11 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * buttons loeschen und speichern.
      */
     public void bSundLoe() {
-        //speichen
+        // speichen
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // methode pruefenOK ueberprueft ob man speichern kann.
-                pruefenOK();
+                // methode
+                pruefeOK();
 
                 VeranstaltungDialog.this.setVisible(false);
                 VeranstaltungDialog.this.dispose();
@@ -368,13 +368,12 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         // Loeschen
         loeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // loeschen aus der AktuelleSitzung
+
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-                
-                AktuelleSitzung.getVeranstaltungen()
+                aktuelleSitzung.getVeranstaltungen()
                     .remove(VeranstaltungDialog.this.veranstaltung);
-                
+
                 JOptionPane.showMessageDialog(null, "Veranstaltung Gelöscht",
                     "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
@@ -382,12 +381,12 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
                 VeranstaltungDialog.this.dispose();
                 new KalenderGui();
             }
-        });   
+        });
     }
     /**
-     * methode prueft ob alles inordnung.
+     * pruefe ob alles inordung dann rufe methode speichernDas.
      */
-    public void pruefenOK() {
+    public void pruefeOK() {
         // Bezeichnung
         if (tBezeichnung.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
@@ -434,30 +433,33 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         } else if (cbDauer.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
+            // zum speichern! noch nicht fertig
         } else {
-            dasSpeichern();
+            speichernDas();
         }
     }
-     /**
-      * methode dasSpeichern  daa pruefenOK zu lang war.
-      */
-    public void dasSpeichern() {
+    /**
+     * 
+     */
+    public void speichernDas() {
         Veranstaltung veranstaltung = VeranstaltungDialog.this.veranstaltung;
+
         veranstaltung.setBezeichnung(tBezeichnung.getText());
-        veranstaltung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
         veranstaltung.setDatum(cbTag.getSelectedItem() + "."
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
-        veranstaltung.setUhrzeit(cbStunden.getSelectedItem() + ":"
-            + cbMinuten.getSelectedItem());
-        veranstaltung.setWiederholbarkeitTermin(
-            (Wiederholbarkeit) cbWieOft.getSelectedItem());
-        veranstaltung.setMarkierung(cbMarker.getSelectedItem());
+        veranstaltung.setUhrzeit(
+            cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
         veranstaltung.setDauer(cbDauer.getSelectedItem());
         veranstaltung.setKommentar(tNotiz.getText());
+        veranstaltung.setWiederholbarkeitTermin(
+            (Wiederholbarkeit) cbWieOft.getSelectedItem());
+        veranstaltung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
+        veranstaltung.setMarkierung(cbMarker.getSelectedItem());
         veranstaltung.setRaumnummer(tRaum.getText());
-        veranstaltung.setDozent(tDozent.getText());
         veranstaltung.setGebaeude(tGebaeude.getText());
         veranstaltung.setEcts(tEcts.getText());
+        veranstaltung.setDozent(tDozent.getText());
+        
         
         JOptionPane.showMessageDialog(null, "Veranstaltung Bearbeitet",
             "INFORMATION!", JOptionPane.WARNING_MESSAGE);

@@ -29,7 +29,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
      */
     private static final long serialVersionUID = 5043569320233706529L;
     /**
-     * Pruefung pruefung setze auf null.
+     * Pruefung pruefung .
      */
     private Pruefung pruefung = null;
     /**
@@ -49,21 +49,24 @@ public class PruefungDialog extends JDialog implements ActionListener {
      */
     private JTextField tBezeichnung = new JTextField(20);
     /**
+     * arrayWieOft brauchen wir nicht mehr..
+     */
+    // private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich",
+    // "Monatlich"};
+    /**
+     * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig,
+     * wochenlich.
+     */
+    private JComboBox<Wiederholbarkeit> cbWieOft =
+        new JComboBox<Aufgabe.Wiederholbarkeit>(
+            Aufgabe.Wiederholbarkeit.values());
+
+    // private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+    /**
      * Label lKategorie.
      */
     private JLabel lKategorie = new JLabel("Kategorie:");
-    /**
-     * arrayWieOft brauchen wir nicht mehr..
-     */
-    //private String[] arrayWieOft = {"", "Einmalig", "Taglich", "Wöchenlich", 
-       // "Monatlich"};
-    /**
-     * JComboBox cbWieOft hat was von enum Wiederholbarkeit ob einmalig, 
-     * wochenlich.
-     */
-    private JComboBox<Wiederholbarkeit> cbWieOft = new JComboBox<Aufgabe
-        .Wiederholbarkeit>(Aufgabe.Wiederholbarkeit.values());
-    //private JComboBox<Object> cbWieOft = new JComboBox<Object>(arrayWieOft);
+   
     /**
      * JComboBox cbKategorie hat was von enum Typ.
      */
@@ -235,51 +238,51 @@ public class PruefungDialog extends JDialog implements ActionListener {
     private JPanel p5 = new JPanel();
     /**
      * Konstruktor der Klasse NeuenTerminHinzu .
-     * @param pruefung .
+     * @param  pruefung .
      */
     public PruefungDialog(Pruefung pruefung) {
         setTitle("Prüfung");
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(5, 1));
+        // Dialog wird auf modal gesetzt
         setModal(true);
         setLocationRelativeTo(null);
         this.pruefung = pruefung;
-        //array fuer datum und getrennt durch punkt
+        // array fuer datum und getrennt durch punkt
         String[] datum = pruefung.getDatum().split(".");
-        //uhrzeit array.
+        // uhrzeit array.
         String[] uhrzeit = pruefung.getUhrzeit().split(":");
         // rufe daten auf die gespeichert worden+++++++++++++++++
         tBezeichnung.setText(pruefung.getBezeichnung());
-        //Termin Typ uni oder private
+        // Termin Typ uni oder private
         tTerminTyp.setText(pruefung.getTerminTyp() + "");
-        //Datum
+        // Datum
         cbTag.setSelectedItem(datum[0]);
         cbMonat.setSelectedItem(datum[1]);
         cbJahr.setSelectedItem(datum[2]);
-        //uhrzeit.
+        // uhrzeit.
         cbStunden.setSelectedItem(uhrzeit[0]);
         cbMinuten.setSelectedItem(uhrzeit[1]);
-        //WiederholbarkeitTermin.
+        // WiederholbarkeitTermin.
         cbWieOft.setSelectedItem(pruefung.getWiederholbarkeitTermin());
-        //Marker
+        // Marker
         cbMarker.setSelectedItem(pruefung.getMarkierung());
-        //Dauer.
-        cbDauer.setSelectedItem(Aufgabe.getDauer());
-        //Notiz.
-        tNotiz.setText(pruefung.getKommentar());
+        // Dauer.
+        cbDauer.setSelectedItem(pruefung.getKommentar());
+        //gebaeude
+        tGebaeude.setText(pruefung.getGebaeude());
         //Raum
         tRaum.setText(pruefung.getRaumnummer());
-        //Gebaeude
-        tGebaeude.setText(pruefung.getGebaeude());
-        //Zugehoerende Veranstaltung
+        //zugehoerende Veranstaltung
         tZugehoerigV.setText(pruefung.getZugehoerendeVeranstaltung());
+        
+
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
         // ausgelagert.
         fuegePanelZuKonstruktor();
-        // this.aufgabe = aufgabe;
         // methode bSundLoe fuer speichern und loeschen.
         bSundLoe();
-        
+
         pack();
         setVisible(true);
     }
@@ -329,41 +332,40 @@ public class PruefungDialog extends JDialog implements ActionListener {
      * buttons loeschen und speichern.
      */
     public void bSundLoe() {
-        //speichen
+        // speichen
         speichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // methode pruefenOK ueberprueft ob man speichern kann.
-                pruefenOK();
+                // methode
+                pruefeOK();
 
                 PruefungDialog.this.setVisible(false);
                 PruefungDialog.this.dispose();
                 new KalenderGui();
             }
         });
-        //Loeschen
+        // Loeschen
         loeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // loeschen aus der AktuelleSitzung
+
                 AktuelleSitzung aktuelleSitzung =
                     AktuelleSitzung.getAktuelleSitzung();
-                
-                AktuelleSitzung.getPruefungen()
+                aktuelleSitzung.getPruefungen()
                     .remove(PruefungDialog.this.pruefung);
-                
-                JOptionPane.showMessageDialog(null, "Prüfung Gelöscht",
+
+                JOptionPane.showMessageDialog(null, "Pruefung Gelöscht",
                     "INFORMATION!", JOptionPane.WARNING_MESSAGE);
 
                 PruefungDialog.this.setVisible(false);
                 PruefungDialog.this.dispose();
                 new KalenderGui();
-                new KalenderGui(); 
             }
         });
+
     }
     /**
-     * methode prueft ob alles inordnung.
+     * pruefe ob alles inordung dann rufe methode speichernDas.
      */
-    public void pruefenOK() {
+    public void pruefeOK() {
         if (tBezeichnung.getText().equals("")) {
             JOptionPane.showMessageDialog(null,
                 "Bezeichnung: darf nicht leer sein!", "Error!",
@@ -408,32 +410,31 @@ public class PruefungDialog extends JDialog implements ActionListener {
                 "Zugehoerige Veranstaltung: muss angegeben sein!", "Error!",
                 JOptionPane.ERROR_MESSAGE);
         } else {
-            dasSpeichern();
+            speichernDas();
         }
     }
-
     /**
-     * methode dasSpeichern daa pruefenOK zu lang war.
+     * 
      */
-    public void dasSpeichern() {
-
+    public void speichernDas() {
         Pruefung pruefung = PruefungDialog.this.pruefung;
+
         pruefung.setBezeichnung(tBezeichnung.getText());
-        pruefung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
         pruefung.setDatum(cbTag.getSelectedItem() + "."
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         pruefung.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        pruefung.setWiederholbarkeitTermin(
-            (Wiederholbarkeit) cbWieOft.getSelectedItem());
-        pruefung.setMarkierung(cbMarker.getSelectedItem());
         pruefung.setDauer(cbDauer.getSelectedItem());
         pruefung.setKommentar(tNotiz.getText());
+        pruefung.setWiederholbarkeitTermin(
+            (Wiederholbarkeit) cbWieOft.getSelectedItem());
+        pruefung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
+        pruefung.setMarkierung(cbMarker.getSelectedItem());
         pruefung.setRaumnummer(tRaum.getText());
         pruefung.setGebaeude(tGebaeude.getText());
         pruefung.setZugehoerendeVeranstaltung(tZugehoerigV.getText());
-
-        JOptionPane.showMessageDialog(null, "Prüfung Bearbeitet",
+        
+        JOptionPane.showMessageDialog(null, "Pruefung Bearbeitet",
             "INFORMATION!", JOptionPane.WARNING_MESSAGE);
     }
     /**
