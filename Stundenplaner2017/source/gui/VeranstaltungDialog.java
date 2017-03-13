@@ -449,12 +449,12 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         veranstaltung.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        veranstaltung.setDauer(cbDauer.getSelectedItem());
+        veranstaltung.setDauer(cbDauer.getSelectedItem() + "");
         veranstaltung.setKommentar(tNotiz.getText());
         veranstaltung.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());
         veranstaltung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
-        veranstaltung.setMarkierung(cbMarker.getSelectedItem());
+        veranstaltung.setMarkierung((Markierung) cbMarker.getSelectedItem());
         veranstaltung.setRaumnummer(tRaum.getText());
         veranstaltung.setGebaeude(tGebaeude.getText());
         veranstaltung.setEcts(tEcts.getText());

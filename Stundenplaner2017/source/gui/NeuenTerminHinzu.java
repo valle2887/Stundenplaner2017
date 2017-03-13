@@ -29,7 +29,7 @@ import daten.Aufgabe.Wiederholbarkeit;
 /**
  * Die Klasse ist dazu da um neue Termine Hinzuzufuegen.
  * 
- * @author Rakan Al-Swayyed
+ * @author Rakan Al-Swayyed .
  */
 public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
@@ -406,7 +406,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     }
 
     /**
-     * .
+     *  methode fuegePanelZuKonstruktor  .
      */
     public void fuegePanelZuKonstruktor() {
         // RadioButtons werden zu p1 zugewiesen.
@@ -709,7 +709,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
         // fuer Dauer in minuten.
         Object dauer = cbDauer.getSelectedItem();
-        aufgabe.setDauer(dauer);
+        aufgabe.setDauer((String) dauer);
 
         // fuer wiederholung
         Wiederholbarkeit wiederholung =
@@ -717,7 +717,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         aufgabe.setWiederholbarkeitTermin(wiederholung);
 
         // fuer Marker
-        Object marker = cbMarker.getSelectedItem() + "";
+        Markierung marker = (Markierung) cbMarker.getSelectedItem();
         aufgabe.setMarkierung(marker);
 
         // fuer Notiz
@@ -747,7 +747,9 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         veranstaltung.setUhrzeit(aufgabe.getUhrzeit());
         veranstaltung
             .setWiederholbarkeitTermin(aufgabe.getWiederholbarkeitTermin());
-
+        Markierung marker = (Markierung) cbMarker.getSelectedItem();
+        veranstaltung.setMarkierung(marker);
+        
         String gebaeude = tGebaeude.getText();
         veranstaltung.setGebaeude(gebaeude);
 
@@ -784,7 +786,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         pruefung.setTerminTyp(aufgabe.getTerminTyp());
         pruefung.setUhrzeit(aufgabe.getUhrzeit());
         pruefung.setWiederholbarkeitTermin(aufgabe.getWiederholbarkeitTermin());
-
+        Markierung marker = (Markierung) cbMarker.getSelectedItem();
+        pruefung.setMarkierung(marker);
         String gebaeude = tGebaeude.getText();
         pruefung.setGebaeude(gebaeude);
 

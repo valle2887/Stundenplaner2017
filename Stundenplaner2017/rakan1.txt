@@ -1,53 +1,46 @@
-
 rakan1
 123
-def
-34
+winf
+24
+
 
 Aufgabe
-Bezeichnung: wfe
-Kategorie: 4.3.2022
-Datum: 2:30
-Uhrzeit: 120
-Dauer: adsadf
+Bezeichnung: ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
 Wiederholung: Woechentlich
-Marker: Privat
-Notiz: TERMIN_ERFOLGREICH
+Marker: TERMIN_ERLEDIGT
+Notiz: wdewfde
 Deadline: null
+
+
 Veranstaltung
-Bezeichnung:wfe
-Kategorie: 4.3.2022
-Datum: 2:30
-Uhrzeit: 120
-Dauer: adsadf
+Bezeichnung:ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
 Wiederholung: Woechentlich
-Marker: Privat
-Notiz: null
-Raum: ÖJOi
-Gebäude: k.lnuz
-Dozent: .nk-ljb
-ECTS: 76
-Pruefung
-Bezeichnung:wfe
-Kategorie: 4.3.2022
-Datum: 2:30
-Uhrzeit: 120
-Dauer: adsadf
-Wiederholung: Woechentlich
-Marker: Privat
-Notiz: null
-Zugehoerende Veranstaltung: ijou
-Gebäude: jkuvtzr
-Raum: löjiob
+Marker: TERMIN_ERFOLGREICH
+Notiz: wdewfde
+Raum: qwdw
+Gebäude: qwdqw
+Dozent: qwdew
+ECTS: 34
 
-Aufgabe
-Bezeichnung: dhf
-Kategorie: 6.4.2020
-Datum: 3:45
-Uhrzeit: 90
-Dauer: rztzhher
+
+Pruefung
+Bezeichnung:ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
 Wiederholung: Woechentlich
-Marker: Universitaet
-Notiz: HOHE_PRIORITAET
-Deadline: null
+Marker: HOHE_PRIORITAET
+Notiz: wdewfde
+Zugehoerende Veranstaltung: wqdwed
+Gebäude: qwdew
+Raum: wfdew
 

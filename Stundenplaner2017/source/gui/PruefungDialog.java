@@ -424,12 +424,12 @@ public class PruefungDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         pruefung.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        pruefung.setDauer(cbDauer.getSelectedItem());
+        pruefung.setDauer(cbDauer.getSelectedItem() + "");
         pruefung.setKommentar(tNotiz.getText());
         pruefung.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());
         pruefung.setTerminTyp((Typ) cbKategorie.getSelectedItem());
-        pruefung.setMarkierung(cbMarker.getSelectedItem());
+        pruefung.setMarkierung((Markierung) cbMarker.getSelectedItem());
         pruefung.setRaumnummer(tRaum.getText());
         pruefung.setGebaeude(tGebaeude.getText());
         pruefung.setZugehoerendeVeranstaltung(tZugehoerigV.getText());
