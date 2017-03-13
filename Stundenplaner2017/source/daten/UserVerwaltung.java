@@ -56,7 +56,7 @@ public class UserVerwaltung {
     public static void speichernVonBenutzerdaten(String userName,
         char[] passwort, String studiengang, String ects) throws IOException {
 
-        FileWriter schreiben = new FileWriter(userName + ".txt", true);
+        FileWriter schreiben = new FileWriter(userName + ".txt");
 
         schreiben.write(userName);
         schreiben.append(System.getProperty("line.separator"));
@@ -96,27 +96,22 @@ public class UserVerwaltung {
         while ((inhaltVonDatei = read.readLine()) != null) {
             userDaten.add(inhaltVonDatei);
         }
-        if (!"".equals(passwort)) {
-            userDaten.set(1, passwort);
-        }
-        if (!"".equals(studiengang)) {
-            userDaten.set(2, studiengang);
-        }
-        if (!"".equals(ects)) {
-            userDaten.set(3, ects);
-        }
+
+        userDaten.set(1, passwort);
+        userDaten.set(2, studiengang);
+        userDaten.set(3, ects);
+
 
         arrayGroesse = userDaten.size();
+   
 
-        // true damit der Text angehängt wird, false(oder ohne)
-        // wird die Datei komplett überschrieben
         FileWriter write = new FileWriter(userName + ".txt", false);
-
         for (int a = 0; a < arrayGroesse; a++) {
-            write.write(userDaten.get(a++));
+            write.write(userDaten.get(a));
             write.append(System.getProperty("line.separator"));
         }
-
+        //speichernVonBenutzerdaten(userName, passwort.toCharArray(),
+          //  studiengang, ects);
         read.close();
         write.close();
     }

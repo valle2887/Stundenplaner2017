@@ -96,6 +96,41 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         return userGeloescht;
         
     }
+
+    /**
+     * Methode, zum aendern der UserDaten.
+     */
+    public void userAendern() {
+        String[] daten = new String[4];
+        daten[0] = txtNeuPasswort.getText();
+        daten[1] = txtNeuStudiengang.getText();
+        daten[2] = txtNeuECTS.getText();
+        daten[3] = txtNeuPasswortNochmal.getText();
+
+        if (!daten[0].equals("")) {
+            if (daten[0].equals(daten[3])) {
+                try {
+                    UserVerwaltung.bearbeitenBenutzer(LoginGUI.nameLogin(),
+                        daten);
+                    AktuelleSitzung.getAktuelleSitzung();
+                    AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
+                    AktuelleSitzung.getBenutzer().setEcts(daten[2]);    
+                    AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
+                } catch (IOException exc) {
+                    JOptionPane.showMessageDialog(null, "Error!");
+                }
+                dispose();
+                new KalenderGui();
+            } else {
+                
+                JOptionPane.showMessageDialog(null, "Passwoerter stimmen "
+                    + "nicht ueberein!");
+                
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Bitte Passwort eingeben!");
+        }
+    }
     
     /**
      * Konstruktorklasse des Fensters um die User bearbeiten zu koennen.
@@ -116,6 +151,10 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         this.add(btnSpeichern);
         this.add(btnAbbrechen);
         this.add(btnLoeschen);
+        txtNeuECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
+        AktuelleSitzung.getBenutzer();
+        txtNeuStudiengang.setText(
+            Benutzer.getStudiengang());
         btnAbbrechen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
                 dispose();       
@@ -138,33 +177,8 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         });
         btnSpeichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                String[] daten = new String[4];
-                    daten[0] = txtNeuPasswort.getText();
-                    daten[1] = txtNeuStudiengang.getText();
-                    daten[2] = txtNeuECTS.getText();
-                    daten[3] = txtNeuPasswortNochmal.getText();
-
-                AktuelleSitzung.getBenutzer();
-                    try {
-                        UserVerwaltung.bearbeitenBenutzer(
-                                    Benutzer.getUserName(), daten);
-                    } catch (IOException exc) {
-                        // TODO Auto-generated catch block
-                        exc.printStackTrace();
-                    }
-                    AktuelleSitzung.getAktuelleSitzung();
-                    if (!daten[1].isEmpty()) {
-                        AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
-                    } 
-                    if (!daten[2].isEmpty()) {
-                        AktuelleSitzung.getBenutzer().setEcts(daten[2]);    
-                    }
+                    userAendern();      
                     
-                    if (!daten[0].isEmpty() && !daten[3].isEmpty() 
-                        && daten[0].equals(daten[3])) { 
-                    AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
-                    } 
-                    dispose();          
             }         
         });
         pack();

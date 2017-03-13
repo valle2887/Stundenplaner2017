@@ -1,0 +1,29 @@
+Chris
+abc
+imit
+123
+
+
+Aufgabe
+Bezeichnung: dsfsdf
+Kategorie: 3.4.2019
+Datum: 3:30
+Uhrzeit: 60
+Dauer: ..
+Wiederholung: Einmalig
+Marker: Privat
+Notiz: TERMIN_ERLEDIGT
+Deadline: null
+
+
+Aufgabe
+Bezeichnung: ChrisTest
+Kategorie: 24.3.2017
+Datum: 16:0
+Uhrzeit: 60
+Dauer: .
+Wiederholung: Einmalig
+Marker: Universitaet
+Notiz: TERMIN_ERLEDIGT
+Deadline: null
+

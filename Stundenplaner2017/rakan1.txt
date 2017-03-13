@@ -1,16 +1,9 @@
-<<<<<<< HEAD
-=======
 
->>>>>>> refs/remotes/origin/master
 rakan1
 123
 def
-<<<<<<< HEAD
 34
 
-=======
-34
->>>>>>> refs/remotes/origin/master
 
 Aufgabe
 Bezeichnung: wfe
@@ -58,7 +51,3 @@ Wiederholung: Woechentlich
 Marker: Universitaet
 Notiz: HOHE_PRIORITAET
 Deadline: null
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/remotes/origin/master
