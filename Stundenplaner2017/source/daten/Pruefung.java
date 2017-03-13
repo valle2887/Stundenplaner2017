@@ -6,12 +6,7 @@ package daten;
  * 
  * @author Rakan Al-Swayyed
  */
-public class Pruefung extends Termin {
-
-    /**
-     * 
-     */
-    private int pruefungsdauer;
+public class Pruefung extends Aufgabe {
 
     /**
      * Der Raum, in der die Pruefung stattfindet mit dem Datentyp String.
@@ -29,6 +24,14 @@ public class Pruefung extends Termin {
     private String zugehoerendeVeranstaltung;
 
     /**
+     * Konstruktor der Klasse Pruefung die von Termin erbt.
+     **/
+    public Pruefung() {
+
+        super();
+    }
+
+    /**
      * Getter fuer die Veranstaltung.
      * 
      * @return zugehoerendeVeranstaltung Gibt die Veranstaltung, zu der die
@@ -44,7 +47,8 @@ public class Pruefung extends Termin {
      * @param zugehoerendeVeranstaltung
      *            Setzt die zur Pruefung zugehoerende Veranstaltung.
      */
-    public void setZugehoerendeVeranstaltung(String zugehoerendeVeranstaltung) {
+    public void setZugehoerendeVeranstaltung(
+        String zugehoerendeVeranstaltung) {
         this.zugehoerendeVeranstaltung = zugehoerendeVeranstaltung;
     }
 
@@ -77,7 +81,7 @@ public class Pruefung extends Termin {
     }
 
     /**
-     * Setter fuer gebaeude. s
+     * Setter fuer gebaeude.
      * 
      * @param gebaeude
      *            .
@@ -87,23 +91,19 @@ public class Pruefung extends Termin {
     }
 
     /**
-     * @return pruefungsdauer
+     * Zusatzdaten einer Prüfung in ein Array schreiben.
      * 
-     * @param pruefungsdauer
-     * 
-     *            es wird eine dauer uebergaben
-     */
-    public String getPruefungsdauer(int pruefungsdauer) {
-        return Integer.toString(pruefungsdauer);
-    }
+     * @return Das Array mit den Zusatzdaten für die Prüfung
+     **/
+    public String[] pruefungArray() {
 
-    /**
-     * @param pruefungsdauer
-     * 
-     *            es wird eine dauer uebergeben
-     */
-    public void setPruefungsdauer(int pruefungsdauer) {
-        this.pruefungsdauer = pruefungsdauer;
+        String[] arrayPruef = new String[3];
+        // zugehoerendeVeranstaltung nochmal verknüpfen
+        arrayPruef[0] = zugehoerendeVeranstaltung;
+        arrayPruef[1] = gebaeude;
+        arrayPruef[2] = raumnummer;
+
+        return arrayPruef;
     }
 
 }

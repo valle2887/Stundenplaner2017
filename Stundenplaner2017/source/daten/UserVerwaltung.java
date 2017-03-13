@@ -20,15 +20,11 @@ public class UserVerwaltung {
     /**
      * Passwort vergleichen.
      * 
-     * @param benutzerName
-     *            .
-     * @param passwort
-     *            .
-     * @param scan
-     *            .
+     * @param benutzerName .
+     * @param passwort .
+     * @param scan .
      * @return name, passwort .
-     * @throws FileNotFoundException
-     *             .
+     * @throws FileNotFoundException .
      */
 
     public static boolean vergleichPasswort(Scanner scan, String benutzerName,
@@ -50,17 +46,12 @@ public class UserVerwaltung {
     /**
      * Speichern von Benutzerdaten.
      * 
-     * @param userName
-     *            .
-     * @param passwort
-     *            .
-     * @param studiengang
-     *            .
-     * @param ects
-     *            .
+     * @param userName .
+     * @param passwort .
+     * @param studiengang .
+     * @param ects .
      * @param punkte.
-     * @throws IOException
-     *             .
+     * @throws IOException .
      */
     public static void speichernVonBenutzerdaten(String userName,
         char[] passwort, String studiengang, String ects) throws IOException {
@@ -82,12 +73,9 @@ public class UserVerwaltung {
     /**
      * Benutzer Bearbeiten.
      * 
-     * @param userName
-     *            .
-     * @param daten
-     *            .
-     * @throws IOException
-     *             .
+     * @param userName .
+     * @param daten .
+     * @throws IOException .
      */
     public static void bearbeitenBenutzer(String userName, String[] daten)
         throws IOException {
@@ -170,8 +158,7 @@ public class UserVerwaltung {
     /**
      * Methode, um den momentan angemeldeten Benutzer zu loeschen.
      * 
-     * @param userName
-     *            wird uebergeben.
+     * @param userName wird uebergeben.
      * @return geloescht
      */
     public static boolean loeschenBenutzer(String userName) {

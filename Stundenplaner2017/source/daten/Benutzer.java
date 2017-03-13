@@ -29,15 +29,10 @@ public class Benutzer {
 
     /**
      * Klassenkonstruktor.
-     * 
-     * @param usName
-     *            der Name des Users
-     * @param usPW
-     *            das Passwort des Users
-     * @param usECTS
-     *            die Credits des Users
-     * @param usStud
-     *            der Studiengang des Users werden uebergeben.
+     * @param usName der Name des Users
+     * @param usPW das Passwort des Users
+     * @param usECTS die Credits des Users
+     * @param usStud der Studiengang des Users werden uebergeben.
      */
     public Benutzer(String usName, String usPW, String usECTS, String usStud) {
         userName = usName;

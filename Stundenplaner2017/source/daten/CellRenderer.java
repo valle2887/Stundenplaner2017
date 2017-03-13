@@ -1,6 +1,10 @@
 package daten;
 
+import java.awt.Color;
+import java.awt.Component;
+
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 
 /**
@@ -57,6 +61,25 @@ public class CellRenderer extends DefaultTableCellRenderer {
             CellRenderer.class.getResource("/Bilder/TerminHohePrio"));
         imgTerminSchwierig = new ImageIcon(
             CellRenderer.class.getResource("/Bilder/TerminSchwierig.png"));
+    }
+    @Override
+    public Component getTableCellRendererComponent(JTable table, Object value,
+        boolean isSelected, boolean hasFocus, int row, int column) {
+        super.getTableCellRendererComponent(
+            table, value, isSelected, hasFocus, row, column);
+    
+    
+        if (value instanceof Aufgabe) {
+            Aufgabe aufgabe = (Aufgabe) value;
+            setBackground(Color.CYAN);
+        } else if (value instanceof Pruefung) {
+            Pruefung pruefung = (Pruefung) value;
+            setBackground(Color.YELLOW);
+        } else if (value instanceof Veranstaltung) {
+            Veranstaltung veranstaltung = (Veranstaltung) value;
+            setBackground(Color.ORANGE);
+        }
+        return this;
     }
 
 }

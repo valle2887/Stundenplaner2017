@@ -5,7 +5,7 @@ package daten;
  * 
  * @author Rakan Al-Swayyed
  */
-public class Veranstaltung extends Termin {
+public class Veranstaltung extends Aufgabe {
     /**
      * Die Raumnummer, in dem die Veranstaltung stattfindet, ist ein String, da
      * es auch eine Kombination von Buchstaben und Zahlen sein kann, bsp H2.
@@ -25,7 +25,7 @@ public class Veranstaltung extends Termin {
     /**
      * Die Creditzahl, welche die Veranstaltung gibt.
      */
-    private int ects;
+    private String ects;
 
     /**
      * Getter fuer die Raumnummer.
@@ -91,7 +91,7 @@ public class Veranstaltung extends Termin {
      * @return ects Gibt die Anzahl der Credits aus, welche die Veranstaltung
      *         gibt.
      */
-    public int getEcts() {
+    public String getEcts() {
         return ects;
     }
 
@@ -101,8 +101,24 @@ public class Veranstaltung extends Termin {
      * @param ects
      *            Setzt die Anzahl der Credits, welche die Veranstaltung gibt.
      */
-    public void setEcts(int ects) {
+    public void setEcts(String ects) {
         this.ects = ects;
     }
 
+   /**
+     * Methode die ein Array mit den Zusatzdaten für Veranstaltungen beschreibt.
+     * 
+     * @return Das Array mit den Zusatzdaten für Veranstaltungen
+     **/
+    public String[] veranstaltungsArray() {
+
+        String[] arrayVeranst = new String[4];
+
+        arrayVeranst[0] = raumnummer;
+        arrayVeranst[1] = gebaeude;
+        arrayVeranst[2] = dozent;
+        arrayVeranst[3] = ects;
+
+        return arrayVeranst;
+    }
 }
