@@ -170,15 +170,20 @@ public class PruefungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    //private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
     /**
      * JComboBox cbDauer.
      */
-    private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    //private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
     /**
      * Label lMin.
      */
     private JLabel lMin = new JLabel("min               ");
+    
+    /**
+     * 
+     */
+    private JTextField tDauer = new JTextField("0", 5);
     /**
      * Label lDauer.
      */
@@ -268,7 +273,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
         // Marker
         cbMarker.setSelectedItem(pruefung.getMarkierung());
         // Dauer.
-        cbDauer.setSelectedItem(pruefung.getKommentar());
+        tDauer.setText(pruefung.getDauer() + "");
         //gebaeude
         tGebaeude.setText(pruefung.getGebaeude());
         //Raum
@@ -307,7 +312,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
         p2.add(lDpkt);
         p2.add(cbMinuten);
         p2.add(lDauer);
-        p2.add(cbDauer);
+        p2.add(tDauer);
         p2.add(lMin);
         p3.add(lGebaeude);
         p3.add(tGebaeude);
@@ -400,7 +405,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
@@ -424,7 +429,7 @@ public class PruefungDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         pruefung.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        pruefung.setDauer(cbDauer.getSelectedItem() + "");
+        pruefung.setDauer(Integer.parseInt(tDauer.getText()));
         pruefung.setKommentar(tNotiz.getText());
         pruefung.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());

@@ -161,11 +161,11 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    //private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
     /**
      * JComboBox cbDauer.
      */
-    private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    //private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
     /**
      * arrayWieOft brauchen wir nicht mehr..
      */
@@ -182,6 +182,12 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
      * Label lMin.
      */
     private JLabel lMin = new JLabel("min               ");
+    
+    /**
+     * 
+     */
+    private JTextField tDauer = new JTextField("0", 5);
+    
     /**
      * Label lDauer.
      */
@@ -283,8 +289,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         // Marker
         cbMarker.setSelectedItem(veranstaltung.getMarkierung());
         // Dauer.
-        cbDauer.setSelectedItem(veranstaltung.getKommentar());
-        //gebaeude
+        tDauer.setText(veranstaltung.getDauer() + "");        //gebaeude
         tGebaeude.setText(veranstaltung.getGebaeude());
         //Raum
         tRaum.setText(veranstaltung.getRaumnummer());
@@ -325,7 +330,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
         p2.add(lDpkt);
         p2.add(cbMinuten);
         p2.add(lDauer);
-        p2.add(cbDauer);
+        p2.add(tDauer);
         p2.add(lMin);
         p2.add(lWiederh);
         p2.add(cbWieOft);
@@ -430,7 +435,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // Dauer
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
@@ -449,7 +454,7 @@ public class VeranstaltungDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         veranstaltung.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        veranstaltung.setDauer(cbDauer.getSelectedItem() + "");
+        veranstaltung.setDauer(Integer.parseInt(tDauer.getText()));
         veranstaltung.setKommentar(tNotiz.getText());
         veranstaltung.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());

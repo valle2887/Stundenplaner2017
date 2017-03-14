@@ -265,12 +265,14 @@ public class AufgabeDialog extends JDialog implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    //private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
 
     /**
      * JComboBox cbDauer.
      */
-    private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    //private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    
+    private JTextField tDauer = new JTextField("0", 5);
 
     /**
      * Label lMin.
@@ -357,7 +359,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         // Marker
         cbMarker.setSelectedItem(aufgabe.getMarkierung());
         // Dauer.
-        cbDauer.setSelectedItem(aufgabe.getKommentar());
+        tDauer.setText(aufgabe.getDauer() + "");
 
         // methode um Panel Zu Konstruktor fuegen wegen platz mangel
         // ausgelagert.
@@ -402,7 +404,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
         p3.add(cbJahrDeadL);
         // Dauer
         p3.add(lDauer);
-        p3.add(cbDauer);
+        p3.add(tDauer);
         p3.add(lMin);
         p3.add(lWiederh);
         // p3.add(rbNein);
@@ -509,7 +511,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -528,7 +530,7 @@ public class AufgabeDialog extends JDialog implements ActionListener {
             + cbMonat.getSelectedItem() + "." + cbJahr.getSelectedItem());
         aufgabe.setUhrzeit(
             cbStunden.getSelectedItem() + ":" + cbMinuten.getSelectedItem());
-        aufgabe.setDauer(cbDauer.getSelectedItem() + "");
+        aufgabe.setDauer(Integer.parseInt(tDauer.getText()));
         aufgabe.setKommentar(tNotiz.getText());
         aufgabe.setWiederholbarkeitTermin(
             (Wiederholbarkeit) cbWieOft.getSelectedItem());

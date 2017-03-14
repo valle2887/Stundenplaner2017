@@ -280,12 +280,17 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
     /**
      * Array arrayDauer.
      */
-    private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
+    //private String[] arrayDauer = {"", "30", "60", "90", "120", "240"};
 
     /**
      * JComboBox cbDauer.
      */
-    private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    //private JComboBox<Object> cbDauer = new JComboBox<Object>(arrayDauer);
+    
+    /**
+     * 
+     */
+    private JTextField tDauer = new JTextField("0", 5);
 
     /**
      * Label lMin.
@@ -447,7 +452,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         p3.add(lDpkt);
         p3.add(cbMinuten);
         p3.add(lDauer);
-        p3.add(cbDauer);
+        p3.add(tDauer);
         p3.add(lMin);
         p3.add(lWiederh);
         p3.add(cbWieOft);
@@ -500,7 +505,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void sichtbarkeitAufgabe() {
         lDauer.setVisible(true);
-        cbDauer.setVisible(true);
+        tDauer.setVisible(true);
         lMin.setVisible(true);
         lGebaeude.setVisible(false);
         tGebaeude.setVisible(false);
@@ -550,7 +555,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void sichtbarkeitVeranstaltung() {
         lDauer.setVisible(true);
-        cbDauer.setVisible(true);
+        tDauer.setVisible(true);
         lMin.setVisible(true);
         lGebaeude.setVisible(true);
         tGebaeude.setVisible(true);
@@ -600,7 +605,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
      */
     public void sichtbarkeitPruefung() {
         lDauer.setVisible(true);
-        cbDauer.setVisible(true);
+        tDauer.setVisible(true);
         lMin.setVisible(true);
         lGebaeude.setVisible(true);
         tGebaeude.setVisible(true);
@@ -708,8 +713,8 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
         aufgabe.setUhrzeit(stunden + ":" + minuten);
 
         // fuer Dauer in minuten.
-        Object dauer = cbDauer.getSelectedItem();
-        aufgabe.setDauer((String) dauer);
+        Object dauer = tDauer.getText();
+        aufgabe.setDauer((int) dauer);
 
         // fuer wiederholung
         Wiederholbarkeit wiederholung =
@@ -741,7 +746,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
         veranstaltung.setBezeichnung(aufgabe.getBezeichnung());
         veranstaltung.setDatum(aufgabe.getDatum());
-        veranstaltung.setDauer(Aufgabe.getDauer());
+        veranstaltung.setDauer(aufgabe.getDauer());
         veranstaltung.setKommentar(aufgabe.getKommentar());
         veranstaltung.setTerminTyp(aufgabe.getTerminTyp());
         veranstaltung.setUhrzeit(aufgabe.getUhrzeit());
@@ -781,7 +786,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
 
         pruefung.setBezeichnung(aufgabe.getBezeichnung());
         pruefung.setDatum(aufgabe.getDatum());
-        pruefung.setDauer(Aufgabe.getDauer());
+        pruefung.setDauer(aufgabe.getDauer());
         pruefung.setKommentar(aufgabe.getKommentar());
         pruefung.setTerminTyp(aufgabe.getTerminTyp());
         pruefung.setUhrzeit(aufgabe.getUhrzeit());
@@ -851,7 +856,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
         } else {
@@ -914,7 +919,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(null,
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
@@ -996,7 +1001,7 @@ public class NeuenTerminHinzu extends JFrame implements ActionListener {
                 "Uhrzeit: Stunden und " + "Minuten müssen gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // Dauer
-        } else if (cbDauer.getSelectedIndex() == 0) {
+        } else if (tDauer.getText() == "") {
             JOptionPane.showMessageDialog(null, "Dauer: muss gewählt sein!",
                 "Error!", JOptionPane.ERROR_MESSAGE);
             // zum speichern! noch nicht fertig
