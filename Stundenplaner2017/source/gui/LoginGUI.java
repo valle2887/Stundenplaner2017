@@ -162,7 +162,7 @@ public class LoginGUI extends JFrame implements ActionListener {
                     DatenVerwaltung.leseVeranstaltung(username);
                     AktuelleSitzung.getAktuelleSitzung();
                     AktuelleSitzung.setBenutzer(benutzer);
-                    new KalenderGui();
+                    new KalenderGui(benutzer);
                     dispose();
                 } catch (IOException e1) {
                     e1.printStackTrace();

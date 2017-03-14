@@ -2,57 +2,62 @@ package daten;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import gui.NeuenTerminHinzu;
+
+// TODO: Auto-generated Javadoc
 /**
  * Ein Kalender speichert alle Termine eines Benutzers ab.
  * 
  * @author Valerian Tjunnikov
  */
 public class Kalender {
+
     /**
      * ArrayListe der Termine.
      */
-    private ArrayList<Termin> termine;
+    private ArrayList<Aufgabe> termine;
 
     /**
-     * konstruktor.
+     * Instantiates a new kalender.
      */
     public Kalender() {
-        termine = new ArrayList<Termin>();
-    }
 
-    // public boolean kollidiertTermin(Termin termine) {
-    // boolean kollision = false;
-    // for(Termin t : termine) {
-    // if () {
-    //
-    // }
-    // }
-    //
-    // return kollision;
-    // }
+        termine = new ArrayList<Aufgabe>();
+    }
+    // Kollisionstest
 
     /**
+     * Termin hinzufuegen.
+     *
      * @param termin
-     *            die termine werden hinzugefügt
+     *            the termin
+     * @return true, if successful
      */
-    public void terminHinzufuegen(Termin termin) {
-        termine.add(termin);
-    }
+    public boolean terminHinzufuegen(Aufgabe termin) {
 
-    /**
-     * @param termin
-     *            termine soll gelöscht werden
-     */
-    public void terminLoeschen(Termin termin) {
-        termine.remove(termin);
-    }
+        boolean kollision = false;
 
-    /**
-     * @param termin
-     *            es wird ein termin gesetzt
-     */
-    public void setTermine(ArrayList<Termin> termin) {
-        this.termine = termin;
+        ArrayList<String> list = DatenVerwaltung.leseAufgabe(Benutzer.getUserName());
+        // TODO Kollisionstest?!
+        for (String termin2 : list) {
+
+            if (termin2.getBezeichnung().equals(termin.getBezeichnung()) && 
+                (termin2.getDatum())equals(termin.getDatum()))) {
+                kollision = true;
+                
+                new NeuenTerminHinzu();
+            }else {
+                JOptionPane.showMessageDialog(null,
+                    "Es gibt eine Kollision");
+            }
+        }
+        if (!kollision) {
+            this.termine.add(termin);
+        }
+
+        return !kollision;
     }
 
 }
