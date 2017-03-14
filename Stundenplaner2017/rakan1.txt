@@ -2,3 +2,62 @@ rakan1
 123
 winf
 24
+<<<<<<< HEAD
+=======
+
+<<<<<<< HEAD
+rakan1
+123
+def
+34
+
+=======
+>>>>>>> branch 'master' of https://github.com/valle2887/Stundenplaner2017.git
+
+Aufgabe
+Bezeichnung: ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
+Wiederholung: Woechentlich
+Marker: TERMIN_ERLEDIGT
+Notiz: wdewfde
+Deadline: null
+
+
+Veranstaltung
+Bezeichnung:ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
+Wiederholung: Woechentlich
+Marker: TERMIN_ERFOLGREICH
+Notiz: wdewfde
+Raum: qwdw
+Gebäude: qwdqw
+Dozent: qwdew
+ECTS: 34
+
+
+Pruefung
+Bezeichnung:ewfrewf
+Kategorie: Universitaet
+Datum: 5.4.2020
+Uhrzeit: 4:30
+Dauer: 90
+Wiederholung: Woechentlich
+<<<<<<< HEAD
+Marker: Universitaet
+Notiz: HOHE_PRIORITAET
+Deadline: null
+=======
+Marker: HOHE_PRIORITAET
+Notiz: wdewfde
+Zugehoerende Veranstaltung: wqdwed
+Gebäude: qwdew
+Raum: wfdew
+
+>>>>>>> branch 'master' of https://github.com/valle2887/Stundenplaner2017.git
+>>>>>>> branch 'master' of git@github.com:valle2887/Stundenplaner2017.git
