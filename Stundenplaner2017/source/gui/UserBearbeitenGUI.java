@@ -17,75 +17,90 @@ import daten.AktuelleSitzung;
 import daten.Benutzer;
 import daten.UserVerwaltung;
 
-/** Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von
- * JFrame und implementiert ActionListener.
+/**
+ * Klasse, um das Fenster zum Bearbeiten eines Users aufzurufen, erbt von JFrame
+ * und implementiert ActionListener.
+ * 
  * @author Christian Lindenberg
  */
 public class UserBearbeitenGUI extends JFrame implements ActionListener {
-    
+
     /**
      * Automatisch generierte SerialVersionUID.
      */
     private static final long serialVersionUID = 173569253861900744L;
-    
+
     /**
      * Label um dem User einen neuen Studiengang geben zu koennen.
      */
-    private JLabel lblNeuStudiengang = 
+    private JLabel lblNeuStudiengang =
         new JLabel("Neuer Studiengang: ", SwingConstants.CENTER);
+
     /**
      * Textfeld, um dem User einen neuen Studiengang geben zu koennen.
      */
     private JTextField txtNeuStudiengang = new JTextField(20);
-    
+
     /**
      * Label um dem User eine neue Anzahl an Creditpunkten zu geben.
      */
-    private JLabel lblNeuECTS = 
+    private JLabel lblNeuECTS =
         new JLabel("Neue ECTS: ", SwingConstants.CENTER);
-    /** Textfeld, um dem User eine neue Anzahl an Creditpunkten zu geben.
+
+    /**
+     * Textfeld, um dem User eine neue Anzahl an Creditpunkten zu geben.
      */
     private JTextField txtNeuECTS = new JTextField(3);
+
     /**
      * Label fuer das neue Passwort.
      */
-    private JLabel lblNeuPasswort = new JLabel("Neues Passwort: "
-        , SwingConstants.CENTER);
+    private JLabel lblNeuPasswort =
+        new JLabel("Neues Passwort: ", SwingConstants.CENTER);
+
     /**
      * Textfeld fuer das neue Passwort.
      */
     private JTextField txtNeuPasswort = new JTextField(20);
+
     /**
      * Label fuer das nochmals eingegebene Passwort.
      */
-    private JLabel lblPasswortNochmal = new JLabel("Passwort nochmal "
-        , SwingConstants.CENTER);
+    private JLabel lblPasswortNochmal =
+        new JLabel("Passwort nochmal ", SwingConstants.CENTER);
+
     /**
      * Textfeld fuer das nochmal eingegebene Passwort.
      */
     private JTextField txtNeuPasswortNochmal = new JTextField(20);
-    
+
     /**
      * Button um die aktualisierten Daten zu speichern.
      */
     private JButton btnSpeichern = new JButton("Speichern");
+
     /**
      * Button um das aktualisieren er Daten abzubrechen.
      */
     private JButton btnAbbrechen = new JButton("Abbrechen");
+
     /**
      * Button um einen Benutzer zu loeschen.
      */
     private JButton btnLoeschen = new JButton("Loeschen");
+
     /**
-     * Methode fuer die Buttonklicks, wenn auf Speichern gedrueckt wird,
-     * werden die geaenderten Daten gespeichert, und wenn auf abbrechen
-     * gedrueckt wird, kommt der User wieder ins Hauptfenster zurueck.
-     * @param event 
+     * Methode fuer die Buttonklicks, wenn auf Speichern gedrueckt wird, werden
+     * die geaenderten Daten gespeichert, und wenn auf abbrechen gedrueckt wird,
+     * kommt der User wieder ins Hauptfenster zurueck.
+     * 
+     * @param event
      */
     /**
      * Methode, um einen bestehenden Nutzer zu loeschen.
-     * @param userName wird uebergeben
+     * 
+     * @param userName
+     *            wird uebergeben
      * @return userGeloescht
      */
     public boolean userLoeschen(String userName) {
@@ -94,7 +109,7 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         File file = new File(userName + ".txt");
         boolean userGeloescht = file.delete();
         return userGeloescht;
-        
+
     }
 
     /**
@@ -114,24 +129,24 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                         daten);
                     AktuelleSitzung.getAktuelleSitzung();
                     AktuelleSitzung.getBenutzer().setStudiengang(daten[1]);
-                    AktuelleSitzung.getBenutzer().setEcts(daten[2]);    
+                    AktuelleSitzung.getBenutzer().setEcts(daten[2]);
                     AktuelleSitzung.getBenutzer().setPasswort(daten[0]);
                 } catch (IOException exc) {
                     JOptionPane.showMessageDialog(null, "Error!");
                 }
                 dispose();
-                new KalenderGui();
+                new KalenderGui(Benutzer.getUserName());
             } else {
-                
-                JOptionPane.showMessageDialog(null, "Passwoerter stimmen "
-                    + "nicht ueberein!");
-                
+
+                JOptionPane.showMessageDialog(null,
+                    "Passwoerter stimmen " + "nicht ueberein!");
+
             }
         } else {
             JOptionPane.showMessageDialog(null, "Bitte Passwort eingeben!");
         }
     }
-    
+
     /**
      * Konstruktorklasse des Fensters um die User bearbeiten zu koennen.
      */
@@ -153,18 +168,17 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
         this.add(btnLoeschen);
         txtNeuECTS.setText(AktuelleSitzung.getBenutzer().getEcts());
         AktuelleSitzung.getBenutzer();
-        txtNeuStudiengang.setText(
-            Benutzer.getStudiengang());
+        txtNeuStudiengang.setText(Benutzer.getStudiengang());
         btnAbbrechen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                dispose();       
+                dispose();
             }
         });
         btnLoeschen.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                int wirklich = JOptionPane.showConfirmDialog(null,
-                    "Wirklich loeschen?", "Wirklich loeschen?",
-                    JOptionPane.YES_NO_OPTION);
+                int wirklich =
+                    JOptionPane.showConfirmDialog(null, "Wirklich loeschen?",
+                        "Wirklich loeschen?", JOptionPane.YES_NO_OPTION);
                 if (wirklich == JOptionPane.YES_OPTION) {
                     AktuelleSitzung.getBenutzer();
                     UserVerwaltung.loeschenBenutzer(Benutzer.getUserName());
@@ -173,24 +187,25 @@ public class UserBearbeitenGUI extends JFrame implements ActionListener {
                 } else if (wirklich == JOptionPane.NO_OPTION) {
                     JOptionPane.getRootFrame().dispose();
                 }
-            } 
+            }
         });
         btnSpeichern.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent event) {
-                    userAendern();      
-                    
-            }         
+                userAendern();
+
+            }
         });
         pack();
         setVisible(true);
     }
-/**
- * Autogeneriert.
- * @param e 
- */
+
+    /**
+     * Autogeneriert.
+     * 
+     * @param e
+     */
     public void actionPerformed(ActionEvent e) {
         // TODO Auto-generated method stub
-        
+
     }
 }
-   

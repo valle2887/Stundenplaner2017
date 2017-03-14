@@ -2,6 +2,10 @@ package daten;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
+import gui.NeuenTerminHinzu;
+
 // TODO: Auto-generated Javadoc
 /**
  * Ein Kalender speichert alle Termine eines Benutzers ab.
@@ -35,11 +39,18 @@ public class Kalender {
 
         boolean kollision = false;
 
+        ArrayList<String> list = DatenVerwaltung.leseAufgabe(Benutzer.getUserName());
         // TODO Kollisionstest?!
-        for (Aufgabe termin2 : termine) {
+        for (String termin2 : list) {
 
-            if (termin2.getBezeichnung().equals(termin.getBezeichnung())) {
+            if (termin2.getBezeichnung().equals(termin.getBezeichnung()) && 
+                (termin2.getDatum())equals(termin.getDatum()))) {
                 kollision = true;
+                
+                new NeuenTerminHinzu();
+            }else {
+                JOptionPane.showMessageDialog(null,
+                    "Es gibt eine Kollision");
             }
         }
         if (!kollision) {

@@ -113,16 +113,16 @@ public class KalenderGui extends JFrame implements ActionListener {
     /** The spalten. */
     // Spalten anlegen
     private String[] spalten =
-        {"Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So." };
+        { "Uhrzeit", "Mo.", "Di.", "Mi.", "Do.", "Fr.", "Sa.", "So." };
 
     /** The zeilen. */
     // zeilen anlegen
     private String[][] zeilen =
-        new String[][] {{"01:00"}, {"02:00"}, {"03:00"}, {"04:00"},
-            {"05:00"}, {"06:00"}, {"07:00"}, {"08.00"}, {"09:00"},
-            {"10:00"}, {"11:00"}, {"12:00"}, {"13:00"}, {"14:00"},
-            {"15:00"}, {"16:00"}, {"17:00"}, {"18:00"}, {"19:00"},
-            {"20:00"}, {"21:00"}, {"22:00"}, {"23:00"}, {"00:00"}};
+        new String[][] { { "01:00" }, { "02:00" }, { "03:00" }, { "04:00" },
+            { "05:00" }, { "06:00" }, { "07:00" }, { "08.00" }, { "09:00" },
+            { "10:00" }, { "11:00" }, { "12:00" }, { "13:00" }, { "14:00" },
+            { "15:00" }, { "16:00" }, { "17:00" }, { "18:00" }, { "19:00" },
+            { "20:00" }, { "21:00" }, { "22:00" }, { "23:00" }, { "00:00" } };
 
     /** The benutzer. */
     private Benutzer benutzer;
@@ -130,7 +130,8 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * Instantiates a new kalender gui.
      *
-     * @param benutzer the benutzer
+     * @param benutzer
+     *            the benutzer
      */
     public KalenderGui(Benutzer benutzer) {
         this.benutzer = benutzer;
@@ -169,6 +170,10 @@ public class KalenderGui extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
+    }
+
+    public KalenderGui(String userName) {
+        // TODO Auto-generated constructor stub
     }
 
     /**
@@ -263,7 +268,7 @@ public class KalenderGui extends JFrame implements ActionListener {
         ArrayList<String> list = null;
         // laden aus textdatei
         try {
-            list = DatenVerwaltung.leseAufgabe(benutzer.getUserName());
+            list = DatenVerwaltung.leseAufgabe(Benutzer.getUserName());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -309,7 +314,8 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * Format date.
      *
-     * @param date            .
+     * @param date
+     *            .
      * @return formatter.
      */
     private String formatDate(LocalDateTime date) {
@@ -321,7 +327,8 @@ public class KalenderGui extends JFrame implements ActionListener {
     /**
      * Action performed.
      *
-     * @param e            .
+     * @param e
+     *            .
      */
     public void actionPerformed(ActionEvent e) {
         if (e.getSource().equals(btnLinks)) {
